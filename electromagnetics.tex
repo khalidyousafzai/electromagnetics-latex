@@ -1,0 +1,75 @@
+\documentclass[leqno,b5paper]{book}
+
+\usepackage{khalidUrduBooksEMT}                     %my sty file
+%\usepackage{animate}
+
+\sisetup{math-micro=\text{µ},text-micro=µ}           %siunitx stopped showing micro symbol and had to put this line. now the size of micro is smaller
+
+
+\input{./tex/myUrduCommandsEMT.tex}                  %turning latex into urdu
+\input{./tex/myUrduGreek.tex}
+\input{./tex/myEMTvectors.tex}
+%\input{./tex/myElectronicsVariablesBetter.tex}         %these are all tested. to use at the very end when book is finished
+
+\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}}			%paths to figures
+
+\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential}
+%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/tikztest,./tex/k}
+
+
+\author{
+خالد خان یوسفزئی\\
+{\small {کامسیٹ انسٹیٹیوٹ آف انفارمیشن ٹیکنالوجی، اسلام آباد}}\\
+\texttt{khalidyousafzai@comsats.edu.pk}
+}
+
+%=========
+
+
+\title{برقی و مقناطیسیات}
+\date{}                           %if absent gives date in arabic which is a rubbish
+
+\makeindex
+
+%==========
+\begin{document}
+\begin{urdufont}
+
+\renewcommand*{\contentsname}{عنوان}    %this command has to be placed right here
+
+\frontmatter                          %just added instead of \pagenumbering{roman}
+%%\pagenumbering{roman}    
+
+\maketitle
+
+\tableofcontents
+\pagestyle{empty}
+%\include{./tex/emtPreface}
+%\include{./tex/prefaceFirstBook}
+\include{./tex/emtSymbols}
+
+
+\mainmatter                      %added this
+%%\pagenumbering{arabic}   %instead of this
+
+\pagestyle{headings}
+
+
+\include{./tex/emtVectors}
+\include{./tex/emtCoulombLaw}
+\include{./tex/emtGaussLaw}
+\include{./tex/emtEnergyAndPotential}
+%\include{./tex/tikztest}
+
+
+
+\backmatter
+
+\renewcommand*{\indexname}{فرہنگ}      %this command has to be placed right here just before printindex command
+\cleardoublepage
+\addcontentsline{toc}{chapter}{فرہنگ}
+%\printindex
+
+
+\end{urdufont}
+\end{document}
