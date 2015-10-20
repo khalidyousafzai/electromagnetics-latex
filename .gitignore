@@ -6,6 +6,7 @@
 *.ilg
 *.ind
 *.toc
+*.out
 *~
 
 metadata.txt

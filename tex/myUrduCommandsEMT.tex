@@ -1,0 +1,110 @@
+%this file describes urdu commands for the commonly used english latex commands
+
+%chapter, section etc
+\newcommand*{\باب}[1]{\chapter{#1}}                                      %defining commonly used commands
+\newcommand*{\حصہ}[1]{\section{#1}}
+\newcommand*{\جزوحصہ}[1]{\subsection{#1}}
+\newcommand*{\جزوجزوحصہ}[1]{\subsubsection{#1}}
+
+\newcommand*{\بابء}[1]{\chapter*{#1}}                                      %defining commonly used commands
+\newcommand*{\حصہء}[1]{\section*{#1}}
+\newcommand*{\جزوحصہء}[1]{\subsection*{#1}}
+\newcommand*{\جزوجزوحصہء}[1]{\subsubsection*{#1}}
+
+
+%english text in urdu mode
+\newcommand*{\تحریر}[1]{\textenglish{#1}}	% english text in urduMode
+\newcommand*{\موٹا}[1]{\textbf{#1}}
+\newcommand*{\ترچہ}[1]{{\textit{#1}}}
+
+%end commands cannot be redefined and as such these two are not usable
+\providecommand*{\ابتدا}[1]{\begin{#1}}
+\providecommand*{\انتہا}[1]{\end{#1}}
+
+%include and input directives for adding external files into the main document 
+\newcommand*{\بشمول}[1]{\includeonly{#1}}
+\newcommand*{\شامل}[1]{\include{#1}}
+\newcommand*{\داخل}[1]{\input{#1}}
+
+%to use extra latex packages
+\newcommand*{\استعمال}[1]{\usepackage{#1}}
+
+%footnotes and indexes
+\newcommand*{\حاشیہب}[1]{{\raggedright{\footnote{\textenglish{#1}}}} }               %footnote to the left hand side
+\newcommand*{\حاشیہد}[1]{{\raggedleft{\footnote{#1}}}}
+\newcommand*{\حاشیہط}[1]{\marginpar{#1}}
+
+\newcommand*{\فرہنگ}[1]{\index{#1}}
+
+%references and labels
+\newcommand*{\شناخت}[1]{\label{#1}}
+\newcommand*{\حوالہ}[1]{\ref{#1}}
+\newcommand*{\حوالہصفحہ}[1]{\pageref{#1}}
+
+%counters
+\newcommand*{\فاصلہ}{\vspace*{10mm}}
+
+%itemize, bullets and numbered items   
+\newcommand*{\اشیاء}{itemize}                               %used in   \begin{itemize}
+\newcommand*{\شے}[1]{\item {#1}}			%used in    \item
+
+%maths commands
+\newcommand*{\عددی}[1]{\: \ensuremath{#1} \:} % in-line math & inside math mode
+\newcommand*{\عددیء}[1]{\ensuremath{#1}}
+\newcommand*{\سمتیہ}[1]{\ensuremath{{\bf{#1}}}}
+\newcommand*{\سمتیازیرنوشت}[2]{\ensuremath{{\boldsymbol{#1}}_{\textup{#2}}}}
+
+\newcommand*{\ضرب}{\time}					%multiplication symbol
+\newcommand*{\نکطہد}{\cdot}
+\newcommand*{\نقطے}{\ensuremath{\cdots}}
+
+\newcommand*{\زیرنوشت}[3]{\: \ensuremath{{#1_{#2 \textrm {#3}}}} \:}   %english+urdu subscript \زیرنوشت{V}{CE}{غیرافزائندہ}
+\newcommand*{\سیدھازیرنوشت}[2]{\: \ensuremath{{#1_{\textup{#2}}}} \:} %RC
+
+\newcommand*{\قریب}[1]{\mbox{#1}}
+
+\renewcommand{\indexname}{فرہنگ}        %apparently did nothing
+%===============================
+
+
+%numbering scheme
+\renewcommand*{\thefigure}{\arabic{figure}.\thechapter}
+\renewcommand*{\thetable}{\arabic{table}.\thechapter}
+\renewcommand*{\theequation}{\arabic{equation}.\thechapter}
+\renewcommand*{\thesection}{\arabic{section}.\thechapter}
+\renewcommand*{\thesubsection}{\arabic{subsection}.\arabic{section}.\thechapter}
+\renewcommand*{\thesubsubsection}{\arabic{subsubsection}.\arabic{subsection}.\arabic{section}.\thechapter}
+
+%================
+%my environments
+%================
+
+%environment for examples مثال
+\newcounter{examplecounter}[chapter]
+\renewcommand{\theexamplecounter}{\arabic{examplecounter}.\thechapter}
+
+\newenvironment*{مثال}
+{\noindent\ignorespaces \vspace{\baselineskip} \hrule \vspace{\baselineskip}  مثال \refstepcounter{examplecounter} \theexamplecounter :}%
+{\par\noindent \hrule  \vspace{\baselineskip}}
+
+%------
+%practice problems environment مشق
+
+\newcounter{practicecounter}[chapter]                              %practice here means مشق
+\renewcommand{\thepracticecounter}{\arabic{practicecounter}.\thechapter}
+
+\newenvironment*{مشق}
+{\noindent\ignorespaces \vspace{\baselineskip} \hrule \vspace{\baselineskip} مشق \refstepcounter{practicecounter} \thepracticecounter :}%
+{\par\noindent \hrule  \vspace{\baselineskip}}
+%---------
+
+%end of chapter questions environment سوال
+
+\newcounter{questioncounter}[chapter]
+\renewcommand{\thequestioncounter}{\arabic{questioncounter}.\thechapter}
+
+\newenvironment*{سوال}				
+{\noindent\ignorespaces  سوال \refstepcounter{questioncounter} \thequestioncounter :}%
+{\par\noindent }
+%--------------------
+

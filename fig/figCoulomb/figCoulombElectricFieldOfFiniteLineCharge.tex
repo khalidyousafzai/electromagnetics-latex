@@ -1,0 +1,61 @@
+\documentclass[varwidth,border=5pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%========
+\begin{document}
+%\def\boundb{(-2,2) rectangle (4,-2)}
+
+\tdplotsetmaincoords{70}{110}
+
+\pgfmathsetmacro{\y}{0.7}
+\pgfmathsetmacro{\z}{0.7}
+\pgfmathsetmacro{\delz}{0.06}
+\pgfmathsetmacro{\r}{0.6}
+\pgfmathsetmacro{\theta}{60}
+\pgfmathsetmacro{\short}{sqrt{\z^2+\r^2}}
+\pgfmathsetmacro{\kx}{\r*cos \theta}
+\pgfmathsetmacro{\ky}{\r*sin \theta}
+\pgfmathsetmacro{\kz}{0}
+
+
+
+
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+
+    	\draw[thin, gray,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[thin, gray,->] (0,0,0) -- (0,1,0) node[anchor= west]{$y$};
+    	\draw[thin, gray,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+%
+
+\coordinate (N) at (\r*cos \theta,\r*sin \theta,0);
+%\coordinate (N) at (0,\y,0);
+
+\draw[dotted] (0,0,0) circle (\r);
+%show small region of charge
+\draw [ultra thick,gray] (0,0,\z)--(0,0,\z+\delz);
+\path [draw](0,0,\z+\delz/2) node[black,left]{$(0,0,z)$} node[right,black]{$\Delta Q=\rho_L \Delta z$};
+\draw [ultra thick,gray] (0,0,0.9)node[left] {$z_2$}--(0,0,0.3) node[left] {$z_1$};           %line charge
+%mark off limits
+\draw[thin](0,-0.04,\z)--(0,+0.04,\z);
+\draw[thin](0,-0.04,\z+\delz)--(0,+0.04,\z+\delz);
+
+%point N
+\draw[fill] (N) circle (0.1mm);
+%other vectors
+\draw[thin,-latex] (0,0,\z+\delz/2)--(N) node[pos=0.5,right]{$\bf{R}$};
+\draw[thin,-latex] (0,0,0)--(N) node [below,pos=0.4]{$\rho \bf{a_\rho}$};
+\draw [thin,-latex] (0,0,0)--(0,0,\z+\delz/2) node[pos=0.7,left]{$z \bf{a_z}$};
+%E vector
+%\draw[thick,-latex] (N)--(1.5*\r*cos \theta,1.5*\r*sin \theta,-0.5*\z) node[pos=0.5,left]{$\bf{E}$};
+
+%\draw[blue](current bounding box.south west) rectangle (current bounding box.north east);
+%\draw[help lines, step=10pt](0,0)grid(1,1);
+%\path[use as bounding box]( -1.2,-1.5,-1)rectangle(1,2,2);
+\end{tikzpicture}
+
+\end{document}

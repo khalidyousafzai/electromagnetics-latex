@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}    
+\usepackage{tikz-3dplot}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\begin{document}
+\begin{urdufont}
+\tdplotsetmaincoords{60}{125}
+\begin{tikzpicture}
+[tdplot_main_coords,
+			cube/.style={very thick,black},
+			grid/.style={very thin,gray},
+			axis/.style={->,gray,thick}]
+
+	%draw a grid in the x-y plane
+
+			
+	%draw the axes
+	\draw[axis] (0,0,0) -- (3,0,0) node[anchor=west]{$x$};
+	\draw[axis] (0,0,0) -- (0,4,0) node[anchor=west]{$y$};
+	\draw[axis] (0,0,0) -- (0,0,3) node[anchor=west]{$z$};
+
+	%draw the top and bottom of the cube
+	\draw[cube] (0,0,0) -- (0,3,0) -- (2,3,0) -- (2,0,0) -- cycle;
+	\draw[cube] (0,0,2) -- (0,3,2) -- (2,3,2) -- (2,0,2) -- cycle;
+\shade[right color=gray!10, left color=black!50] (0,0,0) rectangle (2,3,0);	
+
+	%draw the edges of the cube
+	\draw[cube] (0,0,0) -- (0,0,2);
+	\draw[cube] (0,3,0) -- (0,3,2);
+	\draw[cube] (2,0,0) -- (2,0,2);
+	\draw[cube] (2,3,0) -- (2,3,2);
+	
+\end{tikzpicture}
+\end{urdufont}
+\end{document}

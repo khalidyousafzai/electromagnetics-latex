@@ -1,0 +1,49 @@
+\documentclass[varwidth,border=5pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%========
+\begin{document}
+%\def\boundb{(-2,2) rectangle (4,-2)}
+
+\tdplotsetmaincoords{70}{110}
+
+\pgfmathsetmacro{\kxk}{0.7}
+\pgfmathsetmacro{\kxxk}{-0.4}
+\pgfmathsetmacro{\kyk}{0.4}
+\pgfmathsetmacro{\kzk}{0.7}
+
+
+
+
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+
+    	\draw[thin, gray,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[thin, gray,->] (0,0,0) -- (0,1,0) node[anchor= west]{$y$};
+    	\draw[thin, gray,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+%
+\draw[thick] (\kxk,-0.3,0) --(\kxk,0.9,0) node[right]{$\rho_L$};
+\draw[fill](\kxxk,\kyk,\kzk) circle (0.1mm);
+\draw  (\kxxk,\kyk,\kzk) node [right]{$(x',y',z')$};
+\draw[fill](\kxk,0,0) circle (0.1mm);
+\draw  (\kxk,0,0) node [above]{$(x,0,0)$};
+\draw[thick,gray,dashed] (\kxxk,\kyk,\kzk)--(\kxxk,\kyk,0) node[right]{$(x',y',0)$};
+\draw[thick,gray,dashed] (\kxxk,\kyk,0)--(\kxk,\kyk,0) node[below]{$(x,y',0)$};
+\draw[thick,gray,-latex] (\kxk,\kyk,0)--(\kxxk,\kyk,\kzk) node[left,black,pos=0.5]{${\bf{R}}$};
+%\draw[dotted] (0,0,0) circle (\r);
+%\draw (0,0,0.4) circle (\r);
+
+%show small region of charge
+
+%circle
+
+%\draw[blue](current bounding box.south west) rectangle (current bounding box.north east);
+%\draw[help lines, step=10pt](0,0)grid(1,1);
+%\path[use as bounding box]( -1.2,-1.5,-1)rectangle(1,2,2);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}    
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%\draw[help lines, thick] (-3,0) grid (5,4);
+%
+\node[draw=black,circle,fill,black,inner sep=0pt,minimum size=1mm](c0) at (0,0){};
+\node[draw=blue,circle,fill,blue,inner sep=0pt,minimum size=1mm](c1) at (4,1){};
+\node[draw=blue,circle,fill,blue,inner sep=0pt,minimum size=1mm](c2) at (1,2){};
+%
+\draw[thick, -latex] (0,0)--(c1) node[pos=0.5,below]{$\bf{r_1}$} ;
+\draw[thick, -latex] (0,0)--(c2)node[pos=0.5,left]{$\bf{r_2}$} ;
+%\draw[thin, -latex] (c1)--(c2)node[pos=0.5,above]{$\bf{R_{21}}$} ;
+\coordinate(unitk) at ($(4,1)+0.3162*(1,2)-0.3162*(4,1)$);
+\draw[very thick,gray, -latex] (c1)--(unitk)node[pos=0.4,above,black]{$\bf{a_{21}}$} ;
+\draw[thin, -latex] (c1)--(c2)node[pos=0.5,above]{$\bf{R_{21}}$} ;
+\draw[thick, -latex] (c2)--(-0.5,2.5)node[pos=0.5,above]{$\bf{F_2}$} ;
+\path(c1) node [below]{$Q_1$};
+\path(c2) node [above right]{$Q_2$};
+\path(c0) node [below]{مرکز};
+\end{tikzpicture}
+\end{urdufont}
+\end{document}

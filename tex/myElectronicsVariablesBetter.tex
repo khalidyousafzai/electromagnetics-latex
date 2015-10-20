@@ -1,0 +1,62 @@
+%still decided to format everything at the very end
+%try to make a jump table so that a single command can be built
+
+\newcommand*{\ksubRB}{\ensuremath{R_{\textup{B}}}}   %transistor
+\newcommand*{\ksubRC}{\ensuremath{R_{\textup{C}}}}
+\newcommand*{\ksubRE}{\ensuremath{R_{\textup{E}}}}
+
+\newcommand*{\ksubRG}{\ensuremath{R_{\textup{G}}}}	%mosfet
+\newcommand*{\ksubRD}{\ensuremath{R_{\textup{D}}}}
+\newcommand*{\ksubRS}{\ensuremath{R_{\textup{S}}}}
+
+\newcommand*{\ksubCB}{\ensuremath{C_{\textup{B}}}}	%transistor
+\newcommand*{\ksubCC}{\ensuremath{C_{\textup{C}}}}
+\newcommand*{\ksubCE}{\ensuremath{C_{\textup{E}}}}
+
+\newcommand*{\ksubCG}{\ensuremath{C_{\textup{G}}}}	%mosfet
+\newcommand*{\ksubCD}{\ensuremath{C_{\textup{D}}}}
+\newcommand*{\ksubCS}{\ensuremath{C_{\textup{S}}}}
+
+\newcommand*{\ksubRCB}{\ensuremath{R_{\textup{CB}}}}    %resistor used with base capacitor    (GET RID OF SUCH USAGE)
+\newcommand*{\ksubRCC}{\ensuremath{R_{\textup{CC}}}}   %resistor used with collector capacitor
+\newcommand*{\ksubRCE}{\ensuremath{R_{\textup{CE}}}}   %resistor used with emitter capacitor
+
+\newcommand*{\ksubVBE}{\ensuremath{V_{\textup{BE}}}}  %npnTransistor
+\newcommand*{\ksubVBC}{\ensuremath{V_{\textup{BC}}}}
+\newcommand*{\ksubVCE}{\ensuremath{V_{\textup{CE}}}}
+
+\newcommand*{\ksubVEB}{\ensuremath{V_{\textup{EB}}}}  %pnpTransistor
+\newcommand*{\ksubVCB}{\ensuremath{V_{\textup{CB}}}}
+\newcommand*{\ksubVEC}{\ensuremath{V_{\textup{EC}}}}
+
+\newcommand*{\ksubVGS}{\ensuremath{V_{\textup{GS}}}}  %nMosfet
+\newcommand*{\ksubVGD}{\ensuremath{V_{\textup{GD}}}}
+\newcommand*{\ksubVDS}{\ensuremath{V_{\textup{DS}}}}
+
+\newcommand*{\ksubVSG}{\ensuremath{V_{\textup{SG}}}} 	%pMosfet
+\newcommand*{\ksubVDG}{\ensuremath{V_{\textup{DG}}}}
+\newcommand*{\ksubVSD}{\ensuremath{V_{\textup{SD}}}}
+
+\newcommand*{\ksubsubVRE}{\ensuremath{V_{R_{\textup{E}}}}}
+\newcommand*{\ksubsubVRC}{\ensuremath{V_{R_{\textup{C}}}}}
+\newcommand*{\ksubsubVRB}{\ensuremath{V_{R_{\textup{B}}}}}
+
+\newcommand*{\ksub}[2]{\ensuremath{#1_{\textup{#2}}}}     %R_1    or V_1   or C_1     where numbers are used
+
+%voltage sources
+\newcommand*{\ksubVCC}{\ensuremath{V_{\textup{CC}}}} %transistor
+\newcommand*{\ksubVBB}{\ensuremath{V_{\textup{BB}}}}
+\newcommand*{\ksubVEE}{\ensuremath{V_{\textup{EE}}}}
+
+\newcommand*{\ksubVDD}{\ensuremath{V_{\textup{DD}}}}	%mosfet
+\newcommand*{\ksubVGG}{\ensuremath{V_{\textup{GG}}}}
+\newcommand*{\ksubVSS}{\ensuremath{V_{\textup{SS}}}}
+
+\newcommand*{\ksubVS}{\ensuremath{V_{\textup{S}}}}
+\newcommand*{\ksubVs}{\ensuremath{V_{\textup{s}}}}
+
+%gain
+\newcommand*{\ksubAv}{\ensuremath{A_{\textup{v}}}}		%gains
+\newcommand*{\ksubAi}{\ensuremath{A_{\textup{i}}}}
+\newcommand*{\ksubGm}{\ensuremath{G_{\textup{m}}}}
+\newcommand*{\ksubRm}{\ensuremath{R_{\textup{m}}}}

@@ -1,0 +1,8 @@
+# Gambas Project File 2.0
+# Compiled with Gambas 2.21.0
+Title=indexMake
+Startup=FMain
+Version=0.0.6
+Library=gb.gui
+Library=gb.form
+TabSize=2

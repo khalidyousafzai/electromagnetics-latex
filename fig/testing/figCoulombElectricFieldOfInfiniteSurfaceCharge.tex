@@ -1,0 +1,67 @@
+\documentclass[varwidth,border=5pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%========
+\begin{document}
+%\def\boundb{(-2,2) rectangle (4,-2)}
+
+\tdplotsetmaincoords{70}{110}
+
+%sheet width and height limits
+\pgfmathsetmacro{\wx}{0.9}
+\pgfmathsetmacro{\wn}{-0.2}
+\pgfmathsetmacro{\st}{0.9}
+\pgfmathsetmacro{\sb}{-0.15}
+%upper min and max heights
+\pgfmathsetmacro{\del}{0.005}     
+\pgfmathsetmacro{\Hx}{\st+\del}     
+\pgfmathsetmacro{\Hn}{\st-\del}
+%lower min and max heights
+\pgfmathsetmacro{\hx}{\sb+\del}     
+\pgfmathsetmacro{\hn}{\sb-\del}
+%charge line
+\pgfmathsetmacro{\delc}{0.06}    %line thickness
+\pgfmathsetmacro{\lc}{0.4}
+\pgfmathsetmacro{\p}{0.8}
+
+
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+%\begin{tikzpicture}
+
+%sheet
+%selected points manually to give feeling of cut sheet
+\draw[fill,gray!50] plot[smooth] (0,\wn,\sb)--(0,\wx,\sb)--(0,\wx,\st)--(0,0.8*\wx,\Hx)--(0,0.6*\wx,\Hn)--(0,0.4*\wx,\Hx)--(0,0.2*\wx,\Hn)--(0,0,\Hx)--(0,-0.2*\wx,\Hn)--(0,\wn,\st)--cycle;
+%segment  defining a line charge
+\draw (0,\lc,\sb)--(0,\lc,\st);
+\draw (0,\lc+\delc,\sb)--(0,\lc+\delc,\st);
+\path[fill,gray] (0,\lc,\sb)--(0,\lc,\st)--(0,\lc+\delc,\st)--(0,\lc+\delc,\sb)--cycle;
+%axis
+    	\draw[thin, gray,->] (0,0,0) -- (1,0,0) node[below]{$x$};
+	\draw[thin, gray,->] (0,0,0) -- (0,1,0) node[right]{$y$};
+    	\draw[thin, gray,->] (0,0,0) -- (0,0,1) node[above]{$z$};
+%vectors and point
+\draw[fill,black](\p,0,0) circle (0.2mm); 
+\draw[-latex](0,\lc+\delc/2,0,0)--(\p,0,0) node [left]{$(x,0,0)$};
+\node[below right] at (0,\lc+\delc,0) {$(0,y,0)$};
+\draw[<-] (\p/2,\lc/2,0) to [out=300,in=180] (\p,\lc,0);
+\node[right] at (1.1*\p,1.1*\lc,0){${\bf{R}}=x{\bf{a}}_x-y{\bf{a}}_y$};
+%dy
+\draw[->](0,\lc-2*\delc,0.3)--(0,\lc,0.3);
+\draw[<-](0,\lc+\delc,0.3)--(0,\lc+3*\delc,0.3) node [right]{${\textrm{d}} y$};
+%current densities
+\node at (0,0.2,0.7){$\rho_S$};
+%\node[right]  at (0,\lc+\delc, 0.5) {$\rho_L=\rho_S {\textrm{d}} y$}; 
+%arc
+  \draw [->,domain=0:30] plot ({\p-0.2*cos(\x)}, {0.2*sin(\x)}) ;
+\node[right] at (0.6*\p,0,0) {$\phi$};
+%\draw[blue](current bounding box.south west) rectangle (current bounding box.north east);
+%\draw[help lines, step=10pt](0,0)grid(1,1);
+%\path[use as bounding box]( -1.2,-1.5,-1)rectangle(1,2,2);
+\end{tikzpicture}
+
+\end{document}

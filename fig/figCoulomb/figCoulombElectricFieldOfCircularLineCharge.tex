@@ -1,0 +1,72 @@
+\documentclass[varwidth,border=5pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%========
+\begin{document}
+%\def\boundb{(-2,2) rectangle (4,-2)}
+
+\tdplotsetmaincoords{70}{110}
+
+\pgfmathsetmacro{\y}{0.7}
+\pgfmathsetmacro{\z}{0.7}
+\pgfmathsetmacro{\delz}{0.06}
+\pgfmathsetmacro{\r}{0.6}
+\pgfmathsetmacro{\theta}{60}
+\pgfmathsetmacro{\thetad}{68}
+\pgfmathsetmacro{\thetadd}{52}
+\pgfmathsetmacro{\short}{sqrt{\z^2+\r^2}}
+\pgfmathsetmacro{\kx}{\r*cos \theta}
+\pgfmathsetmacro{\ky}{\r*sin \theta}
+\pgfmathsetmacro{\kxd}{\r*cos \thetad}
+\pgfmathsetmacro{\kyd}{\r*sin \thetad}
+\pgfmathsetmacro{\kz}{0}
+
+
+
+
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+
+    	\draw[thin, gray,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[thin, gray,->] (0,0,0) -- (0,1,0) node[anchor= west]{$y$};
+    	\draw[thin, gray,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+%
+
+\coordinate (N) at (\r*cos \theta,\r*sin \theta,0);
+\coordinate (Nd) at (\r*cos \thetad,\r*sin \thetad,0);
+\coordinate (Ndd) at (\r*cos \thetadd,\r*sin \thetadd,0);
+%\coordinate (N) at (0,\y,0);
+
+\draw[] (0,0,0) circle (\r); %line charge
+%show small region of charge
+\path [draw](0,0,0)--(N) node[below right,black]{$\Delta Q=\rho_L \rho \Delta \phi$};
+\path [draw,thin,gray](0,0,0)--(Nd);
+\path [draw,thin,gray](0,0,0)--(Ndd);
+\draw[ultra thick, gray,domain=52:68] plot ({\r*cos \x},{\r*sin \x},{0}); 
+%angle
+\draw[-stealth,domain=0:60] plot ({0.2*cos \x},{0.2*sin \x},{0}); 
+\node[left] at (0.25,-0.1,0){$\phi$};
+\draw  (0.25,-0.1,0) to [out=0,in=270] (0.2*cos 30,0.2*sin 30,0);
+%mark off limits
+\draw[fill](0,0,\z) circle (0.2pt);
+
+
+%point N
+\draw[fill] (N) circle (0.1mm);
+%other vectors
+\draw[thin,latex-] (0,0,\z)--(N) node[pos=0.4,right]{$\bf{R}$};
+\draw[thin,-latex] (0,0,0)--(N) node [below,pos=0.4]{$\rho \bf{a_\rho}$};
+\draw [thin,-latex] (0,0,0)--(0,0,\z) node[pos=0.7,left]{$z \bf{a_z}$};
+%E vector
+%\draw[thick,-latex] (N)--(1.5*\r*cos \theta,1.5*\r*sin \theta,-0.5*\z) node[pos=0.5,left]{$\bf{E}$};
+
+%\draw[blue](current bounding box.south west) rectangle (current bounding box.north east);
+%\draw[help lines, step=10pt](0,0)grid(1,1);
+%\path[use as bounding box]( -1.2,-1.5,-1)rectangle(1,2,2);
+\end{tikzpicture}
+
+\end{document}

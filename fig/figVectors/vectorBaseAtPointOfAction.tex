@@ -1,0 +1,33 @@
+\documentclass{standalone}
+%vectorBaseAtPointOfAction
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}    
+\usepackage{tikz-3dplot}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%\draw[help lines, thick] (0,0) grid (10,3);
+\draw[<->] (0,3)--(0,0)--(5,0);
+\draw[thick, ->] (1,1)--(3.5,1);
+\node[above] at (3.5,1) {$\bf{v}$};
+\node[left] at (0,3) {$y$};
+%\node at (4,2) {کیا حال ہے};
+\node[below] at (5,0) {$x$};
+%\draw (4,1) edge [out=90 ,in=190,<-] (5.4,2);
+%
+\foreach \x/\xl in {1/1,2/2,3/3,4/4}
+\draw (\x,1pt) --(\x,-1pt) node [anchor=north] {$\xl$};
+\foreach \y in {1,2}
+\draw (1pt,\y) --(-1pt,\y) node [anchor=east] {$\y$};
+\end{tikzpicture}
+\end{urdufont}
+\end{document}
+

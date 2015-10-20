@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{caption}                               %must be placed before bidi
+\usepackage{subcaption}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}    
+\usepackage{tikz-3dplot}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}
+\draw[help lines] (-1,-1) grid (3,3);
+\draw[thin, <->] (-1,0)--(3,0) node[below,black]{$x$};
+\draw[thin, <->] (0,-1)--(0,3) node[left,black]{$y$};
+\draw[thick,-latex] (0,0)--(1,0) node[below] {$\bf{a_x}$};
+\draw[thick,-latex] (0,0)--(0,1) node[left] {$\bf{a_y}$};
+\node[below left](0,0){مرکز};
+\end{tikzpicture}
+
+\end{urdufont}
+\end{document}
+

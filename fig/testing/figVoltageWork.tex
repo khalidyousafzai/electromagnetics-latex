@@ -1,0 +1,14 @@
+    \documentclass{standalone}
+    \usepackage{tikz}
+    \usetikzlibrary{decorations.markings}
+
+    \begin{document}
+
+    \begin{tikzpicture}[decoration={%
+       markings,%
+       mark=at position 1cm with {\arrow[black]{stealth};},%
+       mark=at position 2cm with {\arrow[black]{stealth};}}]
+    \draw[postaction=decorate] (0,0) -- (2,2);
+    \end{tikzpicture}
+
+    \end{document}

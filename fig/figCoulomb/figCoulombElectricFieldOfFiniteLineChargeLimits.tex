@@ -1,0 +1,37 @@
+\documentclass[varwidth,border=5pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%========
+\begin{document}
+%\def\boundb{(-2,2) rectangle (4,-2)}
+
+\tdplotsetmaincoords{70}{110}
+
+\pgfmathsetmacro{\z}{0.5}
+\pgfmathsetmacro{\delz}{0.12}
+\pgfmathsetmacro{\r}{0.6}
+\pgfmathsetmacro{\theta}{60}
+\pgfmathsetmacro{\short}{sqrt{\z^2+\r^2}}
+\pgfmathsetmacro{\kx}{\r*cos \theta}
+\pgfmathsetmacro{\ky}{\r*sin \theta}
+\pgfmathsetmacro{\kz}{0}
+
+
+
+
+\begin{tikzpicture}
+	\draw(0,0)--(2.5,0)node[below,pos=0.4]{$\rho$}--(0,1.2)node[above,pos=0.5,sloped]{$\sqrt{\rho^2+z^2}$}--(0,0)node[left,pos=0.5]{$z$};
+\draw[->,domain=0:27] plot ({2.5-0.7*cos \x},{0.7*sin \x}); 
+ \node at (1.5,0.2){$\alpha$};
+
+%\draw[blue](current bounding box.south west) rectangle (current bounding box.north east);
+%\draw[help lines, step=10pt](0,0)grid(1,1);
+%\path[use as bounding box]( -1.2,-1.5,-1)rectangle(1,2,2);
+\end{tikzpicture}
+
+\end{document}

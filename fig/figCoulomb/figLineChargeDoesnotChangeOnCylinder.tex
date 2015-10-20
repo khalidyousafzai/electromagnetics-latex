@@ -1,0 +1,17 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \node [cylinder, gray!50, rotate=30, draw,
+    minimum height=2cm, minimum width=1cm] (c) {Cylinder};
+\draw(c.top)--(30:2cm);
+
+\draw(c.bottom)--(30:-2cm);
+\end{tikzpicture}
+
+\end{document}
+
