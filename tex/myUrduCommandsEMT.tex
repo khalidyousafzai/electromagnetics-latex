@@ -16,6 +16,7 @@
 \newcommand*{\تحریر}[1]{\textenglish{#1}}	% english text in urduMode
 \newcommand*{\موٹا}[1]{\textbf{#1}}
 \newcommand*{\ترچہ}[1]{{\textit{#1}}}
+\newcommand*{\اصطلاح}[1]{{\textbf{#1}}}
 
 %end commands cannot be redefined and as such these two are not usable
 \providecommand*{\ابتدا}[1]{\begin{#1}}
@@ -106,5 +107,15 @@
 \newenvironment*{سوال}				
 {\noindent\ignorespaces  سوال \refstepcounter{questioncounter} \thequestioncounter :}%
 {\par\noindent }
+%--------------------
+
+%defining a LAW   قانون
+
+\newcounter{lawcounter}[chapter]
+\renewcommand{\thelawcounter}{\arabic{lawcounter}.\thechapter}
+
+\newenvironment*{قانون}				
+{\par\medskip \refstepcounter{lawcounter} }%
+{\par\medskip }
 %--------------------
 
