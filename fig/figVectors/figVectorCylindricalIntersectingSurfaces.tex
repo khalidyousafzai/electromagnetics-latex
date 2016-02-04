@@ -1,0 +1,121 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\rhoR}{2}
+\pgfmathsetmacro{\rhoAa}{5}
+\pgfmathsetmacro{\rhoAb}{90}
+\pgfmathsetmacro{\rhoZ}{2.5}
+\pgfmathsetmacro{\phiR}{3}
+\pgfmathsetmacro{\phiA}{60}
+\pgfmathsetmacro{\phiZ}{\rhoZ+0.3}
+\pgfmathsetmacro{\zR}{2.5}
+\pgfmathsetmacro{\zAa}{0}
+\pgfmathsetmacro{\zAb}{90}
+\pgfmathsetmacro{\zZ}{2}
+
+\coordinate (O) at (0,0,0);
+\coordinate (Orho) at (0,0,\rhoZ);
+\coordinate (Oz) at (0,0,\zZ);
+\coordinate (Ophi) at (0,0,\phiZ);
+%
+%
+\path[name path=krho] (\rhoAa:\rhoR) arc (\rhoAa:\rhoAb:\rhoR)--++(0,0,\rhoZ)coordinate(rhoUR) arc (\rhoAb:\rhoAa:\rhoR)coordinate(rhoUL)--++(0,0,-\rhoZ)coordinate(rhoLL);
+\path[name path=kphi] (O)--++(\phiA:\phiR)--++(0,0,\phiZ)--++(\phiA:-\phiR)--++(0,0,-\phiZ);
+\path[name path=kz] (Oz)--++(\zAa:\zR)coordinate(r) arc (\zAa:\zAb:\zR)coordinate(s)--++(\zAb:-\zR);
+%
+%\draw[fill=red,draw=red] (r) circle(1pt)node[left]{r};
+%\draw[fill=red,draw=red] (s) circle(1pt)node[right]{s};
+%
+\path[gray,name path=q--f] (Oz)++(\rhoAa:\rhoR) arc (\rhoAa:\rhoAb:\rhoR);
+%
+\path[fill,name intersections={of =krho and kphi, by={a,b,c,d},total=\n} ];
+%\foreach \i in {a,b,c,d}{(\i) circle (1pt)node[right]{\i}};
+%
+\path[draw=red,fill=red,text=red,name intersections={of =krho and kz, by={e,f,g,h,i,j},total=\n} ];
+%\foreach  \i in {e,f,g,h,i,j}{(\i) circle (1pt)node[right]{\i}};
+%
+\path[fill=blue,name intersections={of =kz and kphi,by={t,u,v,w},total=\n} ];
+%\foreach  \i in {1,...,\n}{
+%\foreach \i in {t,u,v,w}{(\i) circle (1pt)node[above,text=blue]{\i}};
+%
+\path[gray,name path=a--k](Orho)++(\phiA:\rhoR)coordinate(k)--(a);
+%\draw[fill=pink,draw=pink] (k) circle (1pt)node[right,text=pink]{k};
+\path[draw=green,fill=green,text=green,name intersections={of=a--k and kz, by={n},total=\n}];%(n) circle (1pt)node[right]{n};
+%
+\path[draw=yellow,fill=yellow,text=yellow,name intersections={of=a--k and q--f, by={m},total=\n}];%(m) circle (1pt)node[right]{m};
+%
+\path[gray,name path=gray axial] (Oz)--++(\phiA:\zR);
+\path[draw=blue,fill=blue,text=blue,name intersections={of=gray axial and krho, by ={p}}];% (p) circle (1pt)node[right]{p};
+%
+\path[gray] (Oz)++(\rhoAa:\rhoR)coordinate(q) arc (\rhoAa:\rhoAb:\rhoR);
+%\draw[blue,fill=blue,text=blue] (q) circle (1pt)node[left]{q};
+%
+\ExtractCoordinate{$(b)$};
+\pgfmathsetmacro{\zz}{0};                     %the z value must be entered manually
+\pgfmathsetmacro{\xx}{2*(\zz-\YCoord)};
+\pgfmathsetmacro{\yy}{\XCoord-\YCoord+\zz};
+\pgfmathsetmacro{\bAngle}{atan(\yy/\xx)};
+\pgfmathsetmacro{\bRadius}{sqrt(\xx^2+\yy^2)};
+\ExtractCoordinate{$(c)$};
+\pgfmathsetmacro{\zz}{\rhoZ*28.45};    %cm to pt conversion
+\pgfmathsetmacro{\xx}{2*(\zz-\YCoord)};
+\pgfmathsetmacro{\yy}{\XCoord-\YCoord+\zz};
+\pgfmathsetmacro{\cAngle}{atan(\yy/\xx)};
+\pgfmathsetmacro{\cRadius}{sqrt(abs(\xx)^2+abs(\yy)^2)};
+\ExtractCoordinate{$(u)$};
+\pgfmathsetmacro{\zz}{\zZ*28.45};
+\pgfmathsetmacro{\xx}{2*(\zz-\YCoord)};
+\pgfmathsetmacro{\yy}{\XCoord-\YCoord+\zz};
+\pgfmathsetmacro{\uAngle}{atan(\yy/\xx)};
+\pgfmathsetmacro{\uRadius}{sqrt(abs(\xx)^2+abs(\yy)^2)};
+%
+%three orthognal surfaces
+\draw (\rhoAa:\rhoR) arc (\rhoAa:\phiA:\rhoR)  (b) arc (\bAngle:\rhoAb:\rhoR)--(e) (f)--(rhoUR) arc (\rhoAb:\cAngle:\rhoR)  (j)--(rhoLL) (q)--(rhoUL) arc (\rhoAa:\phiA:\rhoR); 
+\draw (a)--(\phiA:\phiR)--++(0,0,\phiZ)--++(\phiA:-\phiR)--(t);
+%\draw (Oz)--++(\zAa:\zR) arc (\zAa:\zAb:\zR)--++(\zAb:-\zR);
+%\draw(Oz)--(g) (i)--(r) ([shift=(\zAa:\zR)]Oz) arc (\zAa:\phiA:\zR)coordinate(zFR)  ([shift=(\zAb:\zR)]Oz) arc (\zAb:\zAb-22:\zR)  (s)--(f);
+\draw(Oz)--(g) (i)--(r) ([shift=(\zAa:\zR)]Oz) arc (\zAa:\phiA:\zR)coordinate(zFR)  ([shift=(\uAngle:\zR)]Oz) arc (\uAngle:\zAb:\zR)--(f);
+%making invisible
+\draw[gray](k)--(m)  (n)--(a) (t)--(p) (m)--(zFR);
+\draw[gray] (Oz)++(\rhoAa:\rhoR) arc (\rhoAa:\phiA:\rhoR)  (f) arc (\rhoAb:\rhoAb-8:\rhoR);
+%
+%axis
+\path[gray,name path={x axis}](O)--(2.5,0,0);
+\draw[gray,name intersections={of=x axis and krho, by ={rhoXaxis}}] (rhoXaxis)--(3,0,0) node[left] {$x$};
+\draw[gray](0,\rhoR,0)--(0,3.5,0) node[below]{$y$};
+\draw[gray](0,0,\phiZ)--(0,0,3.2) node[left] {$z$};
+%text
+\draw[-stealth,gray] (0:\phiR-0.2) arc (0:\phiA:\phiR-0.2);
+\node[fill=white] at (\phiA/2:\phiR-0.2){$\phi$};
+\draw[gray,stealth-] (\zR,0,\zZ)--(\zR,0,0)node[pos=0.5,fill=white,text=black]{$z$};
+\draw[gray,-stealth](0,0,\rhoZ)--++(\phiA:\rhoR)node[pos=0.5,fill=white,text=black]{$\rho$};
+\draw[fill] (0,0,\zZ)++(\phiA:\rhoR)coordinate(pointN) circle (1pt)node[above right]{$N$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

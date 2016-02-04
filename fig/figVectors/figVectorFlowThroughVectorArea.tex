@@ -1,0 +1,32 @@
+\documentclass[b5paper]{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+ \pgfmathsetmacro{\xst}{1.25}            %start points, lower left corner
+ \pgfmathsetmacro{\yst}{0.5}
+\pgfmathsetmacro{\zst}{0}
+ 
+ \pgfmathsetmacro{\xdel}{1}           %change from start point
+ \pgfmathsetmacro{\ydel}{3}
+ \pgfmathsetmacro{\zdel}{0.5}
+
+\begin{document}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%axis
+%\draw[-stealth,gray] (0,0,0)--(2,0,0) node[left]{$x$};
+%\draw[-stealth,gray] (0,0,0)--(0,4,0) node[below]{$y$};
+%\draw[-stealth,gray] (0,0,0)--(0,0,1) node[left]{$z$};
+%waterway
+\draw (\xst,\yst,\zst)--++(0,\ydel,0)coordinate(a)node[below]{$n$}--++(0,0,\zdel)coordinate(b)--++(0,-\ydel,0);
+\draw (a)--++(-\xdel,0,0)--++(0,0,\zdel)coordinate(c)--(b);
+\draw (c)--++(0,-\ydel,0);
+%water volume
+\draw[gray] (\xst,\yst,\zst)++(0,0.5*\ydel,0)node[below]{$m$}--++(0,0,\zdel)--++(-\xdel,0,0)--++(0,0,-\zdel)--cycle;
+%back edges of cube
+
+%front,right and top of cube
+
+
+\end{tikzpicture}%
+
+\end{document}

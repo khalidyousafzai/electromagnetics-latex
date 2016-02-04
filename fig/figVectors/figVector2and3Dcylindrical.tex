@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\pgfmathsetmacro{\rr}{2.5}
+\pgfmathsetmacro{\aa}{30}
+\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
+\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
+%axis
+\draw[gray](0,0,0)--(3.2,0,0) node[left] {$x$};
+\draw[gray](0,0,0)--(0,3.2,0) node[below]{$y$};
+\draw[gray](0,0,0)--(0,0,2.3) node[left] {$z$};
+%
+\draw[gray] (0,0,0)--(\aa:\rr)coordinate(ktip)node[below right] {$N_0(\rho_0,\phi_0,0)$}node[pos=0.75,left]{$\rho_0$};
+\draw[-latex](0,0,0)--(\aa:1.2)node[right]{$\arho$};
+\draw[gray] (ktip)--(\xx,0,0)node[left]{$x_0$};
+\draw[gray](ktip)--(0,\yy,0)node[above]{$y_0$};
+\draw [gray,-stealth]([shift=(0:0.5)]0,0) arc (0:30:0.5);
+\node[gray] at (16:0.9){$\phi_0$};
+
+\node at (3,4,0){الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

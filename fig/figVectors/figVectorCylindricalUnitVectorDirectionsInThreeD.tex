@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\kz}{1.5}
+\pgfmathsetmacro{\kang}{60}
+\pgfmathsetmacro{\kAlphabet}{0.4}
+
+\pgfmathsetmacro{\xx}{\kr*cos(\kang)}
+\pgfmathsetmacro{\yy}{\kr*sin(\kang)}
+\pgfmathsetmacro{\zz}{2}
+%axis
+\draw[gray](0,0,0)--(2.5,0,0) node[left] {$x$};
+\draw[gray](0,0,0)--(0,2.5,0) node[right]{$y$};
+\draw[gray](0,0,0)--(0,0,2.5) node[left] {$z$};
+%
+\shade[shading=axis,shading angle=0,opacity=0.7] ([shift=(0:\kr)]0,0) arc (0:90:\kr)--++(0,0,\kz)coordinate(uR) arc (90:0:\kr)coordinate(uL)--cycle;
+\shade[opacity=0.7] (0,0,\kz)--++(0:\kr) arc (0:90:\kr)--cycle;
+%
+\draw [fill,gray] (0,0,\kz)--++(\kang:\kr/2)node[shift=(\kang:\kAlphabet/2)]{$\rho_1$} ++(\kang:\kAlphabet)--++(\kang:\kr/2-\kAlphabet)coordinate(N) circle (1pt);
+%
+\draw[-latex](N)--++(\kang:1)node[shift=(\kang:0.4)]{$\arho$};
+\draw[-latex](N)--++(\kang+90:1)node[right]{$\aphi$};
+\draw[gray,dashed](N)--++(\kang-90:1.2);
+\draw[-latex](N)--++(0,0,1)node[above]{$\az$};
+%
+\draw[gray](N)--++(0,0,-\kz)coordinate(NB)node[right,pos=0.4]{$z_1$};
+\draw[dashed, gray](NB)--(0,0,0);
+\draw[gray,-stealth] ([shift=(0:0.5)]0,0,0) arc (0:\kang:0.5);
+\node[gray] at (\kang/2:0.9){$\phi_1$};
+%
+
+%\shade [left color=red, right color=green,shading=axis,shading angle=90] (0,0,0) circle (2cm);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

@@ -27,29 +27,26 @@
 \begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
 %\pgfmathsetseed{1}
 \pgfmathsetmacro{\kr}{2.5}
-\pgfmathsetmacro{\kphi}{50}
-\pgfmathsetmacro{\kthetaN}{80}
-%
-%axis
-\draw[gray] (0,0,0)--(3,0,0)node[left]{$x$};
-\draw[gray] (0,0,0)--(0,3,0)node[below]{$y$};
-\draw[gray] (0,0,0)--(0,0,3)node[left]{$z$};
-% r, phi , theta
-\begin{scope}[canvas is xy plane at z=0]
-\draw[gray](\kr,0,0) arc (0:90:\kr);
-\end{scope}
-%
-\begin{scope}[canvas is xz plane at y=0]
-\draw[gray](\kr,0,0) arc (0:90:\kr);
-\end{scope}
-%
-\begin{scope}[canvas is yz plane at x=0]
-\draw[gray](\kr,0,0) arc (0:90:\kr);
-\end{scope}
-%
-\path[name path=kk] (0,0,0)--(1,1,);
+\pgfmathsetmacro{\kphi}{60}
+\pgfmathsetmacro{\ktheta}{30}
 
 %
+\pgfmathsetmacro{\kphi}{-30}
+\draw[name path=karc] ({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(arcS)
+ \foreach \kphi in {-30,-29,...,170}{--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(arcE)};
+\draw (0,0,0)--(arcS);
+%
+\path[name path=toArcEnd] (0,0,0)--(arcE);
+\draw [name intersections ={of=karc and toArcEnd, by={kM} }](kM)--(arcE);
+\draw (0,0,0)--({\kr*sin(\ktheta)*cos(90)},{\kr*sin(\ktheta)*sin(90)},{\kr*cos(\ktheta)})coordinate(arcM);
+%
+%axis
+\path[name path=kz axis](0,0,0)--(0,0,3);
+\draw[gray] (0,0,0)--(3,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,3,0)node[below]{$y$};
+\draw[gray,name intersections={of=karc and kz axis,by={kkZ}}] (kkZ)--(0,0,3)node[left]{$z$};
+%
+\node at (2.8,2.5,0){ب};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}

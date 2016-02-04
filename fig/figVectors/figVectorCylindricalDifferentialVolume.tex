@@ -1,0 +1,90 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2.5}
+\pgfmathsetmacro{\kang}{70}
+\pgfmathsetmacro{\kz}{1}
+
+\pgfmathsetmacro{\krDel}{0.6}
+\pgfmathsetmacro{\kangDel}{10}
+\pgfmathsetmacro{\kzDel}{0.5}
+
+\pgfmathsetmacro{\krD}{\kr+\krDel}
+\pgfmathsetmacro{\kangD}{\kang+\kangDel}
+\pgfmathsetmacro{\kzD}{\kz+\kzDel}
+
+
+%axis
+\draw[gray](0,0,0)--(2.5,0,0) node[left] {$x$};
+\draw[gray](0,0,0)--(0,3.5,0) node[below]{$y$};
+\draw[gray](0,0,0)--(0,0,2.3) node[left] {$z$};
+%
+
+\path (0,0,\kz)++(\kang:\kr)coordinate(fLL)--++(\kang:\krDel)coordinate(fLR);   %front Lower Left, front Lower Right
+\path (0,0,\kzD)++(\kang:\kr)coordinate(fUL)--++(\kang:\krDel)coordinate(fUR); 
+%
+\path (0,0,\kz)++(\kangD:\kr)coordinate(bLL)--++(\kangD:\krDel)coordinate(bLR); 
+\path (0,0,\kzD)++(\kangD:\kr)coordinate(bUL)--++(\kangD:\krDel)coordinate(bUR); 
+%
+\draw[gray,dashed](0,0,\kz)node[left,black]{$z$}--(fLL);  %z-axis to cube marks
+\draw[gray,dashed](0,0,\kz)--(bLL);
+\draw[gray,dashed](0,0,\kzD)node[left,black]{$z+\dif z$}--(fUL);
+\draw[gray,dashed](0,0,\kzD)--(bUL);
+%
+\draw[gray,dashed] (0,0,0)--++(\kang:\kr)coordinate(sfL)--++(\kang:\krDel)coordinate(sfR); %shadow front Left, shadow front Right
+\draw[gray,dashed](0,0,0)--++(\kangD:\kr)coordinate(sbL)--++(\kangD:\krDel)coordinate(sbR);
+%
+\draw[gray] ([shift=(\kang:\kr)]0,0,0) arc (\kang:\kang-15:\kr);
+\draw[gray] ([shift=(\kang:\krD)]0,0,0) arc (\kang:\kang-25:\krD);
+\draw[gray,-stealth] (0,0,0)--++(\kang-12:\kr)node[fill=white,pos=0.75,text=black]{$\rho$};
+\draw[gray,-stealth] (0,0,0)--++(\kang-22:\krD)node[below,text=black]{$\rho+\dif \rho$};
+%
+\draw[gray] ([shift=(0:0.8)]0,0,0) arc (0:10:0.8);
+\draw[gray,-stealth] ([shift=(30:0.8)]0,0,0) arc (30:\kang:0.8);
+\node[] at (20:0.8){$\phi$};
+\draw[gray,-stealth] ([shift=(0:1.3)]0,0,0) arc (0:\kangD:1.3);
+\node[rotate=5] at (\kang*1/3:1.9){$\phi+\dif \phi$};
+%
+\draw[gray,dashed](sfL)--(fLL); %cube to shadow marks
+\draw[gray,dashed](sfR)--(fLR);
+\draw[gray,dashed](sbL)--(bLL);
+\draw[gray,dashed](sbR)--(bLR);
+%
+\draw[gray,dashed] ([shift=(\kang:\kr)]0,0,0) arc (\kang:\kangD:\kr);   %shadow arcs
+\draw[gray,dashed] ([shift=(\kang:\krD)]0,0,0) arc (\kang:\kangD:\krD);
+%cube
+\shade[opacity=1,right color=gray!20, left color=gray!80,shade=axis,shading angle=0](fLL)--(fUL)--(fUR)--(fLR)--cycle;
+\shade[opacity=1,left color=gray!20, right color=gray!80,shade=axis,shading angle=0](fUL)--(bUL)--(bUR)--(fUR)--cycle;
+\shade[opacity=1,left color=gray!20, right color=gray!80,shade=axis,shading angle=0](fLR)--(fUR)--(bUR)--(bLR)--cycle;
+%
+\node[above] at ($(bUL)!0.5!(bUR)$){$\dif \rho$};
+\node[right] at ($(bUR)!0.5!(bLR)$){$\dif z$};
+\draw[stealth-,gray] ($(fLR)!0.5!(bLR)$) to [out=-45,in=190] ++(0,0.6,-0.1)node[right,text=black]{$(\rho +\dif \rho)\dif \phi$};
+\draw[stealth-,gray] ($(fUL)!0.5!(bUL)$) to [out=135,in=0] ++(0,-0.3,0.5)node[left,text=black]{$\rho \dif \phi$};
+%
+\node at (0,4,2.4){\RL{ حجم =$\rho \dif \rho \dif \phi \dif z$}};
+\node at (2.5,4,0){الف};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

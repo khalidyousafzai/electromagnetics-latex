@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+\newcommand{\RightAngle}[4][5pt]{%
+        \draw[gray] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)
+        --($#3!#1!#4$) ;        }
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{3.5}
+\pgfmathsetmacro{\kunit}{1}
+\pgfmathsetmacro{\kphi}{60}
+%\pgfmathsetmacro{\ktheta}{45}
+%
+%axis
+\draw[gray] (0,0,0)node[left]{$M$}coordinate(origin)--(2,0,0)coordinate(xE);
+\draw[gray] (0,0,0)--(0,3,0);
+\draw[gray] (0,0,0)--(0,0,2);
+%
+\draw[-latex](0,0,0)--(0.7,0,0);
+
+\pgfmathsetmacro{\ktheta}{70}
+\draw[] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(N)node[above,pos=0.6]{$r$}node[right]{$N$};
+\draw[-latex] (0,0,0)--({\kunit*sin(\ktheta)*cos(\kphi)},{\kunit*sin(\ktheta)*sin(\kphi)},{\kunit*cos(\ktheta)})node[above,pos=0.7]{$\ar$};
+%
+\draw[gray,dashed] (N)--(0,0,{\kr*cos(\ktheta)})node[fill=white,pos=0.5]{$\rho$}coordinate(zz);
+\draw[gray,dashed] (N)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},0)coordinate(Nb);
+\draw[gray,dashed](0,0,0)--(Nb)node[right]{$N_0$}--({\kr*sin(\ktheta)*cos(\kphi)},0,0)coordinate(P)node[left]{$P$};
+\draw[gray](N)--(P);
+%
+\RightAngle{(N)}{(P)}{(origin)};
+\RightAngle{(Nb)}{(P)}{(xE)};
+\RightAngle{(N)}{(Nb)}{(origin)};
+\RightAngle{(N)}{(zz)}{(origin)};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

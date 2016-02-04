@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+
+%axis
+\draw[gray](0,0)--(3.5,0) node[below] {$x$};
+\draw[gray](0,0)--(0,3.5) node[left]{$y$};
+%
+\draw[-latex,gray,thick] (2,0)--++(1,0)node[below,pos=0.5]{$\arho$};
+\draw[-latex,gray,thick] (2,0)--++(0,1)node[right,pos=0.5]{$\aphi$};
+%
+\draw[gray,dashed] (0,0)--($(2,0)!(0,0)!(0,2)$)coordinate(kmid);
+\draw [gray] ([shift=(0:0.5)]0,0) arc (0:45:0.5);
+\node[gray] at (22:0.8){$45^\circ$};
+\draw[-latex,gray,thick] (kmid)--++(45:1)node[right]{$\arho$};
+\draw[-latex,gray,thick] (kmid)--++(135:1)node[above right,pos=0.5]{$\aphi$};
+%
+\draw[gray,dashed](0,0)--(135:1)coordinate(kotf)node[above right]{$T$};
+\draw[gray,-latex](kotf)--++(135:1)node[left]{$\arho$};
+\draw[gray,-latex](kotf)--++(225:1)node[left]{$\aphi$};
+\draw[-latex] (2,0)--(0,2);
+
+\node at (1.5,-0.5){ب};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

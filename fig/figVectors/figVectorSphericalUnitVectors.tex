@@ -1,0 +1,74 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2.5}
+\pgfmathsetmacro{\kphi}{50}
+\pgfmathsetmacro{\kthetaN}{80}
+%
+%axis
+\draw[gray] (0,0,0)--(3,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,3,0)node[below]{$y$};
+\draw[gray] (0,0,0)--(0,0,3)node[left]{$z$};
+% r, phi , theta
+\begin{scope}[canvas is xy plane at z=0]
+\draw[gray](\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[canvas is xz plane at y=0]
+\draw[gray](\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[canvas is yz plane at x=0]
+\draw[gray](\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\draw[gray,dashed](0,0,\kr)    \foreach \ktheta in {0,1,...,90}{--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})};
+\pgfmathsetmacro{\ktheta}{\kthetaN}
+\draw[gray,fill=black] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(N)node[fill=white,pos=0.7]{$r$} circle (1pt)node[right]{};
+%
+\pgfmathsetmacro{\tT}{0.8}
+\draw[gray,-stealth](0,0,\tT)    \foreach \ktheta in {0,1,...,\kthetaN}{--({\tT*sin(\ktheta)*cos(\kphi)},{\tT*sin(\ktheta)*sin(\kphi)},{\tT*cos(\ktheta)})};
+\pgfmathsetmacro{\ktheta}{\kthetaN/2}
+\node[fill=white,text=gray] at ({\tT*sin(\ktheta)*cos(\kphi)},{\tT*sin(\ktheta)*sin(\kphi)},{\tT*cos(\ktheta)}){$\theta$};
+%
+\draw[dashed] (0,0,0)--(\kphi:\kr);
+\draw[gray,-stealth] ([shift=(0:0.9)]0,0) arc (0:\kphi:0.9);
+\node[fill=white,text=gray] at (\kphi/2:0.9){$\phi$};
+%
+\pgfmathsetmacro{\kUnit}{1.7}
+\draw[-latex] (N)--++({\kUnit*sin(\kthetaN)*cos(\kphi)},{\kUnit*sin(\kthetaN)*sin(\kphi)},{\kUnit*cos(\kthetaN)})node[xshift=0.3cm,yshift=-0.1cm]{$\ar$};
+\pgfmathsetmacro{\kUnit}{0.7}
+\draw[-latex](N)--++({\kUnit*cos(\kthetaN)*cos(\kphi)},{\kUnit*cos(\kthetaN)*sin(\kphi)},{-\kUnit*sin(\kthetaN)})node[below]{$\atheta$};
+\pgfmathsetmacro{\kUnit}{0.7}
+\draw[-latex](N)--++({-\kUnit*sin(\kphi)},{\kUnit*cos(\kphi)},{0})node[right]{$\aphi$};
+%
+\node at (2.8,3.5,0){ب};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

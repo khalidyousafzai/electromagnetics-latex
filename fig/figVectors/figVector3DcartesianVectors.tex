@@ -1,0 +1,85 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{3}
+\pgfmathsetmacro{\z}{2}
+\pgfmathsetmacro{\del}{0.5}
+%\draw[help lines, thick] (0,0) grid (5,4);
+%axis
+\draw[gray](0,0,0)--++(3.2,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--++(0,4.2,0);
+\draw[gray](0,0,0)--++(0,0,3.2);
+%
+\draw[-latex,thick](0,3,2)node[right]{$\kvec{C}$}--(1,0,0);
+\draw[-latex,thick](1,3,0)node[right]{$\kvec{D}$}--(1,0,2);
+\node[right] at (0,0,2.5){$\begin{aligned}\kvec{C}&=1\ax-3\ay-2\az \\ \kvec{D}&=-3\ay+2\az \end{aligned}$};
+
+\fill[white,opacity=0.5](\x,0,0)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--(0,\y,0)--(\x,\y,0)--cycle;
+%main box
+\draw[gray] (\x,\y,\z)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--cycle;
+\draw[gray](\x,0,0)--(\x,\y,0);
+\draw[gray](\x,0,0)--(\x,0,\z);
+\draw[gray](\x,\y,\z)--(\x,\y,0);
+\draw[gray](0,\y,0)--(\x,\y,0);
+\draw[gray](0,\y,\z)--(0,\y,0);
+%demarcations on box
+\draw[gray](\x,0,1)--(\x,\y,1)--(0,\y,1);
+\draw[gray](1,\y,0)--(1,\y,\z)--(1,0,\z);
+\draw[gray](\x,1,0)--(\x,1,\z)--(0,1,\z);
+\draw[gray](\x,2,0)--(\x,2,\z)--(0,2,\z);
+%
+\node at (3,4,0){ب};
+\end{tikzpicture}%%
+%============
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{3}
+\pgfmathsetmacro{\z}{2}
+\pgfmathsetmacro{\del}{0.5}
+%\draw[help lines, thick] (0,0) grid (5,4);
+%axis
+\draw[gray](0,0,0)--++(3.2,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--++(0,4.2,0);
+\draw[gray](0,0,0)--++(0,0,3.2)node[left]{$z$};
+%
+\draw[-latex,thick](1,1,0)node[below]{$\kvec{A}$}--(0,0,2);
+\draw[-latex,thick](1,3,0)node[below]{$\kvec{B}$}--(0,2,2);
+\node[right] at (0,0,2.5){$\kvec{A}=\kvec{B}=-1\ax-1\ay+2\az$};
+
+\fill[white,opacity=0.5](\x,0,0)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--(0,\y,0)--(\x,\y,0)--cycle;
+%main box
+\draw[gray] (\x,\y,\z)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--cycle;
+\draw[gray](\x,0,0)--(\x,\y,0);
+\draw[gray](\x,0,0)--(\x,0,\z);
+\draw[gray](\x,\y,\z)--(\x,\y,0);
+\draw[gray](0,\y,0)--(\x,\y,0);
+\draw[gray](0,\y,\z)--(0,\y,0);
+%demarcations on box
+\draw[gray](\x,0,1)--(\x,\y,1)--(0,\y,1);
+\draw[gray](1,\y,0)--(1,\y,\z)--(1,0,\z);
+\draw[gray](\x,1,0)--(\x,1,\z)--(0,1,\z);
+\draw[gray](\x,2,0)--(\x,2,\z)--(0,2,\z);
+%
+\node at (3,4,0){الف};
+\end{tikzpicture}%%
+\end{urdufont}
+\end{document}

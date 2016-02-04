@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+\pgfmathsetmacro{\rr}{2.5}
+\pgfmathsetmacro{\rrr}{2.5}
+\pgfmathsetmacro{\aa}{30}
+\pgfmathsetmacro{\aaH}{\aa/2}
+\pgfmathsetmacro{\adel}{30}
+\pgfmathsetmacro{\aaa}{\aa+\adel}
+\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
+\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
+%axis
+\draw (0,0) circle (1);
+\draw[fill] (-30:1)node[right]{$\ar$} circle (1pt);
+\draw[fill] (90:1)node[above]{$\atheta$} circle (1pt);
+\draw[fill] (210:1)node[left]{$\aphi$} circle (1pt);
+
+\draw [-stealth] ([shift=(0:0.75)]0,0) arc (0:60:0.75);
+\node at (30:0.6){$+$};
+%
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

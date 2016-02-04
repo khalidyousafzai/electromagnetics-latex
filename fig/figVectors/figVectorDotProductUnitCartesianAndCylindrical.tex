@@ -1,0 +1,54 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+\newcommand{\RightAngle}[4][5pt]{%
+        \draw[gray] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)
+        --($#3!#1!#4$) ;        }
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kunit}{0.7}
+\pgfmathsetmacro{\kphi}{30}
+%
+%axis
+\draw[gray,name path={xAxis}] (0,0,0)--(3,0,0);
+\draw[gray] (0,0,0)--(0,2,0)node[below]{$y$};
+\draw[gray] (0,0,0)--(0,0,1)node[left]{$z$};
+%
+\draw[-latex](0,0,0)coordinate(O)--(2*\kunit,0,0)coordinate(xE)node[left,pos=0.5]{$\ax$};
+\draw[-latex](0,0,0)--++(\kphi:2.4*\kunit)coordinate(rhoE)node[right,pos=0.5]{$\arho$};
+\draw[-latex](0,0,0)++(\kphi:2.4*\kunit)--++(\kphi+90:\kunit)coordinate(phiE)node[right]{$\aphi$};
+%
+\path[name path={rhoExtended}] (rhoE)--++(\kphi+90:-2.4);
+\draw[gray,name intersections={of=xAxis and rhoExtended, by={newOrigin}}] (rhoE)--(newOrigin) node[left]{$n$}coordinate[pos=0.8](arcE);
+\draw[gray] (newOrigin)++(0.4,0,0) to [out=0,in=-120] (arcE);
+\draw[gray] (newOrigin)++(35:0.9)node[rotate=30]{$90^\circ+\phi$};
+\RightAngle{(O)}{(rhoE)}{(phiE)};
+%
+\draw[gray] (0.5,0,0) \foreach \i in {0,1,...,30}{--({0.5*cos(\i)},{0.5*sin(\i)},{0})};
+\node[gray] at (17:0.95){$\phi$}; 
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

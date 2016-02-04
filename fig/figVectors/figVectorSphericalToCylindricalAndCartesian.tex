@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2.7}
+\pgfmathsetmacro{\kphi}{60}
+%\pgfmathsetmacro{\ktheta}{45}
+%
+%axis
+\draw[gray] (0,0,0)--(2,0,0);
+\draw[gray] (0,0,0)--(0,3,0);
+\draw[gray] (0,0,0)--(0,0,2);
+%
+
+\pgfmathsetmacro{\ktheta}{60}
+\draw[fill] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(N)node[fill=white,pos=0.7]{$r$} 
+circle (1pt)node[right]{$N$};
+%
+\draw[gray] (N)--(0,0,{\kr*cos(\ktheta)}) node[fill=white,pos=0.5]{$\rho$}node[left]{$z$} coordinate[pos=0.9](kkzz);
+\draw[dashed,gray] (N)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},0)coordinate(Nb);
+\draw[-stealth] ([shift=(0:0.5)]0,0) arc (0:\kphi:0.5);
+\node[] at (\kphi/2:0.9){$\phi$};
+\draw[gray](Nb)--({\kr*sin(\ktheta)*cos(\kphi)},0,0)node[left]{$x$}coordinate[pos=0.9](kkxx);
+\draw[gray](Nb)--(0,{\kr*sin(\ktheta)*sin(\kphi)},0)node[above]{$y$}coordinate[pos=0.8](kkyy);
+\draw[gray](Nb)--(0,0,0)node[pos=0.5,fill=white]{$\rho$};
+%
+\draw[gray](kkxx)--++(-0.2,0,0)--++(0,-0.2,0);
+\draw[gray](kkyy)--++(0,-0.2,0)--++(-0.2,0,0);
+\draw[gray](kkzz)--++(0,0,-0.2)--(0,0,{\kr*cos(\ktheta)-0.2});
+%
+\pgfmathsetmacro{\kkkr}{0.5}
+\draw[-stealth](0,0,\kkkr)    \foreach \ktheta in {0,1,...,60}{--({\kkkr*sin(\ktheta)*cos(\kphi)},{\kkkr*sin(\ktheta)*sin(\kphi)},{\kkkr*cos(\ktheta)})};
+\pgfmathsetmacro{\ktheta}{25}
+\pgfmathsetmacro{\kkkr}{0.9}
+\node[] at ({\kkkr*sin(\ktheta)*cos(\kphi)},{\kkkr*sin(\ktheta)*sin(\kphi)},{\kkkr*cos(\ktheta)}){$\theta$};
+%
+\draw[gray] (Nb)++(0,0,0.2)--++(\kphi:-0.2)--++(0,0,-0.2);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

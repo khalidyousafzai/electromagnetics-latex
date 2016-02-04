@@ -1,0 +1,109 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\krr}{2.5}
+\pgfmathsetmacro{\kphiS}{30}
+\pgfmathsetmacro{\kphiSN}{\kphiS+1}
+\pgfmathsetmacro{\kphiE}{170}
+\pgfmathsetmacro{\ktheta}{30}
+\pgfmathsetmacro{\kthetaN}{\ktheta+1}
+
+\pgfmathsetmacro{\kphiPHI}{60}   %phi surface is drawn here
+%
+%axis
+\draw[gray] (0,0,0)--(3,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,3,0)node[below]{$y$};
+\draw[gray] (0,0,0)--(0,0,3)node[left]{$z$};
+%
+\pgfdeclareradialshading{sphere}{\pgfpoint{-1cm}{1cm}}% 
+{color(0cm)=(white);
+color(0.7cm)=(gray!20); color(2cm)=(gray!80); color(2.05cm)=(white)}
+
+%\pgfuseshading{sphere}
+%
+% r surface
+\begin{scope}[canvas is xy plane at z=0]
+\draw[name path=xy arc](\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[canvas is xz plane at y=0]
+\draw(\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[canvas is yz plane at x=0]
+\draw[name path=yz edge](\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+%theta surface
+\pgfmathsetmacro{\kphi}{\kphiS}
+\draw[fill=white,fill opacity=1] ({\krr*sin(\ktheta)*cos(\kphi)},{\krr*sin(\ktheta)*sin(\kphi)},{\krr*cos(\ktheta)})coordinate(arcUL)
+ \foreach \kphi in {\kphiS,\kphiSN,...,100}{--({\krr*sin(\ktheta)*cos(\kphi)},{\krr*sin(\ktheta)*sin(\kphi)},{\krr*cos(\ktheta)})}--
+ ({\kr*sin(\ktheta)*cos(90)},{\kr*sin(\ktheta)*sin(90)},{\kr*cos(\ktheta)})
+ \foreach \kphi in {90,89,...,\kphiS}{--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(arcLL)}--cycle;
+%
+\pgfmathsetmacro{\kphi}{100}
+\draw[] ({\krr*sin(\ktheta)*cos(\kphi)},{\krr*sin(\ktheta)*sin(\kphi)},{\krr*cos(\ktheta)})coordinate(arcUL)
+ \foreach \kphi in {100,101,...,\kphiE}{--({\krr*sin(\ktheta)*cos(\kphi)},{\krr*sin(\ktheta)*sin(\kphi)},{\krr*cos(\ktheta)})coordinate(arcE)};
+%
+\path[name path=to arcE](0,0,0)--(arcE);
+\draw [name intersections={of=yz edge and to arcE,by={arcEedge}}] (arcE)--(arcEedge);
+%
+%phi surface at 60 degrees defined by \kphiPHI
+%
+\pgfmathsetmacro{\kphi}{\kphiS}
+\path[name path=upper arc front] ({\krr*sin(\ktheta)*cos(\kphi)},{\krr*sin(\ktheta)*sin(\kphi)},{\krr*cos(\ktheta)})coordinate(arcUL)
+ \foreach \kphi in {\kphiS,\kphiSN,...,100}{--({\krr*sin(\ktheta)*cos(\kphi)},{\krr*sin(\ktheta)*sin(\kphi)},{\krr*cos(\ktheta)})};
+%
+\path[name path=xy radial upper] (0,0,\kr)--++(\kphiPHI:\krr);
+\draw[name intersections={of=xy radial upper and upper arc front,by={phi theta upper}}] (0,0,\kr)--(phi theta upper);
+%
+\pgfmathsetmacro{\krho}{\kr*tan(\ktheta)}
+\path[name path=xy radial lower] (0,0,0)--(\kphiPHI:\krr);
+\path[fill=white,opacity=1,name intersections ={of=xy radial lower and xy arc,by={arcRadialL}}] ({\krho*cos(\kphiPHI)},{\krho*sin(\kphiPHI)},\kr)coordinate(outOFtheta)--({\krr*cos(\kphiPHI)},{\krr*sin(\kphiPHI)},\kr)coordinate(phiUR)--++(0,0,-\kr)coordinate(phiLR)--(arcRadialL);
+%
+\path[name path=phi lower section]({\kr*sin(\ktheta)*cos(90)},{\kr*sin(\ktheta)*sin(90)},{\kr*cos(\ktheta)})
+ \foreach \kphi in {90,89,...,\kphiS}{--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(arcLL)};
+%
+\path[name path=phiThetaIntersction] (0,0,0)--({\krho*cos(\kphiPHI)},{\krho*sin(\kphiPHI)},\kr)--({\krr*cos(\kphiPHI)},{\krr*sin(\kphiPHI)},\kr);
+\draw[fill=white,opacity=1,name intersections={of=phiThetaIntersction and phi lower section,by={phiThetaLOW}}] (phiThetaLOW)--(outOFtheta)--(phiUR)--(phiLR)--(arcRadialL) \foreach \i in {90,89,...,\ktheta}{--({\kr*sin(\i)*cos(\kphiPHI)},{\kr*sin(\i)*sin(\kphiPHI)},{\kr*cos(\i)})};
+%
+\pgfmathsetmacro{\kphi}{\kphiPHI}
+\pgfmathsetmacro{\ktheta}{0}
+\draw({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})
+ \foreach \ktheta in {0,1,...,20}{--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})};
+%
+\draw[fill] (phiThetaLOW) circle (1pt) node[xshift=-0.1cm,yshift=-0.3cm]{$N$};
+\draw[stealth-] (1,-0.5,0) to [out=180,in=-45] ++(-1,-1,0)node[left]{\RL{$r=r_0$ سطح}};
+\draw[stealth-] ($(phiLR)!0.5!(arcRadialL)$) to [out=-130,in=180]++(1,0.5)node[right]{\RL{$\phi=\phi_0$ سطح}};
+\draw[stealth-] (arcE)++(0,0.2,0) to [out=90,in=180] ++(-0.4,0.4)node[right]{\RL{$\theta=\theta_0$ سطح}};
+%
+\node at (2.8,1,0){الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

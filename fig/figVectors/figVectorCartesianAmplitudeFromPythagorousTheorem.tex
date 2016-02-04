@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}    
+\usepackage{tikz-3dplot}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\pgfmathsetmacro{\x}{1.5}
+\pgfmathsetmacro{\y}{2}
+\pgfmathsetmacro{\z}{1.5}
+\pgfmathsetmacro{\del}{0.5}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+
+%\draw[help lines, thick] (0,0) grid (5,4);
+%axis
+\draw[gray](0,0,0)--++(\x+2*\del,0,0);
+\draw[gray](0,0,0)--++(0,2*\y,0)node[below]{$y$};
+\draw[gray](0,0,0)--++(0,0,1.5)node[left]{$z$};
+%
+
+\draw[gray](0,0,0)--(\x,\y,0)coordinate[pos=0.5](kk);
+\draw[gray,stealth-] (kk) to [out=-135,in=0] ++(-1,-3,0) node[left]{$\sqrt{x_0^2+y_0^2}$};
+\node[gray,left] at (\x,0,0){$(x_0,0,0)$};
+\node[below] at (\x,0,0){$b$};
+\node[gray,above] at (0,\y,0){$y_0$};
+%
+\draw[](0,0,0)node[left]{$O$}--(\x,\y,\z)node[above right]{$N(x_0,y_0,z_0)$}coordinate[pos=0.5](k);
+\draw[gray,stealth-] (k) to [out=135,in=0] ++(-1,-3,0) node[left]{$\sqrt{x_0^2+y_0^2+z_0^2}$};
+%
+
+\draw[gray](\x,0,0)--(\x,\y,0);
+\draw[gray](\x,\y,\z)--(\x,\y,0);
+
+\draw[gray](0,\y,0)--(\x,\y,0)node[below right]{$(x_0,y_0,0)$}node[black,below left]{$a$};
+%
+
+
+\end{tikzpicture}%%
+\end{urdufont}
+\end{document}

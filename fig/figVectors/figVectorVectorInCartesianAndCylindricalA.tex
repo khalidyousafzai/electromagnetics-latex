@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+
+%axis
+\draw[gray](0,0)--(3.5,0) node[below] {$x$};
+\draw[gray](0,0)--(0,3.5) node[left]{$y$};
+%
+\draw[-latex] (2,0)node[below]{$P(2,0)$}--(0,2)node[left]{$Q(0,2)$}node[above right,pos=0.5]{\kvec{A}};
+%
+\draw[gray] ([shift=(0:0.4)]2,0) arc (0:135:0.4);
+\draw[gray] (2,0)++(50:0.75)node{$135^\circ$};
+%
+\node at (1,-0.5){الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

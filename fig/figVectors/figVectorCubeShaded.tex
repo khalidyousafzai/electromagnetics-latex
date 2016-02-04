@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\pgfmathsetmacro{\c}{1.5}
+\pgfmathsetmacro{\del}{1.5}
+%axis
+\draw[gray](0,0,0)--(3,0,0) node[left] {$x$};
+\draw[gray](0,0,0)--(0,3,0) node[below] {$y$};
+\draw[gray](0,0,0)--(0,0,3) node[left] {$z$};
+
+\shade[right color=gray!10, left color=black!50](\c,\c,\c)--++(0,\del,0)--++(0,0,\del)--++(0,-\del,0)--cycle;
+\shade[right color =gray!10, left color=black!50,name path={upperFace}](\c,\c,\c+\del)--++(0,\del,0)--++(-\del,0,0)--++(0,-\del,0)--cycle;
+\shade[right color=gray!50, left color=black!10](\c,\c+\del,\c)--++(-\del,0,0)--++(0,0,\del)--++(\del,0,0)--cycle;
+
+%since shading angle is not working so i devided the area into small rectangles at an angle of 45 degrees and filled each rectangle
+%\foreach \n  in {1,1.1,...,120}{
+%\pgfmathsetmacro{\m}{100-\n}
+%\path[name path={angledLineA}] (\c+\m/50,\c-0.5,\c+\del)--++(145:5);
+%\path[name path={angledLineB}] (\c+\m/50+0.2,\c-0.5,\c+\del)--++(145:5);
+%\path [name intersections={of=upperFace and angledLineA, by={xy1, xy2}}];
+%\path [name intersections={of=upperFace and angledLineB, by={xy3, xy4}}];
+%\fill [color=gray!\n](xy1)--(xy2)--(xy4)--(xy3)--cycle;   }
+
+\node[below] at (\c,\c+\del/2,\c){$\textup{d} y$};
+\node[right] at (\c-\del/2,\c+\del,\c){$\textup{d} x$};
+\node[right] at (\c-\del,\c+\del,\c+\del/2){$\textup{d} z$};
+
+\node at (\c+\del,\c+\del,\c+\del){$\textup{d} y \textup{d} z$};
+\node at (\c-\del/2,\c+\del/2,\c+\del){$\textup{d} x \textup{d} y$};
+\node[] at (\c,\c-1.5*\del,\c+\del/2){حجم $=\textup{d} x \textup{d} y \textup{d} z$};
+
+\draw [stealth-] (\c,\c+\del,\c+\del) to [out=-20,in=180] ++(0,\del,-\del/2) node[right]{$N'(x_0+\textup{d}x, y_0+\textup{d} y, z_0+\textup{d}z)$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

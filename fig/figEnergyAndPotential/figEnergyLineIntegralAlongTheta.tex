@@ -1,0 +1,98 @@
+    \documentclass{standalone}
+    \usepackage{tikz}  
+    \usepackage{tikz-3dplot}
+
+    \begin{document}
+
+    %Angle Definitions
+    %-----------------
+
+    %set the plot display orientation
+    %synatax: \tdplotsetdisplay{\theta_d}{\phi_d}
+    \tdplotsetmaincoords{65}{110}
+
+    \pgfmathsetmacro{\rvec}{1.2}
+
+    \pgfmathsetmacro{\thetaA}{35}
+   \pgfmathsetmacro{\thetaB}{55}
+    \pgfmathsetmacro{\phiA}{35}
+    \pgfmathsetmacro{\phiB}{55}
+
+
+    \begin{tikzpicture}[scale=5,tdplot_main_coords]
+
+  %  \shadedraw[tdplot_screen_coords,ball color = white] (0,0) circle (2pt);
+
+    %-----------------------
+    \coordinate (O) at (0,0,0);
+
+    \tdplotsetcoord{B}{\rvec}{\thetaA}{\phiA}
+
+    \tdplotsetcoord{C}{\rvec}{\thetaB}{\phiA}
+   \tdplotsetcoord{D}{\rvec}{90}{\phiA}
+
+ \tdplotsetcoord{thetaAA}{0.65}{0.7*\thetaA}{\phiA}
+ \tdplotsetcoord{thetaBB}{0.6}{0.6*\thetaA+0.5*\thetaB}{\phiA}
+
+
+    %draw the main coordinate system axes
+
+    \draw[gray,thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+    \draw[gray,thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+    \draw[gray,thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+
+\draw[fill] (O) circle (0.5pt)node[left]{$Q$};
+
+
+    \draw[gray] (O) -- (B)node[anchor=south west]{$N_1$};
+    \draw[gray] (O) -- (C)node[pos=0.6,below right]{$r_0$}node[anchor=west]{$N_2$};
+    %
+
+%    \draw[dashed, color=blue] (O) -- (Bxy);
+ %   \draw[dashed, color=blue] (B) -- (Bxy);
+
+%\tdplotdrawarc[coordinate system, draw styles]{center}{r}{angle start}{angle end}{label options}{label}
+%x-axis is taken as zero degrees
+    \tdplotdrawarc[gray]{(O)}{0.3}{0}{\phiA}{anchor=north}{$\phi_0$}
+
+
+%\tdplotsetthetaplanecoords{phi angle} then just draw arcs like in xy plane 
+    \tdplotsetthetaplanecoords{\phiA}
+
+    \tdplotdrawarc[color=gray,tdplot_rotated_coords]{(O)}{0.5}{0}{\thetaA}{}{}     %arc for showing angle theta_1
+ \tdplotdrawarc[color=gray,tdplot_rotated_coords]{(O)}{0.4}{0}{\thetaB}{}{}         %arc for showing angle theta_2
+\node[gray] at (thetaAA){$\theta_1$};                    %theta_1
+\node[gray] at (thetaBB){$\theta_2$};                     %theta_2
+
+  \tdplotdrawarc[tdplot_rotated_coords,very thick]{(O)}{\rvec}{\thetaA}{\thetaB}{}{}             %path of integration
+
+  \tdplotdrawarc[color=gray,dashed,tdplot_rotated_coords]{(O)}{\rvec}{\thetaB}{90}{}{}
+
+\draw[dashed,gray] (O) -- (D);
+
+    \tdplotsetthetaplanecoords{\phiB}
+%latitudes
+  % \draw[dashed] (\rvec,0,0) arc (0:360:\rvec);
+   % \draw[thick] (\rvec,0,0) arc (0:110:\rvec);
+    %\draw[thick] (\rvec,0,0) arc (0:-70:\rvec);
+
+
+%longitudes
+    \tdplotsetthetaplanecoords{35}
+  %  \draw[thick,tdplot_rotated_coords] (\rvec,0,0) arc (0:151:\rvec);
+ %   \draw[very thick,color=red,tdplot_rotated_coords] (\rvec,0,0) arc (0:55:\rvec);
+ %   \draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (180:-40:-\rvec);
+    %\draw[thick,tdplot_rotated_coords] (\rvec,0,0) arc (360:336:\rvec);
+
+ %   \tdplotsetthetaplanecoords{55}
+   % \draw[thick,tdplot_rotated_coords] (\rvec,0,0) arc (0:147:\rvec);
+    %\draw[very thick,color=red,tdplot_rotated_coords] (\rvec,0,0) arc (0:40:\rvec);
+    %\draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (180:-40:-\rvec);
+    %\draw[thick,tdplot_rotated_coords] (\rvec,0,0) arc (360:334:\rvec);
+
+  %  \tdplotsetrotatedcoords{-79.1}{-120}{27.3}
+   % \draw[very thick,color=red,tdplot_rotated_coords] (\rvec,0,0) arc (0:21:\rvec);
+
+
+    \end{tikzpicture}%
+    \end{document}

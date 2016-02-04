@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+%\draw[help lines, thick] (0,0) grid (5,4);
+%axis
+\draw[gray](0,0,0)--++(2,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--++(0,3,0)node[below]{$y$};
+\draw[gray](0,0,0)--++(0,0,2)node[left]{$z$};
+%
+\draw[-latex,gray](0,0,0)--(3,2,3)node[above right]{$(x_2,y_2,z_2)$}node[right,pos=0.5]{$\kvec{r}_2$};
+\draw[-latex,gray](0,0,0)--(1,3,1)node[right]{$(x_1,y_1,z_1)$}node[below,pos=0.8]{$\kvec{r}_1$};
+\draw[-latex] (1,3,1)--(3,2,3)node[above right,pos=0.5]{$\kvec{r}_{21}$};
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

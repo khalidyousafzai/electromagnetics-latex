@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{calc,decorations.markings,decorations.pathreplacing,intersections}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+
+%grid
+%\draw[gray,thick] grid (5,3);
+%\draw[gray,thin,step=0.2] grid (5,3);
+\draw[gray,<->] (0,1.5)node[above]{$y$}--(0,0)--(1.5,0)node[right]{$x$};
+\draw[->-=0.5] ([shift=(0:1)] 0,0) arc (0:90:1); 
+\draw node[below] at (1,0){$(1,0,2)$};
+\draw node[left] at (0,1){$(0,1,2)$};
+\node[right] at (1.2,0.5){\RL{ربع اول}};
+\node at (-1,0.5){\RL{ربع دوم}};
+\end{tikzpicture}%
+%
+\hspace{3cm}
+\begin{tikzpicture}
+\draw[gray,<->] (0,1.5)node[above]{$y$}--(0,0)--(1.5,0)node[right]{$x$};
+\draw[->-=0.5] (1,0)--(0,1);
+\draw node[below] at (1,0){$(1,0,2)$};
+\draw node[left] at (0,1){$(0,1,2)$};
+\end{tikzpicture}%
+
+\end{urdufont}
+\end{document}

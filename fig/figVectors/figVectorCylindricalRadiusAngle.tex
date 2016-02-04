@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+\pgfmathsetmacro{\rr}{2.5}
+\pgfmathsetmacro{\aa}{20}
+\pgfmathsetmacro{\aaH}{\aa/2}
+\pgfmathsetmacro{\adel}{10}
+\pgfmathsetmacro{\aaa}{\aa+\adel}
+\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
+\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
+%axis
+\draw[gray](0,0)--(3.2,0) node[below] {$x$};
+\draw[gray](0,0)--(0,2.5) node[left]{$y$};
+%
+\draw[gray,dashed] ([shift=(10:\rr)]0,0) arc (10:60:\rr);
+\draw[gray] (0,0)--(\aa:\rr)node[below,pos=0.8]{$\rho$};
+\draw[](0,0)--(\aaa:\rr);
+\draw[-latex] ([shift=(\aa:\rr)]0,0) arc (\aa:\aaa:\rr) node[above right]{$\rho \Delta \phi$};
+\draw[-latex] (\aa:\rr)--++(\aa:1) node[right]{$\Delta \rho$};
+%
+\draw[gray,-stealth] ([shift=(0:0.7)]0,0,0) arc (0:\aa:0.7);
+\node[gray] at (\aaH:1.1){$\phi$};
+\draw[gray,-stealth] ([shift=(\aa:1)]0,0,0) arc (\aa:\aaa:1)node[above]{$\Delta \phi$};
+
+\node at (1.5,-0.5){الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

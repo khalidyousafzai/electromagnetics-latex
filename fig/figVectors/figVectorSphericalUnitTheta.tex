@@ -1,0 +1,71 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+\newcommand{\RightAngle}[4][5pt]{%
+        \draw[gray] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)
+        --($#3!#1!#4$) ;        }
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2.7}
+\pgfmathsetmacro{\kphi}{60}
+%\pgfmathsetmacro{\ktheta}{45}
+%
+%axis
+\draw[gray] (0,0,0)--(2,0,0);
+\draw[gray] (0,0,0)--(0,3,0);
+\draw[gray] (0,0,0)--(0,0,2);
+%
+
+\pgfmathsetmacro{\ktheta}{60}
+\draw[gray] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(N)node[right]{$N$};
+%
+\path[gray] (N)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},0)coordinate(Nb);
+\draw[gray,dashed,name path=xPlane radial](0,0,0)--(Nb);
+\draw[-stealth] ([shift=(0:0.5)]0,0) arc (0:\kphi:0.5);
+\node[] at (\kphi/2:0.9){$\phi$};
+%
+\pgfmathsetmacro{\kkkr}{0.5}
+\draw[-stealth](0,0,\kkkr)    \foreach \ktheta in {0,1,...,60}{--({\kkkr*sin(\ktheta)*cos(\kphi)},{\kkkr*sin(\ktheta)*sin(\kphi)},{\kkkr*cos(\ktheta)})};
+\pgfmathsetmacro{\ktheta}{25}
+\pgfmathsetmacro{\kkkr}{0.9}
+\node[] at ({\kkkr*sin(\ktheta)*cos(\kphi)},{\kkkr*sin(\ktheta)*sin(\kphi)},{\kkkr*cos(\ktheta)}){$\theta$};
+
+%
+\draw[latex-](Nb)--($(0,0,0)!(Nb)!(N)$)node[right,pos=0.3]{$\atheta$}coordinate(thetaS)coordinate[pos=0.3](phiE);
+\RightAngle{(N)}{(thetaS)}{(Nb)};
+\path[name path=vertical drop] (thetaS)--++(0,0,-1);
+\draw[-latex, name intersections={of=vertical drop and xPlane radial,by={drops here}}](thetaS)--(drops here);
+\draw[-latex](drops here)--(Nb)coordinate[pos=0.5](phiS);
+\RightAngle{(thetaS)}{($(0,0,0)!0.6!(Nb)$)}{(0,0,0)};
+%
+\draw[gray] (phiS)node[below]{$\theta$} to [out=90,in=-135] (phiE);
+
+%
+\node at (2,3,0){ب};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)},scale=0.5]
+%
+\coordinate (M)at (1,6,4);
+\coordinate (N)at (4,5,1);
+\coordinate (P)at (1,2,2);
+
+%\draw[help lines, thick] (0,0) grid (5,4);
+%axis
+\draw[gray](0,0,0)--++(4,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--++(0,6,0)node[below]{$y$};
+\draw[gray](0,0,0)--++(0,0,4)node[left]{$z$};
+%
+\draw[fill] (M) circle (2pt);
+\node[above] at (M){$M(1,6,4)$};
+\draw[fill] (N) circle (2pt);
+\node[below] at (N){$N(4,5,1)$};
+\draw[fill] (P) circle (2pt);
+\node[left] at (P){$P(1,2,2)$};
+%
+\path (M)--(N)coordinate[pos=0.3333](Q);
+\draw[fill] (Q) circle (2pt);
+\draw node[below right] at (Q){$Q$};
+%
+\draw[gray](M)--(N)--(P)--cycle;
+\draw[-latex] (M)--(Q)node[right,pos=0.6]{$\kvec{r}_{QM}$};
+\draw[-latex] (M)--(P)node[above left,pos=0.4]{$\kvec{r}_{PM}$};
+\draw[-latex] (Q)--(P)node[below,pos=0.4]{$\kvec{r}_{PQ}$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

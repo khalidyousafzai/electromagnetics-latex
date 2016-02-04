@@ -1,0 +1,73 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2.5}
+\pgfmathsetmacro{\kang}{70}
+\pgfmathsetmacro{\kz}{1}
+
+\pgfmathsetmacro{\krDel}{0.6}
+\pgfmathsetmacro{\kangDel}{10}
+\pgfmathsetmacro{\kzDel}{0.5}
+
+\pgfmathsetmacro{\krD}{\kr+\krDel}
+\pgfmathsetmacro{\kangD}{\kang+\kangDel}
+\pgfmathsetmacro{\kzD}{\kz+\kzDel}
+
+
+%axis
+\draw[gray](0,0,0)--(2.5,0,0) node[left] {$x$};
+\draw[gray](0,0,0)--(0,3.5,0) node[below]{$$};
+\draw[gray](0,0,0)--(0,0,2.3) node[left] {$z$};
+%
+\path (0,0,\kz)++(\kang:\kr)coordinate(fLL)--++(\kang:\krDel)coordinate(fLR);   %front Lower Left, front Lower Right
+\path (0,0,\kzD)++(\kang:\kr)coordinate(fUL)--++(\kang:\krDel)coordinate(fUR); 
+%
+\path (0,0,\kz)++(\kangD:\kr)coordinate(bLL)--++(\kangD:\krDel)coordinate(bLR); 
+\path (0,0,\kzD)++(\kangD:\kr)coordinate(bUL)--++(\kangD:\krDel)coordinate(bUR); 
+%
+\draw[gray,dashed] (0,0,0)--++(\kang:\kr)coordinate(sfL)--++(\kang:\krDel)coordinate(sfR); %shadow front Left, shadow front Right
+\draw[gray,dashed](0,0,0)--++(\kangD:\kr)coordinate(sbL)--++(\kangD:\krDel)coordinate(sbR);
+\draw[gray](0,0,0)--(sfL) arc (\kang:\kangD:\kr)--cycle;
+\draw[stealth-] (\kang+\kangDel*2/3:\kr*3/4) to [out=225,in=0]++(1.5,0,0)node[left]{$\frac{\rho^2 \dif \phi}{2}$};
+\shade (\kang:\kr)--++(\kang:\krDel) arc (\kang:\kangD:\krD)--++(\kangD:-\krDel) arc (\kangD:\kang:\kr);
+\draw[stealth-] (\kang+\kangDel*3/4:\kr+\krDel/2) to [out=-45,in=180] ++(1.5,1,0)node[right]{$\frac{\rho \dif \rho \dif \phi}{2}$};
+%
+\draw[gray,dashed](sfL)--(fLL); %cube to shadow marks
+\draw[gray,dashed](sfR)--(fLR);
+\draw[gray,dashed](sbL)--(bLL);
+\draw[gray,dashed](sbR)--(bLR);
+%
+\draw[gray,dashed] ([shift=(\kang:\kr)]0,0,0) arc (\kang:\kangD:\kr);   %shadow arcs
+\draw[gray,dashed] ([shift=(\kang:\krD)]0,0,0) arc (\kang:\kangD:\krD);
+%
+\shade[right color=gray!20, left color=gray!80] (0,0,\kzD)--++(\kang:\kr) arc (\kang:\kangD:\kr)--cycle;
+\shade[right color=gray!20, left color=gray!80] (0,0,\kz)--++(\kang:\kr)--++(0,0,\kzDel) --(0,0,\kzD)--cycle;
+%cube
+\shade[opacity=1,right color=black!20, left color=black!80,shade=axis,shading angle=0](fLL)--(fUL)--(fUR)--(fLR)--cycle;
+\shade[opacity=1,left color=black!20, right color=black!80,shade=axis,shading angle=0](fUL)--(bUL)--(bUR)--(fUR)--cycle;
+\shade[opacity=1,left color=black!20, right color=black!80,shade=axis,shading angle=0](fLR)--(fUR)--(bUR)--(bLR)--cycle;
+%
+\node at (2.5,3,0){ب};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

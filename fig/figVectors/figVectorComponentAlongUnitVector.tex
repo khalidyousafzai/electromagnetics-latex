@@ -1,0 +1,50 @@
+\documentclass[b5paper]{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usetikzlibrary{calc,decorations.pathreplacing}
+\usepackage{amsmath}
+%
+\input{../../tex/myUrduGreek.tex}
+\input{../../tex/myEMTvectors.tex}
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+\pgfmathsetmacro{\Bx}{2*cos(30)}
+\pgfmathsetmacro{\By}{2*sin(30)}
+%vectors
+\draw[gray,thin,-latex](\Bx,0)--++(0,\By)node[pos=0.5,right]{$\kvec{B}_{\perp}$};
+\draw[-latex,gray] (0,0)--++(30:2)node[pos=0.5,above]{$\kvec{B}$};
+\draw[-latex,gray] (0,0)--++(1,0)node[pos=0.5,below]{$\kvec{a}$};
+\draw[-latex,thick](0,0)--++(\Bx,0);
+%arc
+\draw[gray] ([shift=(0:0.5)] 0,0 ) arc (0:30: 0.5);
+\draw node[gray] at (15:0.7){$\theta$};
+%
+\draw [decorate,decoration={brace,amplitude=5pt},xshift=0,yshift=-0.4cm] (\Bx,0) -- (0,0) node [black,midway,yshift=-0.4cm] {\footnotesize $\kvec{B}_{\parallel}=(\kvec{B} \cdot \kvec{a}) \kvec{a}$};
+\draw node at (\Bx/2,-1.2cm){ب};
+\end{tikzpicture}
+\quad \quad \quad
+%===============
+\begin{tikzpicture}
+\pgfmathsetmacro{\Bx}{2*cos(30)}
+\pgfmathsetmacro{\By}{2*sin(30)}
+%vectors
+\draw[gray,thin](0,0)--++(\Bx,0);
+\draw[gray,thin](\Bx,0)--++(0,\By);
+\draw[-latex] (0,0)--++(30:2)node[pos=0.5,above]{$\kvec{B}$};
+\draw[-latex] (0,0)--++(1,0)node[pos=0.5,below]{$\kvec{a}$};
+%arc
+\draw ([shift=(0:0.5)] 0,0 ) arc (0:30: 0.5);
+\draw node at (15:0.7){$\theta$};
+%
+\draw [decorate,decoration={brace,amplitude=5pt},xshift=0,yshift=-0.4cm] (\Bx,0) -- (0,0) node [black,midway,yshift=-0.4cm] {\footnotesize $\kvec{B} \cdot \kvec{a} =B \cos \theta$};
+\draw node at (\Bx/2,-1.2cm){الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

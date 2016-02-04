@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+\pgfmathsetmacro{\rr}{1.5}
+\pgfmathsetmacro{\rrr}{1}
+\pgfmathsetmacro{\aa}{30}
+
+\pgfmathsetmacro{\yy}{\rrr*cos(\aa)}
+\pgfmathsetmacro{\xx}{\rrr*sin(\aa)}
+\pgfmathsetmacro{\aaa}{-90+\aa/2}
+%axis
+\draw[gray](0,0)--(3.2,0) node[below] {$x$};
+\draw[gray](0,0)--(0,2.5) node[left]{$y$};
+%
+
+\draw[gray,dashed] (0,0)--(\aa:\rr)coordinate (N);
+\draw[gray,dashed] (N)--++(\aa:1.5*\rrr)coordinate(kk);
+%\draw[gray,-latex] (\aa:\rr)--++(\aa+90:\rrr) node[left]{$a_\phi$}coordinate[pos=0.1](kkk)coordinate(kphi);
+%
+\draw[-latex] (N)--++(0,\rrr)node[left,pos=0.5]{$\ay$}coordinate(ky);
+\draw[latex-] (ky)--($(N)!(ky)!(kk)$)coordinate(ktip)node[right,pos=0.5,rotate=\aa]{$\cos \phi \aphi$};
+\draw[-latex](N)--(ktip)node[below,pos=0.5,rotate=\aa]{$\sin \phi \arho$};
+%
+\draw[gray] ([shift=(-90:0.3)]ky) arc (-90:-90+\aa:0.3)node[below]{$\phi$};
+:
+
+%
+\draw[gray] ([shift=(0:0.5)]0,0) arc (0:\aa:0.5);
+\node[gray] at (15:0.7){$\phi$};
+\node at (1.5,-0.5){ب};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

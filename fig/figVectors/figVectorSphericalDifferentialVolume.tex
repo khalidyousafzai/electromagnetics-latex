@@ -1,0 +1,86 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\krD}{2.5}
+\pgfmathsetmacro{\kphi}{60}
+\pgfmathsetmacro{\kphiN}{\kphi+1}
+\pgfmathsetmacro{\kphiD}{70}
+\pgfmathsetmacro{\kphiDN}{\kphiD-1}
+\pgfmathsetmacro{\ktheta}{30}
+\pgfmathsetmacro{\kthetaN}{\ktheta+1}
+\pgfmathsetmacro{\kthetaD}{40}
+\pgfmathsetmacro{\kthetaDN}{\kthetaD-1}
+%
+%axis
+\draw[gray] (0,0,0)--(1.5,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,3,0)node[below]{$y$};
+\draw[gray] (0,0,0)--(0,0,3)node[left]{$z$};
+%
+\coordinate (iLL) at ({\kr*sin(\kthetaD)*cos(\kphiD)},{\kr*sin(\kthetaD)*sin(\kphiD)},{\kr*cos(\kthetaD)});
+\coordinate (iLR) at ({\kr*sin(\kthetaD)*cos(\kphi)},{\kr*sin(\kthetaD)*sin(\kphi)},{\kr*cos(\kthetaD)});
+\coordinate (iUL) at ({\kr*sin(\ktheta)*cos(\kphiD)},{\kr*sin(\ktheta)*sin(\kphiD)},{\kr*cos(\ktheta)});
+\coordinate (iUR) at ({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)});
+%
+\coordinate (oLL) at ({\krD*sin(\kthetaD)*cos(\kphiD)},{\krD*sin(\kthetaD)*sin(\kphiD)},{\krD*cos(\kthetaD)});
+\coordinate (oLR) at ({\krD*sin(\kthetaD)*cos(\kphi)},{\krD*sin(\kthetaD)*sin(\kphi)},{\krD*cos(\kthetaD)});
+\coordinate (oUL) at ({\krD*sin(\ktheta)*cos(\kphiD)},{\krD*sin(\ktheta)*sin(\kphiD)},{\krD*cos(\ktheta)});
+\coordinate (oUR) at ({\krD*sin(\ktheta)*cos(\kphi)},{\krD*sin(\ktheta)*sin(\kphi)},{\krD*cos(\ktheta)});
+%
+%inner face
+\draw (iLL) 
+\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\kr*sin(\i)*cos(\kphiD)},{\kr*sin(\i)*sin(\kphiD)},{\kr*cos(\i)})}
+\foreach \i in {\kphiD,\kphiDN,...,\kphi}{-- ({\kr*sin(\ktheta)*cos(\i)},{\kr*sin(\ktheta)*sin(\i)},{\kr*cos(\ktheta)})}
+\foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\kr*sin(\i)*cos(\kphi)},{\kr*sin(\i)*sin(\kphi)},{\kr*cos(\i)})}
+\foreach \i in {\kphi,\kphiN,...,\kphiD}{--({\kr*sin(\kthetaD)*cos(\i)},{\kr*sin(\kthetaD)*sin(\i)},{\kr*cos(\kthetaD)})};
+%outer face
+\draw (oLL) 
+\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\krD*sin(\i)*cos(\kphiD)},{\krD*sin(\i)*sin(\kphiD)},{\krD*cos(\i)})}
+\foreach \i in {\kphiD,\kphiDN,...,\kphi}{-- ({\krD*sin(\ktheta)*cos(\i)},{\krD*sin(\ktheta)*sin(\i)},{\krD*cos(\ktheta)})}
+\foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\krD*sin(\i)*cos(\kphi)},{\krD*sin(\i)*sin(\kphi)},{\krD*cos(\i)})}
+\foreach \i in {\kphi,\kphiN,...,\kphiD}{--({\krD*sin(\kthetaD)*cos(\i)},{\krD*sin(\kthetaD)*sin(\i)},{\krD*cos(\kthetaD)})};
+%edges
+\draw (iLL)--(oLL)  (iLR)--(oLR)  (iUL)--(oUL)  (iUR)--(oUR);
+%drop to ground
+%\draw[gray,dashed] (0,0,0)--(iLL)  (0,0,0)--(iLR)  (0,0,0)--(iUL)  (0,0,0)--(iUR);
+%\draw[gray,dashed] (iLL)--({\kr*sin(\kthetaD)*cos(\kphiD)},{\kr*sin(\kthetaD)*sin(\kphiD)},0);
+%\draw[gray,dashed] (iLR)--({\kr*sin(\kthetaD)*cos(\kphi)},{\kr*sin(\kthetaD)*sin(\kphi)},0);
+%theta
+\draw[gray,dashed] (0,0,\kr) 
+\foreach \i in {0,1,...,90}{--({\kr*sin(\i)*cos(\kphi)},{\kr*sin(\i)*sin(\kphi)},{\kr*cos(\i)})}--(0,0,0);
+\draw[gray,dashed] (0,0,\kr) 
+\foreach \i in {0,1,...,90}{--({\kr*sin(\i)*cos(\kphiD)},{\kr*sin(\i)*sin(\kphiD)},{\kr*cos(\i)})}--(0,0,0);
+%text
+\draw[stealth-] ($(iLR)!0.5!(iUR)$) to [out=-140,in=0] ++(0,-1,-0.4)node[left]{$r \textup{d} \theta$};
+\draw[stealth-] ($(iLL)!0.5!(iLR)$) to [out=-45,in=180] ++(0,1,-0.4)node[right]{$r \sin \theta \textup{d} \phi$};
+\draw[stealth-] ($(iLL)!0.5!(oLL)$) to [out=-10,in=180] ++(0,1,0.2)node[right]{$\textup{d} r$};
+\node at (0,2,2.5){\RL{حجم= $r^2 \sin \theta \textup{d} r \textup{d} \theta \textup{d} \phi$}};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+\newcommand{\RightAngle}[4][5pt]{%
+        \draw[gray] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)
+        --($#3!#1!#4$) ;        }
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{1}
+\pgfmathsetmacro{\kunit}{1}
+\pgfmathsetmacro{\ktheta}{40}
+\pgfmathsetmacro{\kthetaN}{\ktheta+25}
+\pgfmathsetmacro{\kphi}{60}
+
+%
+%axis
+\draw[gray,name path={xAxis}] (0,0,0)coordinate(origin)--(2,0,0);
+\draw[gray] (0,0,0)--(0,3,0);
+\draw[gray,name path={zAxis}] (0,0,0)--(0,0,2);
+%
+\draw[gray,fill] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(N)node[above right]{$N$} circle (1pt);
+\draw[-latex] (N) -- ({\kr*sin(\kthetaN)*cos(\kphi)},{\kr*sin(\kthetaN)*sin(\kphi)},{\kr*cos(\kthetaN)})coordinate(Nb)node[right]{$\aphi$};
+\path[name path={phiLine}](0,0,0)--({2*\kr*sin(90)*cos(\kphi)},{2*\kr*sin(90)*sin(\kphi)},{2*\kr*cos(90)});
+\path[name path=thetaLineU] (N)--($(N)!-1.5cm!(Nb)$);
+\path[name path=thetaLineL] (N)--($(N)!1.5cm!(Nb)$);
+\draw[gray,name intersections ={of=thetaLineU and zAxis,by={zIntersect}},name intersections={of=thetaLineL and phiLine,by={groundIntersect}}]
+(zIntersect)--(groundIntersect);
+%
+\path[name path={xInterseptor}] (groundIntersect)--++(0,-1.5,0);
+\draw[gray,name intersections={of=xInterseptor and xAxis,by={xInt}}] (xInt)--(groundIntersect);
+\draw[gray] (zIntersect)--++(2,0,0);
+%
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

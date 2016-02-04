@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+
+%kk
+\begin{tikzpicture}
+\pgfmathsetmacro{\rr}{2.5}
+\pgfmathsetmacro{\rrr}{2.5}
+\pgfmathsetmacro{\aa}{20}
+\pgfmathsetmacro{\aaH}{\aa/2}
+\pgfmathsetmacro{\aaa}{60}
+\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
+\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
+%axis
+\draw[gray](0,0)--(3.2,0) node[below] {$x$};
+\draw[gray](0,0)--(0,3.2) node[left]{$y$};
+%
+
+\draw[gray] (0,0,0)--(\aa:\rr)node[below]{$N$}coordinate(N);
+\draw[-latex] (N)--++(\aa:0.6) node[below]{$\arho$}coordinate[pos=0.2](kkrho);
+\draw[-latex] (N)--++(\aa+90:0.6) node[left]{$\aphi$}coordinate(kkphi);
+\draw[gray] (kkrho)--++(\aa+90:0.1)coordinate(krhophi)--($(N)!(krhophi)!(kkphi)$);
+%
+\draw[gray](0,0,0)--(\aaa:\rrr)node[right]{$N'$}coordinate(Na);
+\draw[-latex] (Na)--++(\aaa:0.6) node[right]{$\arho'$}coordinate[pos=0.2](kkkrho);
+\draw[-latex] (Na)--++(\aaa+100:0.6) node[left]{$\aphi'$}coordinate(kkkphi);
+\draw[gray] (kkkrho)--++(\aaa+100:0.1)coordinate(kkrhophi)--($(Na)!(kkrhophi)!(kkkphi)$);
+%
+\draw[gray,-stealth] ([shift=(0:0.7)]0,0,0) arc (0:\aa:0.7);
+\node[gray] at (\aaH:1.1){$\phi$};
+
+\node at (1.6,-0.5){ب};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

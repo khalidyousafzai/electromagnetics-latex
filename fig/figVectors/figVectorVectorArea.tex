@@ -1,0 +1,64 @@
+\documentclass[b5paper]{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+ \pgfmathsetmacro{\xst}{0.75}            %start points, lower left corner
+ \pgfmathsetmacro{\yst}{0.5}
+ 
+ \pgfmathsetmacro{\xdel}{0.75}           %change from start point
+ \pgfmathsetmacro{\ydel}{0.5}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+%front of cube
+\coordinate (n1) at (\xst,\yst);
+\coordinate (n2) at (\xst+\xdel,\yst);
+\coordinate (n3) at (\xst+\xdel,\yst+\ydel);
+\coordinate (n4) at (\xst,\yst+\ydel);
+%back of cube
+\coordinate (n5) at (\xst+0.5*\xdel,\yst+0.5*\ydel);
+\coordinate (n6) at (\xst+1.5*\xdel,\yst+0.5*\ydel);
+\coordinate (n7) at (\xst+1.5*\xdel,\yst+1.5*\ydel);
+\coordinate (n8) at (\xst+0.5*\xdel,\yst+1.5*\ydel);
+%
+%face's centres
+\coordinate (fr) at (\xst+1.25*\xdel,\yst+0.75*\ydel); %right face
+\coordinate (ft) at (\xst+0.75*\xdel,\yst+1.25*\ydel); %right face
+%axis
+\draw[-stealth,gray] (0,0)--(2,0) node[right]{$y$};
+\draw[-stealth,gray] (0,0)--(0,2) node[above]{$z$};
+\draw[-stealth,gray] (0,0)--(-0.5,-0.5) node[below]{$x$};
+
+%point charge at centre of cube
+%\draw[fill] (\xst+0.75*\xdel,\yst+0.75*\ydel) circle (0.2mm);
+%flux density
+%\node[right] at (1.75,1.75) {${\bf{D}}(x_0,y_0,z_0)=D_{x0}{\bf{a}}_x+D_{y0} {\bf{a}}_y+D_{z0} {\bf{a}}_z$};
+%\draw[-stealth] (1.75,1.75) to [out=180,in=90] (\xst+0.75*\xdel,\yst+0.75*\ydel);
+%back edges of cube
+\draw[very thin,gray!10] (n5)--(n6);
+\draw[very thin,gray!10] (n5)--(n1);
+\draw[very thin,gray!10] (n5)--(n8);
+%front,right and top of cube
+\shade[opacity=0.5,right color=gray!10, left color=black!50] (n1)--(n2) --(n3)--(n4)--cycle;
+\shade[opacity=0.5,right color=gray!70,left color=gray!10] (n2)--(n6)--(n7)--(n3)--cycle;
+\shade[opacity=0.5,bottom color=gray!10, top color=black!80] (n4)--(n3)--(n7)--(n8)--cycle;
+%\shade[opacity=0.5,bottom color=gray!10, top color=black!80,shading=axis,shading angle=45] (n4)--(n3)--(n7)--(n8)--cycle;
+
+\path (n2)--(n6) node [black,right,pos=0.3]{$w$};
+\path (n1)--(n2) node[black,below,pos=0.5]{$l$};
+\path (n1)--(n4) node [black,left,pos=0.5]{$h$};
+
+%--top and right face vectors
+\draw[->] (fr)--++(1*\xdel,0) node [right] {${\bf{A}}_2$};
+\draw[->] (ft)--++(0,1.5*\ydel) node [right] {${\bf{A}}_1$};
+%aligned equations
+\node[anchor=east] at (7,0){$
+\begin{aligned}
+{\bf{A}}_1&=A_1 {\bf{a}}_{N1}=w l {\bf{a}}_z\\
+{\bf{A}}_2&=A_2 {\bf{a}}_{N2}=w h {\bf{a}}_y
+\end{aligned}$
+};
+\end{tikzpicture}%
+
+\end{document}

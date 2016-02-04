@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\pgfmathsetmacro{\x}{3}
+\pgfmathsetmacro{\y}{3}
+\pgfmathsetmacro{\z}{2}
+\pgfmathsetmacro{\del}{0.5}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\shade[draw=none,top color=gray!10, bottom color=gray!90] (0,0,0)--(0,0,\z)--(0,\y,\z)--(0,\y,0)--cycle;
+\shade[draw=none,top color=gray!90, bottom color=gray!10] (0,0,0)--(0,\y,0)--(\x,\y,0)--(\x,0,0)--cycle;
+\shade[draw=none,right color=black!60, left color=gray!10] (0,0,0)--(\x,0,0)--(\x,0,\z)--(0,0,\z)--cycle;
+%
+%axis
+\draw[gray](0,0,0)--++(\x+\del,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--++(0,\y+\del,0)node[below]{$y$};
+\draw[gray](0,0,0)--++(0,0,\z+\del)node[left]{$z$};
+%
+\node at (0,\y/2,\z/2){سطح $x=0$};
+\node[rotate=45] at (\x/2,0,\z/2){سطح $y=0$};
+\node at (\x/2,\y/2,0){سطح $z=0$};
+\end{tikzpicture}%
+%
+
+
+\end{urdufont}
+\end{document}
