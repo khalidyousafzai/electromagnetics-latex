@@ -1172,7 +1172,7 @@ $\aphi$ & $-\sin \phi$ &$ \cos \phi$ &$0$
 \begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalUnitThetaDotWithCartesian}
-\end{subfigure}
+\end{subfigure}%
 \caption{کروی اور کارتیسی اکائی سمتیات کا غیر سمتی ضرب۔}
 \label{شکل_سمتیہ_کروی_کارتیسی_اکائی_غیر_سمتی_ضرب}
 \end{figure}
@@ -1192,27 +1192,27 @@ $\aphi$ & $-\sin \phi$ &$ \cos \phi$ &$0$
 \ابتدا{مثال}
 مثال \حوالہ{مثال_سمتیہ_نلکی_کارتیسی_غیر_سمتی_اکائی_ضرب} کے طرز پر \عددیء{\atheta}  کا \عددیء{\ax} کے ساتھ غیر سمتی ضرب حاصل کریں۔
 
-حل: شکل \حوالہ{شکل_سمتیہ_کروی_کارتیسی_اکائی_غیر_سمتی_ضرب}-ب میں نقطہ \عددیء{N} پر اکائی سمتیہ \عددیء{\atheta} جبکہ محدد کے مرکز \عددیء{M} پر \عددیء{\ax} دکھائے گئے ہیں۔\عددیء{\atheta \cdot \ax} حاصل کرنے کی خاطر سمتیات کی سمت تبدیل کئے بغیر انہیں نقطہ \عددیء{B} منتقل کرتے ہوئے دوبارہ دکھایا گیا ہے جہاں سے واضح ہے کہ \عددیء{\atheta \cdot \ax=\cos \phase{ABC}} کے برابر ہے۔شکل-ب میں تکون \عددیء{\Delta MNB} اور \عددیء{\Delta MNC}  کو دیکھتے ہوئے
+حل: شکل \حوالہ{شکل_سمتیہ_کروی_کارتیسی_اکائی_غیر_سمتی_ضرب}-ب میں نقطہ \عددیء{N} پر اکائی سمتیہ \عددیء{\atheta} جبکہ محدد کے مرکز \عددیء{M} پر \عددیء{\ax} دکھائے گئے ہیں۔\عددیء{\atheta \cdot \ax} حاصل کرنے کی خاطر سمتیات کی سمت تبدیل کئے بغیر انہیں \عددیء{z} محدد پر نقطہ \عددیء{B} منتقل کرتے ہوئے دوبارہ دکھایا گیا ہے جہاں سے واضح ہے کہ \عددیء{\atheta \cdot \ax=\cos \phase{ABC}} کے برابر ہے۔اس شکل میں \عددیء{\phase{DMC}=\phi} اور \عددیء{\phase{BMN}=\theta} کروی محدد کے زاویے ہیں۔تکون \عددیء{\Delta BMN} میں زاویہ \عددیء{\phase{MNB}} نوے درجے کا ہے۔یوں \عددیء{\phase{NBM}=90^\circ-\theta} ہو گا۔شکل سے واضح ہے کہ  \عددیء{\phase{NBM}=\phase{CBM}} ہیں۔اس طرح تکون \عددیء{\Delta BMC} میں \عددیء{\phase{BMC}=90^\circ} جبکہ \عددیء{\phase{CBM}=90^\circ-\theta} ہونے کی بنا پر \عددیء{\phase{MCB}=\theta} ہو گا۔
+
+شکل-ب میں \عددیء{\overline{BM}=z} لیتے ہوئے تکون \عددیء{\Delta BMC}   کو دیکھتے ہوئے
 \begin{align*}
-\overline{BN}&=r \tan \theta\\
-\overline{CN}&=\frac{r}{\tan \theta}\\
-\overline{MC}&=\frac{r}{\sin \theta}
+\overline{BC}&=\frac{z}{\sin \theta}   \\
+\overline{MC}&=\frac{z}{\tan \theta} 
 \end{align*}
-لکھا جا سکتا ہے جہاں مرکز سے \عددیء{N} تک کا فاصلہ \عددیء{r} ہے۔تکون \عددیء{\Delta MDC} سے
+لکھا جا سکتا ہے۔تکون \عددیء{\Delta MDC} سے
 \begin{align*}
-\overline{MD}&=\overline{MC} \cos \phi=\frac{r \cos \phi}{\sin \theta}
+\overline{MD}&=\overline{MC} \cos \phi=\frac{z \cos \phi}{\tan \theta} 
 \end{align*} 
 لکھا جا سکتا ہے۔شکل سے واضح ہے کہ \عددیء{\overline{MD}} اور \عددیء{\overline{AB}} برابر ہیں یعنی \عددیء{\overline{AB}=\overline{MD}}-یوں تکون \عددیء{\Delta BAC} سے
 \begin{align*}
-\cos \phase{ABC}&=\frac{\overline{AB}}{\overline{BC}}=\frac{\overline{MD}}{\overline{BN}+\overline{CN}}\\
-&=\frac{\frac{r \cos \phi}{\sin \theta}}{r \tan \theta+\frac{r}{\tan \theta}}=\cos \theta \cos \phi
+\cos \phase{ABC}&=\frac{\overline{AB}}{\overline{BC}}=\frac{\left(\frac{z \cos \phi}{\tan \theta}\right)}{\left(\frac{z}{\sin \theta}\right)}=\cos \theta \cos \phi
 \end{align*}
 حاصل ہوتا ہے۔یوں \عددیء{\ar \cdot \ax=\cos \theta \cos \phi} لکھا جا سکتا ہے۔
 \انتہا{مثال}
 %============
 
 \ابتدا{مشق}
-شکل \حوالہ{شکل_سمتیہ_کروی_کارتیسی_اکائی_غیر_سمتی_ضرب}-ب کو استعمال کرتے ہوئے \عددیء{\atheta \cdot \ay} اور \عددیء{\atheta \cdot \ay} حاصل کریں۔
+شکل \حوالہ{شکل_سمتیہ_کروی_کارتیسی_اکائی_غیر_سمتی_ضرب}-ب کے طرز پر شکل بناتے ہوئے \عددیء{\atheta \cdot \ay} اور \عددیء{\atheta \cdot \ay} حاصل کریں۔
 
 جوابات:\عددیء{\cos \theta \sin \phi} اور \عددیء{-\sin \theta}
 \انتہا{مشق}
