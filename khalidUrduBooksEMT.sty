@@ -38,6 +38,7 @@
 
 %\usepackage{hyperref}                   %loaded second last just before polyglossia. still giving problems
 \usepackage{polyglossia}                %is loaded the last
+\usepackage{setspace}
 
 
 %\renewcommand\thelinenumber{\textenglish{\arabic{linenumber}}}
@@ -47,9 +48,22 @@
 \setotherlanguages{english}
 
 
-\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\arabicfont[Scale=1.25,Script=Arabic]{Jameel Noori Nastaleeq}
 \let\arabicfonttt\ttfamily
-\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\setlength{\parskip}{1cm plus4mm minus3mm}
+
+\setstretch{2}
+
+\let\myeverypar\everypar
+\newtoks\everypar
+\everypar\expandafter{\the\myeverypar}
+\myeverypar{\the\everypar\beginR}
+
 
 %\newfontfamily\AcaciasHand{AcaciasHand}
 
