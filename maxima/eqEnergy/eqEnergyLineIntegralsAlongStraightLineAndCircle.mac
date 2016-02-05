@@ -1,0 +1,36 @@
+lineIntegral(fn, path, param, p0, p1) :=
+ block ( [substitutedFn, x, xx],
+         substitutedFn: sublis(path, fn),
+         x : ev (substitutedFn, diff),
+         xx: subst(1, diff(param), x),
+         integrate(xx, param, p0, p1) 
+       )$
+
+/* integrate between(1,0,2) and (0,1,2) along circle    */
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+(x+y)*diff(z),[x=cos(t),y=sin(t),z=2],t,0,%pi/2);
+
+/* integrate between(1,0,2) and (0,1,2) along straight line    */
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+(x+y)*diff(z),[x=t,y=1-t,z=2],t,1,0);
+
+/* integrate between(1,0,2) and (1/sqrt(2),1/sqrt(2),2) along circle    */
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+(x+y)*diff(z),[x=cos(t),y=sin(t),z=2],t,0,%pi/4);
+float(ev(%));
+
+/* integrate between(1,0,2) and (1/sqrt(2),1/sqrt(2),2) along staright line    */
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+(x+y)*diff(z),[x=t,y=(t-1)/(1-sqrt(2)),z=2],t,1,cos(%pi/4));
+float(ev(%));
+
+/* (1,1,1) to (2,3,4) alogn staright line in field of point charge  */ 
+   
+lineIntegral((x*diff(x)+y*diff(y)+z*diff(z))/(x^2+y^2+z^2)^(3/2),[x=t,y=2*t-1,z=3*t-2],t,2,1);
+float(%);
+
+/* (0,0,0) to (2,3,5) along y=3/4*x^2, z=x/2+x^2  */ 
+
+lineIntegral((3*x^2*y*z^2*diff(x)+x^3*z^2*diff(y)+2*x^3*y*z*diff(z)),[x=t,y=3/4*t^2,z=t/2+t^2],t,0,2);
+float(%);
+

@@ -1,0 +1,20 @@
+lineIntegral(fn, path, param, p0, p1) :=
+ block ( [substitutedFn, x, xx],
+         substitutedFn: sublis(path, fn),
+         x : ev (substitutedFn, diff),
+         xx: subst(1, diff(param), x),
+         integrate(xx, param, p0, p1) 
+       )$
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+3*diff(z),[x=cos(t),y=sin(t),z=2],t,0,atan(0.6/0.8));
+float(%);
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+3*diff(z),[x=t,y=3-3*t,z=2],t,1,0.8);
+float(%);
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+3*diff(z),[x=cos(t),y=sin(t),z=2],t,0,asin(1));
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+3*diff(z),[x=t,y=0,z=2],t,1,0);
+
+lineIntegral((y+z)*diff(x)+(x+z)*diff(y)+3*diff(z),[x=0,y=t,z=2],t,0,1);
+
+
+

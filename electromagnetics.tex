@@ -1,5 +1,6 @@
 \documentclass[leqno,b5paper]{book}
 
+
 \usepackage{khalidUrduBooksEMT}                     %my sty file
 %\usepackage{animate}
 
@@ -13,8 +14,9 @@
 
 \graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}}			%paths to figures
 
-\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential}
-%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/tikztest,./tex/k}
+
+\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtQuestions}
+%\includeonly{./tex/emtVectors}
 
 
 \author{
@@ -24,6 +26,7 @@
 }
 
 %=========
+
 
 
 \title{برقی و مقناطیسیات}
@@ -50,6 +53,7 @@
 
 
 \mainmatter                      %added this
+\renewcommand*{\chaptername}{باب}
 %%\pagenumbering{arabic}   %instead of this
 
 \pagestyle{headings}
@@ -59,8 +63,7 @@
 \include{./tex/emtCoulombLaw}
 \include{./tex/emtGaussLaw}
 \include{./tex/emtEnergyAndPotential}
-%\include{./tex/tikztest}
-
+\include{./tex/emtQuestions}
 
 
 \backmatter

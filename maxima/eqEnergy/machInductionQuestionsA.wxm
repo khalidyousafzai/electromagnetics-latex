@@ -1,0 +1,14 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+R1:=0.103;
+R2:=0.225;
+X1:=1.10;
+X2:=1.13;
+Xm:=59.4;
+
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

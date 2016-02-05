@@ -35,9 +35,9 @@
 %\pgfmathsetmacro{\ktheta}{45}
 %
 %axis
-\draw[gray] (0,0,0)node[left]{$M$}coordinate(origin)--(2,0,0)coordinate(xE);
+\draw[gray] (0,0,0)node[left]{$M$}coordinate(origin)--(2.5,0,0)coordinate(xE);
 \draw[gray] (0,0,0)--(0,3,0);
-\draw[gray] (0,0,0)--(0,0,2);
+\draw[gray] (0,0,0)--(0,0,1.5);
 %
 \draw[-latex](0,0,0)--(0.7,0,0);
 
@@ -54,6 +54,9 @@
 \RightAngle{(Nb)}{(P)}{(xE)};
 \RightAngle{(N)}{(Nb)}{(origin)};
 \RightAngle{(N)}{(zz)}{(origin)};
+%
+\node at (2.5,2,0){الف};
+%
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}

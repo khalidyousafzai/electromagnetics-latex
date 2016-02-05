@@ -29,31 +29,49 @@
 
 \begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
 %\pgfmathsetseed{1}
-\pgfmathsetmacro{\kr}{1}
+\pgfmathsetmacro{\kr}{1.2}
 \pgfmathsetmacro{\kunit}{1}
-\pgfmathsetmacro{\ktheta}{40}
-\pgfmathsetmacro{\kthetaN}{\ktheta+25}
-\pgfmathsetmacro{\kphi}{60}
-
+\pgfmathsetmacro{\ktheta}{30}
+\pgfmathsetmacro{\kthetaA}{\ktheta+25}
+\pgfmathsetmacro{\kphi}{50}
+%
+\coordinate (N) at ({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)});
+\coordinate (Nb) at ({\kr*sin(\kthetaA)*cos(\kphi)},{\kr*sin(\kthetaA)*sin(\kphi)},{\kr*cos(\kthetaA)});
 %
 %axis
-\draw[gray,name path={xAxis}] (0,0,0)coordinate(origin)--(2,0,0);
-\draw[gray] (0,0,0)--(0,3,0);
+\draw[gray,name path={xAxis}] (0,0,0)coordinate(origin)node[left]{$M$}--(2,0,0)coordinate(xEnd);
+\draw[gray] (0,0,0)--(0,1.5,0)node[right]{$y$};
 \draw[gray,name path={zAxis}] (0,0,0)--(0,0,2);
 %
-\draw[gray,fill] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},{\kr*cos(\ktheta)})coordinate(N)node[above right]{$N$} circle (1pt);
-\draw[-latex] (N) -- ({\kr*sin(\kthetaN)*cos(\kphi)},{\kr*sin(\kthetaN)*sin(\kphi)},{\kr*cos(\kthetaN)})coordinate(Nb)node[right]{$\aphi$};
+\draw[gray,fill] (0,0,0)--(N)node[right]{$N$};
+\draw[gray,dashed] (N)--(0,0,{\kr*cos(\ktheta)});
+%
 \path[name path={phiLine}](0,0,0)--({2*\kr*sin(90)*cos(\kphi)},{2*\kr*sin(90)*sin(\kphi)},{2*\kr*cos(90)});
-\path[name path=thetaLineU] (N)--($(N)!-1.5cm!(Nb)$);
-\path[name path=thetaLineL] (N)--($(N)!1.5cm!(Nb)$);
-\draw[gray,name intersections ={of=thetaLineU and zAxis,by={zIntersect}},name intersections={of=thetaLineL and phiLine,by={groundIntersect}}]
+\path[name path=thetaLine] ($(N)!-1.5cm!(Nb)$)--($(N)!1.5cm!(Nb)$);
+\draw[gray,name intersections ={of=thetaLine and zAxis,by={zIntersect}},name intersections={of=thetaLine and phiLine,by={groundIntersect}}]
 (zIntersect)--(groundIntersect);
 %
 \path[name path={xInterseptor}] (groundIntersect)--++(0,-1.5,0);
-\draw[gray,name intersections={of=xInterseptor and xAxis,by={xInt}}] (xInt)--(groundIntersect);
-\draw[gray] (zIntersect)--++(2,0,0);
+\draw[gray,name intersections={of=xInterseptor and xAxis,by={xInt}}] (xInt)--(groundIntersect)node[right]{$C$};
+\draw[-latex] (N) -- (Nb)node[right]{$\aphi$};
+\draw[gray,name path={xx}] (zIntersect)node[right]{$B$}--++(2,0,0)coordinate(xxEnd);
+\path[name path={xxInterseptor}] (xInt)--++(0,0,2);
+\draw[gray, name intersections={of=xxInterseptor and xx, by={xxInt}}] (xInt)node[below]{$D$}--(xxInt)node[left]{$A$};
+\draw[](xxInt)--(groundIntersect);
+\draw[gray,dashed](0,0,0)--(groundIntersect);
 %
-
+\draw[gray,thick,-latex] (zIntersect)--($(zIntersect)!0.5cm!(N)$);
+\draw[gray,thick,-latex] (zIntersect)--($(zIntersect)!0.5cm!(xxEnd)$);
+\draw[-latex](origin)--++(0.5,0,0);
+%
+\RightAngle{(groundIntersect)}{(xInt)}{(origin)};
+\RightAngle{(xxInt)}{(xInt)}{(xEnd)};
+\RightAngle{(xxEnd)}{(xxInt)}{(xInt)};
+\RightAngle{(zIntersect)}{(xxInt)}{(groundIntersect)};
+\RightAngle{(origin)}{(N)}{(Nb)};
+%
+\node at (2,2,0){ب};
+%
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
