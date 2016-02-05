@@ -7,6 +7,9 @@
 *.ind
 *.toc
 *.out
+*.fls
+*.synctex
+.sconsign.dblite
 *~
 "Solutions of engineering electromagnetics hayt (2001)_files/*"
 metadata.txt
