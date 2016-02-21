@@ -12,7 +12,7 @@
 \input{./tex/myEMTvectors.tex}
 %\input{./tex/myElectronicsVariablesBetter.tex}         %these are all tested. to use at the very end when book is finished
 
-\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}}			%paths to figures
+%\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}}			%paths to figures
 
 
 \includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtQuestions}
@@ -43,9 +43,12 @@
 \frontmatter                          %just added instead of \pagenumbering{roman}
 %%\pagenumbering{roman}
 
-\maketitle
+{
+   \let\cleardoublepage\clearpage       % Redefine it locally to remove extra page after title and Toc
+   \maketitle
 
-\tableofcontents
+   \tableofcontents
+}
 \pagestyle{empty}
 %\include{./tex/emtPreface}
 %\include{./tex/prefaceFirstBook}
