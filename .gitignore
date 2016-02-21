@@ -10,6 +10,7 @@
 *.fls
 *.synctex
 .sconsign.dblite
+*.auxlock
 *~
 "Solutions of engineering electromagnetics hayt (2001)_files/*"
 metadata.txt
