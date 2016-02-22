@@ -9,6 +9,7 @@
 *.out
 *.fls
 *.synctex
+*.nav
 .sconsign.dblite
 *.auxlock
 *~
