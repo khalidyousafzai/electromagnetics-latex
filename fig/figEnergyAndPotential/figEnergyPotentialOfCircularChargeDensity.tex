@@ -1,0 +1,52 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+%\setmainlanguage{english}
+%\setotherlanguages{arabic}
+\setmainlanguage{arabic}
+\setotherlanguages{english}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\rr}{2}
+\pgfmathsetmacro{\kphiS}{45}
+\pgfmathsetmacro{\kphiN}{\kphiS+1}
+\pgfmathsetmacro{\kphiE}{\kphiS+20}
+\pgfmathsetmacro{\kphiM}{(\kphiS+\kphiE)/2}
+
+
+\begin{document}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\coordinate (N) at ({\rr*cos(\kphiM)},{\rr*sin(\kphiM)},{0}); 
+\coordinate (Ns) at ({\rr*cos(\kphiS)},{\rr*sin(\kphiS)},{0}); 
+\coordinate (Ne) at ({\rr*cos(\kphiE)},{\rr*sin(\kphiE)},{0}); 
+
+%axis
+\draw[gray](0,0,0)--(2.5,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--(0,2.5,0)node[below]{$y$};
+\draw[gray](0,0,0)--(0,0,2)node[left]{};
+%ring
+\draw[gray] (\rr,0,0) \foreach \kphi in {0,1,...,360}{ --({\rr*cos(\kphi)},{\rr*sin(\kphi)},0)};
+%differential distance
+\draw[thick] ({\rr*cos(\kphiS)},{\rr*sin(\kphiS)},0) \foreach \kphi in {\kphiS,\kphiN,...,\kphiE}{ --({\rr*cos(\kphi)},{\rr*sin(\kphi)},0)};
+\draw[-latex] (0,0,0)--(N)node[pos=0.5,fill=white]{$\kvec{r}'$};
+\draw[gray] (N) --(0,0,1.5)coordinate[pos=0.6](distance);
+\draw[-latex](0,0,0)--(0,0,1.5)node[pos=0.3,fill=white]{$\kvec{r}$}node[left]{$(0,0,z)$};
+\draw[gray,-stealth] (0.3,0,0) to [out=-30,in=-135] (\kphiM:0.3);
+\draw node[gray] at (27:0.9){$\phi$};
+\draw (N)node[below right]{$\begin{aligned}\dif L'&=b \dif \phi\\ \dif Q'&=\rho_L b \dif \phi \end{aligned}$};
+\draw[gray](0,0,0)--({\rr*cos(-30)},{\rr*sin(-30)},0)node[pos=0.5,fill=white]{$b$};
+%text
+\draw[-stealth,gray] (distance)++(0,0.05,0) to [out=0,in=180] ++(0,0.6,0.8)node[right,black]{$\abs{\kvec{r}-\kvec{r}'}=\sqrt{b^2+z^2}$};
+\node at (2.8,1,0){الف};
+  \end{tikzpicture}%
+  \end{document}
