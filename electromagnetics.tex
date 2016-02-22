@@ -59,7 +59,13 @@
 \renewcommand*{\chaptername}{باب}
 %%\pagenumbering{arabic}   %instead of this
 
-\pagestyle{headings}
+% Use fancyhdr to set up the header for each page
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}      % Remove line underneath header
+\fancyhf{}
+\fancyhead[LE]{\leftmark}               % On Even pages show the chapter number and name on the LHS
+\fancyhead[RO]{\rightmark}              % On Odd pages show the section number and name on the RHS
+\fancyhead[RE,LO]{\thepage}             % On RHS of even and LHS of odd pages show the current page number
 
 
 \include{./tex/emtVectors}
