@@ -1,19 +1,18 @@
-%\documentclass{standalone}
-%%vectorBaseAtPointOfAction
-%\usepackage{fontspec}
-%\usepackage{polyglossia}
-%\usepackage{tikz}
-%\usepackage{ifthen}    
-%\usepackage{tikz-3dplot}
-%%
-%\setmainlanguage{english}
-%\setotherlanguages{arabic}
-%\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
-%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
-%%
-%\begin{document}
-%\begin{urdufont}
-\tikzsetnextfilename{figVectors/vectorBaseAtPointOfAction}
+\documentclass{standalone}
+%vectorBaseAtPointOfAction
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}
+\usepackage{tikz-3dplot}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\begin{document}
+\begin{urdufont}
 \begin{tikzpicture}
 %\draw[help lines, thick] (0,0) grid (10,3);
 \draw[<->] (0,3)--(0,0)--(5,0);
@@ -29,6 +28,5 @@
 \foreach \y in {1,2}
 \draw (1pt,\y) --(-1pt,\y) node [anchor=east] {$\y$};
 \end{tikzpicture}
-%\end{urdufont}
-%\end{document}
-
+\end{urdufont}
+\end{document}
