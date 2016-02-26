@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newcommand{\RightAngle}[4][5pt]{%
+        \draw[gray] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)
+        --($#3!#1!#4$) ;        }
+
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\draw[gray] (0,0,0)--(2,0,0)node[left] {$x$};
+\draw[gray] (0,0,0)--(0,2,0)node[below] {$y$};
+\draw[gray] (0,0,-1)--(0,0,2)node[left] {$z$};
+%
+\draw (0,0,0)node[left]{$m$}coordinate(m)--(0,1.5,2)coordinate(N)node[right]{$N(r,\theta,\phi)$}node[pos=0.6,fill=white]{$r$}coordinate[pos=0.1](kangle);
+\draw[-latex] (0,0,0.8)node[left]{$a$}coordinate(a)--(N)node[pos=0.5,above left]{$\kvec{R}_1$};
+\draw [-latex](0,0,-0.8)node[left]{$b$}coordinate(b)--(N)node[pos=0.6,below right]{$\kvec{R}_2$};
+\draw[gray] (kangle) to [out=135,in=-10] (0,0,0.3);
+\draw[gray] (kangle)node[above]{$\theta$}; 
+\draw[gray] (a)--($(m)!(a)!(N)$)node[shift={(-45:0.1cm)}]{$c$}coordinate(c);
+\RightAngle{(a)}{(c)}{(N)};
+%
+\draw[gray](a)++(0,-0.6,0)--++(0,-0.6,0)coordinate[pos=0.5](ttop);
+\draw[gray](m)++(0,-0.6,0)--++(0,-0.6,0)coordinate[pos=0.5](bbottom);
+\draw[gray,stealth-stealth](ttop)--(bbottom)node[pos=0.5,left]{$\frac{d}{2}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
