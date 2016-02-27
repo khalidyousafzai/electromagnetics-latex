@@ -1,0 +1,70 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}[
+    tangent/.style={
+        decoration={
+            markings,% switch on markings
+            mark=
+                at position #1
+                with
+                {
+                    \coordinate (tangent point-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,0pt);
+                    \coordinate (tangent unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (1,0pt);
+                    \coordinate (tangent orthogonal unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,1);
+                }
+        },
+        postaction=decorate
+    },
+    use tangent/.style={
+        shift=(tangent point-#1),
+        x=(tangent unit vector-#1),
+        y=(tangent orthogonal unit vector-#1)
+    },
+    use tangent/.default=1
+]
+\pgfmathsetmacro{\rr}{2.5}
+\pgfmathsetmacro{\aa}{30}
+\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
+\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
+%grid
+%\draw[gray,thick] (0,0) grid (3.5,3);
+%\draw[gray,xstep=0.1,ystep=0.1] (0,0) grid (3.5,3);
+%axis
+\draw[gray](0,0)--(3.5,0)node[below]{$x$};
+\draw[gray](0,0)--(0,3)node[left]{$y$};
+%
+\draw[-latex] (0.5,0.5) to [out=40,in=160] ++(3,0.5);
+\draw[-latex,tangent=0.2,tangent=0.4] (0.5,1) to [out=45,in=170] ++(3,1);
+\draw[-latex] (0.5,1.5) to [out=50,in=180] ++(3,1.5);
+%
+\draw [-latex,thick, use tangent] (0,0)coordinate(a) -- (1.5,0)coordinate[pos=0.3](Ea)coordinate(b)node[above]{$\kvec{E}$};
+\path[name path=kh](a)--++(3,0);
+\path[name path=kv](b)--++(0,-1.5);
+\draw[-latex,name intersections={of=kh and kv,}] (a)--(intersection-1)coordinate(aa)node[right]{$E_x$};
+\path[name path=kkh](b)--++(-3,0);
+\path[name path=kkv](a)--++(0,1.5);
+\draw[-latex,name intersections={of=kkh and kkv,}] (a)--(intersection-1)coordinate(bb)node[above]{$E_y$};
+%
+\draw[gray,use tangent=2](0,0)--($(a)!(0,0)!(aa)$)node[right,pos=0.35]{$\Delta y$};
+\draw[gray] (a)node[xshift=0.2cm,yshift=-0.2cm]{$\Delta x $};
+%
+\draw (1,-.5)node{الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
