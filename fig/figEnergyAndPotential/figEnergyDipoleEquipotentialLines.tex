@@ -2,9 +2,10 @@
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \usepackage{bm}	
+\usepackage{siunitx}	
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
-\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
 
 \input{../../tex/myEMTvectors.tex}
 
@@ -12,28 +13,58 @@
 \setotherlanguages{arabic}
 \newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
 \newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
-
+%
+\tikzset{
+  set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+  set arrow inside={end/.initial=stealth, opt/.initial=},
+  /pgf/decoration/Mark/.style={
+    mark/.expanded=at position #1 with
+    {
+      \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+    }
+  },
+  arrow inside/.style 2 args={
+    set arrow inside={#1},
+    postaction={
+      decorate,decoration={
+        markings,Mark/.list={#2}
+      }
+    }
+  },
+}
 \begin{document}
 \begin{urdufont}
 %
 \begin{tikzpicture}
-\pgfmathsetmacro{\rr}{2.5}
-\pgfmathsetmacro{\aa}{30}
-\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
-\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
 %grid
-%\draw[gray] (0,0,0) grid (0,3,3);
-%axis
-%\draw[gray](-2.5,0)--(2.5,0);
-%\draw[gray](0,-2)--(0,2);
+%\draw[gray,thick] (-3,-3) grid (3,3);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (-3,-3) grid (3,3);
 %
-\draw (90:2.236)
-\foreach \i in {10}{
-%\pgfmathsetmacro\result{sqrt(cos(10))}
---(90-\i:1)
-};
-\pgfmathsetmacro{\r}{sqrt(1/0.2*cos(0))}
-\draw (2,3)node{\r};
+\draw[gray!60,thin](-3,0)--(3,0)node[below]{$y$};
+\draw[gray!60,thin](0,-3)--(0,3)node[left]{$z$};
+%equipotential surfaces
+\foreach \v in {0.2,0.4,0.6,0.8}{
+\draw [gray,thick,domain=-1*pi:1*pi, samples=200]
+  plot (xy polar cs:angle=90-\x r, radius={sqrt(abs(cos(\x r)/\v))});};
+%streamlines (drawn half at a time to put correct arrows along the streamlines)
+\foreach \M in {1,1.5,2,2.5}{
+\draw [domain=0:-1*pi, samples=200]
+  plot (xy polar cs:angle=90-\x r, radius={\M*(sin(\x r))^2})[arrow inside={}{0.4}];};
+%streamlines
+\foreach \M in {1,1.5,2,2.5}{
+\draw [domain=0:1*pi, samples=200]
+  plot (xy polar cs:angle=90-\x r, radius={\M*(sin(\x r))^2})[arrow inside={}{0.4}];};
+%
+\draw (0,2.4)node[gray]{$\SI{0.2}{\volt}$};
+\draw (0,1.8)node[gray]{$\SI{0.4}{\volt}$};
+\draw (0,0.8)node[gray]{$\SI{0.8}{\volt}$};
+\draw (-0.1,-2.4)node[gray]{$\SI{-0.2}{\volt}$};
+\draw (-0.1,-1.8)node[gray]{$\SI{-0.4}{\volt}$};
+\draw (-0.1,-0.8)node[gray]{$\SI{-0.8}{\volt}$};
+%
+\draw[gray,stealth-] (1.05,1.85) to [out=45,in=180] ++(0.5,0.5)node[right]{\RL{ہم قوہ سطح}};
+\draw[stealth-] (-2.4,0.4) to [out=135,in=0] ++(-0.5,0.5)node[left]{\RL{سمت بہاو خط}};
+
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
