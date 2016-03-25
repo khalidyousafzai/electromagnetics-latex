@@ -39,13 +39,17 @@
 %grid
 %\draw[gray,thick] (-3,-3) grid (3,3);
 %\draw[gray,thin,xstep=0.1,ystep=0.1] (-3,-3) grid (3,3);
-%
-\draw[gray!60,thin](-3,0)--(3,0)node[below]{$y$};
+%axis 
 \draw[gray!60,thin](0,-3)--(0,3)node[left]{$z$};
 %equipotential surfaces
 \foreach \v in {0.2,0.4,0.6,0.8}{
 \draw [gray,thick,domain=-1*pi:1*pi, samples=200]
   plot (xy polar cs:angle=90-\x r, radius={sqrt(abs(cos(\x r)/\v))});};
+%remove the near field as is invalid
+\fill [white] (-3,-0.1) rectangle (3,0.1);
+%infinite zero plane
+\draw[gray,thick](-3,0)node[left]{$\SI{0}{\volt}$}--(3,0)node[right]{$\SI{0}{\volt}$};
+\draw[gray,stealth-] (2.7,0) to [out=60,in=180]++(0.5,0.75)node[right]{\RL{برقی زمین}};
 %streamlines (drawn half at a time to put correct arrows along the streamlines)
 \foreach \M in {1,1.5,2,2.5}{
 \draw [domain=0:-1*pi, samples=200]
