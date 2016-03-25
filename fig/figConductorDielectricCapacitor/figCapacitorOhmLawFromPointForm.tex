@@ -1,0 +1,37 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{commath}
+
+ \pgfmathsetmacro{\delX}{0.7}            %start points, lower left corner
+ \pgfmathsetmacro{\delL}{4}
+ \pgfmathsetmacro{\delZ}{1}
+
+
+\begin{document}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0)},z={(0cm,1cm)}]
+%axis. right side is at origin
+\draw[gray] (0,-\delL,0)--++(1.5,0,0)node[left]{$x$};
+\draw[gray] (0,-\delL,0)--++(0,0,1.5)node[left]{$z$};
+
+%back edge
+\draw[gray] (0,-\delL,0)--++(0,\delL,0);
+%cross sectional area
+\shade[gray] (0,0,0)--++(\delX,0,0)--++(0,0,\delZ)--++(-\delX,0,0)--cycle;
+\draw [gray] (\delX/3,0,2*\delZ/3) to [out=0,in=180] ++(0,1,1) node[right]{$S$};
+%right face, outline, front top edge and hidden edge
+\draw (0,0,0) --++(\delX,0,0)--++(0,0,\delZ)--++(-\delX,0,0)--cycle;
+\draw (\delX,0,0)--++(0,-\delL,0)--++(0,0,\delZ)coordinate(mL)--++(-\delX,0,0)--++(0,\delL,0);
+\draw (mL)--++(0,\delL,0);
+
+\draw[gray] (0,-\delL,0)--++(\delX,0,0);
+\draw[gray] (0,-\delL,0)--++(0,0,\delZ);
+
+%text and vectors
+\draw [latex-] (\delX,0,-0.3)--++(0,-\delL,0)node[pos=0.5,fill=white]{$L$};
+\draw [latex-] (\delX/2,0,\delZ/2)--++(0,1,0)node[right]{$\boldsymbol{J}$};
+\draw [latex-] (0,-2.5,1*\delZ/3) --++(0,1.5,0)node[pos=0.5,fill=white]{$\boldsymbol{E}$};
+\end{tikzpicture}%
+
+\end{document}

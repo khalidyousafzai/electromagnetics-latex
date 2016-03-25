@@ -2,21 +2,23 @@
 
 
 \usepackage{./tex/khalidUrduBooksEMT}                     %my sty file
-%\usepackage{animate}
+\usepackage{amsmath}
 
-\sisetup{math-micro=\text{µ},text-micro=µ}           %siunitx stopped showing micro symbol and had to put this line. now the size of micro is smaller
-
+\sisetup{math-micro=\textup{µ},text-micro=µ,math-ohm  =\upOmega}   %with mathpazo this is needed else must not be here. now size of micro is smaller
 
 \input{./tex/myUrduCommandsEMT.tex}                  %turning latex into urdu
 \input{./tex/myUrduGreek.tex}
 \input{./tex/myEMTvectors.tex}
 %\input{./tex/myElectronicsVariablesBetter.tex}         %these are all tested. to use at the very end when book is finished
 
-\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}}			%paths to figures
+\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}
+{./fig/figConductorDielectricCapacitor/}}		%paths to figures
 
 
-\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor}
-%\includeonly{./tex/emtVectors}
+
+
+%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtDataTables}
+\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtConductorDielectricCapacitor,./tex/emtDataTables}
 
 
 \author{
@@ -37,6 +39,7 @@
 %==========
 \begin{document}
 \begin{urdufont}
+
 
 \renewcommand*{\contentsname}{عنوان}    %this command has to be placed right here
 
@@ -65,7 +68,7 @@
 \include{./tex/emtEnergyAndPotential}
 \include{./tex/emtQuestions}
 \include{./tex/emtConductorDielectricCapacitor}
-
+\include{./tex/emtDataTables}
 
 \backmatter
 
