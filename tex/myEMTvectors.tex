@@ -26,3 +26,8 @@
 %
 \newcommand*{\Er}{\ensuremath{{\boldsymbol{E}}_r}}
 \newcommand*{\Etheta}{\ensuremath{{\boldsymbol{E}}_{\theta}}}
+%===========================
+\newcommand{\RightAngle}[4][5pt]{%
+        \draw[gray] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)
+        --($#3!#1!#4$) ;        }

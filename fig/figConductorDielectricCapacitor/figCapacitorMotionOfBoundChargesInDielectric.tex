@@ -1,0 +1,51 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\input{../../tex/myEMTvectors}
+
+\pgfmathsetmacro{\kang}{45}
+\pgfmathsetmacro{\klen}{2}
+\pgfmathsetmacro{\kx}{\klen*sin(\kang)}
+\pgfmathsetmacro{\ky}{\klen*cos(\kang)}
+\begin{document}
+
+\begin{tikzpicture}
+%surface
+\draw[thick] (-1,0) --++(2,0);
+\draw[gray](-1,0)--++(-2,0)node[left]{$a$};
+\draw[gray](1,0)--++(3.5,0)node[right]{$a'$};
+\draw[-latex] (0,0)--++(0,1)node[left]{$\Delta \kvec{S}$};
+%dashed rectangle
+\draw[gray,dashed] (-3,\ky/2)--++(6,0);
+\draw[gray,dashed] (-3,-\ky/2)--++(6,0);
+\draw[gray,stealth-stealth](3,\ky/2)++(-0.3,0)--++(0,-\ky/2)node[pos=0.5,right]{$\frac{d\cos \theta}{2}$};
+\draw[gray,stealth-stealth](3,-\ky/2)++(-0.3,0)--++(0,\ky/2)node[pos=0.5,right]{$\frac{d\cos \theta}{2}$};
+%charges
+\path (-2,-1)--++(-180+\kang:\klen/2)coordinate(kbot);
+\path[-latex](-2,-1)--++(\kang:\klen/2)coordinate (ktop);
+\draw[gray,stealth-stealth] (ktop)++(-90+\kang:0.2)--++(-180+\kang:\klen)node[pos=0.5,fill=white]{$d$};
+\draw[fill] (-2,-1)  circle (1 pt);
+\draw[] (-2,-1)--++(-180+\kang:\klen/2);
+\draw[-latex](-2,-1)--++(\kang:\klen/2);
+\draw[gray] (ktop)--++(-\kx,0)coordinate(ktopL)--(kbot);
+\path (kbot)++(90:0.3)coordinate(ang);
+\draw[gray] (kbot)++(\kang:0.3) to [out=90+\kang,in=0] (ang);
+\draw[gray] (kbot)++(90-\kang/2:0.5) node{$\theta$};
+\draw[gray] (kbot)++(0,\ky/2)++(-0.2,0) node[rotate=90]{$d \cos \theta$};
+\RightAngle{(kbot)}{(ktopL)}{(ktop)};
+%charge mid
+\draw (0.7,0.5)--++(-180+\kang:\klen/2);
+\draw[-latex](0.7,0.5)--++(\kang:\klen/2);
+\draw[fill] (0.7,0.5)  circle (1 pt);
+%charge right
+\draw (1,-0.5)--++(-180+\kang:\klen/2);
+\draw[-latex](1,-0.5)--++(\kang:\klen/2);
+\draw[fill] (1,-0.5)  circle (1 pt);
+%charge upper left
+\draw (-1.5,0.9)--++(-180+\kang:\klen/2);
+\draw[-latex](-1.5,0.9)--++(\kang:\klen/2);
+\draw[fill] (-1.5,0.9)  circle (1 pt);
+\end{tikzpicture}%
+
+\end{document}
