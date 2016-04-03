@@ -1,0 +1,56 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+%
+
+
+\pgfmathsetmacro{\kepsilona}{2.5}
+\pgfmathsetmacro{\kepsilonb}{1.2}
+ \pgfmathsetmacro{\kanga}{70}
+ \pgfmathsetmacro{\kangb}{atan(\kepsilonb/\kepsilona*tan(\kanga))}
+ \pgfmathsetmacro{\klena}{2}
+ \pgfmathsetmacro{\klenb}{\klena*sqrt((cos (\kanga))^2+(\kepsilonb/\kepsilona)^2 *(sin(\kanga))^2)}
+ \pgfmathsetmacro{\xa}{\klena*sin(\kanga)}   
+ \pgfmathsetmacro{\ya}{\klena*cos(\kanga)}     
+ \pgfmathsetmacro{\xb}{\klenb*sin(\kangb)}    
+ \pgfmathsetmacro{\yb}{\klenb*cos(\kangb)} 
+
+\begin{document}
+\begin{tikzpicture}
+%surface
+\draw (0,0) to [out=180,in=10]++(-1.5,-0.2);
+\draw (0,0) to [out=0,in=170]++(1.5,-0.2);
+%field above
+\draw[-latex] (0,0)--++(90-\kanga:\klena)coordinate(ktip1)node[right]{$\kvec{D}_1$};
+\draw[-latex](0,0)--(\xa,0)coordinate(ktip2)node[right]{$\kvec{D}_{m1}$};
+\draw[-latex](0,0)--++(0,\ya)coordinate(ktip3)node[left]{$\kvec{D}_{n1}$};
+\draw[gray](ktip2)--(ktip1)--(ktip3);
+%field below
+\draw[latex-](0,0)--++(-90-\kangb:\klenb)coordinate(ktip4)node[pos=0.8,shift={(135:0.3)}]{$\kvec{D}_2$};
+\draw[-latex](ktip4)--++(\xb,0)coordinate(ktip5)node[below right]{$\kvec{D}_{m2}$};
+\draw[](ktip5)--(0,0)node[pos=0.5,right]{$\kvec{D}_{n2}$};
+%angles
+\draw[] ([shift=(90-\kanga:0.3)]0,0) arc (90-\kanga:90:0.3);
+\draw (55:0.5)node{$\theta_1$};
+\draw[] ([shift=(-90:0.3)]0,0) arc (-90:-90-\kangb:0.3);
+\draw (-115:0.5)node{$\theta_2$};
+%
+\draw (170:1.5)node{$\epsilon_1$};
+\draw (-25:2)node{$\epsilon_2$};
+\end{tikzpicture}%
+
+\end{document}

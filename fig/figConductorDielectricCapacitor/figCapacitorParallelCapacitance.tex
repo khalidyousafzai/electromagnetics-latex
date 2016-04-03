@@ -1,0 +1,41 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+%
+
+
+
+
+ \pgfmathsetmacro{\delX}{0.7}            %start points, lower left corner
+ \pgfmathsetmacro{\delL}{4}
+ \pgfmathsetmacro{\delZ}{0.7}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-2,-2) grid (3,2);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (-2,-2) grid (3,2);
+%
+\draw(0,1)node[below,xshift=0.7cm]{$+\rho_S$}node[left]{\RL{موصل سطح}}--++(3,0)node[right]{$z=d$};
+\draw(0,-1)node[above,xshift=0.7cm]{$-\rho_S$}node[left]{\RL{موصل سطح}}--++(3,0)node[right]{$z=0$};
+\draw[-latex](2,1)--++(0,-2)node[pos=0.5,fill=white]{$\kvec{E}$};
+%
+\draw (0,0)node{$\epsilon$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
