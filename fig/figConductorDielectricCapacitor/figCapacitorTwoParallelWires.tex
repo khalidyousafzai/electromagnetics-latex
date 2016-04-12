@@ -26,23 +26,23 @@
 
 \begin{document}
 \begin{urdufont}
-\begin{tikzpicture}
-%left and right
-\fill[gray!40] (0,1)--++(0,-2)--++(2,0)--++(0,2)--cycle;
-\fill[gray!80] (2,1)--++(0,-2)--++(1,0)--++(0,2)--cycle;
-%conductors
-\draw[thick](0,-1)--++(3,0);
-\draw[thick](0,+1)--++(3,0);
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%axis
+\draw[gray](0,0,0)--(2.5,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--(0,4,0)node[right]{$y$};
+\draw[gray](0,0,0)--(0,0,1.5)node[left]{$z$};
+%\draw[gray,dashed](0,0,0)--(-1.5,0,0);
+\draw[gray,dashed](0,0,0)--(0,-2,0);
+%wires
+\draw[thick] (0,-1,-1.5)node[below]{$-\rho_L$}--++(0,0,3);
+\draw[thick] (0,1,-1.5)node[below]{$+\rho_L$}--++(0,0,3);
+%vectors
+\draw[fill] (2,4.5,0) circle (1pt);
+\draw[-latex](2,4.5,0)--(0,1,0)node[pos=0.3,yshift=0.3cm]{$R_1$};
+\draw[-latex](2,4.5,0)--(0,-1,0)node[pos=0.3,yshift=-0.3cm]{$R_2$};
 %text
-\draw (1,1)node[above]{$S_1$};
-\draw (2.5,1)node[above]{$S_2$};
-\draw[stealth-stealth] (0,1)++(-0.3,0)--++(0,-2)node[pos=0.5,fill=white]{$d$};
-\draw (1,0)node{$\epsilon_1$};
-\draw (2.5,0)node{$\epsilon_2$};
-%
-\draw (-0.5,0.5)node[left]{$C_1=\frac{d}{\epsilon_1 S_1}$};
-\draw (3.5,0.5)node[right]{$C_2=\frac{d}{\epsilon_2 S_2}$};
-\draw(3.5,-0.5)node[right]{$C=C_1+C_2$};
+\draw (0,1,0)node[xshift=0.7cm,yshift=0.3cm]{$(0,a,0)$};
+\draw (0,-1,0)node[xshift=-0.75cm,yshift=-0.3cm]{$(0,-a,0)$};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
