@@ -29,8 +29,12 @@
 \begin{tikzpicture}
 %conductors
 \draw[thick] (0,-1.5)--(0,1.5);
-\draw[gray,stealth-stealth] (0,0)--(1.5,0)node[pos=0.25,fill=white]{$a$};
+\draw[gray] (1.5,0)++(0,-0.2)--++(0,-0.3)coordinate[pos=0.4](kwire);
+\draw[gray,stealth-stealth] (kwire)--++(-1.5,0)node[pos=0.75,fill=white]{$a$};
 \draw[fill] (1.5,0) circle (1pt);
+
+\draw[-latex,thick,gray](1cm,0)--++(-0.7,0)node[above]{$\kvec{D}_1$};
+\draw[-latex,thick,gray](3cm,0)--++(0.4,0)node[right]{$\kvec{D}_2$};
 %cross
 \draw (2,0)--++(45:0.1cm);
 \draw (2,0)--++(-135:0.1cm);
@@ -44,8 +48,10 @@
 %dashed circle
 \draw[gray,dashed] (3,0) circle (2.3cm);
 \draw[gray,stealth-] (3,0)++(30:2.3) to [out=0,in=180]++(1,-0.5)node[right]{\RL{پچیس وولٹ کی ہم قوہ سطح}};
+%vectors
+
 %text
-\draw[gray] (2,0)++(0,-0.2)--++(0,-0.4)coordinate[pos=0.5](kmid);
+\draw[gray] (2,0)++(0,-0.2)--++(0,-0.6)coordinate[pos=0.85](kmid);
 \draw[stealth-stealth] (kmid)--++(-2,0)node[pos=0.75,fill=white]{$h$};
 \draw[stealth-] (0,1.4) to [out=180,in=0]++(-1,-0.5)node[left]{\RL{برقی زمین}};
 \end{tikzpicture}%
