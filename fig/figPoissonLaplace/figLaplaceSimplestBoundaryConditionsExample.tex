@@ -1,0 +1,63 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{siunitx}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\tikzset{
+  set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+  set arrow inside={end/.initial=stealth, opt/.initial=},
+  /pgf/decoration/Mark/.style={
+    mark/.expanded=at position #1 with
+    {
+      \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+    }
+  },
+  arrow inside/.style 2 args={
+    set arrow inside={#1},
+    postaction={
+      decorate,decoration={
+        markings,Mark/.list={#2}
+      }
+    }
+  },
+}
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-3,-3) grid (3,3);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (-3,-3) grid (3,3);
+%
+\pgfmathsetmacro{\X}{3}
+\pgfmathsetmacro{\Y}{1.5}
+\pgfmathsetmacro{\delXY}{0.3}
+%
+\draw[fill=gray] (0,0)--++(\X,0)--++(\delXY,-\delXY)coordinate(LR)--++(-\X-2*\delXY,0)--++(0,\Y+2*\delXY)--++(\X+2*\delXY,0)coordinate(UR)--++(-\delXY,-\delXY)--++(-\X,0)--++(0,-\Y);
+\draw[fill=gray] (\X,0)++(0,\delXY/4)--++(0,\Y-\delXY/2)--++(\delXY,\delXY)--++(0,-\Y-3/2*\delXY)--++(-\delXY,\delXY);
+\draw (\X,-1.5*\delXY)--++(0,-0.5)node[below]{$d$};
+\draw (-1.5*\delXY,\Y)--++(-0.5,0)node[left]{$b$};
+%text
+\draw (-\delXY,\Y/2)node[left]{$V=0$};
+\draw (\X+\delXY,\Y/2)node[right]{$V=V_0$};
+\draw (\X/2,\Y+\delXY)node[above]{$V=0$};
+\draw (\X/2,-\delXY)node[below]{$V=0$};
+\draw (LR)++(0.2,0.2) node[below right]{\RL{غیر موصل درز}};
+\draw (UR)++(0.2,0.2) node[right]{\RL{غیر موصل درز}};
+%axis 
+\draw (\X+1.5*\delXY,0)--++(2,0)node[right]{$x$};
+\draw(0,\Y+1.5*\delXY)--++(0,0.5)node[left]{$y$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
