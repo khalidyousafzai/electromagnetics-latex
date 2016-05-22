@@ -350,17 +350,17 @@ H_{y12}\overset{.}{=}H_{y0}+\frac{\partial H_y}{\partial x}\frac{\Delta x}{2}
 ہے جہاں \عددیء{\kvec{H}} کی گردش حاصل کی گئی ہے۔اس مساوات میں \عددیء{\Delta S_n} وہ چھوٹا سیدھا رقبہ ہے جس کے گرد \عددیء{\kvec{H}} کا بند تکمل حاصل کیا گیا ہے۔گردش از خود سیدھے  سطح کے عمودی ہو گا۔ رقبہ \عددیء{\Delta S_n} لکھتے ہوئے زیر نوشت میں \عددیء{n} اسی حقیقت کی یاد دہانی کراتا ہے کہ رقبے اور گردش کے درمیان نوے درجے کا زاویہ پایا جاتا ہے۔
 
 کارتیسی محدد میں گردش \عددیء{\kvec{H}}  کے \عددیء{x}، \عددیء{y} اور \عددیء{z} اجزاء مساوات \حوالہ{مساوات_مقناطیسی_گردش_ب}، مساوات \حوالہ{مساوات_مقناطیسی_گردش_پ} اور مساوات \حوالہ{مساوات_مقناطیسی_گردش_الف} بالترتیب دیتے ہیں لہٰذا
-\begin{align}
-\kvec{H} \textrm{گردش}=\left(\frac{\partial H_z}{\partial y}-\frac{\partial H_y}{\partial z} \right)\ax+\left( \frac{\partial H_x}{\partial z}-\frac{\partial H_z}{\partial x}\right)\ay+\left(\frac{\partial H_y}{\partial x}-\frac{\partial H_x}{\partial y} \right)\az
+\begin{align}\label{مساوات_مقناطیسی_کارتیسی_گردش_الف}
+\kvec{H} \textrm{گردش}=\left(\frac{\partial H_z}{\partial y}-\frac{\partial H_y}{\partial z} \right)\ax+\left( \frac{\partial H_x}{\partial z}-\frac{\partial H_z}{\partial x}\right)\ay+\left(\frac{\partial H_y}{\partial x}-\frac{\partial H_x}{\partial y} \right)\az=\kvec{J}
 \end{align}
-لکھا جا سکتا ہے۔اس مساوات کو قالب کے  \اصطلاح{حتمی قیمت}\فرہنگ{قالب!حتمی قیمت}\حاشیہب{determinant}\فرہنگ{determinant} کی شکل میں
+لکھا جا سکتا ہے۔اس مساوات  کو قالب کے  \اصطلاح{حتمی قیمت}\فرہنگ{قالب!حتمی قیمت}\حاشیہب{determinant}\فرہنگ{determinant} کی شکل میں
 \begin{align}
 \kvec{H} \textrm{گردش}=
 \begin{vmatrix}
 \ax & \ay & \az\\
 \frac{\partial }{\partial x}&\frac{\partial }{\partial y}&\frac{\partial }{\partial z}\\
 H_x & H_y & H_z
-\end{vmatrix}
+\end{vmatrix}=\kvec{J}
 \end{align}
 لکھا جا سکتا ہے۔صفحہ \حوالہصفحہ{مساوات-گاؤس_نیبلا} پر مساوات \حوالہ{مساوات-گاؤس_نیبلا} نیبلا \عددیء{\nabla} کے عمل کو بیان کرتا ہے جسے یہاں دوبارہ پیش کرتے ہیں
 \begin{align*}
@@ -371,8 +371,27 @@ H_x & H_y & H_z
 \begin{align}
 \kvec{H} \textrm{گردش}=\nabla \times \kvec{H}
 \end{align}
-لکھی جا سکتی ہے۔
+لکھی جا سکتی ہے۔آپ جلد دیکھیں گے کہ صرف کارتیسی محدد میں ہی گردش \عددیء{\nabla} اور \عددیء{\kvec{H}} کے صلیبی ضرب سے حاصل ہوتا ہے۔اس کے باوجود کسی بھی محدد میں گردش کو \عددیء{\nabla \times \kvec{H}} سے ہی ظاہر کیا جاتا ہے۔
 
+یوں  \اصطلاح{ایمپیئر کے دوری}\فرہنگ{ایمپیئر!دوری قانون نقطہ شکل} قانون کی نقطہ شکل
+\begin{align}
+\nabla \times \kvec{H}=\kvec{J}
+\end{align}
+لکھی جا سکتی ہے جو  میکس ویل\فرہنگ{میکس ویل مساوات}\فرہنگ{Maxwell equation} کی دوسری مساوات ہے جو وقت کے ساتھ تبدیل نہ ہوتے میدان کے لئے درست ہے۔یہاں میکس ویل کے تیسری مساوات کا بھی ذکر کر لیتے ہیں جو \عددیء{\oint \kvec{E} \cdot \dif \kvec{L}} کی نقطہ شکل
+\begin{align}
+\nabla \times \kvec{E}=0
+\end{align}
+ہے۔ میکس ویل کے چھوتی مساوات پر اس کتاب میں آگے غور کیا جائے گا۔ 
+
+%=================
+
+\ابتدا{مشق}
+گردش یعنی \عددیء{\nabla \times \kvec{H}} کو
+\begin{align*}
+\left(\frac{\partial }{\partial x}\ax+\frac{\partial }{\partial y}\ay+\frac{\partial }{\partial z}\az \right) \times \left(H_x \ax+H_y \ay+H_z \az \right)
+\end{align*}
+لکھ کر حل کرتے ہوئے مساوات \حوالہ{مساوات_مقناطیسی_کارتیسی_گردش_الف} حاصل کریں۔
+\انتہا{مشق}
 %==================
 \جزوحصہ{نلکی محدد میں گردش}
 نلکی محدد میں \عددیء{J_z} کثافت برقی رو کے عمودی سطح پر چھوٹا رقبہ لیتے ہیں جسے شکل \حوالہ{شکل_مقناطیسی_نلکی_شدت_رقبہ} میں دکھایا گیا ہے۔ایسے رقبے کے اطراف \عددیء{\Delta \rho} اور \عددیء{\rho \Delta \phi} ہوں گے جبکہ اس سطح پر \عددیء{z} کی قیمت تبدیل نہیں ہو گی۔اس رقبے کے وسط میں
@@ -609,6 +628,8 @@ H_{\phi 41}\overset{.}{=}H_{\rho 0}-\frac{\partial H_\rho}{\partial \phi}\frac{\
 \begin{align}
 \nabla \times \kvec{H}=\left[\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} -\frac{\partial H_{\phi}}{\partial z}\right]\arho+\left(\frac{\partial H_\rho}{\partial z}-\frac{\partial H_z}{\partial \rho} \right)\aphi+\left[\frac{1}{\rho}\frac{\partial (H_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}\right]\az
 \end{align}
+
+یہاں ایک بار پھر یہ بتلانا ضروری ہے کہ نلکی محدد میں \عددیء{\nabla} اور \عددیء{\kvec{H}} کا صلیبی ضرب کسی صورت مندرجہ بالا مساوات کا دایاں ہاتھ نہیں دیتا۔اس کے باوجود \عددیء{\kvec{H}} کے  گردش کو \عددیء{\nabla \times \kvec{H}} سے ہی ظاہر کیا جاتا ہے۔ 
 %===================
 
 \جزوحصہ{عمومی محدد میں گردش کی مساوات}
@@ -661,7 +682,14 @@ H_{\phi 41}\overset{.}{=}H_{\rho 0}-\frac{\partial H_\rho}{\partial \phi}\frac{\
 \begin{align}
 \lim_{\overset{\Delta u \to 0}{\Delta v \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{k_1 k_2 \Delta u \Delta v}=\frac{1}{k_1 k_2}\left[\frac{\partial (H_v k_2)}{\partial u}-\frac{\partial (H_u k_1)}{\partial v} \right]=J_w
 \end{align}
- لکھ سکتے ہیں۔عموی محدد میں گردش کے ان اجزاء کو قالب کا حتمی قیمت
+ لکھ سکتے ہیں۔عموی محدد میں گردش کے ان اجزاء کو
+\begin{gather}
+\begin{aligned}\label{مساوات_مقناطیسی_عمومی_گردش}
+\nabla \times \kvec{H}=\frac{1}{k_2 k_3}\left[\frac{\partial (H_w k_3)}{\partial v}-\frac{\partial (H_v k_2)}{\partial w} \right]\au+&\frac{1}{k_1 k_3}\left[\frac{\partial (H_u k_1)}{\partial w}-\frac{\partial (H_w k_3)}{\partial u} \right]\av\\
+&\quad +\frac{1}{k_1 k_2}\left[\frac{\partial (H_v k_2)}{\partial u}-\frac{\partial (H_u k_1)}{\partial v} \right]\aw
+\end{aligned}
+\end{gather}
+یا  قالب کا حتمی قیمت
 \begin{align}
 \kvec{H} \textrm{گردش}=
 \begin{vmatrix}
@@ -671,3 +699,26 @@ k_1 H_u & k_2 H_v & k_3 H_w
 \end{vmatrix}
 \end{align}
 لکھا جا سکتا ہے۔ 
+
+\جزوحصہ{کروی محدد میں گردش کی مساوات}
+جیسے صفحہ \حوالہصفحہ{حصہ_گاوس_عمومی_پھیلاو} پر حصہ \حوالہ{حصہ_گاوس_عمومی_پھیلاو} میں بتلایا گیا عمومی محدد میں
+\begin{align*}
+k_1&=1\\
+k_2&=r\\
+k_3&= r \sin \theta
+\end{align*}
+اور \عددیء{\au} کی جگہ \عددیء{\ar}، \عددیء{\av} کی جگہ \عددیء{\atheta} اور \عددیء{\aw} کی جگہ \عددیء{\aphi} پر کرنے سے کروی محدد حاصل ہوتا ہے۔مساوات \حوالہ{مساوات_مقناطیسی_عمومی_گردش} میں یہی کچھ پر کرتے ہوئے یوں کروی محدد میں گردش کی مساوات
+\begin{align*}
+\nabla \times \kvec{H}=\frac{1}{r^2 \sin \theta}\left[\frac{\partial (H_\phi r \sin \theta)}{\partial \theta}-\frac{\partial (H_{\theta} r)}{\partial \phi} \right]\ar+&\frac{1}{r \sin \theta}\left[\frac{\partial H_r }{\partial \phi}-\frac{\partial (H_\phi  r \sin \theta)}{\partial r} \right]\atheta\\
+&\quad +\frac{1}{r}\left[\frac{\partial (H_\theta r)}{\partial r}-\frac{\partial H_r }{\partial \theta} \right]\aphi
+\end{align*}
+یا
+\begin{gather}
+\begin{aligned}\label{مساوات_مقناطیسی_کروی_گردش}
+\nabla \times \kvec{H}=\frac{1}{r \sin \theta}\left[\frac{\partial (H_\phi  \sin \theta)}{\partial \theta}-\frac{\partial H_{\theta} }{\partial \phi} \right]\ar+&\frac{1}{r }\left[\frac{1}{\sin \theta}\frac{\partial H_r }{\partial \phi}-\frac{\partial (H_\phi  r )}{\partial r} \right]\atheta\\
+&\quad +\frac{1}{r}\left[\frac{\partial (H_\theta r)}{\partial r}-\frac{\partial H_r }{\partial \theta} \right]\aphi
+\end{aligned}
+\end{gather}
+حاصل ہوتی ہے۔
+
+\حصہ{مسئلہ سٹوکس}
