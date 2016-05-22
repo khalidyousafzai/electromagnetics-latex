@@ -1,0 +1,43 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\begin{document}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\ks}{60}
+\pgfmathsetmacro{\kdel}{\ks+20}
+\pgfmathsetmacro{\kz}{0.3}
+\pgfmathsetmacro{\kzz}{\kz+0.5}
+\pgfmathsetmacro{\kr}{1.5}
+%
+\draw ([shift={(\ks:\kr)}]0,0,\kz)coordinate(ka)node[below]{$4$} arc (\ks:\kdel:\kr)coordinate(kb)node[below]{$1$};
+\draw ([shift={(\ks:\kr)}]0,0,\kzz)coordinate(kc)node[above]{$3$} arc (\ks:\kdel:\kr)coordinate(kd)node[above]{$2$};
+\draw (ka)--(kc);
+\draw (kb)--(kd);
+%
+\draw[gray](0,0,\kzz)--++(\kdel:\kr);
+\draw[gray](0,0,\kzz)--++(\ks:\kr);
+%\draw[gray](0,0,\kz)--++(\kdel:\kr);
+\draw[gray](0,0,\kz)coordinate(aaa)--++(\ks:\kr)coordinate(bbb);
+%axis
+\path[name path=ffa] (aaa)--(bbb)--(kb)--cycle;
+\path[name path=ffb] (0,0,0)--(0,2,0);
+
+\draw[gray](0,0,0)--++(1,0,0)node[left]{$x$};
+\draw[gray,name intersections ={of = {ffa and ffb}}](0,0,0)--(intersection-1)(intersection-2)--(0,2,0)node[below]{$y$};
+\draw[gray](0,0,0)--++(0,0,1.5)node[left]{$z$};
+\end{tikzpicture}
+\end{document} 

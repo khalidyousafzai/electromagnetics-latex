@@ -1,0 +1,36 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\begin{document}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\ks}{60}
+\pgfmathsetmacro{\kdel}{\ks+20}
+\pgfmathsetmacro{\kz}{0.3}
+\pgfmathsetmacro{\kzz}{\kz+0.5}
+\pgfmathsetmacro{\kr}{1.5}
+%small area
+\draw[name path=small](0,0,\kz)++(\ks:\kr)node[below]{$1$}--++(\ks:0.5)node[below]{$4$}--++(0,0,\kzz-\kz)node[above]{$3$}--++(\ks:-0.5)node[above]{$2$}--cycle;
+%axis
+\path[name path=yyaxis](0,0,0)--++(0,2,0);
+\draw[gray](0,0,0)--++(1,0,0)node[left]{$x$};
+\draw[gray,name intersections={of={yyaxis and small}}](0,0,0)--(intersection-2)(intersection-1)--(0,2,0)node[right]{$y$};
+\draw[gray](0,0,0)--++(0,0,1.5)node[left]{$z$};
+%
+\draw[gray](0,0,\kz)--++(\ks:\kr);
+\draw[gray](0,0,\kzz)--++(\ks:\kr);
+\end{tikzpicture}
+\end{document} 

@@ -1,0 +1,44 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\begin{document}
+\begin{tikzpicture}
+%
+\pgfmathsetmacro{\kDel}{1.5}
+%\draw[thick,gray] (-3,-4) grid (3,3);
+%\draw[thin,gray,step=0.2] (-3,-4) grid (3,3);
+%axis
+\draw(0,0,0)--++(2.5,0,0)node[below]{$x$};
+\draw(0,0,0)--++(0,1.5,0)node[left]{$y$};
+%small area
+\draw([shift={(30:1.5)}]0,0) arc (30:45:1.5);
+\draw[-latex]([shift={(30:2)}]0,0) arc (30:45:2);
+\draw (30:1.5)node[below]{$4$}--++(30:0.5)node[right]{$1$};
+\draw (45:1.5)node[left]{$3$}--++(45:0.5)node[above]{$2$};
+%
+\draw[-latex,gray] ([shift={(30:1.75)}]0,0) arc (30:45:1.75);
+%flux
+\draw[gray] (37.5:1.73) to [out=-135,in=180]++(0.5,-0.5)node[right]{$H_{\phi} \rho \Delta \phi$};
+\draw[gray] (37.5:2.1) to [out=37.5,in=180]++(0.5,0.3)node[right]{$\left[H_{\phi} \rho \Delta \phi+\frac{\partial (H_{\phi} \rho \Delta \phi)}{\partial \rho}\frac{\Delta \rho}{2}\right]$};
+%small angle
+\draw[gray](0,0)--++(30:1.5);
+\draw[gray](0,0)--++(45:1.5);
+%sides text
+\draw[gray,stealth-stealth] (50:1.5)--++(45:0.5)node[pos=0.5,shift={(137:0.3)}]{$\Delta \rho$};
+%small angle text
+\draw[gray] ([shift={(30:0.6)}]0,0) arc (30:45:0.6);
+\end{tikzpicture}
+\end{document} 

@@ -140,13 +140,13 @@ H_{\phi}=\frac{I}{2\pi \rho}
 \centering
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figGaussCoaxialThickOuterWallUnshaded}
+\includegraphics{figMagneticCoaxialThickOuterWallUnshaded}
 \caption{ہم محوری تار کے اندرونی تار میں مثبت جبکہ بیرونی تار میں منفی برقی رو ہے۔}
 \label{شکل_مقناطیسی_ہم_محوری_تار_مثبت_منفی_رو}
 \end{subfigure}%
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figGaussCoaxialRadialComponentsCancelOut}
+\includegraphics{figMagneticCoaxialRadialComponentsCancelOut}
 \caption{رداسی اجزاء آپس میں ختم ہو جاتے ہیں اور یوں صرف زاویاتی جزو رہ جاتا ہے۔}
 \label{شکل_مقناطیسی_ہم_محوری_صرف_زاویاتی_جزو}
 \end{subfigure}%
@@ -248,12 +248,12 @@ H_{ya} +H_{yc}=K_x
 آپ کو یاد ہو گا کہ ہم نے گاؤس کے قانون کو انتہائی چھوٹی حجم پر لاگو کرتے ہوئے  \اصطلاح{پھیلاو} کی مساوات حاصل کی تھی۔اس حصے میں ہم ایمپیئر کے دوری قانون کو انتہائی چھوٹی بند راہ پر استعمال کرتے ہوئے \اصطلاح{گردش}\فرہنگ{گردش}\حاشیہب{curl}\فرہنگ{curl} کی مساوات حاصل کریں گے۔
 \begin{figure}
 \centering
-\includegraphics{figGaussCurlDefined}
+\includegraphics{figMagneticCurlDefined}
 \caption{گردش کی تعریف۔ }
 \label{شکل-مقناطیسی_گردش_تعریف}
 \end{figure}
 
-کارتیسی محدد میں ہم کسی نقطے \عددیء{N} پر  \عددیء{\Delta x} اور \عددیء{\Delta y} اطراف کی چھوٹی بند راہ لیتے ہیں۔شکل \حوالہ{شکل-مقناطیسی_گردش_تعریف} میں اس چھوٹی بند راہ کو دکھایا گیا ہے جو رقبہ \عددیء{\Delta x \Delta y} کو گھیرتی ہے۔اس رقبے کے عین وسط میں نقطہ \عددیء{(x_0,y_0,z_0)} پر مقناطیسی شدت 
+کارتیسی محدد میں ہم کسی نقطے \عددیء{N} پر  \عددیء{\Delta x} اور \عددیء{\Delta y} اطراف کی چھوٹی بند راہ لیتے ہیں۔شکل \حوالہ{شکل-مقناطیسی_گردش_تعریف} میں اس چھوٹی بند راہ کو دکھایا گیا ہے جو رقبہ \عددیء{\Delta x \Delta y} کو گھیرتی ہے۔شکل میں راہ پر تیر کے نشان راہ پر چلنے کی سمت دکھاتے ہیں۔اس رقبے کے عین وسط میں نقطہ \عددیء{(x_0,y_0,z_0)} پر مقناطیسی شدت 
 \begin{align*}
 \kvec{H}_0&=H_x(x_0,y_0,z_0)\ax+H_y(x_0,y_0,z_0)\ay+H_z(x_0,y_0,z_0)\az\\
 &=H_{x0}\ax+H_{y0}\ay+H_{z0}\az
@@ -375,7 +375,7 @@ H_x & H_y & H_z
 
 %==================
 \جزوحصہ{نلکی محدد میں گردش}
-نلکی محدد میں \عددیء{J_z} کثافت برقی رو کے عمودی سیدھی سطح پر چھوٹا رقبہ لیتے ہیں۔ایسے رقبے کے اطراف \عددیء{\Delta \rho} اور \عددیء{\rho \Delta \phi} ہوں گے۔اس رقبے کو وسط میں
+نلکی محدد میں \عددیء{J_z} کثافت برقی رو کے عمودی سطح پر چھوٹا رقبہ لیتے ہیں جسے شکل \حوالہ{شکل_مقناطیسی_نلکی_شدت_رقبہ} میں دکھایا گیا ہے۔ایسے رقبے کے اطراف \عددیء{\Delta \rho} اور \عددیء{\rho \Delta \phi} ہوں گے جبکہ اس سطح پر \عددیء{z} کی قیمت تبدیل نہیں ہو گی۔اس رقبے کے وسط میں
 \begin{align*}
 \kvec{H}_0(\rho_0,\phi_0,z_0)&=H_{\rho 0}\arho+H_{\phi 0}\aphi+H_{z 0}\az
 \end{align*}
@@ -398,6 +398,12 @@ H_{\phi 34}\overset{.}{=}H_{\phi 0}-\frac{\partial H_\phi}{\partial \rho}\frac{\
 &\overset{.}{=}\left[-H_{\phi 0} \rho_0+H_{\phi 0} \frac{\Delta \rho}{2}+\rho_0 \frac{\partial H_\phi}{\partial \rho}\frac{\Delta \rho}{2}-\frac{\partial H_\phi}{\partial \rho} \left(\frac{\Delta \rho}{2} \right)^2\right]\Delta \phi
 \end{align*}
 ہوں گے۔
+\begin{figure}
+\centering
+\includegraphics{figMagneticCurlCylindrical}
+\caption{نلکی محدد میں چھوتا رقبہ۔}
+\label{شکل_مقناطیسی_نلکی_شدت_رقبہ}
+\end{figure}
 
 چھوٹے رقبے کے وسط سے \عددیء{+\tfrac{\Delta \phi}{2}}  یا \عددیء{-\tfrac{\Delta \phi}{2}} پر  اطراف
  \عددیء{\Delta \rho} لمبائی رکھتے ہیں جبکہ ان پر اوسط شدت بالترتیب
@@ -431,13 +437,28 @@ H_{\phi 41}\overset{.}{=}H_{\rho 0}-\frac{\partial H_\rho}{\partial \phi}\frac{\
 \frac{\oint \kvec{H} \cdot \dif \kvec{L}}{\rho_0 \Delta \rho \Delta \phi}\overset{.}{=}\left(\frac{H_{\phi 0}}{\rho_0} +\frac{\partial H_\phi}{\partial \rho}-\frac{1}{\rho_0}\frac{\partial H_\rho}{\partial \phi}\right)\overset{.}{=}J_z
 \end{align*}
 لکھا جا سکتا ہے۔اگر \عددیء{\Delta \rho} اور \عددیء{\Delta \phi} کو کم سے کم کرتے ہوئے صفر کے قریب تر کر دیا جائے تب مندرجہ بالا مساوات بالکل درست ہو گا اور تقریباً برابر کی علامت \عددیء{\overset{.}{=}} کی جگہ برابر کی علامت \عددیء{=} استعمال کی جائے گی۔اس طرح گردش کا پہلا جزو 
-\begin{align}
+\begin{align}\label{مساوات_مقناطیسی_رداسی_زیڈ_گردش}
 \lim_{\overset{\Delta \rho \to 0}{\Delta \phi \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{\rho_0 \Delta \rho \Delta \phi}=\left(\frac{H_{\phi 0}}{\rho_0} +\frac{\partial H_\phi}{\partial \rho}-\frac{1}{\rho_0}\frac{\partial H_\rho}{\partial \phi}\right)=J_z
 \end{align}
 لکھا جا سکتا ہے۔
 
-اس سے پہلے کہ ہم گردش کے بقایا دو اجزاء بھی حاصل کریں، آئیں مساوات \حوالہ{مساوات_مقناطیسی_نلکی_پہلا_بند_تکمل} کو قدر مختلف اور بہتر طریقے سے حاصل کریں۔اگر ہم کسی نقطے  کے 
- \عددیء{-\tfrac{\Delta \phi}{2}} سے نقطے کے \عددیء{+\tfrac{\Delta \phi}{2}} تک حرکت کریں تو ہم \عددیء{\rho \Delta \phi}  فاصلہ طے کریں گے۔اس راہ پر تکمل تقریباً
+\begin{figure}
+\centering
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics{figMagneticCurlCylindricalBetterRadialOut}
+\caption{چھوٹے رقبے کے وسط پر تکمل کے قیمت سے بیرونی زاویاتی تکمل کی قیمت کا حصول۔}
+\end{subfigure}%
+%
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics{figMagneticCurlCylindricalBetterRadialIn}
+\caption{چھوٹے رقبے کے وسط پر تکمل کے قیمت سے اندرونی زاویاتی تکمل کی قیمت کا حصول۔}
+\end{subfigure}%
+\caption{زاویاتی حصوں پر تکمل کے قیمت کے حصول کا بہتر طریقہ۔}
+\label{شکل_مقناطیسی_بہتر_گردش_نلکی}
+\end{figure}
+اس سے پہلے کہ ہم گردش کے بقایا دو اجزاء بھی حاصل کریں، آئیں مساوات \حوالہ{مساوات_مقناطیسی_نلکی_پہلا_بند_تکمل} کو قدر مختلف اور بہتر طریقے سے حاصل کریں۔شکل \حوالہ{شکل_مقناطیسی_بہتر_گردش_نلکی}-الف کو دیکھتے ہوئے آگے پڑھیں۔اگر ہم کسی نقطے  کے  \عددیء{-\tfrac{\Delta \phi}{2}} سے نقطے کے \عددیء{+\tfrac{\Delta \phi}{2}} تک حرکت کریں تو ہم \عددیء{\rho \Delta \phi}  فاصلہ طے کریں گے۔اس راہ پر تکمل تقریباً
 \begin{align*}
 \kvec{H} \cdot \dif \kvec{L}=H_{\phi}\rho \Delta \phi
 \end{align*}
@@ -449,20 +470,20 @@ H_{\phi 41}\overset{.}{=}H_{\rho 0}-\frac{\partial H_\rho}{\partial \phi}\frac{\
 \begin{align}\label{مساوات_مقناطیسی_نلکی_ایک_دو}
 \kvec{H} \cdot \dif \kvec{L}_{12}=H_{\phi}\rho \Delta \phi+\frac{\partial (H_{\phi}\rho \Delta \phi)}{\partial \rho} \frac{\Delta \rho}{2}
 \end{align}
-ہو گی۔اسی طرح اگر ہم کسی نقطے کے  \عددیء{+\tfrac{\Delta \phi}{2}} سے نقطے کے  \عددیء{-\tfrac{\Delta \phi}{2}} تک حرکت کریں تو اس راہ پر تکمل
+ہو گی۔اسی طرح، جیسا شکل \حوالہ{شکل_مقناطیسی_بہتر_گردش_نلکی}-ب میں دکھایا گیا ہے، اگر ہم کسی نقطے کے  \عددیء{+\tfrac{\Delta \phi}{2}} سے نقطے کے  \عددیء{-\tfrac{\Delta \phi}{2}} تک حرکت کریں تو اس راہ پر تکمل
 \begin{align*}
 \kvec{H} \cdot \dif \kvec{L}=H_{\phi} (-\rho \Delta \phi)
 \end{align*}
 کے برابر ہو گا۔اگر اس نقطے کو چھوٹے رقبے کا وسط تصور کیا جائے تب وسط سے  \عددیء{-\tfrac{\Delta \rho}{2}} فاصلے پر یہی تکمل
 \begin{gather}
 \begin{aligned}\label{مساوات_مقناطیسی_نلکی_تین_چار}
-\kvec{H} \cdot \dif \kvec{L}_{34}&=-H_{\phi}\rho \Delta \phi-\frac{\partial (H_{\phi}\rho \Delta \phi)}{\partial \rho} \left(-\frac{\Delta \rho}{2}\right)\\
+\kvec{H} \cdot \dif \kvec{L}_{34}&=-H_{\phi}\rho \Delta \phi+\frac{\partial (-H_{\phi}\rho \Delta \phi)}{\partial \rho} \left(-\frac{\Delta \rho}{2}\right)\\
 &=-H_{\phi}\rho \Delta \phi+\frac{\partial (H_{\phi}\rho \Delta \phi)}{\partial \rho} \frac{\Delta \rho}{2}
 \end{aligned}
 \end{gather}
 ہو گا۔
 
-اسی طرح کسی بھی نقطے پر \عددیء{-\tfrac{\Delta \rho}{2}} تا \عددیء{+\tfrac{\Delta \rho}{2}} حرکت کرتے ہوئے تکمل کی قیمت \عددیء{H_{\rho} \Delta \rho} ہو گی۔اس نقطے سے \عددیء{-\tfrac{\Delta \phi}{2}} پر تکمل کی قیمت میں تبدیلی رو نما ہو گی جسے
+اسی طرح، جیسے شکل \حوالہ{شکل_مقناطیسی_بہتر_گردش_نلکی_رداسی}-الف میں دکھایا گیا ہے، کسی بھی نقطے پر \عددیء{-\tfrac{\Delta \rho}{2}} تا \عددیء{+\tfrac{\Delta \rho}{2}} حرکت کرتے ہوئے تکمل کی قیمت \عددیء{H_{\rho} \Delta \rho} ہو گی۔اس نقطے سے \عددیء{-\tfrac{\Delta \phi}{2}} پر تکمل کی قیمت میں تبدیلی رو نما ہو گی جسے
 \begin{align*}
 \Delta  (\kvec{H} \cdot \dif \kvec{L})=\frac{\partial (H_{\rho} \Delta \rho)}{\partial \phi}\left(-\frac{\Delta \phi}{2}\right)
 \end{align*}
@@ -474,7 +495,24 @@ H_{\phi 41}\overset{.}{=}H_{\rho 0}-\frac{\partial H_\rho}{\partial \phi}\frac{\
 \begin{align}\label{مساوات_مقناطیسی_نلکی_چار_ایک}
 \kvec{H} \cdot \dif \kvec{L}_{41}=H_{\rho} \Delta \rho-\frac{\partial (H_{\rho} \Delta \rho)}{\partial \phi}\frac{\Delta \phi}{2}
 \end{align}
-اسی طرح کسی بھی نقطے پر \عددیء{+\tfrac{\Delta \rho}{2}} تا \عددیء{-\tfrac{\Delta \rho}{2}} حرکت کرتے ہوئے تکمل کی قیمت
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics{figMagneticCurlCylindricalBetterAngularLess}
+\caption{چھوٹے رقبے کے وسط پر رداسی تکمل کے قیمت سے کم زاویہ پر تکمل کی قیمت کا حصول۔}
+\end{subfigure}%
+%
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics{figMagneticCurlCylindricalBetterAngularMore}
+\caption{چھوٹے رقبے کے وسط پر رداسی تکمل کے قیمت سے زیادہ زاویہ پر تکمل کی قیمت کا حصول۔}
+\end{subfigure}%
+\caption{رداسی حصوں پر تکمل کے قیمت کے حصول کا بہتر طریقہ۔}
+\label{شکل_مقناطیسی_بہتر_گردش_نلکی_رداسی}
+\end{figure}
+اسی طرح، جیسے شکل \حوالہ{شکل_مقناطیسی_بہتر_گردش_نلکی_رداسی}-ب میں دکھایا گیا ہے، کسی بھی نقطے پر \عددیء{+\tfrac{\Delta \rho}{2}} تا \عددیء{-\tfrac{\Delta \rho}{2}} حرکت کرتے ہوئے تکمل کی قیمت
 \begin{align*}
 \kvec{H} \cdot \dif \kvec{L}=H_{\rho}(-\Delta \rho)
 \end{align*}
@@ -495,7 +533,141 @@ H_{\phi 41}\overset{.}{=}H_{\rho 0}-\frac{\partial H_\rho}{\partial \phi}\frac{\
 \begin{align*}
 \oint \kvec{H} \cdot \dif \kvec{L}&=\left[H_{\phi 0} +\rho_0 \frac{\partial H_{\phi}}{\partial \rho}-\frac{\partial H_{\rho}}{\partial \phi}\right] \Delta \rho\Delta \phi
 \end{align*}
-جو بالکل مساوات \حوالہ{مساوات_مقناطیسی_نلکی_پہلا_بند_تکمل} ہی ہے۔یاد رہے کہ \عددیء{\tfrac{\partial (H_{\phi}\rho)}{\partial \rho}} کو اجزاء کی صورت میں لکھتے ہوئے رقبے کے وسط کی قیمتیں پر کی جاتی ہیں۔یوں رداس \عددیء{\rho_0}  اور مقناطیسی شدت \عددیء{H_{\phi 0}} کے برابر ہوں گے۔
+جو بالکل مساوات \حوالہ{مساوات_مقناطیسی_نلکی_پہلا_بند_تکمل} ہی ہے۔یاد رہے کہ \عددیء{\tfrac{\partial (H_{\phi}\rho)}{\partial \rho}} کو اجزاء کی صورت میں لکھتے ہوئے رقبے کے وسط کی قیمتیں پر کی جاتی ہیں۔یوں رداس \عددیء{\rho_0}  اور مقناطیسی شدت \عددیء{H_{\phi 0}} کے برابر ہوں گے۔مساوات \حوالہ{مساوات_مقناطیسی_نلکی_پہلا_بند_تکمل_دوبارہ} سے گردش
+\begin{align}\label{مساوات_مقناطیسی_رداسی_ذ_گردش}
+\lim_{\overset{\Delta \rho \to 0}{\Delta \phi \to 0}} \frac{\oint \kvec{H} \cdot \dif \kvec{L}}{\Delta \rho \rho \Delta \phi}=\left[\frac{1}{\rho}\frac{\partial (H_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}\right] =J_z
+\end{align}
 
-آئیں اب نلکی محدد میں گردش کے بقایا دو اجزاء بھی حاصل کریں۔
+\begin{figure}
+\centering
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics{figMagneticCurlCylindricalBetterRadialCurrentDensity}
+\caption{نلکی محدد میں شدت کا رداسی جزو حاصل کرنے کے لئے چھوٹا رقبہ۔}
+\end{subfigure}%
+%
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics{figMagneticCurlCylindricalBetterAngularCurrentDensity}
+\caption{نلکی محدد میں شدت کا زاویاتی جزو حاصل کرنے کے لئے چھوٹا رقبہ۔}
+\end{subfigure}%
+\caption{نلکی محدد میں گردش کے رداسی اور زاویاتی اجزاء کے رقبے۔}
+\label{شکل_مقناطیسی_نلکی_رداسی}
+\end{figure}
+
+آئیں اب نلکی محدد میں گردش کے بقایا دو اجزاء بھی حاصل کریں۔گردش کا رداسی جزو حاصل کرنے کی خاطر ہم \عددیء{\rho=\rho_0} سطح پر چھوٹا رقبہ لیتے ہیں جس کے اطراف \عددیء{\Delta z} اور \عددیء{\rho_0 \Delta \phi} لمبائی رکھیں گے۔اس رقبے کو شکل \حوالہ{شکل_مقناطیسی_نلکی_رداسی}-الف میں دکھایا گیا ہے۔اس پر \عددیء{1} سے \عددیء{2} جانب گھومتے ہوئے \عددیء{} کا لکیری تکمل حاصل کیا جائے گا۔مستقل رداس کے سطح پر کسی بھی نقطے کے قریب \عددیء{-\tfrac{\Delta z}{2}} تا \عددیء{+\tfrac{\Delta z}{2}} چلتے ہوئے تکمل \عددیء{H_z \Delta z} حاصل ہوتا ہے۔اس نقطے سے  \عددیء{+\tfrac{\Delta \phi}{2}} زاویہ پر اس تکمل کی قیمت ٹیلر تسلسل سے
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{12}=H_z \Delta z+\frac{\partial (H_z \Delta z)}{\partial \phi}\left(+\frac{\Delta \phi}{2}\right)
+\end{align*}
+حاصل ہوتی ہے۔اسی طرح نقطے  کے قریب \عددیء{+\tfrac{\Delta z}{2}} تا \عددیء{-\tfrac{\Delta z}{2}} چلتے ہوئے تکمل \عددیء{-H_z \Delta z} جبکہ نقطے سے \عددیء{-\tfrac{\Delta \phi}{2}} زاویہ پر
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{34}=-H_z \Delta z+\frac{\partial (-H_z \Delta z)}{\partial \phi}\left(-\frac{\Delta \phi}{2}\right)
+\end{align*}
+حاصل ہوتا ہے۔ان دو جوابات سے رقبے کے \عددیء{z} اطراف کا تکمل
+\begin{align}\label{مساوات_مقناطیسی_نلکی_رداسی_گردش_تکمل_الف}
+\kvec{H} \cdot \dif \kvec{L}_{12}+\kvec{H} \cdot \dif \kvec{L}_{34}=+\frac{\partial H_z}{\partial \phi} \Delta z \Delta \phi
+\end{align}
+حاصل ہوتا ہے۔کسی بھی نقطے کے قریب \عددیء{-\tfrac{\Delta \phi}{2}} تا \عددیء{+\tfrac{\Delta \phi}{2}} پر تکمل کی قیمت \عددیء{H_{\phi}\rho \Delta \phi} جبکہ نقطے سے \عددیء{-\tfrac{\Delta z}{2}} فاصلے پر یہی تکمل ٹیلر تسلسل سے
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{41}=H_{\phi} \rho \Delta \phi+\frac{\partial (H_{\phi} \rho \Delta \phi)}{\partial z}\left(-\frac{\Delta z}{2}\right)
+\end{align*}
+حاصل ہوتا ہے۔اسی طرح نقطے کے قریب \عددیء{+\tfrac{\Delta \phi}{2}} تا \عددیء{-\tfrac{\Delta \phi}{2}} پر تکمل کی
+ قیمت \عددیء{-H_{\phi}\rho \Delta \phi} جبکہ نقطے سے \عددیء{+\tfrac{\Delta z}{2}} فاصلے پر یہی تکمل ٹیلر تسلسل سے
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{23}=-H_{\phi} \rho \Delta \phi+\frac{\partial (-H_{\phi} \rho \Delta \phi)}{\partial z}\left(+\frac{\Delta z}{2}\right)
+\end{align*}
+حاصل ہوتا ہے۔ان دو جوابات کے مجموعے سے چھوٹے رقبے کے گرد گھومتے ہوئے زاویاتی حصے کا تکمل
+\begin{align}\label{مساوات_مقناطیسی_نلکی_رداسی_گردش_تکمل_ب}
+ \kvec{H} \cdot \dif \kvec{L}_{41}+\kvec{H} \cdot \dif \kvec{L}_{23}=-\rho\frac{\partial H_{\phi} }{\partial z}\Delta z\Delta \phi
+\end{align}
+حاصل ہوتا ہے۔
+
+مساوات \حوالہ{مساوات_مقناطیسی_نلکی_رداسی_گردش_تکمل_الف} اور مساوات \حوالہ{مساوات_مقناطیسی_نلکی_رداسی_گردش_تکمل_ب} کا مجموعہ چھوٹے رقبے کے گرد کل تکمل دیتا ہے جو رقبے سے گزرتی برقی رو \عددیء{J_{\rho}\rho \Delta \phi \Delta z} کے برابر ہو گا یعنی
+\begin{align*}
+\oint \kvec{H} \cdot \dif \kvec{L}=\left[ \frac{\partial H_z}{\partial \phi}-\rho\frac{\partial H_{\phi}}{\partial z} \right]\Delta z\Delta \phi=J_{\rho} \rho \Delta \phi \Delta z
+\end{align*}
+جس سے گردش کا رداسی جزو
+\begin{align}\label{مساوات_مقناطیسی_رداسی_نلکی_گردش}
+\lim_{\overset{\Delta \phi \to 0}{\Delta z \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{\rho \Delta \phi \Delta z}=\left[\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} -\frac{\partial H_{\phi}}{\partial z}\right]=J_{\rho}
+\end{align}
+ملتا ہے۔
+
+شکل \حوالہ{شکل_مقناطیسی_نلکی_رداسی}-ب میں \عددیء{1} سے \عددیء{2} جانب گھومتے ہوئے  \عددیء{\kvec{H}} کے لکیری تکمل مندرجہ ذیل ہیں
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{12}&=H_z \Delta z+\frac{\partial (H_z \Delta z)}{\partial \rho}\left(-\frac{\Delta \rho}{2}\right)\\
+\kvec{H} \cdot \dif \kvec{L}_{34}&=-H_z \Delta z+\frac{\partial (-H_z \Delta z)}{\partial \rho}\left(+\frac{\Delta \rho}{2}\right)\\
+\kvec{H} \cdot \dif \kvec{L}_{23}&=H_{\rho}\Delta \rho+\frac{\partial (H_{\rho}\Delta \rho)}{\partial  z}\frac{\Delta z}{2}\\
+\kvec{H} \cdot \dif \kvec{L}_{41}&=-H_{\rho}\Delta \rho+\frac{\partial (-H_{\rho}\Delta \rho)}{\partial z}\left(-\frac{\Delta z}{2}\right)
+\end{align*}
+اور یوں ایمپیئر کے دوری قانون سے
+\begin{align}\label{مساوات_مقناطیسی_زاویاتی_نلکی_گردش}
+\lim_{\overset{\Delta \rho \to 0}{\Delta z \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{\Delta \rho \Delta z}=\left(\frac{\partial H_\rho}{\partial z}-\frac{\partial H_z}{\partial \rho} \right)=J_{\phi}
+\end{align}
+لکھا جا سکتا ہے۔
+
+مساوات \حوالہ{مساوات_مقناطیسی_زاویاتی_نلکی_گردش}، مساوات \حوالہ{مساوات_مقناطیسی_رداسی_نلکی_گردش} اور مساوات \حوالہ{مساوات_مقناطیسی_رداسی_ذ_گردش} کا مجموعہ نلکی محدد میں گردش دیتا ہے یعنی
+\begin{align}
+\nabla \times \kvec{H}=\left[\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} -\frac{\partial H_{\phi}}{\partial z}\right]\arho+\left(\frac{\partial H_\rho}{\partial z}-\frac{\partial H_z}{\partial \rho} \right)\aphi+\left[\frac{1}{\rho}\frac{\partial (H_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}\right]\az
+\end{align}
 %===================
+
+\جزوحصہ{عمومی محدد میں گردش کی مساوات}
+صفحہ \حوالہصفحہ{حصہ_گاوس_عمومی_پھیلاو} پر حصہ \حوالہ{حصہ_گاوس_عمومی_پھیلاو} میں عمومی محدد استعمال کرتے ہوئے پھیلاو کی مساوات حاصل کی گئی۔یہاں عمومی محدد میں گردش کی مساوات حاصل کرتے ہیں۔عمومی محدد کے متغیرات \عددیء{(u,v,w)} جبکہ اکائی سمتیات \عددیء{(\au,\av,\aw)} ہیں۔ان میں تین اطراف
+\begin{align*}
+\dif L_u &= k_1 \dif u \\
+\dif L_v &= k_2 \dif v \\
+\dif L_w &= k_3 \dif w 
+\end{align*}
+لکھے جاتے ہیں۔
+
+گردش کا پہلا جزو حاصل کرنے کی خاطر ہم نقطہ \عددیء{(u,v,w)} پر \عددیء{u} کے عمودی سطح پر چھوٹا رقبہ لیتے ہیں جس کے اطراف \عددیء{k_2 \Delta v} اور \عددیء{k_3 \Delta w} ہوں گے۔اب \عددیء{v-\frac{\Delta v}{2}} سے \عددیء{v+\frac{\Delta v}{2}} تک فاصلہ \عددیء{k_2 \Delta v} کے برابر ہے لہٰذا اس پر چلتے ہوئے  تکمل \عددیء{H_v k_2 \Delta v} کے برابر ہو گا۔نقطہ \عددیء{(u,v,w)} سے  \عددیء{-\frac{\Delta w}{2}} پر یہی تکمل ٹیلر تسلسل سے
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{12}=H_v k_2 \Delta v+\frac{\partial (H_v k_2 \Delta v)}{\partial w}\left(-\frac{\Delta w}{2}\right)
+\end{align*}
+حاصل ہوتا ہے۔اسی طرح \عددیء{v+\frac{\Delta v}{2}} سے \عددیء{v-\frac{\Delta v}{2}} تک  تکمل \عددیء{-H_v k_2 \Delta v} کے برابر ہو گا۔نقطہ \عددیء{(u,v,w)} سے  \عددیء{+\frac{\Delta w}{2}} پر یہی تکمل
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{34}=-H_v k_2 \Delta v+\frac{\partial (-H_v k_2 \Delta v)}{\partial w}\left(\frac{\Delta w}{2}\right)
+\end{align*}
+ہو گا۔یوں ان اطراف پر کل تکمل
+\begin{align}
+\kvec{H} \cdot \dif \kvec{L}_{12}+\kvec{H} \cdot \dif \kvec{L}_{34}=-\frac{\partial (H_v k_2)}{\partial w} \Delta v\Delta w
+\end{align}
+ہو گا۔یہی طریقہ کار استعمال کرتے ہوئے
+\begin{align*}
+\kvec{H} \cdot \dif \kvec{L}_{23}&=H_w k_3 \Delta w+\frac{\partial (H_w k_3 \Delta w)}{\partial v}\left(\frac{\Delta v}{2}\right)\\
+\kvec{H} \cdot \dif \kvec{L}_{41}&=-H_w k_3 \Delta w+\frac{\partial (-H_w k_3 \Delta w)}{\partial v}\left(-\frac{\Delta v}{2}\right)
+\end{align*}
+حاصل ہوتے ہیں جن سے
+\begin{align}
+\kvec{H} \cdot \dif \kvec{L}_{23}+\kvec{H} \cdot \dif \kvec{L}_{41}&=\frac{\partial (H_w k_3)}{\partial v}\Delta v  \Delta w
+\end{align}
+لکھا جا سکتا ہے۔یوں چھوٹے رقبے کے گرد کل تکمل
+\begin{align}
+\oint \kvec{H} \cdot \dif \kvec{L}=\left[\frac{\partial (H_w k_3)}{\partial v}-\frac{\partial (H_v k_2)}{\partial w} \right]\Delta v  \Delta w
+\end{align}
+لکھتے ہوئے ایمپیئر کے دوری قانون سے
+\begin{align*}
+\oint \kvec{H} \cdot \dif \kvec{L}=\left[\frac{\partial (H_w k_3)}{\partial v}-\frac{\partial (H_v k_2)}{\partial w} \right]\Delta v  \Delta w=J_u {k_2 k_3 \Delta v \Delta w}
+\end{align*}
+لکھ کر گردش کا پہلا جزو
+\begin{align}
+\lim_{\overset{\Delta v \to 0}{\Delta w \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{k_2 k_3 \Delta v \Delta w}=\frac{1}{k_2 k_3}\left[\frac{\partial (H_w k_3)}{\partial v}-\frac{\partial (H_v k_2)}{\partial w} \right]=J_u 
+\end{align}
+حاصل ہوتا ہے۔آپ اسی مساوات میں متغیرات ذرہ دیکھ کر تبدیل کرتے ہوئے گردش کے بقایا دو اجزاء 
+ \begin{align}
+\lim_{\overset{\Delta u \to 0}{\Delta w \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{k_1 k_3 \Delta u \Delta w}=\frac{1}{k_1 k_3}\left[\frac{\partial (H_u k_1)}{\partial w}-\frac{\partial (H_w k_3)}{\partial u} \right]=J_v 
+\end{align}
+اور
+\begin{align}
+\lim_{\overset{\Delta u \to 0}{\Delta v \to 0}}\frac{\oint \kvec{H} \cdot \dif \kvec{L}}{k_1 k_2 \Delta u \Delta v}=\frac{1}{k_1 k_2}\left[\frac{\partial (H_v k_2)}{\partial u}-\frac{\partial (H_u k_1)}{\partial v} \right]=J_w
+\end{align}
+ لکھ سکتے ہیں۔عموی محدد میں گردش کے ان اجزاء کو قالب کا حتمی قیمت
+\begin{align}
+\kvec{H} \textrm{گردش}=
+\begin{vmatrix}
+\tfrac{\au}{k_2 k_3} & \tfrac{\av}{k_3 k_1} & \tfrac{\aw}{k_1 k_2}\\[6pt]
+\tfrac{\partial }{\partial u}&\tfrac{\partial }{\partial v}&\tfrac{\partial }{\partial w}\\[6pt]
+k_1 H_u & k_2 H_v & k_3 H_w
+\end{vmatrix}
+\end{align}
+لکھا جا سکتا ہے۔ 
