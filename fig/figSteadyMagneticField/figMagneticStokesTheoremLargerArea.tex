@@ -1,0 +1,69 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setotherlanguages{english}
+\setmainlanguage{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\begin{document}
+\begin{urdufont}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrowreversed{latex}}},postaction={decorate}}}
+
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%random angles
+\pgfmathsetmacro{\a}{90}
+\pgfmathsetmacro{\b}{45}
+\pgfmathsetmacro{\c}{0}
+\pgfmathsetmacro{\d}{-90}
+\pgfmathsetmacro{\e}{-45}
+\pgfmathsetmacro{\f}{-120}
+\pgfmathsetmacro{\g}{-180}
+\pgfmathsetmacro{\h}{160}
+%random points
+\coordinate (a) at (0,1);
+\coordinate (b) at (0.5,1.75);
+\coordinate (c) at (2,2.8);
+\coordinate (d) at (4,2.5);
+\coordinate (e) at (3.5,1.5);
+\coordinate (f) at (3,0.5);
+\coordinate (g) at (1.5,0.4);
+\coordinate (h) at (0.5,0);
+%random closed loop
+\draw[-<-=0.1,name path=closed loop] (a) to [out=\a,in=180+\b] (b) to [out=\b,in=180+\c] (c) to [out=\c,in=180+\d] (d)  to [out=\d,in=180+\e] (e) to [out=\e,in=180+\f] (f) to [out=\f,in=180+\g] (g) to [out=\g,in=180+\h] (h) to [out=\h,in=180+\a] (a);
+%grid
+%\draw(0,0) grid (4,3);
+%small sections
+\path[name path=line ha] (-0.2,1)--++(4.4,0);
+\path[name path=line hb] (-0.2,2)--++(4.4,0);
+\path[name path=line va] (1,-0.2)--++(0,3.4);
+\path[name path=line vb] (2,-0.2)--++(0,3.4);
+\path[name path=line vc] (3,-0.2)--++(0,3.4);
+%
+\draw[gray,name intersections={of={line ha and closed loop}}] (intersection-1)--(intersection-2);
+\draw[gray,name intersections={of={line hb and closed loop}}] (intersection-1)--(intersection-2);
+\draw[gray,name intersections={of={line va and closed loop}}] (intersection-1)--(intersection-2);
+\draw[gray,name intersections={of={line vb and closed loop}}] (intersection-1)--(intersection-2);
+\draw[gray,name intersections={of={line vc and closed loop}}] (intersection-1)--(intersection-2);
+%vectors
+\draw[thick,->-=.6] (1,1)--++(1,0);
+\draw[thick,->-=.6] (2,1)--++(0,1);
+\draw[thick,->-=.6] (2,2)--++(-1,0);
+\draw[thick,->-=.6] (1,2)--++(0,-1);
+\end{tikzpicture}
+\end{urdufont}
+\end{document} 

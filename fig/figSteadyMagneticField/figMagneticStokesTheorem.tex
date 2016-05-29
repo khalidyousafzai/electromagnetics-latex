@@ -1,0 +1,52 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setotherlanguages{english}
+\setmainlanguage{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\pgfmathsetmacro{\r}{0.5}
+%area
+\draw(0,0)node[shift={(-135:0.2)}]{$a$}--++(3,0)node[shift={(-45:0.2)}]{$c$}--++(0,1)node[shift={(45:0.2)}]{$d$}--++(-3,0)node[shift={(135:0.2)}]{$f$}--cycle;
+\draw[gray] (1.5,0)node[text=black,shift={(-90:0.2)}]{$b$}--++(0,1)node[text=black,shift={(90:0.2)}]{$e$};
+%points
+\draw[fill] (0.75,0) circle (\r pt)node[below]{$H_1$};
+\draw[fill] (2.25,0) circle (\r pt)node[below]{$H_2$};
+\draw[fill] (0.75,1) circle (\r pt)node[above]{$H_5$};
+\draw[fill] (2.25,1) circle (\r pt)node[above]{$H_4$};
+
+\draw[fill] (0,0.5) circle (\r pt)node[left]{$H_6$};
+\draw[fill] (1.5,0.5) circle (\r pt)node[left]{$H_7$};
+\draw[fill] (3,0.5) circle (\r pt)node[right]{$H_3$};
+%
+\draw (1.5,-0.7)node{الف};
+\begin{scope}[xshift=-5cm]
+%area
+\draw(0,0)node[shift={(-135:0.2)}]{$a$}--++(3,0)node[shift={(-45:0.2)}]{$c$}--++(0,1)node[shift={(45:0.2)}]{$d$}--++(-3,0)node[shift={(135:0.2)}]{$f$}--cycle;
+\draw[] (1.5,0)node[text=black,shift={(-90:0.2)}]{$b$}++(0,1)node[text=black,shift={(90:0.2)}]{$e$};
+%points
+\draw[fill] (0.75,0) circle (\r pt)node[below]{$H_1$};
+\draw[fill] (2.25,0) circle (\r pt)node[below]{$H_2$};
+\draw[fill] (0.75,1) circle (\r pt)node[above]{$H_5$};
+\draw[fill] (2.25,1) circle (\r pt)node[above]{$H_4$};
+
+\draw[fill] (0,0.5) circle (\r pt)node[left]{$H_6$};
+%\draw[fill] (1.5,0.5) circle (\r pt)node[left]{$H_7$};
+\draw[fill] (3,0.5) circle (\r pt)node[right]{$H_3$};
+\draw (1.5,-0.7)node{ب};
+\end{scope}
+\end{tikzpicture}
+\end{urdufont}
+\end{document} 
