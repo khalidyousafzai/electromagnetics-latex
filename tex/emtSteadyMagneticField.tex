@@ -1031,17 +1031,17 @@ H_{\phi}=\frac{I}{2\pi \rho} \quad \quad (\rho_1 < \rho < \rho_2)
 \label{شکل_مقناطیسی_دائرہ_محور_سے_ہٹ_کر}
 \end{figure}
 
-حل:رداس \عددیء{a} کے گول دائرے پر چھوٹی سمتی لمبائی کو \عددیء{\dif \kvec{L}=a \dif \phi \aphi} لکھا جا سکتا ہے جہاں اکائی سمتیہ \عددیء{\aphi} کو کارتیسی محدد میں
+حل:رداس \عددیء{a} کے گول دائرے پر نقطہ \عددیء{N'} پر چھوٹی سمتی لمبائی کو \عددیء{\dif \kvec{L}=a \dif \phi' \aphi'} لکھا جا سکتا ہے جہاں اکائی سمتیہ \عددیء{\aphi'} کو کارتیسی محدد میں
 \begin{align*}
-\aphi=-\sin \phi \ax+\cos \phi \ay 
+\aphi'=-\sin \phi' \ax+\cos \phi' \ay 
 \end{align*}
 لکھا جا سکتا ہے۔یوں
 \begin{align*}
-\dif \kvec{L}= a \dif \phi \left(-\sin \phi \ax+\cos \phi \ay  \right)
+\dif \kvec{L}= a \dif \phi' \left(-\sin \phi' \ax+\cos \phi' \ay  \right)
 \end{align*}
-لکھا جا سکتا ہے۔یہ چھوٹی لمبائی خود \عددیء{(a\cos \phi,a\sin \phi)} پر پائی جاتی ہے یعنی
+لکھا جا سکتا ہے۔یہ چھوٹی لمبائی خود \عددیء{(a\cos \phi',a\sin \phi')} پر پائی جاتی ہے یعنی
 \begin{align*}
-\kvec{r}'=a \arho=a\cos \phi \ax+a\sin \phi \ay
+\kvec{r}'=a \arho'=a\cos \phi' \ax+a\sin \phi' \ay
 \end{align*}
 کے برابر ہے۔نقطہ \عددیء{N} کا مقام کارتیسی محدد میں
 \begin{align*}
@@ -1049,16 +1049,16 @@ H_{\phi}=\frac{I}{2\pi \rho} \quad \quad (\rho_1 < \rho < \rho_2)
 \end{align*}
 ہے۔یوں
 \begin{align*}
-\kvec{R}=\kvec{r}-\kvec{r}'=-a\cos \phi \ax+(y-a\sin \phi)\ay+z\az
+\kvec{R}=\kvec{r}-\kvec{r}'=-a\cos \phi' \ax+(y-a\sin \phi')\ay+z\az
 \end{align*}
 لکھتے ہوئے
 \begin{align*}
-\abs{\kvec{R}}=R&=\sqrt{(-a\cos \phi)^2+(y-a\sin \phi)^2+z^2}\\
-&=\sqrt{a^2+y^2+z^2-2 a y\sin \phi}
+\abs{\kvec{R}}=R&=\sqrt{(-a\cos \phi')^2+(y-a\sin \phi')^2+z^2}\\
+&=\sqrt{a^2+y^2+z^2-2 a y\sin \phi'}
 \end{align*}
 اور
 \begin{align*}
-\aR=\frac{\kvec{R}}{\abs{\kvec{R}}}=\frac{-a\cos \phi \ax+(y-a\sin \phi)\ay+z\az}{\sqrt{a^2+y^2+z^2-2 a y\sin \phi}}
+\aR=\frac{\kvec{R}}{\abs{\kvec{R}}}=\frac{-a\cos \phi' \ax+(y-a\sin \phi')\ay+z\az}{\sqrt{a^2+y^2+z^2-2 a y\sin \phi'}}
 \end{align*}
 حاصل ہوتے ہیں۔بایوٹ سیوارٹ قانون میں \عددیء{\aR=\tfrac{\kvec{R}}{R}}  پر کرتے ہوئے 
 \begin{align*}
@@ -1066,32 +1066,89 @@ H_{\phi}=\frac{I}{2\pi \rho} \quad \quad (\rho_1 < \rho < \rho_2)
 \end{align*}
 لکھا جا سکتا ہے۔آئیں پہلے \عددیء{\dif \kvec{L} \times \kvec{R}} کی سادہ شکل حاصل کریں۔
 \begin{align*}
-\dif \kvec{L} \times \kvec{R}&=a \dif \phi \left(-\sin \phi \ax+\cos \phi \ay  \right) \times \left[-a\cos \phi \ax+(y-a\sin \phi)\ay+z\az \right]\\
-&=a \dif \phi \left[z\cos \phi \ax+z\sin \phi \ay+(a-y\sin\phi)\az \right]
+\dif \kvec{L} \times \kvec{R}&=a \dif \phi' \left(-\sin \phi' \ax+\cos \phi' \ay  \right) \times \left[-a\cos \phi' \ax+(y-a\sin \phi')\ay+z\az \right]\\
+&=a \dif \phi' \left[z\cos \phi' \ax+z\sin \phi' \ay+(a-y\sin\phi')\az \right]
 \end{align*}
 یوں بایوٹ سیوارٹ کے قانون کو
 \begin{align*}
-\kvec{H}=\frac{a I}{4\pi}\int \limits_{0}^{2\pi} \frac{z\cos \phi \ax+z\sin \phi \ay+(a-y\sin\phi)\az}{\left(a^2+y^2+z^2-2 a y\sin \phi\right)^{\frac{3}{2}}} \dif \phi
+\kvec{H}=\frac{a I}{4\pi}\int \limits_{0}^{2\pi} \frac{z\cos \phi' \ax+z\sin \phi' \ay+(a-y\sin\phi')\az}{\left(a^2+y^2+z^2-2 a y\sin \phi'\right)^{\frac{3}{2}}} \dif \phi'
 \end{align*}
-لکھا جا سکتا ہے۔اس مساوات میں \عددیء{H_x} جزو صفر کے برابر ہے۔یہ حقیقت سیدھی منطق سے ثابت ہوتی ہے۔کسی بھی زاویہ \عددیء{\phi} پر چھوٹی لمبائی سے پیدا میدان کو زاویہ \عددیء{\pi-\phi} پر چھوٹی لمبائی کا میدان ختم کرتا ہے۔یوں یہ جزو صفر کے برابر ہے۔جن کا منطق پر پورا عقیدہ نہیں ہے وہ \عددیء{H_x} جزو میں نیا متغیرہ \عددیء{{w=a^2+y^2+z^2-2ay\sin\phi}} پر کرتے ہوئے تکمل لے کر دیکھیں کہ
+لکھا جا سکتا ہے۔اس مساوات میں \عددیء{H_x} جزو صفر کے برابر ہے۔یہ حقیقت سیدھی منطق سے ثابت ہوتی ہے۔کسی بھی زاویہ \عددیء{\phi'} پر چھوٹی لمبائی سے پیدا میدان کو زاویہ \عددیء{\pi-\phi'} پر چھوٹی لمبائی کا میدان ختم کرتا ہے۔یوں یہ جزو صفر کے برابر ہے۔جن کا منطق پر پورا عقیدہ نہیں ہے وہ \عددیء{H_x} جزو میں نیا متغیرہ
+ \عددیء{{w=a^2+y^2+z^2-2ay\sin\phi'}} پر کرتے ہوئے تکمل لے کر دیکھیں کہ
 \begin{align*}
-H_x=\frac{a I}{4\pi}\int \limits_{0}^{2\pi} \frac{z\cos \phi \dif \phi}{\left(a^2+y^2+z^2-2 a y\sin \phi\right)^{\frac{3}{2}}}=0
+H_x=\frac{a I}{4\pi}\int \limits_{0}^{2\pi} \frac{z\cos \phi' \dif \phi'}{\left(a^2+y^2+z^2-2 a y\sin \phi'\right)^{\frac{3}{2}}}=0
 \end{align*}
 ہی ہے۔بقایا دو اجزاء
 \begin{align*}
-H_y&=\frac{aI}{4\pi}\int\limits_0^{2\pi} \frac{z\sin \phi \dif \phi}{\left(a^2+y^2+z^2-2 a y\sin \phi\right)^{\frac{3}{2}}}\\
-H_z&=\frac{a I}{4\pi}\int \limits_{0}^{2\pi} \frac{(a-y\sin\phi) \dif \phi}{\left(a^2+y^2+z^2-2 a y\sin \phi\right)^{\frac{3}{2}}} \dif \phi
+H_y&=\frac{aI}{4\pi}\int\limits_0^{2\pi} \frac{z\sin \phi' \dif \phi'}{\left(a^2+y^2+z^2-2 a y\sin \phi'\right)^{\frac{3}{2}}}\\
+H_z&=\frac{a I}{4\pi}\int \limits_{0}^{2\pi} \frac{(a-y\sin\phi') \dif \phi'}{\left(a^2+y^2+z^2-2 a y\sin \phi'\right)^{\frac{3}{2}}} \dif \phi'
 \end{align*}
 ہیں۔یہ دونوں \اصطلاح{بیضوی تکمل}\فرہنگ{تکمل!بیضوی}\حاشیہب{elliptic integral}\فرہنگ{integral!elliptic} ہیں جنہیں الجبرائی طریقے سے حل کرنا ممکن نہیں ہے۔
 \انتہا{مثال}
 %======================
-\اصطلاح{بیضوی تکمل} کا \اصطلاح{عددی حل}\فرہنگ{عددی حل}\حاشیہب{numerical solution}\فرہنگ{numerical solution} بذریعہ کمپیوٹر حاصل کیا جاتا ہے۔آئیں ایسا ہی کرتے ہیں۔
+\اصطلاح{بیضوی تکمل} کا \اصطلاح{عددی حل}\فرہنگ{عددی حل}\حاشیہب{numerical solution}\فرہنگ{numerical solution} بذریعہ کمپیوٹر حاصل کیا جاتا ہے۔آئیں قلم و کاغذ استعمال کرتے ہوئے بیضوی تکمل کا عددی حل حاصل کریں۔
 %====================
 
 \ابتدا{مثال}
-مندرجہ بالا مثال میں \عددیء{H_y} اور \عددیء{H_z} کے حل  \اصطلاح{بیضوی تکمل}  کی صورت میں حاصل ہوئے۔ان کا \اصطلاح{عددی حل} حاصل کریں۔
+مندرجہ بالا مثال میں \عددیء{H_y} اور \عددیء{H_z} کے حل  \اصطلاح{بیضوی تکمل}  کی صورت میں حاصل ہوئے۔نقطہ \عددیء{N(0,a,a)} پر \عددیء{H_y} کا \اصطلاح{عددی حل} حاصل کریں۔
+\begin{figure}
+\centering
+\includegraphics{figMagneticOffAxisFieldOfCurrentRingNumericalSolution}
+\caption{تکمل کے راہ کو متعدد چھوٹے ٹکڑوں میں تقسیم کیا گیا ہے۔}
+\label{شکل_مقناطیسی_عددی_حل_دائرہ_برقی_رو}
+\end{figure}
 
-حل:
+حل:اس نقطے پر 
+\begin{align*}
+H_y&=\frac{aI}{4\pi}\int\limits_0^{2\pi} \frac{a\sin \phi' \dif \phi'}{\left(a^2+a^2+a^2-2 a^2\sin \phi'\right)^{\frac{3}{2}}}\\
+&=\frac{I}{4\pi a}\int\limits_0^{2\pi} \frac{\sin \phi' \dif \phi'}{\left(3-2\sin \phi'\right)^{\frac{3}{2}}}
+\end{align*}
+لکھا جائے گا۔اس تکمل کو مجموعے کی شکل میں لکھا جا سکتا ہے۔شکل \حوالہ{شکل_مقناطیسی_عددی_حل_دائرہ_برقی_رو} کو دیکھ کر آگے پڑھیں۔تکمل کے راہ کو \عددیء{M} برابر ٹکڑوں میں تقسیم کرتے  ہوئے ہر ٹکڑا پر
+ \عددیء{\Delta \phi'=\tfrac{2\pi}{M}} کے برابر ہو گا۔ان ٹکڑوں کے گنتی کا حساب ہم \عددیء{m} سے رکھتے ہیں جہاں \عددیء{m} کی قیمت \عددیء{0} تا \عددیء{(M-1)} ہے۔یوں پہلے ٹکڑے کو \عددیء{m=0} سے ظاہر کیا جائے گا اور اس ٹکڑے کے عین وسط میں زاویہ \عددیء{\phi_0'=0} ہو گا۔شکل میں راہ کے چھوٹے ٹکڑوں کے عین وسط کو نقطوں سے ظاہر کیا گیا ہے۔دوسرے ٹکڑے پر \عددیء{m=1} اور زاویہ \عددیء{\phi_1'=\Delta \phi'=\tfrac{2\pi}{M}} ہو گا۔جیسے شکل میں دکھایا گیا ہے، تیسرے پر \عددیء{m=2} اور زاویہ  \عددیء{\phi_2'=2\Delta \phi'=\tfrac{2\times 2\pi}{M}} ہو گا۔یوں عمومی ٹکڑے \عددیء{m} پر زاویہ
+ \عددیء{\phi_m'=m\Delta \phi'=\tfrac{2\pi m}{M}} ہو گا۔
+
+اگر ان چھوٹے ٹکڑوں پر تفاعل کی قیمت میں تبدیلی کو رد کرنا ممکن ہو تب ہر چھوٹے ٹکڑے پر تکمل تقریباً
+\begin{align*}
+\Delta H_y&=\frac{I}{4\pi a} \frac{\sin \phi_m' \Delta \phi'}{\left(3-2\sin \phi_m'\right)^{\frac{3}{2}}} \\
+&=\frac{I}{4\pi a} \frac{\sin (\frac{2\pi m}{M}) \frac{2\pi}{M}}{\left(3-2\sin   \frac{2\pi m}{M}\right)^{\frac{3}{2}}} 
+\end{align*}
+کے برابر ہو گا۔یوں تمام ٹکڑوں کا مجموعہ
+\begin{align*}
+H_y= \frac{I}{4\pi a} \frac{2\pi}{M} \sum_{m=0}^{M-1}\frac{\sin  \frac{2\pi m}{M} }{\left(3-2\sin  \frac{2\pi m}{M}\right)^{\frac{3}{2}}}
+\end{align*}
+ہو گا۔جدول \حوالہ{جدول_مقناطیسی_دائرہ_مقناطیسی_شدت_عددی_حل} میں \عددیء{M=10} کی صورت میں \عددیء{m} کے تمام قیمتوں پر حاصل \عددیء{\tfrac{\sin  \frac{2\pi m}{M}}{\left(3-2\sin  \frac{2\pi m}{M}\right)^{\frac{3}{2}}}}  اجزاء دئے گئے ہیں۔ان تمام کا مجموعہ
+\begin{align*}
+H_y&=\frac{I}{4\pi a} \frac{2\pi}{M} \left(0.00000+0.23852 +  0.82674 +  0.82674  + 0.23852  + 0.00000 \right.  \\
+& \quad \quad \quad \quad \quad \left.-0.06889  -0.08763  -0.08763  -0.06889\right)\\
+&=\frac{I}{4\pi a}\frac{2\pi}{10} (1.8175)\\
+&=\frac{1.1420 I}{4\pi a}
+\end{align*}
+حاصل ہوتا ہے۔زیادہ سے زیادہ ٹکڑے لیتے ہوئے زیادہ درست جواب حاصل ہوتا ہے۔اگر \عددیء{M=100} کر دیا جائے تب  \عددیء{H_y=\tfrac{1.1433 I}{4\pi a}} حاصل ہوتا ہے۔
+\begin{table}
+\centering
+\begin{tabular}{c c}
+$m$& $\frac{2Ma}{I}\Delta H_y$\\
+\hline
+0& $0.00000$\\
+1& $0.23852$\\
+2&$0.82674 $\\
+3& $0.82674$\\
+4& $0.23852$\\
+5& $0.00000$\\
+6& $-0.06889$\\
+7&$-0.08763$\\
+8& $ -0.08763$\\
+9& $-0.06889$
+\end{tabular}
+\caption{دائرے پر برقی رو سے حاصل مقناطیسی میدان کی شدت بذریعہ عددی حل۔}
+\label{جدول_مقناطیسی_دائرہ_مقناطیسی_شدت_عددی_حل}
+\end{table}
+
+جدول کو دیکھتے ہوئے ظاہر ہے کہ \عددیء{m=0} اور \عددیء{m=5} برابر حصہ ڈالتے ہیں۔اسی طرح \عددیء{m=1} اور \عددیء{m=4} بھی برابر حصہ ڈالتے ہیں۔ان حقائق کو مد نظر رکھتے ہوئے پورے جدول کو حل کرنا درکار نہیں ہے۔موجودہ مسئلے میں صرف دس چھوٹے ٹکڑے کرتے ہوئے تقریباً درست جواب حاصل ہوتا ہے۔دس اور سو ٹکڑوں کے جوابات میں صرف
+\begin{align*}
+\left(\frac{1.1433-1.1420}{1.1433}\right)\times 100=\SI{0.11}{\percent} 
+\end{align*}
+کا فرق ہے۔
 \انتہا{مثال}
 %====================
 \حصہ{غیر سمتی اور سمتی مقناطیسی دباو}

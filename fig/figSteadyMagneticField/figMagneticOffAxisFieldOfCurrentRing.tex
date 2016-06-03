@@ -39,11 +39,11 @@
 \draw[gray] (0,0)--++(90:1.5)node[left]{$z$};
 %current ring and small element
 \draw[gray]({\rx*cos(0)},{\ry*sin(0)},0)\foreach \kang in {0,1,...,360}{--({\rx*cos(\kang)},{\ry*sin(\kang)},{0})};
-\draw[-latex]({\rx*cos(\angS)},{\ry*sin(\angS)},0)\foreach \kang in {\angS,...,\angE}{--({\rx*cos(\kang)},{\ry*sin(\kang)},{0})}node[shift={(-55:0.5)}]{$I a \dif \phi \aphi$};
+\draw[-latex]({\rx*cos(\angS)},{\ry*sin(\angS)},0)\foreach \kang in {\angS,...,\angE}{--({\rx*cos(\kang)},{\ry*sin(\kang)},{0})}node[shift={(-55:0.5)}]{$I a \dif \phi' \aphi'$};
 %text
 \draw[-latex] (0,0)--(Nb)node[pos=0.5,below]{$\kvec{r}'$};
 \draw[gray,-stealth]({0.2*\rx*cos(225)},{0.2*\ry*sin(225)},0)\foreach \kang in {225,...,305}{--({0.2*\rx*cos(\kang)},{0.2*\ry*sin(\kang)},{0})};
-\draw[gray] (265:0.4)node{$\phi$};
+\draw[gray] (265:0.4)node{$\phi'$};
 %
 \draw[-latex](Nb)--(Na)node[pos=0.7,right]{$\kvec{R}$}node[above right]{$N(0,y,z)$};
 \draw[-latex](0,0)--(Na)node[pos=0.8,left]{$\kvec{r}$};
