@@ -13,11 +13,11 @@
 %\input{./tex/myElectronicsVariablesBetter.tex}         %these are all tested. to use at the very end when book is finished
 
 \graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}
-{./fig/figConductorDielectricCapacitor/}{./fig/figStreamlines/}{./fig/figPoissonLaplace/}{./fig/figSteadyMagneticField/}}		%paths to figuree
+{./fig/figConductorDielectricCapacitor/}{./fig/figStreamlines/}{./fig/figPoissonLaplace/}{./fig/figSteadyMagneticField/}{./fig/figMagneticForcesMaterialsAndInductance/}}		%paths to figuree
 
 
-\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtDataTables,./tex/emtQuestions}
-%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtDataTables,./tex/emtQuestions}
+%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtMagneticForcesMaterialsAndInductance,./tex/emtDataTables,./tex/emtQuestions}
+\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtMagneticForcesMaterialsAndInductance}
 
 
 \author{
@@ -33,7 +33,7 @@
 \title{برقی و مقناطیسیات}
 \date{}                           %if absent gives date in arabic which is a rubbish
 
-%\makeindex
+\makeindex
 
 %==========
 \begin{document}
@@ -68,6 +68,7 @@
 \include{./tex/emtConductorDielectricCapacitor}
 \include{./tex/emtPoissonLaplace}
 \include{./tex/emtSteadyMagneticField}
+\include{./tex/emtMagneticForcesMaterialsAndInductance}
 
 \include{./tex/emtQuestions}
 
@@ -78,7 +79,7 @@
 \renewcommand*{\indexname}{فرہنگ}      %this command has to be placed right here just before printindex command
 \cleardoublepage
 \addcontentsline{toc}{chapter}{فرہنگ}
-\printindex
+%\printindex
 
 
 \end{urdufont}
