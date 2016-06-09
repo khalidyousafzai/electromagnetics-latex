@@ -188,7 +188,7 @@ F=I L B \sin \alpha
 \begin{align}
 \kvec{B}_0=B_{x0}\ax+B_{y0}\ay+B_{z0}\az
 \end{align}
-کے برابر ہے۔ یوں وسط سے \عددیء{-\tfrac{\dif y}{2}} جانب نقطہ \عددیء{1} پر مقناطیسی میدان مکلارن تسلسل سے
+کے برابر ہے۔ یوں وسط سے \عددیء{-\tfrac{\dif y}{2}} جانب نقطہ \عددیء{1} پر مقناطیسی میدان ٹیلر تسلسل\فرہنگ{ٹیلر تسلسل}\فرہنگ{Taylor series} سے
 \begin{align*}
 \kvec{B}_1&=\kvec{B}_0 -\frac{\partial \kvec{B}}{\partial y}\frac{\dif y}{2}+\cdots
 \end{align*}
@@ -276,8 +276,39 @@ F=I L B \sin \alpha
 \ابتدا{مثال}
 شکل \حوالہ{شکل_امالہ-تفرقی_دائرے_پر_مروڑ} میں چھوٹے رقبے کو اتنا چھوٹا تصور کریں کہ اس پر مقناطیسی میدان یکساں تصور کرنا ممکن ہو۔ایسی صورت میں تفرقی مروڑ حاصل کریں۔
 
-حل:
- 
+حل:یکساں میدان کی صورت میں
+\begin{align*}
+\dif \kvec{F}_1&=I \dif x \ax \times \left(B_{x0} \ax+B_{y0}\ay+B_{z0}\az\right)\\
+&=I \dif x \left(B_{y0}\az-B_{z0}\ay \right)
+\end{align*}
+اور
+\begin{align*}
+\dif \kvec{T}_1&=-\frac{\dif y}{2}\ay \times I \dif x \left(B_{y0}\az-B_{z0}\ay \right)\\
+&=-\frac{I}{2} \dif x \dif y B_{y0}\ax
+\end{align*}
+حاصل ہوتے ہیں۔اسی طرح
+\begin{align*}
+\dif \kvec{F}_3&=-I \dif x \ax \times \left(B_{x0} \ax+B_{y0}\ay+B_{z0}\az\right)\\
+&=I \dif x \left(-B_{y0}\az+B_{z0}\ay \right)
+\end{align*}
+اور
+\begin{align*}
+\dif \kvec{T}_3&=\frac{\dif y}{2}\ay \times I \dif x \left(-B_{y0}\az+B_{z0}\ay \right)\\
+&=-\frac{I}{2} \dif x \dif y B_{y0}\ax
+\end{align*}
+حاصل ہوتے ہیں۔یوں
+\begin{align*}
+\dif \kvec{T}_1+\dif \kvec{T}_3=-I \dif x \dif y B_{y0}\ax
+\end{align*}
+حاصل ہوتے ہیں۔اسی طرح
+\begin{align*}
+\dif \kvec{T}_2+\dif \kvec{T}_4=I\dif x \dif y  B_{x0}\ay
+\end{align*}
+حاصل ہوتا ہے۔ان نتائج سے کل مروڑ
+\begin{align*}
+\dif \kvec{T}=I \dif x \dif y  \left(B_{x0}\ay -B_{y0}\ax\right) 
+\end{align*}
+ہی حاصل ہوتا ہے۔
 \انتہا{مثال}
 %================
 
