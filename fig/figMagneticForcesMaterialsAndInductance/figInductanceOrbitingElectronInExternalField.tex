@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\draw (0,0) circle (0.2cm)node{$+$};
+\draw[gray] (0,0) ellipse (2cm and 1cm);
+\draw[fill=white] (0,-1) circle (0.2cm)node{$-$};
+\draw[-latex](0,-1)++(-0.2cm,0)--++(-1,0)node[below]{$\kvec{v}$};
+%field
+%\draw[-latex] (-1,0)--++(0,0.5)node[right]{$\kvec{B}_0$};
+%\draw[-latex] (1,0)--++(0,0.5)node[right]{$\kvec{B}_0$};
+\draw[-latex] (0,0.5cm)--++(0,1)node[right]{$\kvec{m}$};
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
