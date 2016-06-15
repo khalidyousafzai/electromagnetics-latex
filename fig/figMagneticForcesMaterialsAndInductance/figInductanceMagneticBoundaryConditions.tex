@@ -1,0 +1,62 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+%
+
+
+ \pgfmathsetmacro{\delX}{0.7}            %start points, lower left corner
+ \pgfmathsetmacro{\delY}{0.1}
+ \pgfmathsetmacro{\delH}{1.4}
+ \pgfmathsetmacro{\delW}{1.2}
+ \pgfmathsetmacro{\delhh}{0.8}
+
+\begin{document}
+\begin{tikzpicture}
+%conductor-air boundary
+\draw[thick] (0,0)++(-160:1.3)coordinate(aaa) --(0,0)coordinate(bbb) to [out=20,in=-165]++(1.25,0.4)coordinate(ka) to [out=15,in=165]++(2.5,0)coordinate (kb) to [out=-15,in=160] ++(1.25,-0.4)coordinate(boundMid)--++(-20:1.5)coordinate(boundEnd);
+%a-b-c-d
+\draw (3.75,0.4+\delhh/2)coordinate(a)node[shift={(10:\delW/2)},rotate=-17]{$\Delta w$}--++(-17:\delW)coordinate (ka)coordinate [pos=0.6](karrA)node[shift={(-35:0.3)}]{$\Delta h$};
+\draw[-latex] (karrA)--++(-20:0.05);
+\draw (ka)--++(-105:\delhh)coordinate(kb);
+\draw (kb)--++(163:\delW)coordinate [pos=0.6](karrB)coordinate(d)--++(75:\delhh);
+\draw[-latex] (karrB)--++(163:0.05);
+%current
+\draw (3.75,0.4+0.15)++(-17:0.13) circle (4pt) node[rotate=-17] {$+$}++(-17:0.4)circle (4pt) node[rotate=-17] {$+$}++(-17:0.4)circle (4pt) node[rotate=-17] {$+$};
+%tangential field
+\draw[-latex] (a)++(-0.2,0.5)--++(-17:\delW+0.7)node[above]{$H_{m1}$};
+\draw[-latex] (d)++(-0.35,-0.3)--++(-17:\delW+0.7)node[below]{$H_{m2}$};
+%permeability
+\draw (-0.6,0.4) node{$\mu_1$};
+\draw (-0.6,-0.8) node{$\mu_2$};
+\draw[-latex](0,0)--++(-70:0.4)node[below]{$\kvec{a}_{N21}$};
+%drum
+\begin{scope}[xshift=1.25cm,yshift=0.4 cm,rotate=15]
+\draw (0,\delH/2) ellipse (\delX cm and \delY cm);
+\draw (0,-\delH/2) ellipse (\delX cm and \delY cm);
+\draw (-\delX,\delH/2)--++(0,-\delH);
+\draw (\delX,\delH/2)coordinate(kup)--++(0,-\delH)coordinate(kdown);
+\draw[gray] (0,0) ellipse (\delX cm and \delY cm);
+%text
+\draw (0,\delH/2)++(-1,0.6) node {$\Delta S$};
+\draw[-stealth] (0,\delH/2)++(-1,0.6)++(0.3,-0.1) to [out=0,in=90] ++(0.3,-0.55);
+\draw[stealth-stealth] (kup)++(0.2,0)--++(0,-\delH)node[pos=0.3,shift={(0:0.35)}]{$\Delta h$};
+%Bn
+\draw[-latex] (0,\delH/2)--++(0,0.7)node[above]{$B_{n1}$};
+\draw[latex-] (0,-\delH/2)--++(0,-0.7)node[below]{$B_{n2}$};
+\end{scope}
+\end{tikzpicture}%
+
+\end{document}
