@@ -1,0 +1,43 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+\usetikzlibrary{circuits.ee.IEC}
+\tikzset{circuit declare symbol = ammeter}
+\tikzset{set ammeter graphic ={draw,generic circle IEC, minimum size=5mm,info=center:V}}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\xx}{0.8}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[circuit ee IEC]
+%grid
+%\draw[gray,thick] (0,0) grid (3,2);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (3,2);
+%circuit with switch
+\draw(0,0) to [ammeter] ++(0.5,2) to [short, -*] ++(2,0) --++(1,0)--++(-0.5,-2) to [short,-*] ++(-1,0)-- (0,0);
+\draw (2,0) to [make contact] ++(0.5,2);
+%field
+\draw[-latex,gray] (1.2,1.5)--++(0,1);
+\draw[-latex,gray]  (1.2,1.5)++(\xx,0)--++(0,1)node[above]{$\kvec{B}$};
+\draw[-latex,gray]  (1.2,1.5)++(2*\xx,0)--++(0,1);
+\draw[-latex,gray] (1,0.5)--++(0,1);
+\draw[-latex,gray] (1,0.5)++(\xx,0)--++(0,1);
+\draw[-latex,gray] (1,0.5)++(2*\xx,0)--++(0,1);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
