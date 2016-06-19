@@ -1,0 +1,62 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+\usetikzlibrary{circuits.ee.IEC}
+\tikzset{circuit declare symbol = ammeter}
+\tikzset{set ammeter graphic ={draw,generic circle IEC, minimum size=5mm,info=center:V}}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%coordinates
+\coordinate (a) at (0,1);
+\coordinate (b) at (1.4,1.5);
+\coordinate (c) at (1.8,1.5);
+\coordinate (d) at (2.4,1.1);
+\coordinate (e) at (2.4,0.8);
+\coordinate (f) at (1,0.3);
+
+\pgfmathsetmacro{\xx}{0.3}
+\pgfmathsetmacro{\yy}{0.4}
+\coordinate (bb) at (1.4-\xx/2,1.5+2/3*\yy);
+\coordinate (cc) at (1.8-\xx/2,1.5+2/3*\yy);
+%grid
+%\draw[gray,thick] (0,0) grid (3,2);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (3,2);
+%circuit
+\draw (a) to [out=90,in=180] (b)  (c) to [out=10,in=90] (d)  to [out=-90,in=90](e) to [out=-90,in=30] (f) to [out=-150,in=-90] (a);
+\draw[-latex] (f)--($(f)!0.01!(e)$)node[below]{$I$};
+%capacitor
+\draw[fill opacity=0.5] (bb)--++(\xx,-\yy/3)--++(0,-\yy)--++(-\xx,\yy/3)--cycle;
+\draw[fill =white] (cc)--++(\xx,-\yy/3)node[above]{$C$}--++(0,-\yy)--++(-\xx,\yy/3)--cycle;
+%bag body
+\draw[gray] (0.7,1.9) to [out=-30,in=180] (1.3,2) to [out=0,in=90] (1.6,1.5) to [out=-90,in=0] (1.5,1) to[out=180,in=30] (0.7,1.1);
+%bag mouth
+\draw[-latex] ([shift={(-90:0.1cm and 0.4cm)}]0.7,1.5) arc (-90:165:0.1cm and 0.4cm);
+\draw ([shift={(165:0.1cm and 0.4cm)}]0.7,1.5) arc (165:270:0.1cm and 0.4cm);
+%flux
+\draw[gray,-latex] (0.6,0.6) --++(0,0.5);
+\draw[gray,-latex] (1.2,0.5) --++(0,0.5);
+\draw[gray,-latex] (2,0.7) --++(0,0.5);
+%text
+\draw(0.4,1.9) node{$k$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
