@@ -26,28 +26,23 @@
 
 \begin{document}
 \begin{tikzpicture}
-%grid
-%\draw[gray](-2,-1) grid (6,1);
-%
-\draw[-latex](4,0.1)--++(-17:1.1)node[shift={(-20:0.35)}]{$E_{m2}$};
-\draw[-latex](4,0.1)++(73:0.4)--++(-17:1.1)node[shift={(-6:0.35)}]{$E_{m1}$};
 %conductor-air boundary
 \draw[thick] (0,0)++(-160:1.3)coordinate(aaa) --(0,0)coordinate(bbb) to [out=20,in=-165]++(1.25,0.4)coordinate(ka) to [out=15,in=165]++(2.5,0)coordinate (kb) to [out=-15,in=160] ++(1.25,-0.4)coordinate(boundMid)--++(-20:1.5)coordinate(boundEnd);
-%unit vector
+%normal unit vector
 \draw[-latex](0,0)--++(106:0.5)node[above]{$\aN$};
 %electric flux density D, E
-%\draw[-latex] (0,0)++(-160:0.15)coordinate(kstart)--++(150:1.2)coordinate(kend)node[pos=0.5,above right]{$\boldsymbol{D}_{\textup{خ}}$};
-%\draw [latex-] (kend)--($(aaa)!(kend)!(bbb)$)coordinate(ccc)node[left,pos=0.5]{$\boldsymbol{D}_{\textup{ع،خ}}$};
-%\draw[-latex] (kstart)--(ccc)node[below right ,pos=0.7]{$\boldsymbol{D}_{\textup{م،خ}}$};
+\path[-latex] (0,0)++(-160:0.15)coordinate(kstart)--++(150:1.2)coordinate(kend);
+\path [latex-] (kend)--($(aaa)!(kend)!(bbb)$)coordinate(ccc);
+\path[-latex] (kstart)--(ccc);
 %E
-%\draw[-latex] (boundEnd)++(160:0.7)coordinate(eStart)--++(40:1)coordinate(eEnd) node[pos=0.7,left]{$\boldsymbol{E}_{\textup{خ}}$};
-%\draw[latex-] (eEnd)--($(boundEnd)!(eEnd)!(boundMid)$)coordinate(eEE)node[pos=0.5,right]{$\boldsymbol{E}_{\textup{ع،خ}}$};
-%\draw[-latex] (eStart)--(eEE)node[pos=0.5,below]{$\boldsymbol{E}_\textup{م،خ}$};
+\path[-latex] (boundEnd)++(160:0.7)coordinate(eStart)--++(40:1)coordinate(eEnd);
+\path[latex-] (eEnd)--($(boundEnd)!(eEnd)!(boundMid)$)coordinate(eEE);
+\path[-latex] (eStart)--(eEE);
 %a-b-c-d
-\draw (3.75,0.4+\delhh/2)node[above]{$a$}node[shift={(10:\delW/2)},rotate=-17]{$\Delta w$}--++(-17:\delW)node[above]{$b$}coordinate (ka)coordinate [pos=0.6](karrA);
+\draw (3.75,0.4+\delhh/2)node[above]{$a$}node[shift={(10:\delW/2)},rotate=-17]{$\Delta w$}--++(-17:\delW)node[above]{$b$}coordinate (ka)coordinate [pos=0.6](karrA)node[shift={(-35:0.3)}]{$\Delta h$};
 \draw[-latex] (karrA)--++(-20:0.05);
-\draw (ka)--++(-105:\delhh)coordinate(kb)node[below left]{$c$};
-\draw (kb)--++(163:\delW)coordinate [pos=0.6](karrB)node[below]{$d$}node[shift={(150:0.4)}]{$\Delta h$}--++(75:\delhh);
+\draw (ka)--++(-105:\delhh)coordinate(kb)node[below]{$c$};
+\draw (kb)--++(163:\delW)coordinate [pos=0.6](karrB)node[below]{$d$}--++(75:\delhh);
 \draw[-latex] (karrB)--++(163:0.05);
 %drum
 \begin{scope}[xshift=1.25cm,yshift=0.4 cm,rotate=15]
@@ -56,14 +51,11 @@
 \draw (-\delX,\delH/2)--++(0,-\delH);
 \draw (\delX,\delH/2)coordinate(kup)--++(0,-\delH)coordinate(kdown);
 \draw[gray] (0,0) ellipse (\delX cm and \delY cm);
-%D
-\draw [-latex] (0,0.3)--++(0,1)node[above]{$D_{n1}$};
-\draw [latex-] (0,-0.3)--++(0,-1)node[left]{$D_{n2}$};
 %text
-\draw (0,\delH/2)++(-0.5,0.3) node {$\Delta S$};
+\draw (0,\delH/2)++(0,0.3) node {$\Delta S$};
 \draw[stealth-stealth] (kup)++(0.2,0)--++(0,-\delH)node[pos=0.3,shift={(0:0.35)}]{$\Delta h$};
-\draw (-50:1.9) node {$\textup{ذو برق دوم}$}node[yshift=-0.3cm]{$\epsilon_{2}$};
-\draw(20:2.3) node {$\textup{ذو برق اول}$}node[yshift=-0.3cm]{$\epsilon_{1}$};
+\draw (-50:1.9) node {$\epsilon_2 \, , \mu_2$};
+\draw(20:2) node {$\epsilon_1 \, , \mu_1$};
 \end{scope}
 \end{tikzpicture}%
 
