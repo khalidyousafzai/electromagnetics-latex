@@ -1,0 +1,41 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\a}{30}
+\pgfmathsetmacro{\l}{3}
+\pgfmathsetmacro{\lr}{\l*sin(\a)}
+\pgfmathsetmacro{\li}{\l*cos(\a)}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%
+\draw[-latex] (0,0)--++(\a-90:\lr) node[pos=0.7,left]{$\kvec{J}_{\sigma s}$}coordinate(re);
+\draw[-latex] (0,0)--++(\a:\li) node[pos=0.5,above]{$\kvec{J}_{d s}$}coordinate(im);
+\draw[-latex] (0,0)--++(\l,0)node[right]{$\kvec{J}_s=\kvec{J}_{\sigma s}+\kvec{J}_{d s}$}coordinate(tip);
+\draw[gray,dashed] (tip)--(re)node[pos=0.5,below,rotate=\a]{$\omega \epsilon\kvec{E}_s$};
+\draw[gray,dashed] (tip)--(im)node[pos=0.6,right]{$\sigma\kvec{E}_s$};
+\draw[gray,-latex](re)--++(\a-90:0.6)node[below]{$\kvec{E}_s$};
+\draw[-stealth] ([shift={(0:1)}]0,0) arc (0:\a:1);
+\draw (\a/2:1) node[right]{$\theta$};
+\draw (0,1) node[left]{$\tan \theta=\frac{\sigma}{\omega \epsilon}$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
