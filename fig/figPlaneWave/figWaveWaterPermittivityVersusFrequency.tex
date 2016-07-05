@@ -1,0 +1,47 @@
+\documentclass[b5paper]{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{ifthen}   
+\usepackage{amsmath}
+\usepackage{graphics}
+\usetikzlibrary{calc}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+ %tD, t2, t3, es, e2, e3, e_infinity
+\pgfmathsetmacro{\td}{8.26*10^(-12)}
+\pgfmathsetmacro{\tw}{1.05*10^(-12)}
+\pgfmathsetmacro{\th}{0.135*10^(-12)}
+\pgfmathsetmacro{\es}{78.4}
+\pgfmathsetmacro{\ew}{5.85}
+\pgfmathsetmacro{\eh}{3.65}
+\pgfmathsetmacro{\ei}{2.4}
+
+\pgfmathdeclarefunction{waterPermittivity}{0}{
+\pgfmathparse{\ei+(\es-\ew)/(1+(x^2)*(\td^2))+(\ew-\ei)/(1+(x^2)*(\tw^2))
+}
+}
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%
+\begin{axis}[
+  no markers, domain=10^(6):10^(10), samples=1000,
+  axis lines*=left, xlabel=Foo,
+  height=5cm, width=12cm,
+  ytick=\empty,
+  enlargelimits=false, clip=false, axis on top
+  ]
+  \addplot [very thick,black] {waterPermittivity(x)};
+\end{axis}
+%
+\end{tikzpicture}
+\end{urdufont}
+\end{document}
+

@@ -1,17 +1,40 @@
-#retarded potentials
+#waterDielectricLoss from the excellent url        http://www1.lsbu.ac.uk/water/complex_dielectric.html
+#the data below is at 25 degree centigrade
 
-k=2.*10.^(-6)./(4.*pi.*8.854.*10.^(-12))
-a=1.5
-b=-1.5
-n=2998.5
+clear
+clf
 
-c=2.9979.*10.^8
-w=pi.*10.^8
+es=78.4;
+ew=5.85;
+eh=3.65;
+ei=2.4;
 
-Ra=n-a
-Rb=n-b
-t=0
-Ta=t-Ra./c
-Tb=t-Rb./c
+td=8.26*10^(-12);
+tw=1.05*10^(-12);
+th=0.135*10^(12);
 
-V=-k.*cos(w.*Ta)./Ra+k.*cos(w.*Tb)./Rb
+#dielectric constant is e, loss factor is lf and loss tangent =lt
+#
+e=@(w) ei+(es-ew)./(1+w.^(2).*td.^2)+(ew-ei)./(1+w.^(2).*tw.^2);
+lf=@(w) w.*td.*(es-ew)./(1+w.^2.*td.^2)+w.*tw.*(ew-ei)./(1+w.^2.*tw.^2);
+lt=@(w) lf(w)./e(w);
+
+hold on
+axis ("nolabel","off")
+
+for i=1:130
+w(i)=10^(i/10);
+endfor
+
+semilogx(w,e(w))
+semilogx(w,lf(w))
+
+
+print  -dpdf  waterDielectricLoss.pdf
+print  -deps  waterDielectricLoss.eps
+print  -dtikz  waterDielectricLoss.tikz
+
+kkk=fopen("myfile.mat","w")
+fdisp(kkk,w)
+
+fclose(kkk);
