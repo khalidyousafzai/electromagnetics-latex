@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{pgfplotstable}
+\pagestyle{empty}
+
+%this ueses the data files figWaveOctaveWaterDielectricLossEW.txt 
+%and figWaveOctaveWaterDielectricLossLFW.txt prepared by octave's
+%figWaveOctaveWaterDielectricLoss.m
+
+\begin{document}
+\begin{tikzpicture}[]
+\begin{semilogxaxis}[height=3cm,width=7cm,scale only axis,xlabel=$\omega $,axis lines*=left, ymax=85,xmin=1,xmin=10]
+\pgfplotstableread{figWaveOctaveWaterDielectricLossEW.txt}\mydata;
+\addplot [ ]table [x expr=\thisrowno{0},y expr=\thisrowno{1} ] {\mydata}node[pos=0.12,below]{$\epsilon_R$};
+
+\pgfplotstableread{figWaveOctaveWaterDielectricLossLFW.txt}\mydata;
+\addplot [dashed ]table [x expr=\thisrowno{0},y expr=\thisrowno{1} ] {\mydata}node[pos=0.12,above]{$\sigma$};
+\end{semilogxaxis}
+%
+\end{tikzpicture}%
+
+\end{document}

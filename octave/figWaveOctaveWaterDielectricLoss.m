@@ -31,13 +31,19 @@ semilogx(w,e(w))
 semilogx(w,lf(w))
 
 
-print  -dpdf  waterDielectricLoss.pdf
-print  -deps  waterDielectricLoss.eps
-print  -dtikz  waterDielectricLoss.tikz
+#print  -dpdf  waterDielectricLoss.pdf
+#print  -deps  waterDielectricLoss.eps
+#print  -dtikz  waterDielectricLoss.tikz
 
-#horzcat(w,e(w))
-khorcat=rot90([e(w);w],-1);
+#concatenate the two matrices, rotate clockwise 90 degrees and then save as text file
 
-kkk=fopen("myfile.mat","w")
-fdisp(kkk,khorcat)
+khorcatEW=rot90([e(w);w],-1);
+khorcatLFW=rot90([lf(w);w],-1);
+
+kkk=fopen("figWaveOctaveWaterDielectricLossEW.txt","w");
+fdisp(kkk,khorcatEW)
+fclose(kkk);
+
+kkk=fopen("figWaveOctaveWaterDielectricLossLFW.txt","w");
+fdisp(kkk,khorcatLFW)
 fclose(kkk);
