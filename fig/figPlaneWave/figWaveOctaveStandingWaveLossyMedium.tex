@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{pgfplotstable}
+\usepackage{amsmath}
+\pagestyle{empty}
+\pgfplotsset{compat=1.9}
+
+%this ueses the data files figWaveOctaveWaterDielectricLossEW.txt 
+%and figWaveOctaveWaterDielectricLossLFW.txt prepared by octave's
+%figWaveOctaveWaterDielectricLoss.m
+
+\begin{document}
+\begin{tikzpicture}[]
+\begin{axis}[height=4cm,width=7cm,scale only axis,xlabel=$z$,axis lines*=middle]
+\pgfplotstableread{figWaveOctaveStandingWaveLossyMedium.txt}\mydata;
+\addplot [ ]table [x expr=\thisrowno{0},y expr=\thisrowno{1} ] {\mydata};
+
+\node[below] at (axis cs:-0.6,4.4){$\begin{aligned}\gamma_1&=1+j5\pi \\ \sigma_2&=\infty \end{aligned}$};
+
+\end{axis}%
+%
+\end{tikzpicture}%
+
+\end{document}
