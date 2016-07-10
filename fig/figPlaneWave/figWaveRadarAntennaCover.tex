@@ -1,0 +1,49 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{calc}
+\usepackage[siunitx]{circuitikz}
+\sisetup{math-micro=\textup{µ},text-micro=µ,math-ohm  =\upOmega}   %with mathpazo this is needed else must not be here. now size of micro is smaller
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage{english}
+\setotherlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+\setlength{\parskip}{5mm plus 4mm minus 3mm}
+
+\pgfmathsetmacro{\l}{4}
+
+\begin{document}
+%\begin{urdufont}
+\begin{tikzpicture}
+%axis
+\draw[gray](-7,0)--(0.5,0)node[right]{$z$};
+\draw[gray](0,-0.5)--(0,3)node[above]{$x$};
+%radome
+\draw[thick] (0,-0.5)--(0,2.5);
+\draw[thick] (-\l,-0.5)--(-\l,3);
+%
+\draw(0,0)node[below left]{$0$};
+\draw(-\l,0)node[below left]{$-l$};
+%
+\draw (-\l-2,2) node{$\eta_0=\SI{377}{\ohm}$};
+\draw (-\l/2,2) node{$\eta_1$};
+\draw (0,2) node[right]{$\begin{aligned}\eta_2&=\SI{377}{\ohm}\\ &=\eta_0\end{aligned}$};
+%
+\draw[latex-] (-\l,1.5)--++(-0.5,0)--++(0,-0.5)node[below]{$\eta_{\text{\urdufont{داخلی}}}$};
+\draw[-latex] (-7,1)--++(1,0)node[pos=0.5,below]{$E_{xs1}$};
+%urdu
+\draw (-\l/2,3) node{{\urdufont{\RL{حفاظتی تہہ}}}};
+\end{tikzpicture}%
+%\end{urdufont}
+\end{document}
