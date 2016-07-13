@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\h}{0.2}
+\pgfmathsetmacro{\w}{1.5}
+\pgfmathsetmacro{\d}{0.5}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%
+\draw (0,0)--++(\w,0)--++(0,\h)--++(-\w,0)--cycle;
+\draw (0,\d)--++(\w,0)--++(0,\h)--++(-\w,0)--cycle;
+%
+\draw[gray] (-0.1,\h)--++(-0.7,0)coordinate[pos=0.8](kkB);
+\draw[gray] (-0.1,\d)--++(-0.7,0)coordinate[pos=0.8](kkT);
+\draw[gray,stealth-] (kkB)--++(0,-0.3)--++(-0.3,-0.3)node[below]{$d$};
+\draw[gray,stealth-] (kkT)--++(0,0.3);
+%
+\draw [gray] (\w+0.1,0)--++(0.5,0)coordinate[pos=0.7](kC);
+\draw [gray] (\w+0.1,\h)--++(0.5,0)coordinate[pos=0.7](kD);
+\draw[gray,stealth-] (kD)--++(0,0.3);
+\draw[gray,stealth-] (kC)--++(0,-0.3) node[below]{$t$};
+%
+\draw[gray] (0,\d+\h+0.1)--++(0,0.3)coordinate[pos=0.7](kE);
+\draw[gray] (\w,\d+\h+0.1)--++(0,0.3);
+\draw[gray,stealth-stealth] (kE)--++(\w,0)node[pos=0.5,fill=white]{$b$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

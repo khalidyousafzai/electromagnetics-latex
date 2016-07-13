@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\a}{0.7}
+\pgfmathsetmacro{\b}{1.2}
+\pgfmathsetmacro{\c}{1.5}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%
+\draw (0,0) circle (\a) circle (\b) circle (\c);
+\draw[-stealth] (0,0) --++(20:\a)node[pos=0.4,above]{$\rho_1$};
+\draw[-stealth] (0,0) --++(-30:\b)node[pos=0.85,above]{$\rho_2$};
+\draw[-stealth] (0,0) --++(-120:\c)node[pos=0.5,left]{$\rho_3$};
+%text
+\draw (0,-\c-0.5) node[]{الف};
+\draw (0,\c+0.5) node[]{\RL{ہم محوری تار}};
+%
+\begin{scope}[xshift=-4cm]
+\draw (0,0) circle (\a);
+\draw (-2,0) circle (\a);
+\draw[-stealth] (0,0) --++(20:\a)node[pos=0.4,above]{$b$};
+\draw[-stealth] (-2,0) --++(20:\a)node[pos=0.4,above]{$b$};
+%
+\draw[gray] (0,0) --++(0,-\a-0.5);
+\draw[gray] (-2,0) --++(0,-\a-0.5);
+\draw[stealth-stealth] (-2,-\a-0.3) --++(2,0)node[pos=0.5,fill=white]{$d$};
+%text
+\draw (-1,-\c-0.5) node[]{ب};
+\draw (-1,\c+0.5) node[]{\RL{دو متوازی تار}};
+\end{scope}
+
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
