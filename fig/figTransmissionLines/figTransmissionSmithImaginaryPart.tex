@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7}
+
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+\draw[gray] (-3,-3) grid (3,3);
+%axis
+\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+\draw(0,0) --++(0,1.2*\l) node[above]{$\Gamma_i$};
+\draw (0,0) circle (\l);
+%
+\begin{scope}
+\clip (0,0) circle (\l);
+\foreach \x in {2,1,0.5,-2,-1,-0.5}{\draw (\l,\l/\x) circle (\l/\x);}
+\draw(-\l,0)--(\l,0);
+%text
+\draw (1.2,1.6) node[fill=white]{$x=2$};
+\draw (1.2,-1.6) node[fill=white]{$x=-2$};
+\draw (0.6,1.1) node[fill=white]{$x=1$};
+\draw (0.6,-1.1) node[fill=white]{$x=-1$};
+\draw (-1,1.5) node[fill=white]{$x=0.5$};
+\draw (-1,-1.5) node[fill=white]{$x=-0.5$};
+\draw (-1.5,0.2) node{$x=0$};
+\end{scope}
+%
+\draw[fill] (\l,0) circle (1pt);
+\draw[stealth-] (\l,0)++(0.05,0.05) to [out=45,in=180]++(1,1)node[right]{$x=\infty$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
