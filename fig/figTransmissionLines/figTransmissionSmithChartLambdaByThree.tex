@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7} %radius of smith chart; this is the unit circle
+\pgfmathsetmacro{\ang}{82.875}   %point
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+%\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+%\draw(0,0) --++(0,1.2*\l+0.2) node[above]{$\Gamma_i$};
+%outer most dashed circles
+\draw[dashed,-stealth] ([shift={(\ang:\l+0.3)}]0,0) arc (\ang:\ang-216:\l+0.3);
+\draw (30:\l+0.4)node[fill=white]{$0.3\lambda$};
+\draw[gray,-stealth] ([shift={(\ang:\l+0.8)}]0,0) arc (\ang:\ang-82.8:\l+0.8);
+\draw[gray] (45:\l+1.1)node[rotate=-45]{$0.115\lambda$};
+\draw[gray] (0:\l+0.7)--++(0.5,0)node[right]{\RL{برقی دباو کی چوٹی}};
+\draw[gray] (180:\l+0.2)node[left]{\RL{برقی دباو کا نشیب}};
+\draw (0,0) circle (\l);
+%=================
+\begin{scope}
+\clip (0,0) circle (\l);
+%\foreach \x in {2,1,0.5,-2,-1,-0.5}{\draw (\l,\l/\x) circle (\l/\x);}
+\foreach \x in {1,-0.4}{\draw (\l,\l/\x) circle (\l/\x);}
+\draw[gray](-\l,0)--(\l,0);
+%label x
+\draw (0.8,0.8) node[fill=white]{${\scriptstyle x=1 }$};
+\draw (0.3,-0.4) node[fill=white]{${\scriptstyle x=-0.4}$};
+\end{scope}
+%==============
+\foreach \r in {0.28,0.5}{\draw ({\l*\r/(\r+1)},0) circle ({\l/(\r+1)});}
+%label y
+\draw (0,-2) node[fill=white]{${\scriptstyle r=0.28}$};
+\draw(-0.75,0.75) node[fill=white]{${\scriptstyle r=0.5}$};
+%=============
+%extra work
+\draw[dashed] (0,0)--++(\ang:\l+1)node[anchor=south]{$0.135\lambda$};
+\draw[fill] (\ang:0.62*\l) circle (1pt) node[shift={(45:0.3)}] {${\scriptstyle A}$};
+\draw[dashed] (0,0)--++(\ang-216:\l+0.6)node[anchor=north]{$0.435\lambda$};
+\draw[fill] (\ang-216:0.62*\l) circle (1pt) node[shift={(180:0.3)}] {${\scriptstyle B}$};
+\draw[dashed] (0,0) circle (0.62*\l);
+\draw[] (-30:0.62*\l) node[fill=white]{${\scriptstyle \left|\Gamma\right|=0.62}$};
+\draw[fill] (0:0.62*\l) circle (1pt) node[shift={(-50:0.25)}] {${\scriptstyle C}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
