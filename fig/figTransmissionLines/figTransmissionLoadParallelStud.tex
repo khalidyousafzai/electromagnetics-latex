@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7} %radius of smith chart; this is the unit circle
+\pgfmathsetmacro{\ang}{21.6}   %point
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%circuit
+\draw (0,0) --++(6,0) to [R,l_=$Z_L$]++(0,2)--++(-6,0);
+\draw (2,2) to [short,*-] ++(-45:4)--++(0,-2)coordinate(cc) to [short,-*]++(-45:-4)coordinate(dd);
+%dimensions
+\draw (2,2)++(0,0.2)--++(0,0.3)coordinate[pos=0.5](aa);
+\draw (6,2)++(0,0.2)--++(0,0.3)coordinate[pos=0.5](bb);
+\draw[stealth-stealth] (aa)--(bb)node[pos=0.5,fill=white]{$d$};
+%
+\draw (cc)++(0,-0.3)--++(0,-0.6)coordinate[pos=0.6](ee);
+\draw (dd)++(0,-0.3)--++(0,-0.6)coordinate[pos=0.6](ff);
+\draw[stealth-stealth] (ee)--(ff)node[pos=0.5,fill=white]{$d_1$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

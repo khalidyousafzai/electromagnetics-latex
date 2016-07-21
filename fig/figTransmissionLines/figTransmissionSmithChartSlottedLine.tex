@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7} %radius of smith chart; this is the unit circle
+\pgfmathsetmacro{\ang}{21.6}   %point
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+%\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+%\draw(0,0) --++(0,1.2*\l+0.2) node[above]{$\Gamma_i$};
+%outer most dashed circles
+\draw (0,0) circle (\l);
+%=================
+\begin{scope}
+\clip (0,0) circle (\l);
+%\foreach \x in {2,1,0.5,-2,-1,-0.5}{\draw (\l,\l/\x) circle (\l/\x);}
+%\foreach \x in {1,-0.4}{\draw (\l,\l/\x) circle (\l/\x);}
+\draw[gray](-\l,0)--(\l,0);
+%label x
+\end{scope}
+%==============
+\foreach \r in {2.5}{\draw ({\l*\r/(\r+1)},0) circle ({\l/(\r+1)});}
+%label y
+\draw (0.65*\l,-0.6) node[fill=white]{$r=2.5$};
+%=============
+%extra work
+\draw[dashed] (0,0)--++(\ang:\l+0.3)node[right]{$0.22\lambda$};
+\draw[fill] (\ang:0.42484*\l) circle (1pt);
+\draw[stealth-] (\ang:0.42484*\l)++(0.03,0.03) to [out=55,in=-60]++(-0.3,1) node[above] {$ z=2.1+j0.8$};
+\draw (\l,0)node[right] {$0.25\lambda$};
+\draw[dashed] (0,0) circle (0.42484*\l);
+\draw[fill] (0:0.42484*\l) circle (1pt);
+\draw[stealth-] (0:0.42484*\l) ++(-0.03,-0.03) to [out=-135,in=0]++(-0.5,-0.5) node[left]{$2.5+j0$};
+\draw (150:0.42484*\l) node[fill=white]{$s=2.5$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
