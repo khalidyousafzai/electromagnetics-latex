@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%needs polar values of Reflection Coefficient "Gamma". Also note that Beta=1 here
+%\pgfmathdeclarefunction{waveWithReflection}{absGamma,AngleGamma,x}{\pgfmathparse{sqrt((1+#1*cos(#2-2*#3))^2+(#1*sin(#2-2*#3))^2)}}
+\pgfmathdeclarefunction{waveWithReflection}{3}{\pgfmathparse{sqrt((1+#1*cos(#2-2*#3))^2+(#1*sin(#2-2*#3))^2)}}
+
+\pgfmathsetmacro{\xLen}{2.5}
+\pgfmathsetmacro{\yLen}{1.5}
+\pgfmathsetmacro{\x}{\xLen+0.5}
+\pgfmathsetmacro{\y}{\yLen+0.5}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%axis
+\draw[gray](-\x,0)--(\x,0)node[right]{$x$};
+\draw[gray](0,-\y)--(0,\y)node[left]{$y$};
+%rotated ellipse
+\draw[rotate=30,name path=kellipse] (0,0) ellipse (\xLen cm and \yLen cm);
+%major and minor axis
+\draw[fill](30:-\xLen cm)circle (1pt)node[left]{$A'$}--(30:\xLen cm) circle (1pt)node[right]{$A$}node[rotate=30,pos=0.25,fill=white]{\RL{کبیرہ رداس}};
+\draw[fill](120:-\yLen cm)circle (1pt)node[below]{$B'$}--(120:\yLen cm)circle (1pt)node[above]{$B$}coordinate[pos=0.8](minorAxis);
+\draw[stealth-] (minorAxis)++(-0.01,0) to [out=180,in=0]++(-1,0.5) node[left]{\RL{رداس صغیرہ}};
+\draw[-stealth] ([shift={(0:0.5)}]0,0) arc (0:30:0.5);
+\draw (15:0.8) node{$\tau$};
+%vector E
+\path[rotate=30] ([shift={(0:\xLen cm and \yLen cm)}]0,0) arc (0:30:\xLen cm and \yLen cm)coordinate (pE);
+\draw[-latex](0,0) --++(pE)node[pos=0.7,fill=white]{$\kvec{E}$};
+%text
+\draw(0,0)node[shift={(160:0.5)}]{$M$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

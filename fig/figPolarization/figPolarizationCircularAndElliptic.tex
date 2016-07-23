@@ -1,0 +1,61 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\x}{1.5}
+\pgfmathsetmacro{\y}{1.5}
+\pgfmathsetmacro{\lx}{1}
+\pgfmathsetmacro{\ly}{0.7}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+\draw[gray] (-\x,0)--(\x,0)node[below]{$x$};
+\draw[gray] (0,-\y)--(0,\y)node[left]{$y$};
+%vector
+\draw (0,0) circle (\lx);
+\draw[-latex] (0,0)--++(30:\lx)node[pos=0.75,rotate=30,shift={(120:0.2)}]{$\kvec{E}$};
+\draw[-latex] (0,0)--++(\lx,0)node[below,pos=0.5]{$E_1$};
+\draw[-latex] (0,0)--++(0,\lx)node[left,pos=0.5]{$E_2$};
+\draw[-stealth] ([shift={(30:\lx+0.2)}]0,0) arc (30:-15:\lx+0.2);
+%text
+\draw(1.3,1.3) node[]{$\delta=-90^\circ$};
+\draw (0,-\y) node[below]{\RL{الف: دائری قطبیت}};
+%
+\begin{scope}[xshift=-4cm]
+%axis
+\draw[gray] (-\x,0)--(\x,0)node[below]{$x$};
+\draw[gray] (0,-\y)--(0,\y)node[left]{$y$};
+%vector
+\draw (0,0) ellipse (\lx cm and  \ly cm);
+\draw[-latex] (0,0)--++(30:\lx cm and \ly cm)node[pos=0.75,rotate=25,shift={(120:0.2)}]{$\kvec{E}$};
+\draw[-latex] (0,0)--++(\lx,0)node[below,pos=0.5]{$E_1$};
+\draw[-latex] (0,0)--++(0,\ly)node[left,pos=0.5]{$E_2$};
+\draw[-stealth] ([shift={(30:1.1*\lx cm and 1.1*\ly cm)}]0,0) arc (30:-15:1.1*\lx cm and 1.1*\ly cm);
+%text
+\draw(1.3,1.3) node[]{$\delta=-90^\circ$};
+\draw (0,-\y) node[below]{\RL{ب: بیضوی قطبیت}};
+%
+\end{scope}
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

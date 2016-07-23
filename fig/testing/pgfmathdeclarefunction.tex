@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%needs polar values of Reflection Coefficient "Gamma". Also note that Beta=1 here
+%\pgfmathdeclarefunction{waveWithReflection}{absGamma,AngleGamma,x}{\pgfmathparse{sqrt((1+#1*cos(#2-2*#3))^2+(#1*sin(#2-2*#3))^2)}}
+\pgfmathdeclarefunction{waveWithReflection}{3}{\pgfmathparse{sqrt((1+#1*cos(#2-2*#3))^2+(#1*sin(#2-2*#3))^2)}}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%shorted line wave
+\draw (0,{waveWithReflection(0.42484,21.557,0)})
+\foreach \x in {0,-1,...,-360}{--(\x/50,{waveWithReflection(0.42484,21.557,\x)})};
+
+\end{tikzpicture}%1
+\end{urdufont}
+\end{document} 
