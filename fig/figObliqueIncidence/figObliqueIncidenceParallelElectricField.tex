@@ -32,8 +32,8 @@
 %grid
 %\draw[gray] (-3,-3) grid (3,3);
 %axis
-\draw[thick] (-\x,0)--(\x+3,0)node[right]{$x$};
-\draw[dashed] (0,-2.3)--(0,\y)node[above]{$y$};
+\draw[thick] (-\x,0)--(\x+1,0)node[right]{$x$};
+\draw[dashed] (0,-2.1)--(0,\y)node[above]{$y$};
 %incident wave
 \draw (0,0)--(\ang:\l)coordinate[pos=0.7](kIn)node[shift={(\ang:0.3)}]{$x'$};
 \draw[-latex] (kIn)--++(\ang:-0.1);
@@ -41,7 +41,7 @@
 \draw[fill] (kIn)++(\ang+90:0.2)  circle (1pt);
 \draw[-latex] (kIn)++(\ang+90:0.35) --++(\ang+90:0.5)node[shift={(\ang+90:0.3)}]{$\kvec{H}_i$};
 %reflected
-\draw[dashed] (0,0)--(\ang+90:2.8)node[shift={(\ang+90:0.3)}]{$y'$};
+%\draw[dashed] (0,0)--(\ang+90:2.8)node[shift={(\ang+90:0.3)}]{$y'$};
 \draw[-latex](0,0)--++(180-\angR:\lR)coordinate(refTip)coordinate[pos=0.7](kRef);
 \draw (kRef)++(180-\angR-90:0.2) circle (3pt)node[shift={(0:0.35)}]{$\kvec{E}_r$};
 \draw[fill] (kRef)++(180-\angR-90:0.2) circle (1pt);
@@ -49,12 +49,15 @@
 %angle of incidence and reflection
 \draw[stealth-stealth] ([shift={(\ang:0.5)}]0,0) arc (\ang:90:0.5);
 \draw  ({(\ang+90)/2}:0.8) node{$\theta_i$};
+\draw  ({(\ang+90)/2}:1.2) node[gray,rotate=-\ang]{\small \RL{زاویہ آمد}};
 \draw[stealth-stealth] ([shift={(90:0.8)}]0,0) arc (90:180-\angR:0.8);
-\draw  (105:1.1) node{$\theta_r$};
+\draw  (140-\angR:1.1) node{$\theta_r$};
+\draw  ({(270-\angR)/2}:1.5) node[gray,rotate={(90-\angR)/2}]{\RL{زاویہ انعکاس}};
 %transmission
-\draw[-latex] (0,0)--++(-90-\angT:2.8)coordinate[pos=0.7](kT);
+\draw[-latex] (0,0)--++(-90-\angT:2.8)coordinate[pos=0.7](kT)node[gray,shift={(90:0.3)},left]{\RL{ترسیلی موج}};
 \draw[stealth-stealth] ([shift={(-90:0.5)}]0,0) arc (-90:-90-\angT:0.5);
 \draw (-90-\angT/2:0.8) node{$\theta_t$};
+\draw (-90-\angT/2:1.6) node[align=right,gray]{زاویہ \\ انحراف};
 \draw[] (kT)++(-90-\angT-90:0.2)coordinate(kCT) circle (3pt);
 \draw[fill] (kT)++(-90-\angT-90:0.2) circle (1pt);
 \draw[] (kCT)++(70:0.3)node{$\kvec{E}_t$};
@@ -62,10 +65,9 @@
 %text
 \draw[gray] (kIn)++(\ang-90:0.3) node[rotate=\ang]{\RL{آمد موج}};
 \draw[gray] (refTip)++(180-\angR-90:0.3) node[rotate=-\angR]{\RL{انعکاسی موج}};
-\draw[gray] (kT)++(-90-\angT-90:-0.3) node[rotate=\angT]{\RL{ترسیلی موج}};
 %medium
-\draw (\x+2,0.3) node[left]{\RL{خطہ-1: $\epsilon_1,\mu_1,\sigma_1,Z_1,\eta_1$}};
-\draw (\x+2,-0.3) node[left]{\RL{خطہ-2: $\epsilon_2,\mu_2,\sigma_2,Z_2,\eta_2$}};
+\draw (\x+0.5,0.3) node[left]{\RL{{\small خطہ-1:} ${\scriptstyle \epsilon_1,\mu_1,\sigma_1,Z_1,\eta_1}$}};
+\draw (\x+0.5,-0.3) node[left]{\RL{{\small خطہ-2:} ${\scriptstyle \epsilon_2,\mu_2,\sigma_2,Z_2,\eta_2}$}};
 %
 \end{tikzpicture}%
 \end{urdufont}

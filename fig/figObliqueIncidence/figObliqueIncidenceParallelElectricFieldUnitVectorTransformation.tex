@@ -16,12 +16,13 @@
 %\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
 \newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
 
-\pgfmathsetmacro{\l}{4} 
+
 \pgfmathsetmacro{\ang}{30} 
 \pgfmathsetmacro{\angR}{15} 
 \pgfmathsetmacro{\angT}{45} 
 
-\pgfmathsetmacro{\x}{\l*cos(\ang)} 
+\pgfmathsetmacro{\x}{2} 
+\pgfmathsetmacro{\l}{\x/cos(\ang)} 
 \pgfmathsetmacro{\y}{2.5} 
 
 \pgfmathsetmacro{\lR}{\x/cos(\angR)} 
@@ -32,8 +33,8 @@
 %grid
 %\draw[gray] (-3,-3) grid (3,3);
 %axis
-\draw[] (0,0)--(\x,0)node[right]{$x$};
-\draw[] (0,0)node[below, left]{$M$}coordinate(cM)--(0,\y)node[above]{$y$};
+\draw[] (-\x,0)coordinate(xL)--(2,0)node[right]{$x$}coordinate(xR);
+\draw[] (0,0)--(0,\y)node[above]{$y$};
 %incident wave
 \draw[gray] (0,0)--(\ang:\l)coordinate[pos=0.85](kIn)node[shift={(\ang:0.3)}]{$x'$};
 \draw[-latex] (kIn)--++(\ang:-0.1);
@@ -42,22 +43,17 @@
 %angle of incidence and reflection
 \draw[stealth-stealth] ([shift={(\ang:0.5)}]0,0) arc (\ang:90:0.5);
 \draw  ({(\ang+90)/2}:0.8) node{$\theta_i$};
-%transformation
-\draw[fill] (\ang:2.5)circle(1pt)coordinate(top)node[shift={(80:0.3)}]{$A$};
-\draw[dashed,fill](top)--({2.5*cos(\ang)},0) circle (1 pt)node[below right]{$B$}coordinate(bot);
-\draw[dashed,fill] (bot)--(\ang:1.875)circle (1pt)node[shift={(\ang+90:0.3)}]{$C$}coordinate(cC);
-\draw[dashed] ([shift={(120:0.5)}]bot) arc (120:180:0.5);
-\draw (bot) node[shift={(150:0.8)}]{$\theta_i$};
-\draw ([shift={(-90:0.2)}]top) arc (-90:-180+\ang:0.2);
-\draw (top)++({\ang/2-135}:0.35) node {${\scriptstyle \theta_i}$};
-%distance
-\draw [-stealth] (0,-0.3)--++({2.5*cos(\ang)},0)node[pos=0.5,fill=white]{$x$};
-\draw[-stealth] (bot)++(0.3,0) --++(0,{2.5*sin(\ang)})node[pos=0.5,fill=white]{$y$};
-\draw[gray,dashed] (top)--++(0.5,0);
-\draw[gray,dashed] (top)++(\ang+90:0.1)--++(\ang+90:0.8)coordinate[pos=0.8](xD);
-\draw[stealth-,gray] (xD)--++(\ang:-2.5)node[pos=0.5,fill=white,rotate=\ang]{$x'$};
-%
-\RightAngle{(bot)}{(cC)}{(cM)};
+\draw ([shift={(180:0.3)}]0,0) arc(180:90+\ang:0.3);
+\draw ({135+\ang/2}:0.5) node {$\theta_i$};
+%unit
+\draw[-latex] (0,0) --++(90+\ang:1.5)node[right]{$\ay'$}coordinate(top);
+\draw[gray,latex-] (top)--($(xL)!(top)!(xR)$)coordinate(bot);
+\draw[gray,-latex] (0,0)--(bot);
+\draw[dashed,gray] (bot)++(0,-0.2)--++(0,-0.3)coordinate[pos=0.75](mL);
+\draw[dashed,gray] (0,0)++(0,-0.2)--++(0,-0.3)coordinate[pos=0.75](mR);
+\draw[gray,stealth-stealth] (mL)--(mR)node[below,pos=0.5]{$\cos \theta_i$};
+\draw[gray,dashed] (top)++(-0.2,0)--++(-0.3,0)coordinate[pos=0.7](pT);
+\draw[gray,stealth-stealth] (pT)--($(xL)!(pT)!(xR)$)node[pos=0.5,above,rotate=90]{$\sin \theta_i$};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document} 

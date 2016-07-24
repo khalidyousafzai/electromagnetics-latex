@@ -1,0 +1,56 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\ang}{30} 
+\pgfmathsetmacro{\angR}{15} 
+\pgfmathsetmacro{\angT}{45} 
+
+\pgfmathsetmacro{\x}{2} 
+\pgfmathsetmacro{\l}{\x/cos(\ang)} 
+\pgfmathsetmacro{\y}{2.5} 
+
+\pgfmathsetmacro{\lR}{\x/cos(\angR)} 
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+\draw[name path=kxx] (-2.5,0)coordinate(xL)--(1,0)node[right]{$x$}coordinate(xR);
+\draw[] (0,0)--(0,2)node[above]{$y$};
+%reflected wave
+\draw[-latex] (0,0)--(180-\angR:\l)coordinate[pos=0.75](top);
+\draw[] ([shift={(90:0.5)}]0,0)  arc (90:180-\angR:0.5);
+\draw (135-\angR:0.8)node{$\theta_r$};
+%unit
+\draw[-latex] (top)--++(90-\angR:1)node[above]{$\kvec{a}_{H}$}coordinate(vecT);
+\RightAngle{(vecT)}{(top)}{(0,0)};
+\draw[-latex,gray] (0,0)--++(90-\angR:1)node[above]{$\kvec{a}_{H}$}coordinate(unitTop);
+\draw[gray,latex-](unitTop) --($(xL)!(unitTop)!(xR)$)coordinate(unitBot);
+\draw[gray,-latex] (0,0)--(unitBot);
+%
+\path[name path=unit] (top)--++(90-\angR:-1);
+\draw[gray,dashed, name intersections ={of=unit and kxx}] (top)--(intersection-1)coordinate(bottom);
+\draw[gray] ([shift={(0:0.2)}] bottom) arc (0:90-\angR:0.2);
+\draw[gray] (bottom)++(40-\angR/2:0.35)node{${\scriptstyle \theta_r}$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
