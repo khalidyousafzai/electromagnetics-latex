@@ -341,10 +341,10 @@ H_y&=\frac{E_0}{120 \pi} \cos \left[ \omega \left( t -\frac{z}{c} \right) \right
 \gamma=j \omega \sqrt{\mu \epsilon }
 \end{align*}
 حاصل ہوتا ہے جس سے
-\begin{align*}
+\begin{align}
 \alpha&=0\\
-\beta&=\omega \sqrt{\mu \epsilon}
-\end{align*}
+\beta&=\omega \sqrt{\mu \epsilon} \label{مساوات_موج_کامل-ذوبرق_بیٹا}
+\end{align}
 حاصل ہوتے ہیں۔یوں خالی خلاء میں برقی و مقناطیسی امواج کی رفتار  مساوات \حوالہ{مساوات_موج_رفتار_اور_تعدد} سے
 \begin{align}
 v=\frac{\omega}{\beta}=\frac{1}{\sqrt{\mu_R \mu_0 \epsilon_R \epsilon_0}}=\frac{c}{\sqrt{\mu_R \epsilon_R}}
@@ -637,14 +637,49 @@ P_{z,\text{اوسط}}=\frac{1}{2}\frac{E_0^2}{\eta} S \quad \si{\watt}
 طاقت گزرے گی۔
 
 غیر کامل ذو برق کی صورت میں
-\begin{align}\label{مساوات_موج_پوئنٹنگ_مسئلہ}
-\mathscr{P}_{\text{اوسط}}=\frac{1}{2}\frac{E_0^2}{\abs{\eta}} e^{-2\alpha z} \cos (\theta_\eta)
-\end{align}
-حاصل ہوتا ہے جہاں
 \begin{align*}
 \eta=\abs{\eta} e^{j \theta_\eta}
 \end{align*}
-لیا گیا ہے۔
+لیتے ہوئے
+\begin{gather}
+\begin{aligned}\label{مساوات_مستوی_اصل-برقی_و_مقناطیسی_امواج}
+E_x&=E_0 e^{-\alpha z} \cos (\omega t -\beta z)\\
+H_y&=\frac{E_0 e^{-\alpha z}}{\abs{\eta}} \cos \left(\omega t - \beta z -\theta_{\eta} \right)
+\end{aligned}
+\end{gather}
+ہوں گے جن سے
+\begin{align*}
+\mathscr{P}_{\text{اوسط}}&=f \int_0^{\frac{1}{f}} \frac{E_0^2}{\abs{\eta}}e^{-2\alpha z} \cos (\omega t -\beta z) \cos \left(\omega t - \beta z -\theta_{\eta} \right) \dif t\\
+&=f \int_0^{\frac{1}{f}} \frac{ E_0^2}{2 \abs{\eta}} e^{-2\alpha z}  \left[\cos (2\omega t -2\beta z-\theta_{\eta})+\cos \theta_{\eta} \right] \dif t
+\end{align*}
+یعنی
+\begin{align}\label{مساوات_موج_پوئنٹنگ_مسئلہ}
+\mathscr{P}_{\text{اوسط}}=\frac{1}{2}\frac{E_0^2}{\abs{\eta}} e^{-2\alpha z} \cos \theta_\eta
+\end{align}
+حاصل ہوتا ہے۔
+
+کثافت طاقت  کی اوسط قیمت \اصطلاح{مخلوط پوئنٹنگ سمتیہ}\فرہنگ{پوئنٹنگ!مخلوط}\فرہنگ{Poynting!complex}
+\begin{align}\label{مساوات_موج_مخلوط_پوئنٹنگ_سمتیہ}
+\pmb{\mathscr{P}}_{\text{اوسط}}=\frac{1}{2}\left[\kvec{E}_s \times \kvec{H}_s^* \right]_{\text{حقیقی}}
+\end{align}
+سے بھی حاصل کی جا سکتی ہے جہاں \اصطلاح{جوڑی دار مخلوط}\فرہنگ{جوڑی دار مخلوط}\حاشیہب{complex conjugate}\فرہنگ{complex conjugate} مقناطیسی موج استعمال کی جاتی ہے۔آئیں مساوات \حوالہ{مساوات_موج_پوئنٹنگ_مسئلہ} کو اس ترکیب سے دوبارہ حاصل کریں۔مساوات \حوالہ{مساوات_مستوی_اصل-برقی_و_مقناطیسی_امواج} کی دوری سمتی شکل
+\begin{align*}
+E_{sx}&=E_0 e^{-\alpha z -j\beta z}\\
+H_{sy}&=\frac{E_0}{\abs{\eta}} e^{-\alpha z-j\beta z -j\theta_{\eta}}\\
+H_{sy}^*&=\frac{E_0}{\abs{\eta}} e^{-\alpha z+j\beta z +j\theta_{\eta}}
+\end{align*}
+ہے جہاں جوڑی دار مخلوط مقناطیسی موج بھی لکھی گئی ہے۔یوں
+\begin{align*}
+\frac{1}{2} \kvec{E}_{s} \times \kvec{H}_s^* &=\frac{1}{2} \frac{E_0^2}{\abs{\eta}} e^{-2\alpha z+j\theta_{\eta}}\\
+&=\frac{1}{2} \frac{E_0^2}{\abs{\eta}} e^{-2\alpha z} \left(\cos \theta_{\eta} +j \sin \theta_{\eta} \right)
+\end{align*}
+کا حقیقی حصہ لیتے ہوئے
+\begin{align*}
+\mathscr{P}_{\text{اوسط}}=\frac{1}{2}\frac{E_0^2}{\abs{\eta}} e^{-2\alpha z}\cos \theta_{\eta}
+\end{align*}
+کثافت اوسط توانائی کی مطلوبہ مساوات حاصل ہوتی ہے۔
+
+اس کتاب میں اوسط کثافت توانائی حاصل کرتے  وقت مساوات \حوالہ{مساوات_موج_مخلوط_پوئنٹنگ_سمتیہ} استعمال کی جائے گی۔
 
 %========================
 \ابتدا{مشق}

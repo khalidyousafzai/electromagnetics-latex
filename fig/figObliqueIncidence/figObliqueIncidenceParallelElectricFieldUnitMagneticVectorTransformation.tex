@@ -17,13 +17,13 @@
 \newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
 
 
-\pgfmathsetmacro{\ang}{30} 
-\pgfmathsetmacro{\angR}{15} 
-\pgfmathsetmacro{\angT}{45} 
+\pgfmathsetmacro{\l}{3} 
+\pgfmathsetmacro{\angI}{60} 
+\pgfmathsetmacro{\angR}{\angI} 
+\pgfmathsetmacro{\angT}{40} 
 
-\pgfmathsetmacro{\x}{2} 
-\pgfmathsetmacro{\l}{\x/cos(\ang)} 
-\pgfmathsetmacro{\y}{2.5} 
+\pgfmathsetmacro{\x}{\l*cos(\angI)} 
+\pgfmathsetmacro{\y}{2.1} 
 
 \pgfmathsetmacro{\lR}{\x/cos(\angR)} 
 
@@ -33,23 +33,26 @@
 %grid
 %\draw[gray] (-3,-3) grid (3,3);
 %axis
-\draw[name path=kxx] (-2.5,0)coordinate(xL)--(1,0)node[right]{$x$}coordinate(xR);
+\draw[name path=kxx] (-3,0)coordinate(xL)--(1,0)node[right]{$x$}coordinate(xR);
 \draw[] (0,0)--(0,2)node[above]{$y$};
 %reflected wave
-\draw[-latex] (0,0)--(180-\angR:\l)coordinate[pos=0.75](top);
-\draw[] ([shift={(90:0.5)}]0,0)  arc (90:180-\angR:0.5);
-\draw (135-\angR:0.8)node{$\theta_r$};
+\draw[] (0,0)--(90+\angR:\l)coordinate[pos=0.75](top)coordinate[pos=0.5](kArrow);
+\draw[-latex] (kArrow)--++(90+\angR:0.2);
+\draw[] ([shift={(90:0.5)}]0,0)  arc (90:90+\angR:0.5);
+\draw ({90+\angR/2}:0.8)node{$\theta_r$};
 %unit
-\draw[-latex] (top)--++(90-\angR:1)node[above]{$\kvec{a}_{H}$}coordinate(vecT);
+\draw[-latex] (top)--++(90+\angR-90:1)node[above]{$\kvec{a}_{Hr}$}coordinate(vecT);
 \RightAngle{(vecT)}{(top)}{(0,0)};
-\draw[-latex,gray] (0,0)--++(90-\angR:1)node[above]{$\kvec{a}_{H}$}coordinate(unitTop);
-\draw[gray,latex-](unitTop) --($(xL)!(unitTop)!(xR)$)coordinate(unitBot);
-\draw[gray,-latex] (0,0)--(unitBot);
-%
-\path[name path=unit] (top)--++(90-\angR:-1);
+\draw[-latex,thick] (0,0)--++(90+\angR-90:1)node[above]{$\kvec{a}_{Hr}$}coordinate(unitTop);
+\draw[gray,latex-](unitTop) --($(xL)!(unitTop)!(xR)$)coordinate(unitBot)node[pos=0.4,below,rotate=90]{$\sin \theta_r$};
+\draw[gray,-latex] (0,0)--(unitBot)node[pos=0.5,below]{$\cos \theta_r$};
+%angles
+\path[name path=unit] (top)--++(90+\angR-90:-2);
 \draw[gray,dashed, name intersections ={of=unit and kxx}] (top)--(intersection-1)coordinate(bottom);
-\draw[gray] ([shift={(0:0.2)}] bottom) arc (0:90-\angR:0.2);
-\draw[gray] (bottom)++(40-\angR/2:0.35)node{${\scriptstyle \theta_r}$};
+\draw[gray] ([shift={(0:0.5)}] bottom) arc (0:90+\angR-90:0.5);
+\draw[gray] (bottom)++(\angR/2:0.8)node{$ \theta_r $};
+\draw ([shift={(0:0.15)}]0,0) arc (0:\angR:0.15);
+\draw (\angR/2:0.3) node{${\scriptstyle \theta_r}$};
 %
 \end{tikzpicture}%
 \end{urdufont}
