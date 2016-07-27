@@ -32,7 +32,7 @@
 %grid
 %\draw[gray] (-3,-3) grid (3,3);
 %axis
-\draw[thick] (-\x-1,0)--(\x+1.5,0)node[right]{$x$};
+\draw[thick] (-\x-1,0)--(\x+1.5,0);%node[right]{$x$};
 \draw[dashed] (0,-2.1)--(0,\y)node[above]{$y$};
 %incident wave
 \draw (0,0)--(90-\angI:\l)coordinate[pos=0.8](kIn)node[shift={(90-\angI:0.3)}]{$x'$};
@@ -44,10 +44,9 @@
 %reflected
 %\draw[dashed] (0,0)--(\angI+90:2.8)node[shift={(\angI+90:0.3)}]{$y'$};
 \draw[-latex](0,0)--++(90+\angR:\lR)coordinate(refTip)coordinate[pos=0.8](kRef);
-\draw (kRef)++(\angR:0.2)coordinate(cR) circle (3pt)node[shift={(0:0.4)}]{$\kvec{H}_r$};
-\draw[] (cR)++(135:2pt)--++(135:-4pt);
-\draw[] (cR)++(45:2pt)--++(45:-4pt);
-\draw[-latex] (kRef)++(\angR:0.35)--++(\angR:0.5)node[shift={(\angR:0.2)}]{$\kvec{E}_r$} ;
+\draw (kRef)++(\angR:-0.2)coordinate(cR) circle (3pt)node[shift={(180:0.4)}]{$\kvec{H}_r$};
+\draw[fill] (kRef)++(\angR:-0.2)coordinate(cR) circle (1pt);
+\draw[-latex] (kRef)++(\angR:-0.35)--++(\angR:-0.5)node[shift={(\angR:-0.2)}]{$\kvec{E}_r$} ;
 %angle of incidence and reflection
 \draw[stealth-stealth] ([shift={(90-\angI:0.8)}]0,0) arc (90-\angI:90:0.8);
 \draw  ({(90-\angI+90)/2}:1.1) node{$\theta_i$};
@@ -63,7 +62,7 @@
 \draw[] (kCT)node[above]{$\kvec{H}_t$};
 \draw[-latex] (kT)++(-90-\angT-90:0.35)--++(-90-\angT-90:0.5)node[left]{$\kvec{E}_t$};
 %text
-\draw (2,-2)node{الف};
+\draw (2,-2)node{ب};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document} 
