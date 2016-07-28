@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+
+\pgfmathsetmacro{\ang}{45}
+\pgfmathsetmacro{\delA}{5}
+\pgfmathsetmacro{\len}{2.5}
+\pgfmathsetmacro{\lenS}{1}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%primary front, secondary front, small fronts
+\draw ([shift={(-\ang:\len)}]0,0) arc (-\ang:\ang:\len);
+\draw ([shift={(-\ang-\delA:\len+\lenS)}]0,0) arc (-\ang-\delA:\ang+\delA:\len+\lenS);
+\foreach \m in {0,0.3,0.6,0.9,-0.3,-0.6,-0.9}{\draw[gray,dashed] ([shift={(\m*\ang-60:\lenS)}]{\m*\ang}:\len) arc (\m*\ang-60:\m*\ang+60:\lenS);}
+\foreach \m in {0,0.3,0.6,0.9,-0.3,-0.6,-0.9}{\draw[fill] ({\m*\ang}:\len) circle (1pt);}
+
+%wave source
+\draw[stealth-] ({0.6*\ang}:\len)++(-0.1,0) to [out=180,in=0]++(-0.5,-0.5)node[left]{\RL{ہر نقطہ منبع ہے۔}};
+\draw[dashed] ([shift={(0.6*\ang-60:\lenS)}]{0.6*\ang}:\len) arc (0.6*\ang-60:0.6*\ang+60:\lenS);
+%
+\draw[stealth-] (-\ang:\len) to [out=-135,in=0]++(-0.5,-0.5)node[left]{\RL{ابتدائی محاذ موج}};
+\draw[stealth-] (-\ang-\delA:\len+\lenS) to [out=-90,in=180]++(0.5,-0.5)node[right]{\RL{ثانوی محاذ موج}};
+\draw[stealth-] (2.65,2.05) to [out=45,in=180]++(0.5,0.5)node[right]{\RL{ہر نقطہ ثانوی موج پیدا کرتا ہے}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
