@@ -1,0 +1,68 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\wL}{1} %wavelength
+\pgfmathsetmacro{\br}{4.5}   %wave front's breadth
+\pgfmathsetmacro{\angU}{45}   %angle going upwards
+\pgfmathsetmacro{\angD}{-45}   %angle going downwards
+\pgfmathsetmacro{\edgeOut}{0.2}   %the extra wavefront protruding out
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%waves going up
+\foreach \i in {0,2,4}{\draw (\angU:\i*\wL)++(\angU+90:0.2)--++(\angU-90:\br);}
+\foreach \i in {1,3}{\draw[gray] (\angU:\i*\wL)++(\angU+90:0.2)--++(\angU-90:\br);}
+%going down
+\foreach \i in {0,2,4}{\draw (\angD:\i*\wL)++(\angD-90:0.2)--++(\angD+90:\br);}
+\foreach \i in {1,3}{\draw[gray] (\angD:\i*\wL)++(\angD-90:0.2)--++(\angD+90:\br);}
+%zeroes
+\draw[gray,dashed] (\angU:1*\wL)+(180:1.5)node[left]{\RL{صفر میدان}}--++(0:4.5+0.2);
+\draw[gray,dashed] (\angD:1*\wL)+(180:1.5)node[left]{\RL{صفر میدان}}--++(0:4.5+0.2);
+\draw[dash pattern=on 1pt off 2pt on 1pt off 2pt on 4pt off 4pt] (0:-0.75)node[left]{\RL{دگنا حیطہ}}--(0:6);
+%ray
+\draw[latex-] (\angU:2*\wL)++(\angU+90:0.5)--++(\angU+90:1)node[shift={(\angU+90:0.3)}]{\RL{موج الف}};
+\draw[latex-] (\angD:2*\wL)++(\angD-90:0.5)--++(\angD-90:1)node[shift={(\angD-90:0.3)}]{\RL{موج ب}};
+%naming crests
+\foreach \i in {0,2}{\draw (\angD:\i*\wL)++(\angD-90:0.2)++(\angD+90:\br)node[shift={(\angD+90:0.5)},rotate=\angD+90]{\RL{چوٹی الف}};}
+\foreach \i in {1}{\draw (\angD:\i*\wL)++(\angD-90:0.2)++(\angD+90:\br)node[shift={(\angD+90:0.5)},rotate=\angD+90]{\RL{نشیب الف}};}
+\foreach \i in {0,2}{\draw (\angU:\i*\wL)++(\angU+90:0.2)++(\angU-90:\br)node[shift={(\angU-90:0.5)},rotate=\angU-90]{\RL{چوٹی ب}};}
+\foreach \i in {1}{\draw (\angU:\i*\wL)++(\angU+90:0.2)++(\angU-90:\br)node[shift={(\angU-90:0.5)},rotate=\angU-90]{\RL{نشیب ب}};}
+%wavelength
+\path[stealth-stealth] (\angD:2*\wL)++(\angD-90:0.15)coordinate(kA);
+\path[stealth-stealth] (\angD:3*\wL)++(\angD-90:0.15)coordinate(kB);
+\path[stealth-stealth] (\angD:4*\wL)++(\angD-90:0.15)coordinate(kC);
+\draw[stealth-stealth] (kA)--(kB)node[pos=0.5,shift={(\angD-90:0.2)}]{${\scriptstyle \frac{\lambda_0}{2}}$};
+\draw[stealth-stealth] (kB)--(kC)node[pos=0.5,shift={(\angD-90:0.2)}]{${\scriptstyle \frac{\lambda_0}{2}}$};
+%
+\path[stealth-stealth] (\angU:2*\wL)++(\angU+90:0.15)coordinate(kkA);
+\path[stealth-stealth] (\angU:3*\wL)++(\angU+90:0.15)coordinate(kkB);
+\path[stealth-stealth] (\angU:4*\wL)++(\angU+90:0.15)coordinate(kkC);
+\draw[stealth-stealth] (kkA)--(kkB)node[pos=0.5,shift={(\angU+90:0.2)}]{${\scriptstyle \frac{\lambda_0}{2}}$};
+\draw[stealth-stealth] (kkB)--(kkC)node[pos=0.5,shift={(\angU+90:0.2)}]{${\scriptstyle \frac{\lambda_0}{2}}$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

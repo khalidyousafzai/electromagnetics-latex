@@ -1,0 +1,93 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\wL}{1} %wavelength
+\pgfmathsetmacro{\br}{4.5}   %wave front's breadth
+\pgfmathsetmacro{\angU}{45}   %angle going upwards
+\pgfmathsetmacro{\angD}{-45}   %angle going downwards
+\pgfmathsetmacro{\edgeOut}{0.8}   %the extra wavefront protruding out
+
+\pgfmathsetmacro{\l}{5+\edgeOut}
+\pgfmathsetmacro{\h}{\wL*sin(\angU)}
+
+\pgfmathsetmacro{\al}{0.4}
+
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipA/.style={decoration={markings,mark=at position 0.25 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipB/.style={decoration={markings,mark=at position 0.25 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+\tikzset{myTipAA/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipBB/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray] (0,0) grid (3,3);
+%upwards ray
+\path (0,0)++(\angU:\wL)coordinate(startB);
+%\draw[myTipA,myTipAA] (startB)--++(-90+\angD:2*\wL)node[left]{\RL{موج ب}};
+\draw[](startB)--++(\angD:2*\wL)coordinate(startBa)coordinate[pos=0.25](startBaOQ)coordinate[pos=0.75](startBaTQ);
+\draw[gray](startBa)--++(\angU:2*\wL)coordinate(startBb)coordinate[pos=0.25](startBbOQ)coordinate[pos=0.75](startBbTQ);
+\draw[](startBb)--++(\angD:2*\wL)coordinate(startBc)coordinate[pos=0.25](startBcOQ)coordinate[pos=0.75](startBcTQ)coordinate[pos=0.5](startLambda);
+\draw[gray](startBc)--++(\angU:2*\wL)coordinate(startBd)coordinate[pos=0.25](startBdOQ)coordinate[pos=0.75](startBdTQ)coordinate[pos=0.5](endLambda);
+\draw[](startBd)--++(\angD:0.5);
+%arrow heads
+\draw[-latex] (startBaOQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex] (startBaTQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex] (startBcOQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex] (startBcTQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex,gray] (startBbOQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex,gray] (startBbTQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex,gray] (startBdOQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex,gray] (startBdTQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+%downwards ray
+\path (0,0)++(\angD:\wL)coordinate(startA);
+%\draw[myTipA,myTipAA] (startA)--++(90+\angU:2*\wL)node[left]{\RL{موج الف}};
+\draw[](startA)--++(\angU:2*\wL)coordinate(startAa)coordinate[pos=0.25](startAaOQ)coordinate[pos=0.75](startAaTQ);
+\draw[gray](startAa)--++(\angD:2*\wL)coordinate(startAb)coordinate[pos=0.25](startAbOQ)coordinate[pos=0.75](startAbTQ);
+\draw[](startAb)--++(\angU:2*\wL)coordinate(startAc)coordinate[pos=0.25](startAcOQ)coordinate[pos=0.75](startAcTQ);
+\draw[gray](startAc)--++(\angD:2*\wL)coordinate(startAd)coordinate[pos=0.25](startAdOQ)coordinate[pos=0.75](startAdTQ);
+\draw[](startAd)--++(\angU:0.5);
+%arrow heads
+\draw[-latex] (startAaOQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex] (startAaTQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex] (startAcOQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex] (startAcTQ)++(\angU+90:\al/2)--++(\angU-90:\al);
+\draw[-latex,gray] (startAbOQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex,gray] (startAbTQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex,gray] (startAdOQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+\draw[-latex,gray] (startAdTQ)++(\angD-90:\al/2)--++(\angD+90:\al);
+%text
+\draw[stealth-] (startAc)++(0.5,0) to [out=90,in=180] ++(0.5,0.5)node[right]{\RL{موصل چادر}};
+\draw[stealth-] (startBc)++(0.5,0) to [out=-90,in=180] ++(0.5,-0.5)node[right]{\RL{موصل چادر}};
+\draw[stealth-] (startAaOQ)++(\angU:-0.2) to [out=180,in=0]++(-0.5,0.1) node[left]{\RL{موج الف کی چوٹی}};
+\draw[stealth-] (startBaOQ)++(\angD:-0.2) to [out=180,in=0]++(-0.5,-0.1) node[left]{\RL{موج ب کی چوٹی}};
+%wave lengths
+\draw[gray] (startAa)++(\angU:0.05)--++(\angU:0.8)coordinate[pos=0.9](klamTop);
+\draw[gray,stealth-stealth] (klamTop)--++(\angD:\wL)node[pos=0.45,fill=white,scale=0.5]{$\frac{\lambda_0}{2}$};
+\draw[gray,stealth-stealth] (startLambda)--(endLambda)node[pos=0.5,fill=white,scale=0.5]{$\frac{\lambda}{2}$};
+% wave guide
+\draw[] (\angU:1*\wL)--++(\l,0);
+\draw[] (\angD:1*\wL)--++(\l,0);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
