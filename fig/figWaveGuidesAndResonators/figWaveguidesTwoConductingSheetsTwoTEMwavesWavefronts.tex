@@ -82,9 +82,9 @@
 \draw[stealth-] (startAaOQ)++(\angU:-0.2) to [out=180,in=0]++(-0.5,0.1) node[left]{\RL{موج الف کی چوٹی}};
 \draw[stealth-] (startBaOQ)++(\angD:-0.2) to [out=180,in=0]++(-0.5,-0.1) node[left]{\RL{موج ب کی چوٹی}};
 %wave lengths
-\draw[gray] (startAa)++(\angU:0.05)--++(\angU:0.8)coordinate[pos=0.9](klamTop);
-\draw[gray,stealth-stealth] (klamTop)--++(\angD:\wL)node[pos=0.45,fill=white,scale=0.5]{$\frac{\lambda_0}{2}$};
-\draw[gray,stealth-stealth] (startLambda)--(endLambda)node[pos=0.5,fill=white,scale=0.5]{$\frac{\lambda}{2}$};
+\draw[gray,dashed] (startAa)++(\angU:0.05)--++(\angU:1)coordinate[pos=0.85](klamTop);
+\draw[gray,stealth-stealth] (klamTop)--++(\angD:\wL)node[pos=0.45,fill=white,scale=0.65,text=black]{$\frac{\lambda_0}{2}$};
+\draw[gray,stealth-stealth] (startLambda)--(endLambda)node[pos=0.5,fill=white,scale=0.65,text=black]{$\frac{\lambda}{2}$};
 % wave guide
 \draw[] (\angU:1*\wL)--++(\l,0);
 \draw[] (\angD:1*\wL)--++(\l,0);

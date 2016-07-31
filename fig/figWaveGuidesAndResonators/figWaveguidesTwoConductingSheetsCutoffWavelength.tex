@@ -1,0 +1,82 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\ang}{35}   %angle going upwards
+\pgfmathsetmacro{\y}{4}   %wave front's breadth
+\pgfmathsetmacro{\x}{0.5+\y/tan(\ang)} %wavelength
+\pgfmathsetmacro{\l}{\y/sin(\ang)}   %angle going upwards
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipA/.style={decoration={markings,mark=at position 0.25 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipB/.style={decoration={markings,mark=at position 0.25 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+\tikzset{myTipAA/.style={decoration={markings,mark=at position 0.85 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipBB/.style={decoration={markings,mark=at position 0.85 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray] (0,0) grid (3,3);
+%guide
+\draw (-0.5,0)coordinate(xL)--(\x,0)coordinate(xR)node[right]{$x$};
+\draw (-0.5,\y)coordinate(xyL)--(\x,\y)coordinate(xyR);
+%
+\draw[myTipB,myTipBB] (0,0)coordinate(ruB)--++(\ang:\l)coordinate(ruT)coordinate[pos=0.85](ruM);
+\draw[myTipB,myTipBB] (0,\y)coordinate(rdT)node[above]{$A'$}--++(-\ang:\l)coordinate(rdB)coordinate[pos=0.15](rdM)coordinate[pos=0.85](rdBM);
+%
+\draw  (0,0)++(\ang:\l/2)coordinate(B)node[below]{$B$}--($(xyL)!(B)!(xyR)$)coordinate(A)node[above]{$A$}node[pos=0.35,shift={(0:0.2)},scale=1]{$\frac{b}{2}$};
+\draw[gray,shorten >=-0.5cm] (A)--($(rdT)!(A)!(rdB)$)coordinate(cirL);
+\draw (cirL) circle (2pt)node[shift={(200:0.3)}]{$C$}node[right,scale=0.7]{$-E_y''$};
+%
+\draw[shorten >=-0.75cm] (A)--($(ruT)!(A)!(ruB)$)coordinate(cirR);
+\draw[fill=white] (cirR) circle (2pt)node[left]{$D$}node[shift={(-10:0.3)},scale=0.7]{$E_y'$};
+\draw[fill] (cirR) circle (1pt);
+%
+\path (A)--($(xL)!(A)!(xR)$)coordinate(A')--($(ruB)!(A')!(ruT)$)coordinate(cirC');
+\draw (cirC') circle (2pt)node[shift={(-10:0.3)}]{$C'$}node[shift={(\ang+90:0.3)},scale=0.7]{$-E_y'$};
+\draw (cirC')++(\ang+90:2pt)--++(\ang-90:4pt);
+\draw[gray] (cirC')++(\ang-90:4pt)--++(\ang-90:0.75)coordinate[pos=0.75](halfLambda);
+\path[name path=toLambda] (A)--++(\ang-90:3);
+\path[name path=toLambdaA] (halfLambda)--++(\ang:3)node[pos=0.25,fill=white]{$\frac{\lambda_0}{2}$};
+\draw[gray,stealth-stealth,name intersections={of=toLambdaA and toLambda}] (halfLambda)--(intersection-1)node[pos=0.35,fill=white]{$\frac{\lambda_0}{2}$};
+%angles
+\draw([shift={(0:0.5)}]0,0) arc (0:\ang:0.5);
+\draw (\ang/2:0.8) node{$\theta$};
+\draw([shift={(0:0.5)}]0,\y) arc (0:-\ang:0.5);
+\draw (0,\y)++(-\ang/2:0.8) node{$\theta$};
+\draw ([shift={(-90:0.5)}]A) arc (-90:-90-\ang:0.5);
+\draw (A)++(-90-\ang/2:0.8)node{$\theta$};
+\draw ([shift={(-90:0.5)}]A) arc (-90:-90+\ang:0.5);
+\draw (A)++(-90+\ang/2:0.8)node{$\theta$};
+%dimensions
+\draw[stealth-stealth] (-0.25,0)--++(0,\y)node[fill=white,pos=0.5]{$b$};
+%velocity
+\draw[-latex] (rdM)++(-\ang-90:0.2)--++(-\ang:0.5)node[pos=0.5,shift={(-\ang-90:0.2)}]{$v_0$};
+\draw[-latex] (1.2,\y-0.2)--++(0.5,0)node[pos=0.5,below]{$v$};
+%text
+\draw[stealth-] (0.65*\x,0) to [out=-90,in=180]++(0.5,-0.5)node[right]{\RL{موصل چادر}};
+\draw[stealth-] (0.65*\x,\y) to [out=90,in=180]++(0.5,0.5)node[right]{\RL{موصل چادر}};
+\draw (ruM)node[below,rotate=\ang]{\RL{شعاع $x'$}};
+\draw (rdBM)node[above,rotate=-\ang]{\RL{شعاع $x''$}};
+\draw[stealth-] (cirR)++(\ang-90:0.35) to [out=0,in=180]++(0.5,-0.25)node[right]{\RL{موج $x'$ کی چوٹی}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

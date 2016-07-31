@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\ang}{60}   %angle going upwards
+\pgfmathsetmacro{\y}{1}   %wave front's breadth
+\pgfmathsetmacro{\x}{3} %wavelength
+\pgfmathsetmacro{\l}{\y/sin(\ang)}   %angle going upwards
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipA/.style={decoration={markings,mark=at position 0.25 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipB/.style={decoration={markings,mark=at position 0.25 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+\tikzset{myTipAA/.style={decoration={markings,mark=at position 0.85 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipBB/.style={decoration={markings,mark=at position 0.85 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray] (0,0) grid (3,3);
+%guide
+\draw (-0.5,0)coordinate(xL)--(\x,0)coordinate(xR);
+\draw (-0.5,\y)node[above right]{$\lambda_0<\lambda_{0c}$}--(\x,\y)node[above left]{$\theta<90^{\circ}$};
+%
+
+\draw[myTipBB] (0,0)--++(\ang:\l)coordinate(a);
+\draw[myTipBB] (a)--++(-\ang:\l)coordinate(b);
+\draw[myTipBB] (b)--++(\ang:\l)coordinate(c);
+\draw[myTipBB] (c)--++(-\ang:\l)coordinate(d);
+\draw[myTipBB] (d)--++(\ang:\l/2)coordinate(e);
+
+\draw[myTipAA] (0,0)--++(-\ang:-2/3*\l)coordinate(start);
+%\draw[latex-latex] (0.25,\y)coordinate(rdT)--++(-\ang:\l)coordinate(rdB)coordinate[pos=0.15](rdM)coordinate[pos=0.85](rdBM);
+%
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
