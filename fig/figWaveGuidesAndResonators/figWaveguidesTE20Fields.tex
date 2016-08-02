@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\A}{0.5}
+\pgfmathdeclarefunction{Hx}{1}{\pgfmathparse{\A*cos(#1)}}
+\pgfmathdeclarefunction{Ey}{1}{\pgfmathparse{\A*sin(#1)}}
+\pgfmathdeclarefunction{Hz}{1}{\pgfmathparse{\A*sin(#1)}}
+
+\pgfmathsetmacro{\lz}{3}
+\pgfmathsetmacro{\ly}{0.75}
+\pgfmathsetmacro{\shiftL}{2}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%TE10 Hx
+\draw[-latex] (0,0)--++(-\lz-0.5,0)node[left]{$z$};
+\draw (0,-\ly)--(0,\ly)node[pos=0.75,right]{$E_y$};
+\draw (-\lz,-\ly)--(-\lz,\ly);
+\draw (0,{Ey(0)})\foreach \z in {0,1,...,180}{--({-\lz*\z/180},{Ey(2*\z)})};
+\draw (-\lz/2,0.75) node[]{$TE_{20}$};
+%
+\begin{scope}[yshift=-\shiftL cm]
+\draw[-latex] (0,0)--++(-\lz-0.5,0)node[left]{$z$};
+\draw (0,-\ly)--(0,\ly)node[pos=0.75,right]{$H_x$};
+\draw (-\lz,-\ly)--(-\lz,\ly);
+\draw (0,{Hx(0)})\foreach \z in {0,1,...,180}{--({-\lz*\z/180},{Hx(2*\z)})};
+\end{scope}
+%
+\begin{scope}[yshift=-2*\shiftL cm]
+\draw[-latex] (0,0)--++(-\lz-0.5,0)node[left]{$z$};
+\draw (0,-\ly)node[below]{$z=0$}--(0,\ly)node[pos=0.75,right]{$H_z$};
+\draw (-\lz,-\ly)node[below]{$z=b$}--(-\lz,\ly);
+\draw (0,{Hz(0)})\foreach \z in {0,1,...,180}{--({-\lz*\z/180},{Hz(2*\z)})};
+\draw (-\lz/2,-2)node{\RL{ب: $m=2, n=0$}};
+\end{scope}
+
+%\begin{axis}[xmin=0, xmax=360,ymin =-1,ymax=1,domain=0:360]
+%\addplot[domain=0:360,smooth] {Hx(x)};
+%\end{axis}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
