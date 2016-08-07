@@ -666,6 +666,10 @@ f_c=\frac{1}{2 \sqrt{\mu \epsilon}} \sqrt{\left(\frac{n}{y_1}\right)^2+\left(\fr
 \begin{align}\label{مساوات_مویج_مستطیلی-انقطاعی_طول_موج}
 \lambda_{0c}=\frac{2\pi}{\sqrt{\left(\frac{n\pi}{y_1}\right)^2+\left(\frac{m\pi}{z_1}\right)^2}}=\frac{2}{\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\frac{m}{z_1}\right)^2}}=\frac{2\pi}{k}  \quad \quad (\si{\meter})
 \end{align}
+یا
+\begin{align}\label{مساوات_مویج_انقطاعی_تعدد_اور_کے}
+k=\frac{2\pi}{\lambda_{0c}}
+\end{align}
 حاصل ہوتے ہیں جہاں \عددیء{\lambda_{0c}} لامحدود خطے میں انقطاعی تعدد پر طول موج ہے جسے چھوٹا کر کہ \اصطلاح{انقطاعی طول موج}\فرہنگ{انقطاعی!طول موج}\حاشیہب{cutoff wavelength}\فرہنگ{cutoff!wavelength} پکارا جاتا ہے۔مساوات \حوالہ{مساوات_مویج_مستطیلی-انقطاعی_تعدد} اور مساوات \حوالہ{مساوات_مویج_مستطیلی-انقطاعی_طول_موج} سے کھوکھلے مستطیلی مویج کے کسی بھی \عددیء{\TE{mn}} موج کا انقطاعی تعدد اور انقطاعی طول موج حاصل کیا جا سکتا ہے۔مثال کے
  طور پر \عددیء{\TE{10}} موج کا انقطاعی طول موج
 \begin{align}
@@ -677,7 +681,15 @@ f_c=\frac{1}{2 \sqrt{\mu \epsilon}} \sqrt{\left(\frac{n}{y_1}\right)^2+\left(\fr
 \begin{align}\label{مساوات_مویج_آزاد_اور_قید_زاویائی_مستقل}
 \beta=\sqrt{\beta_0^2-k^2}=\sqrt{\omega^2 \mu \epsilon -\left(\frac{n \pi}{y_1}\right)^2-\left(\frac{m \pi}{z_1}\right)^2}
 \end{align}
-لہٰذا  مویج میں \اصطلاح{دوری رفتار}\فرہنگ{دوری!رفتار}\فرہنگ{رفتار!دوری}\حاشیہب{phase velocity}\فرہنگ{phase!velocity} \عددیء{v_p}
+کے برابر ہے۔اب \عددیء{\beta_0=\tfrac{2\pi}{\lambda_0}} اور مساوات \حوالہ{مساوات_مویج_انقطاعی_تعدد_اور_کے} مندرجہ بالا مساوات میں پر کرتے ہوئے
+\begin{align}
+\beta=\sqrt{\left(\frac{2\pi}{\lambda_0}\right)^2-\left(\frac{2\pi}{\lambda_{0c}}\right)^2}=\beta_0 \sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}
+\end{align}
+لکھا جا سکتا ہے لہٰذا  مویج میں طول موج
+\begin{align}
+\lambda_{\text{مویج}}=\frac{2\pi}{\beta}=\frac{\lambda_0}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}
+\end{align}
+اور مویج میں \اصطلاح{دوری رفتار}\فرہنگ{دوری!رفتار}\فرہنگ{رفتار!دوری}\حاشیہب{phase velocity}\فرہنگ{phase!velocity} \عددیء{v_p}
 \begin{align}
 v_p =\frac{\omega}{\beta}=\frac{v_0}{\sqrt{1-\left(\frac{n \lambda_0}{2 y_1}\right)^2-\left(\frac{m \lambda_0}{2 z_1}\right)^2}}
 \end{align}
@@ -685,9 +697,9 @@ v_p =\frac{\omega}{\beta}=\frac{v_0}{\sqrt{1-\left(\frac{n \lambda_0}{2 y_1}\rig
 \begin{align}
 v_p=\frac{v_0}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}
 \end{align}
-ہو گی جہاں
+حاصل ہوتے ہیں جہاں
 \begin{align*}
-v_0&=\frac{1}{\sqrt{\mu \epsilon}} \quad \quad \text{\RL{لامحدود خطے میں دوری رفتار}} \\
+v_0&=\frac{\omega}{\beta_0}=\frac{1}{\sqrt{\mu \epsilon}} \quad \quad \text{\RL{لامحدود خطے میں دوری رفتار}} \\
 \lambda_0& \quad \quad \text{\RL{لامحدود خطے میں طول موج}}\\
 \lambda_{0c}& \quad \quad \text{\RL{ انقطاعی طول موج}}
 \end{align*}
@@ -711,17 +723,29 @@ Z_{yz}=\frac{j\omega \mu}{\gamma}
 \end{align} 
 انقطاعی تعدد سے بلند تعدد پر \عددیء{\gamma=j\beta} ہوتا ہے لہٰذا
 \begin{align}\label{مساوات_مویج_عرضی_برقی_رکاوٹ_حتمی}
-Z_{yz}=\frac{\omega \mu}{\beta}=\frac{Z_d}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}} \quad \quad (\si{\ohm})
+Z_{yz}=\frac{\omega \mu}{\beta}=\frac{Z_z}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}} \quad \quad (\si{\ohm})
 \end{align} 
 ہو گا جہاں
 \begin{align*}
-Z_d&=\sqrt{\frac{\mu}{\epsilon}} \quad \text{\RL{مویج کے ذو برق کی قدرتی رکاوٹ}} \\
+Z_z&=\sqrt{\frac{\mu}{\epsilon}} \quad \text{\RL{مویج کے ذو برق کی قدرتی رکاوٹ}} \\
 \lambda_0& \quad \text{\RL{لامحدود خطے میں طول موج}}\\
 \lambda_{0c}& \quad \text{\RL{انقطاعی طول موج}}
 \end{align*}
-ہیں۔ہوا کے لئے \عددیء{Z_d=120 \pi=\SI{376.7}{\ohm}} کے برابر ہے۔چونکہ \عددیء{Z_{yz}} اور \عددیء{Z_d} کی شرح بالقل \عددیء{v_p} اور \عددیء{v_0} کی شرح کے برابر ہے لہٰذا شکل  \حوالہ{شکل_مویج_دوری_رفتار_مختلف_بلند_انداز} \عددیء{\tfrac{Z_{yz}}{Z_d}} بالمقابل \عددیء{\lambda_0} بھی دیتا ہے۔
+ہیں۔ہوا کے لئے \عددیء{Z_z=120 \pi=\SI{376.7}{\ohm}} کے برابر ہے۔چونکہ \عددیء{Z_{yz}} اور \عددیء{Z_z} کی شرح بالقل \عددیء{v_p} اور \عددیء{v_0} کی شرح کے برابر ہے لہٰذا شکل  \حوالہ{شکل_مویج_دوری_رفتار_مختلف_بلند_انداز} \عددیء{\tfrac{Z_{yz}}{Z_z}} بالمقابل \عددیء{\lambda_0} بھی دیتا ہے۔
 
+%=========================
+\ابتدا{مشق}
+\عددیء{\TE{10}}، \عددیء{\TE{20}} اور  \عددیء{\TE{11}} امواج کی انقطاعی طول موج مندرجہ ذیل مستطیلی مویج کے لئے حاصل کریں۔
+\begin{itemize}
+\item
+ہوا سے بھرا مویج جس کے اطراف  چار سنٹی میٹر اور دو سنٹی میٹر ہیں۔
+\item
+ہوا سے بھرا مویج جس کے دونوں اطراف  چار سنٹی میٹر کے برابر ہیں۔
+\end{itemize} 
 
+جوابات:پہلا مویج \عددیء{\SI{8}{\centi\meter}}، \عددیء{\SI{4}{\centi\meter}}، \عددیء{\SI{3.577}{\centi\meter}}۔ دوسرا مویج \عددیء{\SI{8}{\centi\meter}}، \عددیء{\SI{4}{\centi\meter}}، \عددیء{\SI{5.656}{\centi\meter}}
+\انتہا{مشق}
+%=========================
 \حصہ{مستطیلی مویج میں عرضی مقناطیسی \عددیء{\TM{mn}} موج}
 عرضی برقی امواج حل کرنے کے آٹھ قدم صفحہ \حوالہصفحہ{اقدام_مویج_آٹھ_قدم} پر بتلائے گئے۔انہیں آٹھ قدم سے شکل \حوالہ{شکل_مویج_مستطیل_مویج_اطراف} کے مستطیلی مویج میں  عرضی مقناطیسی موج \عددیء{\TM{mn}} بھی حاصل کئے جاتے ہیں۔فرق صرف اتنا ہے کہ یہاں \عددیء{H_x=0} فرض کر کے مسئلہ حل کیا جاتا ہے۔\عددیء{\TM{mn}} موج کہتے ہی اس موج کو ہیں جن میں \عددیء{H_x=0} ہو۔آئیں \عددیء{\TM{mn}} حاصل کرنے کے اہم نکات کا تذکرہ کریں۔
 
@@ -822,7 +846,11 @@ f_c =\frac{1}{2 \sqrt{\mu \epsilon}}\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\fr
 \end{align}
 حاصل ہوتا ہے۔اس طرح انقطاعی طول موج
 \begin{align}
-\lambda_{0c}=\frac{2}{\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\frac{m}{z_1}\right)^2}}
+\lambda_{0c}=\frac{2\pi}{\sqrt{\left(\frac{n\pi}{y_1}\right)^2+\left(\frac{m\pi}{z_1}\right)^2}}=\frac{2}{\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\frac{m}{z_1}\right)^2}}=\frac{2\pi}{k}
+\end{align}
+یا
+\begin{align}
+k=\frac{2\pi}{\lambda_{0c}}
 \end{align}
 حاصل ہوتا ہے۔آپ دیکھ سکتے ہیں کہ \عددیء{\TM{mn}} اور \عددیء{\TE{mn}} امواج کے انقطاعی تعدد کے مساوات ہوبہو ایک جیسے ہیں۔
 
@@ -830,14 +858,18 @@ f_c =\frac{1}{2 \sqrt{\mu \epsilon}}\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\fr
 \begin{align}
 \beta=\sqrt{\beta_0^2-k^2}=\sqrt{\omega^2 \mu \epsilon-\left(\frac{n\pi}{y_1}\right)^2-\left(\frac{m\pi}{z_1}\right)^2}
 \end{align}
-ہو گا جس سے مویج میں دوری رفتار
+ہو گا جس سے مویج میں طول موج
+\begin{align}
+\lambda_{\text{مویج}}=\frac{2\pi}{\beta}=\frac{\lambda_0}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}
+\end{align}
+اور مویج میں  دوری رفتار
 \begin{gather}
 \begin{aligned}
 v_p=\frac{\omega}{\beta}&=\frac{v_0}{\sqrt{1-\left(\frac{n\lambda_0}{2y_1}\right)^2-\left(\frac{m\lambda_0}{2z_1}\right)^2}}\\
 &=\frac{v_0}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}
 \end{aligned}
 \end{gather}
-حاصل ہوتا ہے جہاں
+حاصل ہوتے ہیں جہاں
 \begin{align*}
 v_0&=\frac{1}{\sqrt{\mu \epsilon}} \quad \quad \text{\RL{لامحدود خطے میں دوری رفتار}} \\
 \lambda_0& \quad \quad \text{\RL{لامحدود خطے میں طول موج}}\\
@@ -851,14 +883,119 @@ Z_{yz}=\frac{\gamma}{Y}
 \end{align*}
 ہے جو انقطاعی تعدد سے بلند تعدد \عددیء{\gamma=j\beta} کی صورت میں
 \begin{align}\label{مساوات_مویج_عرضی_مقناطیسی_رکاوٹ_حتمی}
-Z_{yz}=\frac{\beta}{\omega \epsilon}=Z_d \sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}
+Z_{yz}=\frac{\beta}{\omega \epsilon}=Z_z \sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}
 \end{align}
 ہو گا جہاں
 \begin{align*}
-Z_d&=\sqrt{\frac{\mu}{\epsilon}} \quad \text{\RL{مویج کے ذو برق کی قدرتی رکاوٹ}} \\
+Z_z&=\sqrt{\frac{\mu}{\epsilon}} \quad \text{\RL{مویج کے ذو برق کی قدرتی رکاوٹ}} \\
 \lambda_0& \quad \text{\RL{لامحدود خطے میں طول موج}}\\
 \lambda_{0c}& \quad \text{\RL{انقطاعی طول موج}}
 \end{align*}
 کے برابر ہیں۔مساوات \حوالہ{مساوات_مویج_عرضی_مقناطیسی_رکاوٹ_حتمی} کا مساوات \حوالہ{مساوات_مویج_عرضی_برقی_رکاوٹ_حتمی} کے ساتھ موازنہ کرنے سے آپ دیکھ سکتے ہیں کہ \عددیء{\TM{mn}} اور \عددیء{\TE{mn}} امواج کی رکاوٹ مختلف ہیں۔
 
-ہم نے دیکھا کہ ہر بلند درجی انداز کا مخصوص انقطاعی تعدد، رفتار اور رکاوٹ ہوتا ہے۔اگر تعدد اتنی ہو کہ مختلف بلند انداز مویج میں صفر کر سکتے ہوں تب میدان ان تمام میدان کا مجموعہ ہو گا جو مویج میں پائے جاتے ہوں۔ 
+ہم نے دیکھا کہ ہر بلند درجی انداز کا اپنا مخصوص انقطاعی تعدد، رفتار اور رکاوٹ ہوتے ہیں۔اگر تعدد اتنی ہو کہ مختلف بلند انداز مویج میں صفر کر سکتے ہوں تب میدان ان تمام میدانوں کا مجموعہ ہو گا جو مویج میں پائے جاتے ہوں۔ 
+
+%==============
+\حاشیہط{\تحریر{kraus page 557 done. to continue as very impt}}
+%===========
+
+جدول \حوالہ{جدول_مویج_مستطیلی_مویج_تعلق} مستطیلی مویج میں \عددیء{\TE{mn}} موج کے متغیرات کے تعلق دیتا ہے۔\عددیء{Z_{yz}} کے علاوہ یہی تعلق \عددیء{\TM{mn}} کے لئے بھی درست ہیں۔
+
+\begin{table}[h!]
+\caption{مستطیلی مویج میں \عددیء{\TE{mn}} امواج کے متغیرات کے تعلق۔}
+\centering
+\begin{tabular}{rll}
+نام تفاعل & اکائی& تعلق\\
+انقطاعی تعدد & \عددیء{\si{\hertz}} & $f_c=\frac{1}{2\sqrt{\mu \epsilon}}\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\frac{m}{z_1}\right)^2}$\\
+انقطاعی طول موج &  \عددیء{\si{\meter}}& $ \lambda_{0c}=\frac{2}{\sqrt{\left(\frac{n}{y_1}\right)^2+\left(\frac{m}{z_1}\right)^2}}$\\
+مویج میں طول موج& \عددیء{\si{\meter}} & $\lambda_{\text{مویج}}=\frac{\lambda_0}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}$\\
+دوری رفتار & \si{\meter\per\second} & $v_p=\frac{v_0}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}$\\
+عرضی موج کی رکاوٹ & \si{\ohm} & $Z_{yz}=\frac{Z_z}{\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}}$
+\end{tabular}
+\label{جدول_مویج_مستطیلی_مویج_تعلق}
+\end{table}
+
+\حصہ{کھوکھلی نالی مویج}
+کھوکھلی نالی جس کا اندرونی رداس \عددیء{\rho} ہو کے مسائل نلکی محدد میں باآسانی حاصل ہوتے ہیں لہٰذا ایسے مویج میں \عددیء{\TE{mn}} یا \عددیء{\TM{mn}} امواج حاصل کرنے کی خاطر نلکی محدد ہی استعمال کرتے ہیں۔یہاں بھی صفحہ \حوالہصفحہ{اقدام_مویج_آٹھ_قدم} پر دیے آٹھ قدم  لیتے ہوئے جواب حاصل کیا جائے گا۔نلکی مویج \عددیء{z} محدد پر رکھا گیا ہے لہٰذا اس  میں امواج \عددیء{z} جانب حرکت کریں گے۔
+
+میکس ویل کے  گردش کے دو مساوات  کو نلکی محدد میں لکھ کر
+\begin{multline*}
+\left[\frac{1}{\rho}\frac{\partial E_z}{\partial \phi} -\frac{\partial E_{\phi}}{\partial z}\right]\arho+\left(\frac{\partial E_\rho}{\partial z}-\frac{\partial E_z}{\partial \rho} \right)\aphi+\left[\frac{1}{\rho}\frac{\partial (E_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial E_{\rho}}{\partial \phi}\right]\az \\
+=-\mu \left(\frac{\partial H_{\rho}}{\partial t} \arho+\frac{\partial H_{\phi}}{\partial t}\aphi+\frac{\partial H_{z}}{\partial t} \az \right)
+\end{multline*}
+%
+\begin{multline*}
+\left[\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} -\frac{\partial H_{\phi}}{\partial z}\right]\arho+\left(\frac{\partial H_\rho}{\partial z}-\frac{\partial H_z}{\partial \rho} \right)\aphi+\left[\frac{1}{\rho}\frac{\partial (H_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}\right]\az \\
+=\sigma\left(E_{\rho}\arho+E_{\phi}\aphi+E_z \az \right)+\epsilon \left(\frac{\partial E_{\rho}}{\partial t}\arho+\frac{\partial E_{\phi}}{\partial t} \aphi+\frac{\partial E_{z}}{\partial t} \az\right)
+\end{multline*} 
+محددی اجزاء علیحدہ علیحدہ لکتے ہوئے مندرجہ ذیل چھ مساوات
+\begin{align}
+\frac{1}{\rho}\frac{\partial E_z}{\partial \phi} -\frac{\partial E_{\phi}}{\partial z}&=-\mu \frac{\partial H_{\rho}}{\partial t} \label{مساوات_مویج_نلکی_الف}\\
+\frac{\partial E_\rho}{\partial z}-\frac{\partial E_z}{\partial \rho}&=-\mu\frac{\partial H_{\phi}}{\partial t}\\
+\frac{1}{\rho}\frac{\partial (E_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial E_{\rho}}{\partial \phi} &=-\mu \frac{\partial H_{z}}{\partial t}\\
+\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} -\frac{\partial H_{\phi}}{\partial z}&=\sigma E_{\rho}+\epsilon \frac{\partial E_{\rho}}{\partial t}\\
+\frac{\partial H_\rho}{\partial z}-\frac{\partial H_z}{\partial \rho}&=\sigma E_{\phi}+\epsilon \frac{\partial E_{\phi}}{\partial t} \\
+\frac{1}{\rho}\frac{\partial (H_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}&=\sigma E_z +\epsilon\frac{\partial E_{z}}{\partial t} 
+\end{align}
+حاصل ہوتے ہیں جن کے ساتھ چارج سے خالی \عددیء{\rho_h=0} خطے میں پھیلاو کے دو مساوات
+
+\begin{align}
+\frac{1}{\rho}\frac{\partial (\rho E_{\rho})}{\partial \rho}+\frac{1}{\rho}\frac{\partial E_{\phi}}{\partial \phi}  +  \frac{\partial E_{z}}{\partial z}&=0\\
+\frac{1}{\rho}\frac{\partial (\rho H_{\rho})}{\partial \rho}+\frac{1}{\rho}\frac{\partial H_{\phi}}{\partial \phi}  +  \frac{\partial H_{z}}{\partial z}&=0 \label{مساوات_مویج_نلکی_ب}
+\end{align}
+شامل  کرتے ہیں۔
+
+مساوات \حوالہ{مساوات_مویج_نلکی_الف} تا مساوات \حوالہ{مساوات_مویج_نلکی_ب} کو وقت کے ساتھ اور \عددیء{z} فاصلے کے ساتھ سائن نما تعلق کا پابند \عددیء{(E_{\phi}=E_1 e^{j\omega t -\gamma z})} بناتے ہوئے
+\begin{align}
+\frac{1}{\rho}\frac{\partial E_z}{\partial \phi} +\gamma E_{\phi}-Z H_{\rho}&=0\\
+-\gamma E_\rho-\frac{\partial E_z}{\partial \rho}-Z  H_{\phi}&=0\\
+\frac{1}{\rho}\frac{\partial (E_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial E_{\rho}}{\partial \phi} -Z H_{z}&=0\label{مساوات_مویج_نلکی_پ}\\
+\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} +\gamma  H_{\phi}-Y E_{\rho}&=0\\
+-\gamma H_\rho-\frac{\partial H_z}{\partial \rho}-Y E_{\phi}&=0 \\
+\frac{1}{\rho}\frac{\partial (H_{\phi}\rho )}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}-Y E_{z}&=0 \\
+\frac{1}{\rho}\frac{\partial (\rho E_{\rho})}{\partial \rho}+\frac{1}{\rho}\frac{\partial E_{\phi}}{\partial \phi}  +  \frac{\partial E_{z}}{\partial z}&=0\\
+\frac{1}{\rho}\frac{\partial (\rho H_{\rho})}{\partial \rho}+\frac{1}{\rho}\frac{\partial H_{\phi}}{\partial \phi}  +  \frac{\partial H_{z}}{\partial z}&=0 
+\end{align}
+حاصل ہوتا ہے جہاں
+\begin{align*}
+Z&=-j \omega \mu  \quad (\si{\ohm / \meter})\quad \quad \text{\RL{سلسلہ وار رکاوٹ}}\\
+Y&=\sigma +j\omega \epsilon \quad (\si{\siemens /\meter}) \quad \quad \text{\RL{متوازی فراوانی}}\\
+\gamma&=\alpha+j\beta \quad \quad \quad \text{\RL{شرح ترسیل}}
+\end{align*}
+ہیں۔
+
+یہاں ہم عرضی برقی یا عرضی مقناطیسی موج منتخب کرتے ہوئے آگے بڑھ سکتے ہیں۔ہم \عددیء{\TE{mn}} منتخب کرتے ہوئے آگے بڑھتے ہیں۔یوں \عددیء{{E_z=0}} ہو گا جس سے
+\begin{align}
+\gamma E_{\phi}-Z H_{\rho}&=0 \label{مساوات_مویج_نلکی_عرضی_برقی_الف}\\
+-\gamma E_\rho-Z  H_{\phi}&=0  \label{مساوات_مویج_نلکی_عرضی_برقی_ب} \\
+\frac{E_{\phi}}{\rho}+\frac{\partial E_{\phi}}{\partial \rho}-\frac{1}{\rho}\frac{\partial E_{\rho}}{\partial \phi} -Z H_{z}&=0  \label{مساوات_مویج_نلکی_عرضی_برقی_پ}\\
+\frac{1}{\rho}\frac{\partial H_z}{\partial \phi} +\gamma  H_{\phi}-Y E_{\rho}&=0  \label{مساوات_مویج_نلکی_عرضی_برقی_ت}\\
+-\gamma H_\rho-\frac{\partial H_z}{\partial \rho}-Y E_{\phi}&=0  \label{مساوات_مویج_نلکی_عرضی_برقی_ٹ} \\
+\frac{H_{\phi}}{\rho}+\frac{\partial H_{\phi}}{\partial \rho}-\frac{1}{\rho}\frac{\partial H_{\rho}}{\partial \phi}&=0 \label{مساوات_مویج_نلکی_عرضی_برقی_ث} \\
+\frac{E_{\rho}}{\rho}+\frac{\partial E_{\rho}}{\partial \rho}+\frac{1}{\rho}\frac{\partial E_{\phi}}{\partial \phi}  &=0 \label{مساوات_مویج_نلکی_عرضی_برقی_ج}\\
+\frac{H_{\rho}}{\rho}+\frac{\partial  H_{\rho}}{\partial \rho}+\frac{1}{\rho}\frac{\partial H_{\phi}}{\partial \phi}  +  \frac{\partial H_{z}}{\partial z}&=0 \label{مساوات_مویج_نلکی_عرضی_برقی_چ}
+\end{align}
+حاصل ہوتا ہے جہاں مساوات \حوالہ{مساوات_مویج_نلکی_پ} میں \عددیء{\tfrac{\partial (E_{\phi}\rho)}{\partial \rho}} تفرق  کو کھول
+ کر \عددیء{E_{\phi}+\rho \tfrac{\partial E_{\phi}}{\partial \rho}} لکھا گیا ہے۔ایسا ہی بقایا تفرق کے ساتھ بھی کیا گیا ہے۔
+
+تمام میدان کو \عددیء{H_z} کی صورت میں لکھنے کی خاطر مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_الف} اور مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_ب} سے عرضی موج کی رکاوٹ \عددیء{Z_{\rho \phi}}
+\begin{align}\label{مساوات_مویج_نلکی_عرضی_برقی_رکاوٹ}
+Z_{\rho \phi}=\frac{E_{\rho}}{H_{\phi}}=-\frac{E_{\phi}}{H_{\rho}}=-\frac{Z}{\gamma}=\frac{j\omega \mu}{\gamma}
+\end{align}
+لیتے ہیں۔  مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_رکاوٹ} سے \عددیء{E_{\rho}} مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_ت} میں پر کرتے ہوئے \عددیء{H_{\phi}} کے لئے حل کرتے ہوئے
+\begin{align}\label{مساوات_مویج_نلکی_مقناطیسی_زاویائی}
+H_{\phi}=-\frac{1}{\gamma-YZ_{\rho \phi}} \frac{1}{\rho}\frac{\partial H_z}{\partial \phi} 
+\end{align}
+حاصل ہوتا ہے۔اسی طرح مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_رکاوٹ} سے \عددیء{E_{\phi}} مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_ٹ} میں پر کرتے ہوئے
+\عددیء{H_{\rho}} کے لئے حل کرتے ہوئے
+\begin{align}\label{مساوات_مویج_نلکی_مقناطیسی_رداسی}
+H_{\rho}=-\frac{1}{\gamma-YZ_{\rho \phi}}\frac{\partial H_z}{\partial \rho} 
+\end{align}
+حاصل ہوتا ہے۔مندرجہ بالا دو مساوات اور مساوات \حوالہ{مساوات_مویج_نلکی_عرضی_برقی_رکاوٹ} سے
+\begin{align}\label{مساوات_مویج_نلکی_برقی_رداسی}
+E_{\rho}&=-\frac{Z_{\rho \phi}}{\gamma-YZ_{\rho \phi}} \frac{1}{\rho}\frac{\partial H_z}{\partial \phi}  \\
+E_{\phi}&=\frac{Z_{\rho \phi}}{\gamma-YZ_{\rho \phi}}\frac{\partial H_z}{\partial \rho} \label{مساوات_مویج_نلکی_برقی_زاویائی}
+\end{align}
+لکھے جا سکتے ہیں۔یہ مساوات تمام میدان کو \عددیء{H_z} کی صورت میں بیان کرتے ہیں۔
+
+موج کی مقداری مساوات 
