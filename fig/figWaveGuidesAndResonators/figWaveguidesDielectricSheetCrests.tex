@@ -1,0 +1,72 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\d}{2}
+\pgfmathsetmacro{\x}{4.5}
+\pgfmathsetmacro{\y}{1}
+
+
+\pgfmathsetmacro{\l}{1.5}
+\pgfmathsetmacro{\a}{atan(\l/\y)}
+\pgfmathsetmacro{\bb}{\y/cos(\a)}
+\pgfmathsetmacro{\rT}{1.6}
+
+%
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%waveguide
+\draw (0,0)--++(\x,0)coordinate(aa)--++(0,\y)coordinate(ab)--++(-\x,0)coordinate(ac)--++(0,-\y);
+%rayA
+\path [](0.75,\y)--++(\l,-\y)coordinate(ka);
+\path[] (ka)--++(\l,\y)coordinate(kb);
+\path[shorten >=1cm] (kb)--++(\l,-\y);
+\draw[shorten >=1cm,-<-=0.35](0.75,\y)--++(-\l,-\y);
+%crests
+\draw[dashed] (0.75,\y)--++(-\a:1.2)coordinate[pos=0.8](kd);
+\draw[dashed](ka)--++(\a:1.2);
+\draw[dashed,gray](0.75,\y)++(\a:0.2)--++(\a:0.8)coordinate[pos=0.8](kCr);
+\draw[stealth-stealth,gray] (kCr)--++(-90+\a:\bb)node[pos=0.3,fill=white]{$b$};
+\draw[stealth-stealth,gray](kd)--++(90-\a:0.75)node[pos=0.5,fill=white]{$a$};
+\draw [->-=0.8](0.75,\y)--++(\l,-\y);
+%rayB
+\path [](\rT,\y)--++(\l,-\y)coordinate(ka);
+\path[] (ka)--++(\l,\y)coordinate(kb);
+\path[shorten >=1cm] (kb)--++(\l,-\y);
+\draw[shorten >=0.1cm,-<-=0.75](\rT,\y)coordinate(kc)--++(-\l,-\y);
+%crests
+\draw[dashed] (kc)--++(-\a:1.2);
+%dimensions and text
+\draw[stealth-] (3.2,0)--++(0,-0.3);
+\draw[stealth-] (3.2,\y)--++(0,0.5)node[above]{$d$};
+\draw (4,\y/2)node{$\epsilon_1$};
+\draw (4,-0.5)node{$\epsilon_2$};
+\draw (4,\y+0.5)node{$\epsilon_2$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
