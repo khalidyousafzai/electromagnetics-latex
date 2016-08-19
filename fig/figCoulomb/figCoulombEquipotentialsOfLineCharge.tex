@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}[decoration={
+    markings,
+    mark=at position 0.75 with {\arrow{stealth}}}
+    ] 
+%
+\draw[postaction={decorate}] (0,0)--(0:1)node[right]{$M=0$};
+\draw[postaction={decorate}] (0,0)--(45:1)node[right]{$M=1$};
+\draw[postaction={decorate}] (0,0)--(90:1)node[above]{$\frac{1}{M}=0$};
+\draw[postaction={decorate}] (0,0)--(135:1);
+\draw[postaction={decorate}] (0,0)--(180:1);
+%
+\draw[postaction={decorate}] (0,0)--(-45:1)node[right]{$M=-1$};
+\draw[postaction={decorate}] (0,0)--(-90:1);
+\draw[postaction={decorate}] (0,0)--(-135:1);
+%
+\draw (1,-1.5)node{ب};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

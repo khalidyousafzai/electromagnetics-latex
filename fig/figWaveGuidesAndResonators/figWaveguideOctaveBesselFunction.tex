@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{commath}   %differential symbol   \dif
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\A}{0.75}
+\pgfmathdeclarefunction{Ey}{2}{\pgfmathparse{\A*cos(#1)*sin(#2)}}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%
+\begin{axis}[axis lines*=middle,ymin=-0.5,ymax=0.65,xmin=0,xmax=10,xtick={0,1,2,3,4,5,6,7,8,9},ytick={0,0.1,0.2,0.3,0.4,0.5,0.6,-0.1,-0.2,-0.3,-0.4,-0.5}, ylabel={$J_1(k\rho)$},
+y label style={at={(axis description cs:-0.2,.5)},rotate=-90,anchor=south},]
+%\addplot[black] table {figWaveguideOctaveBesselZeroFunction.dat}node[pos=0.05,right]{$J_0$};
+\addplot[black] table {figWaveguideOctaveBesselOneFunction.dat}node[pos=0.2,right]{$J_1(k\rho)$};
+\addplot[black] table {figWaveguideOctaveBesselOneDifferentialFunction.dat}node[pos=0.7,above](kP){$\frac{1}{k}\frac{\dif J_1(k \rho)}{\dif \rho}$};
+%\node at (axis cs:1,0){$kk$};
+\end{axis}
+%
+%grid
+%\draw[gray,thick] (0,0) grid (7,5);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (7,5);
+\node[pin={[pin distance= 3 mm]60:{$\alpha_{11}'$}}] at (1.2,2.4) {};
+\node[pin={[pin distance= 3 mm]60:{$\alpha_{01}'$}}] at (2.55,2.4) {};
+\node[pin={[pin distance= 3 mm]60:{$\alpha_{12}'$}}] at (3.6,2.4) {};
+\node[pin={[pin distance= 3 mm]-60:{$\alpha_{02}'$}}] at (4.8,2.4) {};
+\node[pin={[pin distance= 3 mm]75:{$\alpha_{13}'$}}] at (5.8,2.4) {};
+\node at (-1.5,2.4){$\frac{1}{k}\frac{\dif J_1(k\rho)}{\dif \rho}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

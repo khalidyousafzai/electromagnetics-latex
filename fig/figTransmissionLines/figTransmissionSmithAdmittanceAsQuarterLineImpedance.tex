@@ -1,0 +1,60 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7} %radius of smith chart; this is the unit circle
+\pgfmathsetmacro{\ang}{73.3}   %point
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+%\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+%\draw(0,0) --++(0,1.2*\l+0.2) node[above]{$\Gamma_i$};
+%outer most dashed circles
+\draw[gray,dashed,-stealth] ([shift={(\ang:\l+0.3)}]0,0) arc (\ang:\ang-180:\l+0.3);
+\draw[gray] (2.5,2) node[fill=white]{$0.25\lambda$};
+\draw (0,0) circle (\l);
+%=================
+\begin{scope}
+\clip (0,0) circle (\l);
+%\foreach \x in {2,1,0.5,-2,-1,-0.5}{\draw (\l,\l/\x) circle (\l/\x);}
+\foreach \x in {0.6,-0.44}{\draw (\l,\l/\x) circle (\l/\x);}
+\draw[gray](-\l,0)--(\l,0);
+%label x
+\draw (-1,2) node[fill=white]{${\scriptstyle x=0.6 }$};
+\draw (-1.2,-1.5) node[fill=white]{${\scriptstyle x=-0.44}$};
+\end{scope}
+%==============
+\foreach \r in {1,0.74}{\draw ({\l*\r/(\r+1)},0) circle ({\l/(\r+1)});}
+%label y
+\draw (1,-1.2) node[fill=white]{${\scriptstyle r=1}$};
+\draw(0.5,1.6) node[fill=white]{${\scriptstyle r=0.74}$};
+%=============
+%extra work
+\draw[gray,dashed] (0,0) circle (0.2873*\l);
+\draw[gray] (-1.2,0.5) node[fill=white]{${\scriptstyle \left| \Gamma \right|=0.287}$};
+\draw[gray,dashed] (0,0)--++(73.3:1.2*\l)node[anchor=south]{$0.102 \lambda$};
+\draw[gray,dashed] (0,0)--++(73.3+180:1.2*\l)node[anchor=north]{$0.352 \lambda$};
+\draw[fill] (73.3:0.28734788*\l) circle (1pt)node[right]{${\scriptstyle z=1+j0.6}$};
+\draw[fill] (73.3+180:0.28734788*\l) circle (1pt)node[left]{${\scriptstyle y= z_{\!\!\!\!\!\overset{\text{داخلی}}{0.25\lambda}} \!\!\!\!\!\!}{\scriptstyle=0.74-j 0.44} $};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

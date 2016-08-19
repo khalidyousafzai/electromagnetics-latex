@@ -1,0 +1,48 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+%
+
+
+
+
+ \pgfmathsetmacro{\delX}{0.7}            %start points, lower left corner
+ \pgfmathsetmacro{\delL}{4}
+ \pgfmathsetmacro{\delZ}{0.7}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%axis
+\draw[gray](0,0,0)--(2.5,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--(0,4,0)node[right]{$y$};
+\draw[gray](0,0,0)--(0,0,1.5)node[left]{$z$};
+%\draw[gray,dashed](0,0,0)--(-1.5,0,0);
+\draw[gray,dashed](0,0,0)--(0,-2,0);
+%wires
+\draw[thick] (0,-1,-1.5)node[below]{$-\rho_L$}--++(0,0,3);
+\draw[thick] (0,1,-1.5)node[below]{$+\rho_L$}--++(0,0,3);
+%vectors
+\draw[fill] (2,4.5,0) circle (1pt);
+\draw[latex-](2,4.5,0)--(0,1,0)node[pos=0.3,yshift=0.3cm]{$R_1$};
+\draw[latex-](2,4.5,0)--(0,-1,0)node[pos=0.3,yshift=-0.3cm]{$R_2$};
+%text
+\draw (0,1,0)node[xshift=0.7cm,yshift=0.3cm]{$(0,a,0)$};
+\draw (0,-1,0)node[xshift=-0.75cm,yshift=-0.3cm]{$(0,-a,0)$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

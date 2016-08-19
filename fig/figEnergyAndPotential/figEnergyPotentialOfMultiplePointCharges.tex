@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+%\setmainlanguage{english}
+%\setotherlanguages{arabic}
+\setmainlanguage{arabic}
+\setotherlanguages{english}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+\begin{document}
+\begin{tikzpicture}[]
+\coordinate (O) at (-3,-0.5);
+\coordinate (Qa) at (-2.6,1);
+\coordinate (Q) at (-0.6,-1);
+\coordinate (B) at (-2.5,2.4);
+\coordinate (bb) at (-1,1.5);
+\coordinate (aa) at (0.5,0.5);
+\coordinate (A) at (1,-0.5);
+%grid
+%\draw[gray] (-2,-2) grid (2,2);
+%\draw[gray,thin,xstep=0.1,ystep=0.1](-2,-2) grid (2,2);
+%
+\draw[gray] (B) to [out=0,in=135] (bb) to [out=-45,in=180] (aa)  to [out=0,in=90] (A);
+\draw[gray](Q)--($(Q)!3.5cm!(bb)$)coordinate(E);
+\draw[gray](Qa)--($(Qa)!2.5cm!(bb)$)coordinate(Ea);
+%vectors
+\draw[-latex](-1.2,1.7)--(-0.8,1.3)coordinate[shift={(60:0.1)}](kk);
+\draw[-latex] (bb)--(E)node[right]{$\kvec{E_1}=\frac{Q_1}{4 \pi \epsilon r_{1}^2} {\ar}_1$};
+\draw[-latex] (bb)--(Ea)node[right]{$\kvec{E_2}=\frac{Q_2}{4 \pi \epsilon r_{2}^2} {\ar}_2$};
+%
+\draw (Q)--(A) node[pos=0.5,fill=white]{$r_{1A}$};
+\draw (Qa)--(A) node[pos=0.3,fill=white]{$r_{2A}$};
+\draw[fill] (Q) circle (1pt)node[below]{$Q_1$};
+\draw[fill] (Qa) circle (1pt)node[below]{$Q_2$};
+%text
+\node[left] at (B){$B$};
+\node[right] at (A){$A$};
+\draw[gray,stealth-] (kk) to [out=25,in=180]++(0.5,-0.1)node[right,text=black]{$\dif \kvec{L}$};
+\node[gray,fill=white] at ($(Q)!0.7!(bb)$){$r_1$};
+\node[gray,fill=white] at ($(Qa)!0.5!(bb)$){$r_2$};
+\draw (O)++(-60:1cm) node{الف};
+%
+    \end{tikzpicture}%
+    \end{document}

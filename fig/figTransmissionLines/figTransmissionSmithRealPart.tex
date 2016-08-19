@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7}
+
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+%\draw[gray] (-2,-2) grid (2,2);
+%axis
+\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+\draw(0,0) --++(0,1.2*\l) node[above]{$\Gamma_i$};
+%
+%==============
+\draw (0,0) circle (1*\l);  %r=0
+\draw ({1*\l/3},0) circle (1*\l/1.5);   %r=0.5
+\draw (0.5*\l,0) circle (0.5*\l);   %r=1
+\draw ({2*\l/3},0) circle (1*\l/3); %r=2
+%text
+\draw (0.6,2.4) node[]{${\scriptstyle r=0}$};
+\draw(1.75,1.05) node{${\scriptstyle r=2}$};
+\draw(0.8,1.45) node[]{${\scriptstyle r=1}$};
+\draw(0.7,1.95) node[]{${\scriptstyle r=0.5}$};
+\draw[fill] (1*\l,0) circle (1pt);
+\draw[stealth-] (1*\l,0)++(0.03,0.03) to [out=45,in=180]++(0.5,0.5)node[right]{$r=\infty$};
+%text
+\draw (90:-1.1*\l) node[]{$\Gamma=1$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

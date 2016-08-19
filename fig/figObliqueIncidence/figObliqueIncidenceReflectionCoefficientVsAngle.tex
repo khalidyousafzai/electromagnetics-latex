@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathdeclarefunction{reflectionCoefficientParallelPolarizedWave}{3}{
+\pgfmathsetmacro{\tempA}{(#2/#1)*cos(#3)};
+\pgfmathsetmacro{\tempB}{sqrt((#2/#1)-sin(#3)*sin(#3))};
+\pgfmathparse{abs((-1*\tempA+\tempB)/(\tempA+\tempB))}}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%
+\draw (0,{reflectionCoefficientParallelPolarizedWave(1,80,0)})
+\foreach \x in {0,1,...,90}{--({\x/20},{reflectionCoefficientParallelPolarizedWave(1,80,\x)})};
+\foreach \xx in {10,20,...,90}{\draw (\xx/20,0)--++(0,-0.1)node[below]{$\xx$};};
+%
+%axis
+\draw[] (0,0)--(5,0)node[right]{$\theta_i$};
+\draw (0,0)--++(0,1.5);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

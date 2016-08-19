@@ -1,0 +1,53 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\wLc}{50}  %cutoff wavelength
+\pgfmathdeclarefunction{kalpha}{1}{\pgfmathparse{2*pi/#1*sqrt((#1/50)^2-1)}}
+\pgfmathdeclarefunction{kbeta}{1}{\pgfmathparse{2*pi/#1*sqrt(1-(#1/50)^2)}}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+\begin{axis}[axis lines*=middle,ymin=-0.15,ymax=0.15,
+xmin=0,xmax=125,
+xtick={25,50,100,150},
+xticklabels={$0.5\lambda_{0c}$,$\lambda_{0c}$,$2\lambda_{0c}$,$3\lambda_{0c}$},
+ytick={-0.12,0.12},
+yticklabels={$\frac{2\pi}{\lambda_{0c}}$,$\frac{2\pi}{\lambda_{0c}}$},
+ ylabel=$\alpha$, y label style={at={(-0.05,0.75)},rotate=-90},
+]
+\addplot [domain=50:150,samples=100] (x,{kalpha(x)})node[pos=0.5,below,scale=0.7]{$\alpha=\beta_0\sqrt{\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2-1}$};
+\addplot [domain=25:50,samples=100,dashed] (x,{-kbeta(x)})node[pos=0.75,right,scale=0.7,solid]{$\beta=\beta_0\sqrt{1-\left(\frac{\lambda_0}{\lambda_{0c}}\right)^2}$};
+\end{axis}
+%
+\begin{axis}[
+  axis y line*=left,
+  axis x line=none,
+ytick style={draw=none},
+yticklabels=\empty,
+  ylabel={$\beta$},y label style={at={(-0.05,0.25)},rotate=-90}]
+\end{axis}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

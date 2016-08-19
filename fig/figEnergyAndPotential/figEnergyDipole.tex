@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+\pgfmathsetmacro{\rr}{2.5}
+\pgfmathsetmacro{\aa}{30}
+\pgfmathsetmacro{\xx}{\rr*cos(\aa)}
+\pgfmathsetmacro{\yy}{\rr*sin(\aa)}
+%grid
+%\draw[gray] (0,0,0) grid (0,3,3);
+%axis
+\draw[gray](0,0,0)--(2.5,0,0) node[left] {$x$};
+\draw[gray](0,0,0)--(0,3.2,0) node[below]{$y$};
+\draw[gray](0,0,-1)--(0,0,2.3) node[left] {$z$};
+%
+\draw[fill] (0,0,0.75) circle (1pt)node[above left]{$+Q$}coordinate(Qp);
+\draw[fill] (0,0,-0.75) circle (1pt)node[below left]{$-Q$}coordinate(Qn);
+%
+\draw (0,0,0)--++(135:3)node[pos=0.5,fill=white]{$r$}coordinate[pos=0.4](mid)coordinate(N)node[right]{$N$};
+\draw (Qp)--(N)node[pos=0.6,above]{$R_1$};
+\draw (Qn)--(N)node[pos=0.7,below right]{$R_2$};
+%
+\draw[-stealth] (0,0,1.5) to [out=0,in=115] (mid);
+\node[fill=white] at (0,0.5,1.4){$\theta$};
+\draw[gray,dashed] (Qp)++(0,-0.1,0)--++(0,-1,0)coordinate[pos=0.9](kp);
+\draw[gray,dashed] (Qn)++(0,-0.1,0)--++(0,-1,0)coordinate[pos=0.9](kn);
+\draw [gray,stealth-stealth] (kp)--(kn)node[pos=0.5,fill=white]{$d$};
+%
+\draw[-latex] (Qp)--($(Qp)!0.5cm!(N)$)node[below]{$\kvec{a}_1$};
+\draw[-latex] (Qn)--($(Qn)!0.5cm!(N)$)node[shift={(0.1cm,-0.2cm)}]{$\kvec{a}_2$};
+\node at (0,2,-1.5){الف};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

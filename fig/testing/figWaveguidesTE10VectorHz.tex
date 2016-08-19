@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc,fadings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\A}{0.5}
+\pgfmathdeclarefunction{Hx}{1}{\pgfmathparse{\A*cos(#1)}}
+\pgfmathdeclarefunction{Ey}{1}{\pgfmathparse{\A*sin(#1)}}
+\pgfmathdeclarefunction{Hz}{1}{\pgfmathparse{\A*sin(#1)}}
+
+\pgfmathsetmacro{\lz}{3}
+\pgfmathsetmacro{\ly}{0.75}
+\pgfmathsetmacro{\shiftL}{2}
+%
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%
+%guide
+\draw (0,0)\foreach \i in {0,10,...,100}{--(\i/10,{sqrt(\i)})};
+%\draw[left color=white,right color=white,middle color=gray!80,shading angle=90](0,0)--++(\lz,0)--++(0,\ly)--++(-\lz,0)--cycle;
+%\draw[fill=white] (\lz,0) circle (2pt);
+%\draw[fill] (\lz,0) circle (1pt)node[shift={(-45:0.2)}]{$x$};
+%fields
+%\draw[-latex] (\lz,\ly/2)--++(-\lz,0);
+%text
+%\draw (\lz/2,0) node[below]{$z$};
+%\draw (\lz,\ly/2) node[right]{$y$};
+%\end{axis}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

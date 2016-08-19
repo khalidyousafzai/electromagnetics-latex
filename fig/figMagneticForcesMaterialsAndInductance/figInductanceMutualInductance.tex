@@ -1,0 +1,46 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+%
+
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray](0,0) grid (4,2);
+%
+\coordinate (a) at (0,1); 
+\coordinate (b) at (1,1.5);
+\coordinate (c) at (3.5,1.3); 
+\coordinate (d) at (3,0.5);
+\coordinate (e) at (0,1.1);
+%
+\draw[-latex] (a) to [out=90,in=180] (b) to [out=0,in=180] (c)node[shift={(0:0.6)}]{\RL{پہلی تار}} to [out=0,in=0] (d) to [out=180,in=-90] (e)node[left]{$I_1$};
+%
+\begin{scope}[yshift=1.5cm]
+\coordinate (a) at (0,1); 
+\coordinate (b) at (0.5,1.5);
+\coordinate (c) at (2.5,1.3); 
+\coordinate (d) at (3,0.5);
+\coordinate (e) at (a)++(0,0.1);
+\draw[] (a) to [out=90,in=180] (b) to [out=0,in=180] (c)node[shift={(-10:1.1)}]{\RL{دوسری تار}} to [out=0,in=0] (d) to [out=180,in=-90] (e);
+\end{scope}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

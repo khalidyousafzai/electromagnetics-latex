@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\A}{0.75}
+\pgfmathdeclarefunction{Ey}{2}{\pgfmathparse{\A*cos(#1)*sin(#2)}}
+\pgfmathdeclarefunction{Ez}{2}{\pgfmathparse{\A*sin(#1)*cos(#2)}}
+\pgfmathdeclarefunction{Hx}{2}{\pgfmathparse{\A*cos(#1)*cos(#2)}}
+\pgfmathdeclarefunction{Hy}{2}{\pgfmathparse{\A*sin(#1)*cos(#2)}}
+\pgfmathdeclarefunction{Hz}{2}{\pgfmathparse{\A*cos(#1)*sin(#2)}}
+
+\pgfmathdeclarefunction{v}{3}{
+\pgfmathsetmacro{\lambdaCutoff}{2/sqrt((#1)^2+(#2)^2)}
+\pgfmathparse{1/sqrt(1-(#3/\lambdaCutoff)^2)}
+}
+\pgfmathsetmacro{\lambdaA}{2*sqrt(8/9)/sqrt((1)^2+(0)^2)}
+\pgfmathsetmacro{\lambdaB}{2*sqrt(8/9)/sqrt((1)^2+(1)^2)}
+\pgfmathsetmacro{\lambdaC}{2*sqrt(8/9)/sqrt((2)^2+(0)^2)}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%axis
+\draw (0,1)--(4,1);
+\draw (0,1)--(0,3);
+\foreach \y/\yLab in {1/1.0,1.5/1.5,2/2.0,2.5/2.5}{\draw (0,\y)--++(0.1,0)node[left]{$\yLab$};}
+\foreach \x/\xLab in {0/0,0.5/0.5z_1,1/1.0z_1,1.5/1.5z_1,2/2.0z_1}{\draw (2*\x,1)--++(0,0.1)node[below]{$\xLab$};}
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+\draw (0,1) \foreach \lam in {0,0.01,...,\lambdaA}{--(2*\lam,{v(1,0,\lam)})};
+\draw (0,1) \foreach \lam in {0,0.01,...,\lambdaB}{--(2*\lam,{v(1,1,\lam)})};
+\draw (0,1) \foreach \lam in {0,0.01,...,\lambdaC}{--(2*\lam,{v(2,0,\lam)})};
+%text
+\draw (2*\lambdaA,{v(1,0,\lambdaA)}) node[above]{$\small\text{TE}_{10}$};
+\draw (2*\lambdaB,{v(1,1,\lambdaB)}) node[above]{$\small\text{TE}_{11}$};
+\draw (2*\lambdaC,{v(2,0,\lambdaC)}) node[shift={(120:0.3)}]{$\small\text{TE}_{20}$};
+%
+\draw (2,0.25)node[]{\RL{طول موج\, $\lambda_0$}};
+\draw (-0.75,2) node[left]{$\frac{v_p}{v_0}=\frac{Z_{yz}}{Z_d}$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

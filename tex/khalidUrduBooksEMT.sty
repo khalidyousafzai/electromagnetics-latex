@@ -9,8 +9,9 @@
 \usepackage{graphics}
 \usepackage[]{graphicx} 
 \usepackage{cancel}
-\usepackage{mathpazo}              %kkk
+\usepackage{mathpazo}              %kkk   causes trouble with siunitx units such as ohm which needs correction using sisetup
 \usepackage{booktabs}                                  %for tables toprule, midrule and bottomrule
+\usepackage{fancyhdr}
 %\usepackage{parskip}
 \usepackage[stable]{footmisc}						%for footnotes in the headings
 
@@ -24,7 +25,7 @@
 \usepackage[version=3]{mhchem}     %chemical symbols such as \ce{H2O}
 
 
-\usepackage{geometry}                        %the geometry package gives correct page size in pdf meta data i.e. pdf file properties
+\usepackage[margin=1cm]{geometry}                        %the geometry package gives correct page size in pdf meta data i.e. pdf file properties
 %\pdfpagewidth=\paperwidth              %instead of the geometry package, could have used these two lines      
 %\pdfpageheight=\paperheight
 
@@ -43,14 +44,17 @@
 %\renewcommand\thelinenumber{\textenglish{\arabic{linenumber}}}
 %\linenumbers												%for line numbers in pdf
 
-\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setmainlanguage[numerals=western]{urdu}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
 \setotherlanguages{english}
+\setotherlanguages{arabic}
 
 
-\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
-\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
 
-%\newfontfamily\AcaciasHand{AcaciasHand}
+\let\arabicfonttt\ttfamily              % If this line is not present xelatex throws an error
+\newfontfamily\arabicfont[Scale=1.25,WordSpace=6.0,Script=Arabic]{Jameel Noori Nastaleeq}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\setlength{\parskip}{5mm plus 4mm minus 3mm}
 
 \setcounter{secnumdepth}{3} 
 

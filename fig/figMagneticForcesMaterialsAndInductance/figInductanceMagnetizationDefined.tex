@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\delE}{1}
+\pgfmathsetmacro{\del}{2}
+\pgfmathsetmacro{\s}{0}
+\pgfmathsetmacro{\a}{\s+\delE}
+\pgfmathsetmacro{\b}{\a+\del}
+\pgfmathsetmacro{\c}{\b+\del}
+\pgfmathsetmacro{\d}{\c+\del}
+\pgfmathsetmacro{\m}{1}
+
+\pgfmathsetmacro{\as}{-135}
+\pgfmathsetmacro{\ae}{360+\as}
+%main path
+\path[name path=kline](0,0)--(\d,0);
+%
+\begin{scope}[xshift=\a cm]
+\draw[-latex,rotate=30,name path=kellipseA] (0,0)+(\as:0.2 cm and 1 cm) arc (\as:\ae:0.2 cm and 1 cm);
+\draw[name intersections={of=kline and kellipseA}](-\delE,0)--(intersection-2);
+\end{scope}
+%
+\begin{scope}[xshift=\b cm]
+\draw[-latex,rotate=30,name path=kellipseA] (0,0)+(\as:0.2 cm and 1 cm) arc (\as:\ae:0.2 cm and 1 cm)node[below]{$I_m$};
+\draw[name intersections={of=kline and kellipseA}](-\del,0)--(intersection-2);
+\draw[stealth-stealth]([shift={(0:0.7)}]0,0) arc (0:30:0.7);
+\draw (15:0.9) node {$\theta$};
+\end{scope}
+%
+\begin{scope}[xshift=\c cm]
+\draw[-latex,rotate=30,name path=kellipseA] (0,0)+(\as:0.2 cm and 1 cm) arc (\as:\ae:0.2 cm and 1 cm);
+\draw[name intersections={of=kline and kellipseA}](-\del,0)--(intersection-2);
+\end{scope}
+\draw[-latex](\c,0)--(\d,0)node[right]{$\dif \kvec{L}$};
+%moments
+\draw[-latex](\a,0)--++(30:\m)node[above]{$\kvec{m}$};
+\draw[-latex](\b,0)--++(30:\m);
+\draw[-latex](\c,0)--++(30:\m)node[above right]{$\kvec{m}=I_m \dif \kvec{S}$};
+
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

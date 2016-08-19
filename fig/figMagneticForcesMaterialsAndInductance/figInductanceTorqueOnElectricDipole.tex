@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\coordinate (pQ) at (0.5,0.5);
+\coordinate (nQ) at (-0.5,-0.5);
+\pgfmathsetmacro{\ang}{15}
+%
+\draw[-latex,gray] (0,0)++(\ang:-1cm)--++(\ang:2cm)node[below]{$\kvec{E}$};
+\draw[fill] (pQ) circle (1pt)node[above]{$+Q$};
+\draw[fill] (nQ) circle (1pt)node[below]{$-Q$};
+%forces
+\draw[-latex] (pQ)--++(\ang:1cm)node[right]{$\kvec{F}_1$};
+\draw[-latex] (nQ)--++(\ang:-1cm)node[left]{$\kvec{F}_2$};
+\draw[-latex] (nQ)--(pQ)node[pos=0.8,left]{$\dif \kvec{L}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

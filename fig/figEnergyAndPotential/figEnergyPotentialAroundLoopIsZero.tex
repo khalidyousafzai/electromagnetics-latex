@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{siunitx} 
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+%\setmainlanguage{english}
+%\setotherlanguages{arabic}
+\setmainlanguage{arabic}
+\setotherlanguages{english}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\rr}{2}
+\pgfmathsetmacro{\kphiS}{45}
+\pgfmathsetmacro{\kphiN}{\kphiS+1}
+\pgfmathsetmacro{\kphiE}{\kphiS+20}
+\pgfmathsetmacro{\kphiM}{(\kphiS+\kphiE)/2}
+
+
+\begin{document}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-1,-2) grid (2,2);
+%
+\draw[-stealth] (0,-1)node[below]{$V_C=\SI{3}{\volt}$} to [out=0,in=-45] (1.5,1.5)node[above]{$V_A=\SI{10}{\volt}$};
+\draw[gray,-stealth] (1.5,1.5) to [out=180,in=45] ++(-2,-1) to [out=-135,in=90] (0,-1);
+%
+\node[right] at (1.5,0){$\SI{+7}{\volt}$};
+\node[left] at (-0.5,0){$\SI{-7}{\volt}$};
+\node at (1.5,-1){ب};
+%
+  \end{tikzpicture}%
+  \end{document}

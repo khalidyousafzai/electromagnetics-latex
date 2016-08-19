@@ -1,0 +1,47 @@
+\documentclass[b5paper]{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{tikz}
+\usepackage{ifthen}   
+\usepackage{amsmath}
+%\usetikzlibrary{calc}
+\usetikzlibrary{calc,decorations.markings,decorations.pathreplacing}
+%\usetikzlibrary{calc,decorations.pathreplacing}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+
+\pgfmathsetmacro{\radX}{1.6}
+ \pgfmathsetmacro{\radY}{\radX/4}
+\pgfmathsetmacro{\aS}{0} 
+\pgfmathsetmacro{\aE}{3*360}
+\pgfmathsetmacro{\p}{0.8} %pitch
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-4*\radX,-4*\radX) grid (4*\radX,4*\radX);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (-4*\radX,-4*\radX) grid (4*\radX,4*\radX);
+%
+%coil backside
+%\foreach \y in {0,1,2,3}{\draw[double,double distance=3pt,color=gray!90,thin,domain={0:180},variable=\t,smooth,samples=100] 
+%plot({\radX*cos(\t)},{\y*\p+0.5*\p/180*\t+\radY*sin(\t)});}
+%
+%coil front
+%\foreach \y in {0,1,2,3}{
+%\draw[color=gray!90,thin,domain={\aS:\aE},variable=\t,smooth,samples=100] plot({\radX*cos(\t)},{\y*\p+0.5*\p/180*\t+\radY*sin(\t)});}
+%
+\draw[color=gray!90,thick,domain={\aS:\aE},variable=\t,smooth,samples=100] plot({\radX*cos(\t)},{0.5*\p/180*\t+\radY*sin(\t)});
+%
+\draw[-latex,color=gray!50,thin] (-\radX,\p*3/2)++(0:-10pt) arc (-180:180:10pt);
+\draw[-latex,color=gray!50,thin] (-\radX,\p*3/2)++(0:-15pt) arc (-180:180:15pt and 35 pt);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
+%---------------------
+

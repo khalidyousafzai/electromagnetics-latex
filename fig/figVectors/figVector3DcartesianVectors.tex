@@ -13,6 +13,9 @@
 \newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
 \newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
 
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
 \begin{document}
 \begin{urdufont}
 
@@ -45,6 +48,10 @@
 \draw[gray](1,\y,0)--(1,\y,\z)--(1,0,\z);
 \draw[gray](\x,1,0)--(\x,1,\z)--(0,1,\z);
 \draw[gray](\x,2,0)--(\x,2,\z)--(0,2,\z);
+
+\draw[lgray,thin](0,1,2)--++(0,0,-2)--++(1,0,0);
+\draw[lgray,thin](0,2,2)--++(0,0,-2)--++(1,0,0);
+\draw[lgray,thin](1,0,1)--++(-1,0,0)--++(0,3,0);
 %
 \node at (3,4,0){ب};
 \end{tikzpicture}%%
@@ -78,6 +85,10 @@
 \draw[gray](1,\y,0)--(1,\y,\z)--(1,0,\z);
 \draw[gray](\x,1,0)--(\x,1,\z)--(0,1,\z);
 \draw[gray](\x,2,0)--(\x,2,\z)--(0,2,\z);
+
+\draw[lgray,thin](0,1,2)--++(0,0,-2)--++(1,0,0);
+\draw[lgray,thin](0,2,2)--++(0,0,-2)--++(1,0,0);
+\draw[lgray,thin](1,0,1)--++(-1,0,0)--++(0,3,0);
 %
 \node at (3,4,0){الف};
 \end{tikzpicture}%%

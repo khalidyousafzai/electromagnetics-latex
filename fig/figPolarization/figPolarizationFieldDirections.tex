@@ -1,0 +1,67 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7} %radius of smith chart; this is the unit circle
+\pgfmathsetmacro{\ang}{21.6}   %point
+
+\pgfmathsetmacro{\x}{1.5}
+\pgfmathsetmacro{\y}{1.5}
+\pgfmathsetmacro{\l}{1}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+\draw[gray] (-\x,0)--(\x,0)node[below]{$x$};
+\draw[gray] (0,-\y)--(0,\y)node[left]{$y$};
+%vector
+\draw[-latex] (0,0)--(\l,0)node[below]{$E_1$};
+\draw[-latex] (0,0)--(-\l,0)node[below]{$-E_1$};
+%text
+\draw (0,-\y) node[below]{\RL{الف: $\ax$ خطی قطبیت}};
+%
+\begin{scope}[xshift=-4cm]
+%axis
+\draw[gray] (-\x,0)--(\x,0)node[below]{$x$};
+\draw[gray] (0,-\y)--(0,\y)node[left]{$y$};
+%vector
+\draw[-latex] (0,0)--(0,\l)node[left]{$E_2$};
+\draw[-latex] (0,0)--(0,-\l)node[left]{$-E_2$};
+%text
+\draw (0,-\y) node[below]{\RL{ب: $\ay$ خطی قطبیت}};
+\end{scope}
+%
+\begin{scope}[xshift=-8cm]
+%axis
+\draw[gray] (-\x,0)--(\x,0)node[below]{$x$};
+\draw[gray] (0,-\y)--(0,\y)node[left]{$y$};
+%vector
+\draw[-latex] (0,0)--(45:{\l/0.7071})node[left]{$\kvec{E}$};
+\draw[-latex] (0,0)--(-135:{\l/0.7071})node[left]{$-\kvec{E}$};
+\draw[-latex] (0,0)--(\l,0)node[below]{$E_1$};
+\draw[-latex] (0,0)--(0,\l)node[left]{$E_2$};
+\draw[] ([shift={(0:0.5)}]0,0) arc (0:45:0.5);
+\draw (22:0.9) node{$45^\circ$};
+%text
+\draw (0,-\y) node[below]{\RL{پ: $45^\circ$ خطی قطبیت}};
+\end{scope}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

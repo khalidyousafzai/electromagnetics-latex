@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%needs polar values of Reflection Coefficient "Gamma". Also note that Beta=1 here
+%\pgfmathdeclarefunction{waveWithReflection}{absGamma,AngleGamma,x}{\pgfmathparse{sqrt((1+#1*cos(#2-2*#3))^2+(#1*sin(#2-2*#3))^2)}}
+\pgfmathdeclarefunction{waveWithReflection}{3}{\pgfmathparse{sqrt((1+#1*cos(#2-2*#3))^2+(#1*sin(#2-2*#3))^2)}}
+
+\pgfmathsetmacro{\xLen}{2.5}
+\pgfmathsetmacro{\yLen}{1.5}
+\pgfmathsetmacro{\x}{\xLen+0.5}
+\pgfmathsetmacro{\y}{\yLen+1}
+
+\pgfmathsetmacro{\ang}{20}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-\x,-\y) grid (\x,\y);
+%\draw[gray,thin,xstep=0.1,ystep=0.1](-\x,-\y) grid (\x,\y);
+%axis
+\path[gray](-\x,0)coordinate(xL)--(\x,0)coordinate(xR)node[right]{$x$};
+\path[gray](0,-\y)coordinate(yBot)--(0,\y)coordinate(yTop)node[left]{$y$};
+%rotated ellipse
+\draw[rotate=\ang,name path=kellipse] (0,0) ellipse (\xLen cm and \yLen cm);
+%major and minor axis
+\draw[fill](\ang:-\xLen cm)circle (1pt)node[left]{$A'$}--(\ang:\xLen cm) circle (1pt)node[above right]{$A$}node[rotate=\ang,pos=0.2,fill=white]{\RL{کبیرہ رداس}};
+\draw[fill](90+\ang:-\yLen cm)circle (1pt)node[below]{$B'$}--(90+\ang:\yLen cm)circle (1pt)node[shift={(90+\ang+20:0.3)}]{$B$}coordinate[pos=0.8](minorAxis);
+\draw[stealth-] (minorAxis)++(-0.01,0) to [out=180,in=0]++(-1,0.5) node[left]{\RL{رداس صغیرہ}};
+\draw[-stealth] ([shift={(0:0.8)}]0,0) arc (0:\ang:0.8);
+\draw (\ang/2:1.1) node{$\tau$};
+%vector E
+\path[rotate=\ang] ([shift={(0:\xLen cm and \yLen cm)}]0,0) arc (0:31:\xLen cm and \yLen cm)coordinate (pE);
+\draw[-latex](0,0) --++(pE)node[pos=0.7,fill=white]{$\kvec{E}$};
+\draw[dashed](pE)--($(yTop)!(pE)!(yBot)$)node[shift={(-45:0.35)}]{$E_y$};
+\draw[dashed](pE)--($(xL)!(pE)!(xR)$)node[below]{$E_x$};
+%text
+\draw(0,0)node[shift={(160:0.5)}]{$M$};
+%axis
+\draw[gray](-\x,0)coordinate(xL)--(\x,0)node[right]{$x$};
+\draw[gray](0,-\y)coordinate(yBot)--(0,\y)node[left]{$y$};
+%extremes
+\path[gray] (2.41,0)coordinate(kbot)--++(0,2)coordinate(ktop);
+\draw[gray] (0,1.66)node[black,shift={(135:0.3)}]{$E_2$}--($(kbot)!(0,1.66)!(ktop)$)coordinate(kUR);
+\draw[gray] (2.41,0)node[below,black]{$E_1$}--(kUR);
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

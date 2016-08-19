@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\x}{3}
+\pgfmathsetmacro{\y}{1}
+
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%waveguide
+\draw (0,0)--++(\x,0)--++(0,\y)--++(-\x,0)--++(0,-\y);
+\draw[stealth-stealth] (0,-0.35)--++(\x,0)node[pos=0.5,fill=white]{$b$};
+\draw[stealth-stealth] (-0.35,0)--++(0,\y)node[pos=0.5,fill=white]{$d$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

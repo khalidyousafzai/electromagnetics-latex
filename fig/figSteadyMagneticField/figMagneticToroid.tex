@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}
+       \addplot3[surf,
+       colormap/cool,
+       samples=40,
+       domain=0:360,y domain=0:360,
+       z buffer=sort]
+       ({(2+cos(x))*cos(y+pi/2)},{(2+cos(x))*sin(y+pi/2)}, {sin(x)});
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

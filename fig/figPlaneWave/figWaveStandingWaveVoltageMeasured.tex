@@ -1,0 +1,43 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\a}{30}
+\pgfmathsetmacro{\l}{3}
+\pgfmathsetmacro{\lr}{\l*sin(\a)}
+\pgfmathsetmacro{\li}{\l*cos(\a)}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%axis
+\shade[left color=black!80, right color=white](0,-0.5) --++(0,2.5)--++(0.25,0)--++(0,-2.5)--cycle;
+\draw (0,0)--++(-7.5,0);
+%text
+\draw (1.5,-0)node[]{\RL{کامل موصل}};
+%standing wave
+\draw (0,0)
+\foreach \z in {0,1,...,720}{--(-\z/100,{abs{sin(\z)}})};
+\foreach \z/\k in {180/\frac{\lambda_1}{2},360/\lambda_1,540/\frac{3\lambda_1}{2},720/2 \lambda_1}{\draw (-\z/100,0) node[below]{$-\k$}; }
+\draw (-0.1,0) node[below]{$0$};
+\draw (-0.1,1)--++(0.2,0)node[right]{$2E_{x10}^+$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

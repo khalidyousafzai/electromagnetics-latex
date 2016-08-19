@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{3} 
+\pgfmathsetmacro{\angI}{60} 
+\pgfmathsetmacro{\angR}{\angI} 
+\pgfmathsetmacro{\angT}{40} 
+
+\pgfmathsetmacro{\x}{2} 
+\pgfmathsetmacro{\y}{2.1} 
+
+\pgfmathsetmacro{\lR}{\x/cos(\angR)} 
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+\draw[gray] (-\x,0)coordinate(xL)--(2,0)node[right]{$x$}coordinate(xR);
+\draw[gray] (0,0)--(0,\y)node[above]{$y$};
+%incident wave
+\draw[] (0,0)--(90-\angI:\l)coordinate[pos=0.7](kIn)node[shift={(90-\angI:0.3)}]{$x'$};
+\draw[-latex] (kIn)--++(90-\angI:-0.1);
+\draw[-latex] (kIn)++(90-\angI+90:0.1)--++(90-\angI+90:1.5)node[right]{$\kvec{a}_{Hi}$};
+%cartesian x'y'
+\draw[gray] (0,0)--(90-\angI+90:2.3)node[shift={(90-\angI+90:0.3)}]{$y'$};
+%angle of incidence and reflection
+\draw[stealth-stealth] ([shift={(90:0.5)}]0,0) arc (90:90-\angI:0.5);
+\draw  ({90-\angI/2}:0.8) node{$\theta_i$};
+\draw ([shift={(180:0.3)}]0,0) arc(180:90-\angI+90:0.3);
+\draw ({180-\angI/2}:0.6) node {$\theta_i$};
+%unit
+\draw[-latex,thick] (0,0) --++(90-\angI+90:1.5)node[right]{$\ay'$}coordinate(top);
+\draw[gray,latex-] (top)--($(xL)!(top)!(xR)$)coordinate(bot);
+\draw[gray,-latex] (0,0)--(bot);
+\draw[dashed,gray] (bot)++(0,-0.2)--++(0,-0.3)coordinate[pos=0.75](mL);
+\draw[dashed,gray] (0,0)++(0,-0.2)--++(0,-0.3)coordinate[pos=0.75](mR);
+\draw[gray,stealth-stealth] (mL)--(mR)node[below,pos=0.5]{$\cos \theta_i$};
+\draw[gray,dashed] (top)++(-0.2,0)--++(-0.3,0)coordinate[pos=0.7](pT);
+\draw[gray,stealth-stealth] (pT)--($(xL)!(pT)!(xR)$)node[pos=0.5,above,rotate=90]{$\sin \theta_i$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

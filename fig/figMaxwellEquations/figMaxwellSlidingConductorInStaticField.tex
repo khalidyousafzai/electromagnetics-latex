@@ -1,0 +1,56 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\len}{3}
+\pgfmathsetmacro{\w}{2}
+\pgfmathsetmacro{\t}{0.3}
+\pgfmathsetmacro{\ang}{80}
+
+\pgfmathsetmacro{\xx}{\len+\w*cos(\ang)}
+\pgfmathsetmacro{\yy}{\w*sin(\ang)}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american voltages]
+%grid
+%\draw[gray,thick] (0,0) grid (4,3);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (4,3);
+%lower, left , upper, right
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=0] (\len,0)--++(-\len,0)--++(\t,\t)--++(\len-\t,0)--++(0,-\t);
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=270](0,0)--++(\ang:\w)--++(\t,-\t)--++(\ang:-\w+\t+\t)--cycle;
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=0] (\xx,\yy)--++(-\len,0)--++(\t,-\t)--++(\len-\t,0)--++(0,\t);
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=270](2/3*\len,-0.5)[rounded corners=3pt]--++(\ang:\w+1)--++(\t,0)[sharp corners]--++(\ang:-\w-1)--cycle;
+%rod ends: vertical, lower, upper
+\shade[black!60] (2/3*\len+\t/2,-0.5) ellipse (0.15 and 0.08);
+\shade[black!60] (\len,\t/2) ellipse (0.08 and 0.15);
+\shade[black!60] (\xx,\yy-\t/2) ellipse (0.08 and 0.15);
+%meter
+\draw[fill=white] (\t/2,0)++(\ang:\w/2)++(0.03,0)node[shift={(135:0.5)}]{$1$} node[shift={(35:-0.5)}]{$2$} circle (0.25 cm) node{$V$}node[gray,shift={(180:1.2)}]{\RL{پیما برقی دباو}};
+%vectors
+\draw[-latex](2.7,1)--++(1,0)node[right]{$\kvec{v}$}node[above right]{رفتار};
+\draw[-latex](1.2,1.2)--++(0,1.5);
+\draw[-latex](2,1.2)--++(0,1.5)node[above]{$\kvec{B}$ ساکن};
+\draw[-latex](2.8,1.2)--++(0,1.5);
+%axis
+\draw[gray] (\xx,\yy-\t/2) --++(1,0)node[right]{$y$};
+\draw[gray] (\t/2,0)node[left]{$x=d$}--++(\ang:-0.5)node[left]{$x$};
+\draw[gray] (\t/2,0)++(\ang:\w)--++(0,0.5)node[left]{$z$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

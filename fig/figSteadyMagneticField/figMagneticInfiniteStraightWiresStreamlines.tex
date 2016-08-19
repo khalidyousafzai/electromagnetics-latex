@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}
+\draw[fill] (0,0) circle (1.5pt);
+\draw (0,0) circle (0.3cm);
+\draw (0,0) circle (0.5cm);
+\draw (0,0) circle (1cm);
+\draw (0,0) circle (2cm);
+%arrows
+\draw[-latex] (0:0.3)++(90:0.02)--++(90:0.07);
+\draw[-latex] (0:0.5)++(90:0.02)--++(90:0.07);
+\draw[-latex] (0:1)++(90:0.02)--++(90:0.07);
+\draw[-latex] (0:2)++(90:0.02)--++(90:0.07);
+\path (0,0) circle (2.1cm);
+\end{tikzpicture}%;
+\end{urdufont}
+\end{document}

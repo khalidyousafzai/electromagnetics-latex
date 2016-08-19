@@ -1,0 +1,8 @@
+
+f(x):x^2+2*x;
+
+diff(f(x));
+
+values;
+
+

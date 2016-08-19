@@ -1,0 +1,47 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\begin{document}
+\begin{tikzpicture}
+%
+\pgfmathsetmacro{\kDel}{1.5}
+%\draw[thick,gray] (-3,-4) grid (3,3);
+%\draw[thin,gray,step=0.2] (-3,-4) grid (3,3);
+%axis
+\draw(0,0,0)--++(2.5,0,0)node[below]{$x$};
+\draw(0,0,0)--++(0,1.5,0)node[left]{$y$};
+%small area
+\draw (30:1.5)node[below]{$4$}--++(30:0.5)node[right]{$1$}
+\foreach \kt in {30,31,...,45}{
+--({2*cos(\kt)},{2*sin(\kt)})
+}node[above]{$2$}--++(45:-0.5)node[left]{$3$}
+\foreach \kt in {30,31,...,45}{
+--({1.5*cos(75-\kt)},{1.5*sin(75-\kt)})};
+%
+\draw[gray](0,0)--++(30:1.5);
+\draw[gray](0,0)--++(45:1.5);
+%sides text
+\draw[gray] (40:2.4) node[right]{$(\rho_0+\Delta \rho) \Delta \phi$};
+\draw[gray,stealth-stealth] ([shift={(30:2.3)}]0,0) arc (30:45:2.3);
+\draw[gray,stealth-stealth] (50:1.5)--++(45:0.5)node[pos=0.5,shift={(137:0.3)}]{$\Delta \rho$};
+%small angle text
+\draw[gray] ([shift={(30:0.6)}]0,0) arc (30:45:0.6);
+\draw[gray,stealth-](37:0.65) to [out=37,in=0]++(-1,0.6)node[left]{$\Delta \phi$};
+%centre of circle
+\draw[fill,gray] (37.5:1.75) circle (1pt);
+\draw[gray] (37.5:1.75)++(0.1,0) to [out=0,in=180]++(0.5,-0.5)node[right]{$(\rho_0, \phi_0,z_0)$};
+\end{tikzpicture}
+\end{document} 

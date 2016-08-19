@@ -1,0 +1,43 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\y}{1}
+\pgfmathsetmacro{\a}{pi/9}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (0,0) grid (4,3);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (4,3);
+%axis
+\draw[gray] (0,0)--++(0,1.5)node[left]{$x$};
+\draw[gray](-1.5,0)--(5,0)node[right]{$z$};
+%cos wave
+ \draw[gray,domain=-pi/2:5/2*pi,samples=100]   plot (\x/2,{cos(\x r)});
+ \draw[domain=-pi/2+\a:5/2*pi+\a,samples=100]   plot (\x/2+\a,{cos((\x-\a) r)});
+%text
+\draw[gray,stealth-] (-1.2/2,{cos(-1.2 r)}) to [out=135,in=0] ++(-0.5,0.25) node[left]{$t=0$};
+\draw[stealth-] (1.4/2+\a,{cos((1.4-\a) r)}) to [out=45,in=180] ++(0.3,0.25) node[right]{$t=\Delta t_1$};
+%
+\draw[gray,dashed]  (\a/2+\a,1)--(\a/2+\a,0)node[below,solid]{$\frac{\omega \Delta t_1}{\beta}$};
+\draw[gray,dashed]  (pi,1)++(0,0.5)--(pi,0)node[below,solid]{$\frac{2\pi}{\beta}$};
+\draw[gray,dashed,stealth-stealth] (0,1.25)--++(pi,0)node[pos=0.5,fill=white]{$\lambda$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

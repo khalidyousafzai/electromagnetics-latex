@@ -1,22 +1,27 @@
 \documentclass[leqno,b5paper]{book}
 
 
-\usepackage{khalidUrduBooksEMT}                     %my sty file
-%\usepackage{animate}
+\usepackage{./tex/khalidUrduBooksEMT}                     %my sty file
+\usepackage{amsmath}
+\usepackage{amsbsy} %for bold Poynting
+\usepackage{ mathrsfs }   %for Poynting symbol
+\usepackage{IEEEtrantools}
 
-\sisetup{math-micro=\text{µ},text-micro=µ}           %siunitx stopped showing micro symbol and had to put this line. now the size of micro is smaller
-
+\sisetup{math-micro=\textup{µ},text-micro=µ,math-ohm  =\upOmega}   %with mathpazo this is needed else must not be here. now size of micro is smaller
 
 \input{./tex/myUrduCommandsEMT.tex}                  %turning latex into urdu
 \input{./tex/myUrduGreek.tex}
 \input{./tex/myEMTvectors.tex}
+\input{./tex/myDeclareFunctions.tex}
+
 %\input{./tex/myElectronicsVariablesBetter.tex}         %these are all tested. to use at the very end when book is finished
 
-\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}}			%paths to figures
+\graphicspath{{./fig/figFrontPage/}{./fig/figVectors/}{./fig/figQuestions/}{./fig/figCoulomb/}{./fig/figGaussLaw/}{./fig/figEnergyAndPotential/}
+{./fig/figConductorDielectricCapacitor/}{./fig/figStreamlines/}{./fig/figPoissonLaplace/}{./fig/figSteadyMagneticField/}{./fig/figMagneticForcesMaterialsAndInductance/}{./fig/figMaxwellEquations/}{./fig/figPlaneWave/}{./fig/figTransmissionLines/}{./fig/figPolarization/}{./fig/figObliqueIncidence/}{./fig/figWaveGuidesAndResonators/}}		%paths to figuree
 
 
-\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtQuestions}
-%\includeonly{./tex/emtVectors}
+%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtMagneticForcesMaterialsAndInductance,./tex/emtMaxwellEquations,./tex/emtPlaneWave,./tex/emtTransmissionLines,./tex/emtPolarization,./tex/emtObliqueIncidence,./tex/emtWaveguidesAndResonators,./tex/emtQuestions,./tex/emtDataTables}
+\includeonly{./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtObliqueIncidence,./tex/emtWaveguidesAndResonators,./tex/emtQuestions,./tex/emtDataTables}
 
 
 \author{
@@ -37,6 +42,7 @@
 %==========
 \begin{document}
 \begin{urdufont}
+
 
 \renewcommand*{\contentsname}{عنوان}    %this command has to be placed right here
 
@@ -72,10 +78,22 @@
 \include{./tex/emtCoulombLaw}
 \include{./tex/emtGaussLaw}
 \include{./tex/emtEnergyAndPotential}
+\include{./tex/emtConductorDielectricCapacitor}
+\include{./tex/emtPoissonLaplace}
+\include{./tex/emtSteadyMagneticField}
+\include{./tex/emtMagneticForcesMaterialsAndInductance}
+\include{./tex/emtMaxwellEquations}
+\include{./tex/emtPlaneWave}
+\include{./tex/emtTransmissionLines}
+\include{./tex/emtPolarization}
+\include{./tex/emtObliqueIncidence}
+\include{./tex/emtWaveguidesAndResonators}
+
 \include{./tex/emtQuestions}
 
-
 \backmatter
+
+\include{./tex/emtDataTables}
 
 \renewcommand*{\indexname}{فرہنگ}      %this command has to be placed right here just before printindex command
 \cleardoublepage

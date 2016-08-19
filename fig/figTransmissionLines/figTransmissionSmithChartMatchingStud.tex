@@ -1,0 +1,67 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7} %radius of smith chart; this is the unit circle
+\pgfmathsetmacro{\ang}{21.6}   %point
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+%\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+%\draw(0,0) --++(0,1.2*\l+0.2) node[above]{$\Gamma_i$};
+%outer most dashed circles
+\draw (0,0) circle (\l);
+%=================
+\begin{scope}
+\clip (0,0) circle (\l);
+%\foreach \x in {2,1,0.5,-2,-1,-0.5}{\draw (\l,\l/\x) circle (\l/\x);}
+%\foreach \x in {1,-0.4}{\draw (\l,\l/\x) circle (\l/\x);}
+\draw[gray](-\l,0)--(\l,0);
+%label x
+\end{scope}
+%==============
+%label y
+%=============
+%extra work
+\draw[dashed] (0,0)--++(\ang:\l)node[right]{$0.22\lambda$};
+\draw[fill] (\ang:0.42484*\l) circle (1pt);
+\draw[stealth-] (\ang:0.42484*\l)++(0.03,-0.03) to [out=-20,in=180]++(1.8,0) node[right] {$ z=2.1+j0.8$};
+\draw[fill] (\l,0) circle (1pt) node[right] {$0.25\lambda$}node[below left]{$\infty$};
+\draw[dashed] (0,0) circle (0.42484*\l);
+\draw[fill] (0:0.42484*\l) circle (1pt);
+\draw[stealth-] (0:0.42484*\l) ++(0.03,-0.03) to [out=-60,in=160]++(1.8,-0.9) node[right]{$2.5+j0$};
+\draw (150:0.42484*\l) node[fill=white]{$s=2.5$};
+%
+\draw[dashed] (0,0) --++(64.8:\l) node[shift={(64.8:0.3)}]{$0.16\lambda$};
+
+\draw[fill] (64.8:0.42484*\l) circle (1pt)node[right]{$1+j0.95$};
+\draw[fill] (-64.8:0.42484*\l) circle (1pt)node[below right]{$1-j0.95$};
+\draw (-92.88:\l-0.1)--++(-92.88:0.2)node[below]{$0.379\lambda$}node[shift={(90:0.5)}]{$0-j0.95$};
+\draw[dashed] (0,0)--++(180+\ang:\l)node[left]{$0.47\lambda$};
+\draw[fill] (180+\ang:0.42484*\l)circle (1pt) ;
+\draw[stealth-] (180+\ang:0.42484*\l)++(0,-0.1) to [out=-120,in=0]++(-1.8,-1.2) node[left]{$0.41-j0.16$};
+%
+\draw[-stealth] ([shift={(180:\l+0.3)}]0,0) arc (180:160:\l+0.3);
+\draw (145:\l+0.3) node[rotate=55] {\RL{منجانب جنریٹر}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

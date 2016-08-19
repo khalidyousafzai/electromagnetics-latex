@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\x}{1.5}
+\pgfmathsetmacro{\y}{2.5}
+\pgfmathsetmacro{\z}{1}
+%grid
+\draw[gray] (0,0,0)--++(\x,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--++(0,\y,0)node[right]{$y$};
+\draw[gray] (0,0,0)--++(0,0,\z)node[above]{$z$};
+%point
+\draw[fill] (0,0,0.5)coordinate(N) circle (1pt) node[right]{$N$};
+%surface
+\shade[opacity=0.5,left color=black!40,right color=gray!10](0,-2,0)--++(1,0,0)--++(0,4,0)--++(-1,0,0)--cycle;
+%\shade[opacity=0.5,left color=gray!10,right color=gray!10,middle color=black!50](0,0,0)--++(1,0,0)--++(0,4,0)--++(-1,0,0)--cycle;
+%\shade[opacity=0.5,outer color=gray!10,inner color=black!50](0,0,0)--++(1,0,0)--++(0,4,0)--++(-1,0,0)--cycle;
+%wires
+\draw (0,1,0)--++(1,0,0)coordinate(kA)++(0,0.05,0)coordinate(kB)--++(-1,0,0)--cycle;
+\draw (0,-1,0)--++(1,0,0)++(0,0.05,0)--++(-1,0,0)--cycle;
+\draw[gray,stealth-] (kA)++(0.2,0,0)--++(0,-0.3,0);
+\draw[gray,stealth-] (kB)++(0.2,0,0)--++(0,0.3,0)--++(0.3,0.3,0)node[right]{$\Delta y$};
+%field
+\draw[-latex,gray] (N)--++(0,-0.3,-0.2);
+\draw[-latex,gray] (N)--++(0,-0.3,0.2);
+\draw[-latex](N)--++(0,-0.5,0)node[left]{\RL{صرف $H_y$ رہ جاتا ہے}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

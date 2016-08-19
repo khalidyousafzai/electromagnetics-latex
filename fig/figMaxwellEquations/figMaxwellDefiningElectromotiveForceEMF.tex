@@ -1,0 +1,69 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\len}{4}
+\pgfmathsetmacro{\w}{3}
+\pgfmathsetmacro{\t}{0.3}
+\pgfmathsetmacro{\ang}{80}
+
+\pgfmathsetmacro{\xx}{\len+\w*cos(\ang)}
+\pgfmathsetmacro{\yy}{\w*sin(\ang)}
+
+\pgfmathsetmacro{\x}{\w*cos(\ang)}
+\pgfmathsetmacro{\y}{\w*sin(\ang)}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american voltages]
+%grid
+%\draw[gray,thick] (0,0) grid (4,3);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (4,3);
+%lower, left , upper, right
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=0] (\len,0)--++(-\len,0)--++(\t,\t)--++(\len-\t,0)--++(0,-\t);
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=270](0,0)--++(\ang:1)coordinate(RL)node[left,gray]{$d_1$}--++(\t,-\t)--++(\ang:-1+\t+\t)--cycle;
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=0] (\xx,\yy)--++(-\len+\t,0)--++(-\t,-\t/2)coordinate(RU)--++(\t,-\t/2)--++(\len-\t,0)--++(0,\t);
+\shade[left color=gray!10,right color=black!80,shading=axis,shading angle=270](2/3*\len,-0.5)[rounded corners=3pt]--++(\ang:\w+1)coordinate(rodU)--++(\t,0)[sharp corners]--++(\ang:-\w-1)--cycle;
+%rod ends: vertical, lower, upper
+\shade[black!60] (2/3*\len+\t/2,-0.5) ellipse (0.15 and 0.08);
+\shade[black!60] (\len,\t/2) ellipse (0.08 and 0.15);
+\shade[black!60] (\xx,\yy-\t/2) ellipse (0.08 and 0.15);
+%resistor
+\draw[gray] (RL) to [resistor,color=gray] (RU);
+%meter
+%\draw[fill=white] (\t/2,0)++(\ang:\w/2)++(0.03,0)node[shift={(135:0.5)}]{$1$} node[shift={(35:-0.5)}]{$2$} circle (0.25 cm) node{$V$}node[gray,shift={(180:1.2)}]{\RL{پیما برقی دباو}};
+%vectors
+\draw[latex-](3.1,1)--++(\ang:0.8)node[pos=0.2,left]{$\kvec{E}_{\textrm{حرکی}}$};
+\draw[-latex](0.6,1.4)--++(\ang:0.8)node[pos=0.2,right]{$\kvec{E}$};
+\draw[-latex](rodU)++(\t/2,0)--++(1,0)node[right]{$\kvec{v}$};
+%vector B
+\draw[-latex](1.2,2.2)--++(0,1.5);
+\draw[-latex](2,2.2)--++(0,1.5)node[above]{$\kvec{B}$ ساکن};
+\draw[-latex](2.8,2.2)--++(0,1.5);
+%axis
+\draw[gray] (0,0)node[left]{$d$}--++(\ang:-1)node[left]{$x$};
+\draw[gray] (\xx,\yy)++(0,-\t/2)--++(1,0)node[right]{$y$};
+%voltages
+\draw (0.2,2)node[left]{$v_R$};
+\draw (3.3,1.5)node[right]{$e$};
+\draw (-0.1,2.5) node{$-$};
+\draw (-0.2,1.5) node{$+$};
+\draw (3.6,2) node{$-$};
+\draw (3.5,1) node{$+$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

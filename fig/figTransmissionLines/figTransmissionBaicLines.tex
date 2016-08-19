@@ -1,0 +1,47 @@
+\documentclass[b5paper]{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{circuitikz}
+\usepackage{ifthen}   
+\usepackage{siunitx}  
+\usepackage{amsmath}
+\usetikzlibrary{calc}
+%
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+%transformer outer dimensions
+\pgfmathsetmacro{\l}{1.5}
+\pgfmathsetmacro{\s}{0.5}
+\pgfmathsetmacro{\arm}{2}
+\pgfmathsetmacro{\shiftX}{9cm}
+\pgfmathsetmacro{\shiftY}{1.25 cm}
+\pgfmathsetmacro{\gap}{3.5 cm}
+
+\pgfmathsetmacro{\startDelX}{-\arm/2}
+\pgfmathsetmacro{\startDelY}{-\arm/3}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-3,-3) grid (12,5);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (-3,-3) grid (12,5);
+%
+\draw (0,0) to [short,o-,i=$I_s$]++(1,0) to [resistor,l=$\frac{1}{2}R \Delta z$]++(2,0) to [inductor,l=$\frac{1}{2} L \Delta z$] ++(2,0)to [inductor,l=$\frac{1}{2} L \Delta z$] ++(2,0) to [resistor,l=$\frac{1}{2}R \Delta z$]++(2,0) to [short,-o,i=$I_s+\Delta I_s$]++(1.5,0);
+\draw (5,0) to [short,i<=$\Delta I_s$,*-*]++(0,-1);
+\draw(5,-1)--++(-1,0) to [resistor,l_=$G \Delta z$,-*]++(0,-2);
+\draw(5,-1)--++(1,0) to [capacitor,l=$C \Delta z$,-*]++(0,-2);
+\draw (0,-3) to [short,o-o]++(10.5,0);
+%text
+\draw(0,-1.5) node{$\begin{aligned} &+\\  \\ &V_s \\  \\ &- \end{aligned}$};
+\draw(10.5,-1.5) node{$\begin{aligned} &+\\  \\ V_s &+\Delta V_s \\  \\ &- \end{aligned}$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
+%---------------------
+

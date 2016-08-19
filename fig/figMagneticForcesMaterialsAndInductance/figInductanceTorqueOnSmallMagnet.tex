@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\draw (0,0)--++(1,0)--++(0,1)--++(-1,0);
+\draw (4,0)--++(-1,0)--++(0,1)--++(1,0);
+%
+\draw (1,0.5) node[left]{$N$};
+\draw (3,0.5) node[right]{$S$};
+%
+\foreach \yy in {0.1,0.5,0.9}{\draw[gray,-latex] (1,\yy)--++(2,0);};
+%
+\draw(2,0.5)++(0,-0.2)++(30:-0.5cm)--++(30:1cm)--++(120:0.4cm)--++(30:-1cm)--cycle;
+\draw(2,0.5)++(30:0.2cm)node[rotate=30]{$N$};
+\draw(2,0.5)++(30:-0.42cm)node[rotate=30]{$S$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

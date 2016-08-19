@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{3}
+\pgfmathsetmacro{\z}{2}
+\pgfmathsetmacro{\zP}{1.3}
+\coordinate (P) at (0,0,\zP);
+\coordinate (N) at (0,2,0);
+%grid
+%\draw[gray] (0,0,0)--++(\x,0,0)node[left]{$x$};
+%\draw[gray] (0,0,0)--++(0,\y,0)node[right]{$y$};
+%\draw[gray] (0,0,0)--++(0,0,\z)node[left]{$z$};
+%text
+\draw[stealth-stealth,gray] (0,0.4,0.4)--++(0,1.1,0)node[pos=0.5,fill=white]{$c$};
+%current sheet
+\shade[opacity=0.5,left color=gray!40,right color=gray!10,shading=axis,shading angle=0] (0,0,0)--++(0,2,0)--++(0,0,0.5)--++(0,-2,0)--cycle;
+\shade[left color=gray!50,right color=gray!10,shading=axis,shading angle=90] (0,2,0)--++(-2,0,0)--++(0,0,0.5)--++(2,0,0)--cycle;
+%current
+\foreach \yy in {0.2,0.5,...,2}{
+\draw[-latex] (0,\yy,0.5)--++(-1,0,0);}
+\draw (-1.5,1,0.5) node {$\kvec{K}$};
+%
+\draw [decorate,decoration={brace,amplitude=5pt},xshift=0pt,yshift=0pt]
+(0,1.5,0.3) -- (0,0.4,0.3)node [black,midway,yshift=-9pt] {\footnotesize$I=c K$};
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

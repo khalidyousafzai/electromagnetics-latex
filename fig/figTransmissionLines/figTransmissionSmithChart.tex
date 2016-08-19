@@ -1,0 +1,76 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{2.7}
+
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%grid
+%\draw[gray] (-3,-3) grid (3,3);
+%axis
+\draw(0,0) --++(1.5*\l,0) node[right]{$\Gamma_r$};
+\draw(0,0) --++(0,1.2*\l+0.2) node[above]{$\Gamma_i$};
+\draw (0,0) circle (\l);
+%=================
+\begin{scope}
+\clip (0,0) circle (\l);
+\foreach \x in {2,1,0.5,-2,-1,-0.5}{\draw (\l,\l/\x) circle (\l/\x);}
+\draw(-\l,0)--(\l,0);
+%text
+\draw (1.9,0.5) node[fill=white]{${\scriptstyle x=2}$};
+\draw (1.4,-1.1) node[fill=white]{${\scriptstyle x=-2}$};
+\draw (0.8,0.8) node[fill=white]{${\scriptstyle x=1 }$};
+\draw (0,-2.2) node[fill=white]{${\scriptstyle x=-1}$};
+\draw (-1.2,1.6) node[fill=white]{${\scriptstyle x=0.5}$};
+\draw (-1.2,-1.6) node[fill=white]{${\scriptstyle x=-0.5}$};
+\draw (-1.75,0.2) node{${\scriptstyle x=0}$};
+\end{scope}
+%==============
+\draw (0,0) circle (1*\l);  %r=0
+\draw ({1*\l/3},0) circle (1*\l/1.5);   %r=0.5
+\draw (0.5*\l,0) circle (0.5*\l);   %r=1
+\draw ({2*\l/3},0) circle (1*\l/3); %r=2
+%text
+\draw (0.6,2.4) node[]{${\scriptstyle r=0}$};
+\draw(1.75,1.05) node{${\scriptstyle r=2}$};
+\draw(0.8,1.45) node[]{${\scriptstyle r=1}$};
+\draw(0.7,1.95) node[]{${\scriptstyle r=0.5}$};
+%=============
+\pgfmathsetmacro{\s}{-\l-0.7}
+\draw (0,\s)--++(\l,0);
+\foreach \x in {0,1,...,10}{\draw ({\x*\l/10},{\s-0.1})--++(0,0.2);}
+\foreach \x in {0,5,10}{\draw[thick] ({\x*\l/10},{\s-0.1})--++(0,0.2);}
+\draw (0,\s)node[below]{$0$};
+\draw (\l/2,\s)node[below]{$0.5$};
+\draw (\l,\s)node[below]{$1$};
+%
+\foreach \ang in {0,10,...,350}{\draw (\ang:{\l-0.1})--++(\ang:{0.2});}
+\foreach \angg/\ll in {30/30,60/60,120/120,150/150}{\draw[thick] (\angg:{\l-0.1})--++(\angg:{0.2})node[shift={(\angg:0.3)}]{$\ll^{\circ}$};}
+\foreach \angg/\ll in {-30/-30,-60/-60,-120/-120,-150/-150}{\draw[thick] (\angg:{\l-0.1})--++(\angg:{0.2})node[shift={(\angg:0.35)}]{$\ll^{\circ}$};}
+\draw (90:\l) node [shift={(40:0.4)}]{$90^\circ$};
+\draw (-90:\l+0.3) node []{$-90^\circ$};
+\draw (0:\l+0.2) node [shift={(60:0.2)}]{$0^\circ$};
+\draw (180:\l+0.55) node []{$\mp 180^\circ$};
+%
+\draw[fill] (83:0.62*\l) circle (1pt) node[shift={(-105:0.25)}] {${\scriptstyle N}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

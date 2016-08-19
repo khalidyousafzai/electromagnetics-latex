@@ -1,0 +1,51 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+%
+
+
+ \pgfmathsetmacro{\delX}{0.7}            %start points, lower left corner
+ \pgfmathsetmacro{\delY}{0.1}
+ \pgfmathsetmacro{\delH}{1.4}
+ \pgfmathsetmacro{\delW}{1.2}
+ \pgfmathsetmacro{\delhh}{0.8}
+
+\begin{document}
+\begin{tikzpicture}
+%conductor-air boundary
+\draw[thick] (0,0)--(3,0)node[pos=0.5,above]{\RL{موصل سطح، $V=0$}};
+%charges
+\draw[fill] (0.5,1)node[left]{$-2$} circle (1.5pt);
+\draw[fill] (1,2)node[left]{$+7$} circle (1.5pt);
+\draw[thick] (1.5,1) to [out=0,in=-180] ++(1.4,1);
+\draw (1.7,1.4)node{$\rho_L$};
+%
+\begin{scope}[xshift=-6cm]
+%conductor-air boundary
+\draw[thick,gray] (0,0)--(3,0)node[pos=0.5,above]{\RL{ہم قوہ سطح،  $V=0$}};
+%charges
+\draw[fill] (0.5,1)node[left]{$-2$} circle (1.5pt);
+\draw[fill] (1,2)node[left]{$+7$} circle (1.5pt);
+\draw[thick] (1.5,1) to [out=0,in=-180] ++(1.4,1);
+\draw (1.7,1.4)node{$\rho_L$};
+%images
+\draw[fill,gray] (0.5,-1)node[left]{$+2$} circle (1.5pt);
+\draw[fill,gray] (1,-2)node[left]{$-7$} circle (1.5pt);
+\draw[thick,gray] (1.5,-1) to [out=0,in=-180] ++(1.4,-1);
+\draw[gray] (1.7,-1.4)node{$-\rho_L$};
+\end{scope}
+\end{tikzpicture}%
+
+\end{document}

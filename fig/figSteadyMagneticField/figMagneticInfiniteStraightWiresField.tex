@@ -1,0 +1,52 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{3}
+\pgfmathsetmacro{\z}{2}
+\pgfmathsetmacro{\zP}{1.3}
+\coordinate (P) at (0,0,\zP);
+\coordinate (N) at (0,2,0);
+%grid
+\draw[gray] (0,0,0)--++(\x,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--++(0,\y,0)node[right]{$y$};
+\draw[gray] (0,0,0)--++(0,0,\z)node[left]{$z$};
+%current
+\draw[thick,-latex] (0,0,-1)--(0,0,\z);
+\draw [-latex] (0,0,-1)++(0,0.2,0.1)--++(0,0,0.4)node[pos=0.5,right]{$I$};
+%current element
+\draw[gray](0,0.15,\zP-0.2)--++(0,-0.3,0);
+\draw[gray](0,0.15,\zP+0.2)--++(0,-0.3,0);
+\draw[-latex](0,0,\zP-0.2)--++(0,0,0.4)node[left,pos=0.5]{$I \dif \kvec{L}$}node[pos=0.5,shift={(0,-1.3,0)}]{منبع};
+%vectors
+\draw[-latex] (P)--(N)node[shift={(0,0,0.35)}]{$\kvec{R}_{21}$}coordinate[pos=0.3](kA);
+\draw[-latex] (P)--(kA)node[shift={(0,0,0.3)}]{$\kvec{a}_{R21}$};
+\draw[-latex](0,0,0)--(N)node[pos=0.5,below]{$\rho \arho$};
+\draw[-latex](0,0,0)--(P)node[pos=0.5,left]{$z \az$};
+%text
+\draw[gray] (N) node[below]{$N_2$};
+\draw[-stealth,gray] (P)++(0,0.5,0.5) node[right]{$N_1$} to [out=180,in=10]++(0,-0.4,-0.5);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

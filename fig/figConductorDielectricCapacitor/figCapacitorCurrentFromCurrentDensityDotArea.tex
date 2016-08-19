@@ -1,0 +1,22 @@
+\documentclass[b5paper]{standalone} 
+
+\usepackage{tikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{commath}
+
+ \pgfmathsetmacro{\delX}{0.7}            %start points, lower left corner
+ \pgfmathsetmacro{\delL}{4}
+ \pgfmathsetmacro{\delZ}{0.7}
+
+
+\begin{document}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0)},z={(0cm,1cm)}]
+%cross sectional area
+\draw[shade=gray] (0,0,0)--++(\delX,0,0)--++(0,0,\delZ)--++(-\delX,0,0)--cycle;
+\draw[-latex] (\delX/2,0,\delZ/2)--++(0,2,0)node[right]{$\boldsymbol{S}$};
+\draw[-latex] (\delX/2,0,\delZ/2)--++(0,1,1)node[right]{$\boldsymbol{J}$};
+
+\end{tikzpicture}%
+
+\end{document}

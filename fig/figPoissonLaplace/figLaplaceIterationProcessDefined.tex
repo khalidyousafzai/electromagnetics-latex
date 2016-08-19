@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{siunitx}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+%
+\tikzset{
+  set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+  set arrow inside={end/.initial=stealth, opt/.initial=},
+  /pgf/decoration/Mark/.style={
+    mark/.expanded=at position #1 with
+    {
+      \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+    }
+  },
+  arrow inside/.style 2 args={
+    set arrow inside={#1},
+    postaction={
+      decorate,decoration={
+        markings,Mark/.list={#2}
+      }
+    }
+  },
+}
+
+%====================
+\begin{document}
+\begin{urdufont}
+%
+\begin{tikzpicture}
+%grid
+\draw[] (0,0) grid (4,4);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (4,4);
+%distances
+\draw[stealth-stealth] (0,0.5)--++(1,0)node[pos=0.5,fill=white]{$h$};
+\draw[stealth-stealth](0.5,1)--++(0,1)node[pos=0.5,fill=white]{$h$};
+%axis
+\draw (4,0)--++(1,0)node[right]{$x$};
+\draw (0,4)--++(0,1)node[left]{$y$};
+%nodes
+
+\draw[fill] (2,2) circle (1.5pt)node[shift={(45:0.3)}]{$V_0$};
+\draw[fill] (3,2) circle (1.5pt)node[shift={(45:0.3)}]{$V_1$};
+\draw[fill] (1,2) circle (1.5pt)node[shift={(135:0.3)}]{$V_3$};
+\draw[fill] (2,3) circle (1.5pt)node[shift={(45:0.3)}]{$V_2$};
+\draw[fill] (2,1) circle (1.5pt)node[shift={(-135:0.3)}]{$V_4$};
+%
+\draw[fill] (2.5,2) circle (1.5pt)node[shift={(-60:0.2)}]{$a$};
+\draw[fill] (1.5,2) circle (1.5pt)node[shift={(60:0.2)}]{$c$};
+\draw[fill] (2,2.5) circle (1.5pt)node[shift={(150:0.2)}]{$b$};
+\draw[fill] (2,1.5) circle (1.5pt)node[shift={(150:0.2)}]{$d$};
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

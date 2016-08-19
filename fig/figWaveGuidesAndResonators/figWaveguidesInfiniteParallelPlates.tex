@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\x}{3}
+\pgfmathsetmacro{\y}{1.5}
+\pgfmathsetmacro{\z}{1.5}
+
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%waveguide
+\draw (0,0,0)--++(\x,0,0)--++(0,\y,0)--++(-\x,0,0)--++(0,-\y,0);
+\draw[fill=white] (0,0,\z)--++(\x,0,0)--++(0,\y,0)--++(-\x,0,0)--++(0,-\y,0);
+%fields
+\draw[-latex] (\x-0.25,\y/2,0)--++(0,0.5,0)node[left]{$E_y$};
+\draw[-latex] (\x-0.25,\y/2-0.2,0)--++(0,0,0.75)node[right]{$H_z$};
+%axis
+\draw (\x,0,0)++(0.1,0,0)--++(2,0,0)node[below]{$x$};
+\draw(0,\y,0)++(0,0.1,0)--++(0,0.5,0)node[left]{$y$};
+\draw (0,0,\z)++(0,0,0.1)--++(0,0,0.5)node[left]{$z$};
+%text
+\draw[-latex] (\x,0,\z/2)--++(1.5,0,0)node[below,pos=0.5]{\RL{سمت حرکت}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

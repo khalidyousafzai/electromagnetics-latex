@@ -13,6 +13,9 @@
 \newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
 \newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
 
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
 \begin{document}
 \begin{urdufont}
 
@@ -28,6 +31,10 @@
 \draw[gray](0,0,0)--++(0,4.2,0);
 \draw[gray](0,0,0)--++(0,0,3.2)node[left]{$z$};
 %
+\draw[gray] (1,0,1)--++(-1,0,0)--++(0,3,0);
+\draw[gray](0,1,2)--++(0,0,-2)--++(1,0,0);
+\draw[gray](0,2,2)--++(0,0,-2)--++(1,0,0);
+%
 \draw[-latex,thick](0,0,0)--(\x,\y,\z);
 \fill[white,opacity=0.5](\x,0,0)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--(0,\y,0)--(\x,\y,0)--cycle;
 %main box
@@ -42,6 +49,8 @@
 \draw[gray](1,\y,0)--(1,\y,\z)--(1,0,\z);
 \draw[gray](\x,1,0)--(\x,1,\z)--(0,1,\z);
 \draw[gray](\x,2,0)--(\x,2,\z)--(0,2,\z);
+%
+
 %
 \draw[-latex](0,0,0)--(1,0,0)node[pos=0.5,right]{$1\ax$};
 \draw[-latex](1,0,0)--(1,3,0)node[pos=0.5,below]{$3\ay$};

@@ -1,0 +1,46 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\a}{30}
+\pgfmathsetmacro{\l}{3}
+\pgfmathsetmacro{\lr}{\l*sin(\a)}
+\pgfmathsetmacro{\li}{\l*cos(\a)}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[x={(0cm,1cm)},y={(0.5cm,-0.5cm)},z={(1cm,0cm)}]
+%axis
+\draw(0,0,0) --++(2,0,0)node[above]{$x$};
+\draw (0,0,0)--++(0,3,0)node[below]{$y$};
+\draw (0,0,0)--++(0,0,3)node[right]{$z$};
+%
+\foreach \y in {0,0.4,...,2}{\draw[-latex](0,\y,0)--++(1,0,0);}
+\foreach \z/\xx in {0.4/0.67,0.8/0.45,1.2/0.3,1.6/0.2}{\draw[-latex] (0,2,\z)--++(\xx,0,0);}
+%text
+\draw (0,2,0)node[left]{$b$};
+\draw[gray] (0,2,0)--++(0,0,2)coordinate[pos=0.7](sk);
+\draw (sk)--++(-0.2,0,0)node[below]{$\delta$};
+\draw (0.3,2,1.2)node[above]{$\abs{J_x}$};
+\draw(1,1.2,0)node[above]{$J_0$};
+\draw (1,0,0)node[left]{$L$};
+\draw (1.5,0,-0.5)node[left]{\RL{کامل ذو برق}};
+\draw (1.5,0,0.5)node[right]{\RL{موصل}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

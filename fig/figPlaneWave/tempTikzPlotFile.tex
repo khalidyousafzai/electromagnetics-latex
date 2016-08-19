@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{verbatim}
+
+\begin{document}
+
+
+\begin{tikzpicture}
+
+        % Some profiles look better when using plot[smooth]
+        \draw[] node[left=0.5cm] {x}
+            plot file{figWaveOctaveWaterDielectricLoss.txt} -- cycle;
+
+
+\end{tikzpicture}
+
+\end{document}

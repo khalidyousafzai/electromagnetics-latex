@@ -1,0 +1,116 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\A}{0.75}
+\pgfmathdeclarefunction{Ey}{2}{\pgfmathparse{\A*cos(#1)*sin(#2)}}
+\pgfmathdeclarefunction{Ez}{2}{\pgfmathparse{\A*sin(#1)*cos(#2)}}
+\pgfmathdeclarefunction{Hx}{2}{\pgfmathparse{\A*cos(#1)*cos(#2)}}
+\pgfmathdeclarefunction{Hy}{2}{\pgfmathparse{\A*sin(#1)*cos(#2)}}
+\pgfmathdeclarefunction{Hz}{2}{\pgfmathparse{\A*cos(#1)*sin(#2)}}
+
+\pgfmathsetmacro{\lz}{3}
+\pgfmathsetmacro{\ly}{0.75}
+\pgfmathsetmacro{\shiftL}{2}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%TE11, Ey
+\draw[gray,-latex] (0,-1.2)--++(0,2.4)node[above]{$y$}node[right,pos=0.5]{$E_y$};
+\draw[gray,-latex] (0,0)--++(-3,0)node[left]{$z$};
+\draw (0,0) \foreach \z in {0,1,...,180}{--(-\z/72,{Ey(0,\z)})};
+\draw[gray] (-180/72,0)++(0,0.1)--++(0,-0.2) node[below]{$z_1$};
+%
+\begin{scope}[xshift=-1cm,yshift=3cm]
+\draw[gray,-latex] (0,0)--++(0,3)node[above]{$y$}node[shift={(0:1)},pos=0.5]{$E_y$};
+\draw[gray,-latex] (1.2,0)--++(-2.4,0)node[left]{$z$};
+\draw (-\A,0) \foreach \y in {0,1,...,180}{--({-Ey(\y,90)},\y/72)};
+\draw[gray] (0,180/72)++(0.1,0)--++(-0.2,0) node[left]{$y_1$};
+\end{scope}
+%
+\begin{scope}[xshift=-5cm]
+%TE11, Ez
+\draw[gray,-latex] (0,-1.2)--++(0,2.4)node[above]{$y$}node[right,pos=0.5]{$E_z$};
+\draw[gray,-latex] (0,0)--++(-3,0)node[left]{$z$};
+\draw (0,\A) \foreach \z in {0,1,...,180}{--(-\z/72,{Ez(90,\z)})};
+\draw[gray] (-180/72,0)++(0,0.1)--++(0,-0.2) node[below]{$z_1$};
+%
+\begin{scope}[xshift=-1cm,yshift=3cm]
+\draw[gray,-latex] (0,0)--++(0,3)node[above]{$y$}node[shift={(0:1)},pos=0.5]{$E_z$};
+\draw[gray,-latex] (1.2,0)--++(-2.4,0)node[left]{$z$};
+\draw (0,0) \foreach \y in {0,1,...,180}{--({-Ez(\y,0)},\y/72)};
+\draw[gray] (0,180/72)++(0.1,0)--++(-0.2,0) node[left]{$y_1$};
+\end{scope}
+\end{scope}
+%
+\begin{scope}[xshift=-10cm]
+%TE11, Hx
+\draw[gray,-latex] (0,-1.2)--++(0,2.4)node[above]{$y$}node[right,pos=0.5]{$Hx$};
+\draw[gray,-latex] (0,0)--++(-3,0)node[left]{$z$};
+\draw (0,\A) \foreach \z in {0,1,...,180}{--(-\z/72,{Hx(0,\z)})};
+\draw[gray] (-180/72,0)++(0,0.1)--++(0,-0.2) node[below]{$z_1$};
+%
+\begin{scope}[xshift=-1cm,yshift=3cm]
+\draw[gray,-latex] (0,0)--++(0,3)node[above]{$y$}node[shift={(0:1)},pos=0.5]{$Hx$};
+\draw[gray,-latex] (1.2,0)--++(-2.4,0)node[left]{$z$};
+\draw (-\A,0) \foreach \y in {0,1,...,180}{--({-Hx(\y,0)},\y/72)};
+\draw[gray] (0,180/72)++(0.1,0)--++(-0.2,0) node[left]{$y_1$};
+\end{scope}
+\end{scope}
+%==========================
+\begin{scope}[yshift=-10cm]
+%TE11, Hy
+\draw[gray,-latex] (0,-1.2)--++(0,2.4)node[above]{$y$}node[right,pos=0.5]{$Hy$};
+\draw[gray,-latex] (0,0)--++(-3,0)node[left]{$z$};
+\draw (0,\A) \foreach \z in {0,1,...,180}{--(-\z/72,{Hy(90,\z)})};
+\draw[gray] (-180/72,0)++(0,0.1)--++(0,-0.2) node[below]{$z_1$};
+%
+\begin{scope}[xshift=-1cm,yshift=3cm]
+\draw[gray,-latex] (0,0)--++(0,3)node[above]{$y$}node[shift={(0:1)},pos=0.5]{$Hy$};
+\draw[gray,-latex] (1.2,0)--++(-2.4,0)node[left]{$z$};
+\draw (0,0) \foreach \y in {0,1,...,180}{--({-Hy(\y,0)},\y/72)};
+\draw[gray] (0,180/72)++(0.1,0)--++(-0.2,0) node[left]{$y_1$};
+\end{scope}
+%
+\begin{scope}[xshift=-5cm]
+%TE11, Hz
+\draw[gray,-latex] (0,-1.2)--++(0,2.4)node[above]{$y$}node[right,pos=0.5]{$Hz$};
+\draw[gray,-latex] (0,0)--++(-3,0)node[left]{$z$};
+\draw (0,0) \foreach \z in {0,1,...,180}{--(-\z/72,{Hz(0,\z)})};
+\draw[gray] (-180/72,0)++(0,0.1)--++(0,-0.2) node[below]{$z_1$};
+%
+\begin{scope}[xshift=-1cm,yshift=3cm]
+\draw[gray,-latex] (0,0)--++(0,3)node[above]{$y$}node[shift={(0:1)},pos=0.5]{$Hz$};
+\draw[gray,-latex] (1.2,0)--++(-2.4,0)node[left]{$z$};
+\draw (-\A,0) \foreach \y in {0,1,...,180}{--({-Hz(\y,90)},\y/72)};
+\draw[gray] (0,180/72)++(0.1,0)--++(-0.2,0) node[left]{$y_1$};
+\end{scope}
+\end{scope}
+%
+
+\end{scope}
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

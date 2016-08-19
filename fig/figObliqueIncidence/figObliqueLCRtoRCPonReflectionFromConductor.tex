@@ -1,0 +1,58 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\x}{3}
+\pgfmathsetmacro{\angI}{60}
+\pgfmathsetmacro{\delX}{1}
+\pgfmathsetmacro{\lA}{2}
+\pgfmathsetmacro{\lB}{1.5}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipIn/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipOut/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,scale=0.1cm] (0,0) grid (3,3);
+%conductor
+\draw[thick](-\x,0)--(\x,0)node[right]{\RL{موصل سرحد}};
+%incident
+\draw[myTipIn] (90-\angI:\lA)coordinate(midI)--++(90-\angI:\lB);
+\draw[fill=white] (midI)++(-\delX/2,-\delX/2)--++(\delX,0)--++(0,\delX)--++(-\delX,0)--++(0,-\delX);
+\draw (midI) circle (0.3);
+\draw[-latex] (midI)++(90:0.3)++(0:0.05)--++(180:0.1);
+\fill[white] (midI)++(90-\angI+90:0.1)--++(90-\angI:-1.5)--++(90-\angI-90:0.2)--++(90-\angI:1.5)--cycle;
+\draw (0,0)--++(90-\angI:\lA);
+%reflected
+\draw[myTipOut] (90+\angI:\lA)coordinate(midR)--++(90+\angI:\lB);
+\draw[fill=white] (midR)++(-\delX/2,-\delX/2)--++(\delX,0)--++(0,\delX)--++(-\delX,0)--++(0,-\delX);
+\draw (midR) circle (0.3);
+\draw[-latex] (midR)++(90:0.3)++(0:-0.05)--++(180:-0.1);
+\fill[white] (midR)++(90+\angI+90:0.1)--++(90+\angI:-1.5)--++(90+\angI-90:0.2)--++(90+\angI:1.5)--cycle;
+\draw (0,0)--++(90+\angI:\lA);
+%text
+\draw (midI)node[shift={(0:0.7)},right]{\RL{الٹ گھڑی قطبی موج}};
+\draw (midR)node[shift={(180:0.7)},left]{\RL{سمت گھڑی قطبی موج}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

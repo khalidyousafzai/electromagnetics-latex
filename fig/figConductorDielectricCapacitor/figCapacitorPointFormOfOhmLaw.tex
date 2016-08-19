@@ -1,0 +1,27 @@
+\documentclass[b5paper]{standalone}
+\usepackage{tikz}
+\usepackage{commath}
+\input{../../tex/myEMTvectors.tex}
+
+ \pgfmathsetmacro{\xE}{1.5}            %start points, lower left corner
+ \pgfmathsetmacro{\yE}{5}
+\pgfmathsetmacro{\zE}{1}
+
+\begin{document}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%top, front and right sides respectively
+\shade[opacity=0.5, left color=black!50,right color=gray!10,shading=axis,shading angle=0](0,0,\zE)--++(\xE,0,0)--++(0,\yE,0)--++(-\xE,0,0)--cycle;
+\shade[opacity=0.5, left color=black!50,right color=gray!10,shading=axis,shading angle=90](\xE,0,0)--++(0,\yE,0)node[below]{$n$}--++(0,0,\zE)--++(0,-\yE,0)--cycle;
+\shade[opacity=0.5, right color=black!50,left color=gray!10,shading=axis,shading angle=90](0,\yE,0)--++(\xE,0,0)--++(0,0,\zE)--++(-\xE,0,0)--cycle;
+%dashed
+\draw[dashed,gray](\xE,\yE/2,0)node[below]{$m$}--++(0,0,\zE)--++(-\xE,0,0);
+%sides labels
+\draw[stealth-stealth] (\xE,0,0)++(0,-0.5,0)--++(0,0,\zE)node[pos=0.5,fill=white]{$a$};
+\draw[stealth-stealth](0,0,\zE)++(0,-0.5,0)--++(\xE,0,0)node[pos=0.5,fill=white]{$b$};
+\draw[latex-](0,\yE,\zE)++(0,0,0.35)--++(0,-\yE/2,0)node[pos=0.5,fill=white]{$v \dif t$};
+\draw[stealth-] (\xE/2,\yE,\zE/2) to [out=0,in=180]++(0,1,1)node[right]{$\Delta S=ab$};
+
+\end{tikzpicture}%
+
+\end{document}
