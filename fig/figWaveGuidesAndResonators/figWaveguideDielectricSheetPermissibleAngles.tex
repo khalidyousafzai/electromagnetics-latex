@@ -39,15 +39,17 @@
 %grid
 %\draw[gray,thick] (0,0) grid (3,3);
 %\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
-\begin{axis}[ymin=-2,ymax=6,axis x line*=middle, axis y line*=middle,xtick={0,10,20,30,40,50},xticklabels={90,80,70,60,50,40}
+\begin{axis}[ymin=-2,ymax=6,axis x line*=middle, axis y line*=middle,xtick={0,10,20,30,40,50},xticklabels={{$90^{\circ}$},{$80^{\circ}$},{$70^{\circ}$},{$60^{\circ}$},{$50^{\circ}$},{$40^{\circ}$}}
 ]
 \addplot [domain=40:58,smooth](90-x,{funcA(x)});
-\addplot [domain=62:79,smooth](90-x,{funcA(x)})coordinate[pos=0](fA);
+\addplot [domain=62:79,smooth](90-x,{funcA(x)})coordinate[pos=0.03](fA);
 \addplot [domain=81:90,smooth](90-x,{funcA(x)});
 
-\addplot [domain=41.83:83,smooth](90-x,{funcB(x)}) node [scale=0.7,pos=0.92,pin={right:{$\frac{\sqrt{n_1^2 \sin^2 \theta_i-n_2^2}}{n_1 \cos \theta_i}$}},inner sep=0pt] {};
+\addplot [domain=41.83:83,smooth](90-x,{funcB(x)}) node [pos=0.92,pin={right:{$\frac{\sqrt{n_1^2 \sin^2 \theta_i-n_2^2}}{n_1 \cos \theta_i}$}},inner sep=0pt] {};
+\addplot [domain=41.83:83,smooth](90-x,{funcB(x)}) coordinate [pos=0.8](fnA);
 
-\draw (fA) node[right,scale=0.7]{$\tan\left(\frac{2\pi}{\lambda_0}n_1 d \cos \theta_i-m \pi \right)$};
+%\draw (fA) node[right,scale=0.7]{$\tan\left(\frac{2\pi}{\lambda_0}n_1 d \cos \theta_i-m \pi \right)$};
+
 %\draw (fB) node[right]{$kkk$};
 
 \addplot[mark=none,gray,dashed] coordinates { (\zTc,0) (\zTc,0.354) };
@@ -61,13 +63,15 @@
 \addplot[mark=none,stealth-] coordinates {(\zTc,-0.1) (\zTc-0.75,-0.7)}node[below]{$45.35^{\circ}$};
 \addplot[mark=none,stealth-] coordinates {(\zTb,-0.1) (\zTb-0.75,-0.7)}node[below]{$64.29^{\circ}$};
 \addplot[mark=none,stealth-] coordinates {(\zTa,-0.1) (\zTa-0.75,-0.7)}node[below]{$81.6^{\circ}$};
-\addplot[mark=none,stealth-] coordinates{(90-41.81,-0.2)(90-41.81,-1.3)}node[below]{$41.8^{\circ}$};
+\addplot[mark=none,stealth-] coordinates{(90-41.81,-0.2)(90-41.81,-1.5)}coordinate(cA);
 
 
-%\pgfplotsset{
-  %  after end axis/.code={
-    %    \node[red,above] at (axis cs:55,0){\small{'12 MTT}};
-      %  \node[red,below] at (axis cs:55,-2){\small{65nm CMOS}};}}
+
+\pgfplotsset{
+ after end axis/.code={
+\draw (cA) node[below]{$\theta_{ic}=41.8^{\circ}$};
+\draw (fA) node [pin={right:{$\tan\left(\frac{2\pi}{\lambda_0}n_1 d \cos \theta_i-m \pi \right)$}},inner sep=0pt] {};
+}}
 
 \end{axis}%
 %
