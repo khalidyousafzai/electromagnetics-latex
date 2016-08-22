@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2.5}
+\pgfmathsetmacro{\kphi}{60}
+%\pgfmathsetmacro{\ktheta}{45}
+%
+%axis
+\draw[gray] (0,0,0)--(3,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,3,0)node[below]{$y$};
+\draw[gray] (0,0,0)--(0,0,3)node[left]{$z$};
+% r, phi , theta
+\begin{scope}[canvas is xy plane at z=0]
+\draw(\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[canvas is xz plane at y=0]
+\draw(\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[canvas is yz plane at x=0]
+\draw(\kr,0,0) arc (0:90:\kr);
+\end{scope}
+%
+\begin{scope}[x={(-45:0.707cm)},y={(90:1cm)}]
+\draw[fill] (\kr,0) circle (1pt);
+\draw(\kr,0) arc (0:90:\kr);
+\end{scope}
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

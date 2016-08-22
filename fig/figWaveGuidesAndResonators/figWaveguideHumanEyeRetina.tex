@@ -27,14 +27,14 @@
 \pgfmathsetmacro{\cX}{1} 
 \pgfmathsetmacro{\cY}{0.3} 
 \pgfmathsetmacro{\axon}{0.5} 
-\pgfmathsetmacro{\dentrite}{0.2} 
+\pgfmathsetmacro{\dendrite}{0.2} 
 
-\def\coneEye at (#1,#2){\draw(#1,#2) to [out=0,in=-160] ++(\cX,1/3*\cY) --++(0,1/3*\cY) to [out=160,in=0] ++(-\cX,1/3*\cY) .. controls (#1-0.5,#2+1.5*\cY) and (#1-0.5,#2-0.5*\cY) .. (#1,#2);
-\path(#1,#2+\cY) .. controls (#1-0.5,#2+1.5*\cY) and (#1-0.5,#2-0.5*\cY) .. (#1,#2)coordinate[pos=0.5](coneOut);
-\draw(coneOut)--++(-\axon,0)++(-\dentrite,0) circle (\dentrite)++(-\dentrite,0)--++(-\axon,0)++(-\dentrite,0) circle (\dentrite); }
+\def\coneEye at (#1,#2){\draw(#1,#2) to [out=0,in=-160] ++(\cX,1/3*\cY) --++(0,1/3*\cY) to [out=160,in=0] ++(-\cX,1/3*\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2);
+\path(#1,#2+\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2)coordinate[pos=0.5](coneOut);
+\draw(coneOut)--++(-\axon,0)++(-\dendrite,0) circle (\dendrite)++(-\dendrite,0)--++(-\axon,0)++(-\dendrite,0) circle (\dendrite); }
 %
 \def\rodEye at (#1,#2){\draw(#1,#2) to [out=0,in=-160] ++(\cX,1/3*\cY) --++(0,1/3*\cY) to [out=160,in=0] ++(-\cX,1/3*\cY) -- (#1,#2);
-\draw(#1,#2+\cY/2)--++(-\axon/2,0)++(-\dentrite,0) circle (\dentrite);
+\draw(#1,#2+\cY/2)--++(-\axon/2,0)++(-\dendrite,0) circle (\dendrite);
 }
 \pgfmathsetmacro{\yStep}{0.6} 
 
@@ -48,44 +48,44 @@
 \foreach \m in {0,1,2,3,4}{\rodEye at (0,\m*\yStep);} 
 \foreach \m in {0,1,2}{\coneEye at (0,5*\yStep+\m*\yStep);} 
 %rods in parallel, bottom to top
-\draw (-\axon/2-2*\dentrite,\yStep+\cY/2)--++(-\axon/2,0)++(-\dentrite,0)circle(\dentrite);
-\path[name path=rodsConnection](-\axon/2-2*\dentrite,\yStep+\cY/2)++(-\axon/2,0)++(-\dentrite,0)circle(\dentrite);
-\path[name path=lowerConn](-\axon/2-2*\dentrite,0+\cY/2) to [out=180,in=-90] ++(-\axon/2-\dentrite,\yStep);
-\draw[name intersections={of=rodsConnection and lowerConn}](-\axon/2-2*\dentrite,0+\cY/2) to [out=180,in=-90] (intersection-1);
+\draw (-\axon/2-2*\dendrite,\yStep+\cY/2)--++(-\axon/2,0)++(-\dendrite,0)circle(\dendrite);
+\path[name path=rodsConnection](-\axon/2-2*\dendrite,\yStep+\cY/2)++(-\axon/2,0)++(-\dendrite,0)circle(\dendrite);
+\path[name path=lowerConn](-\axon/2-2*\dendrite,0+\cY/2) to [out=180,in=-90] ++(-\axon/2-\dendrite,\yStep);
+\draw[name intersections={of=rodsConnection and lowerConn}](-\axon/2-2*\dendrite,0+\cY/2) to [out=180,in=-90] (intersection-1);
 %
-\path[name path=upperConn](-\axon/2-2*\dentrite,2*\yStep+\cY/2) to [out=180,in=90] ++(-\axon/2-\dentrite,-\yStep);
-\draw[name intersections={of=rodsConnection and upperConn}](-\axon/2-2*\dentrite,2*\yStep+\cY/2) to [out=180,in=90] (intersection-1);
+\path[name path=upperConn](-\axon/2-2*\dendrite,2*\yStep+\cY/2) to [out=180,in=90] ++(-\axon/2-\dendrite,-\yStep);
+\draw[name intersections={of=rodsConnection and upperConn}](-\axon/2-2*\dendrite,2*\yStep+\cY/2) to [out=180,in=90] (intersection-1);
 %
-\draw[name path=rodsConnectionUpper] (-\axon/2-2*\dentrite,4*\yStep-\cY/2)++(-\axon/2-\dentrite,0) circle(\dentrite);
-\path[name path=lowerConnKK](-\axon/2-2*\dentrite,3*\yStep+\cY/2) to [out=180,in=-90] ++(-\axon/2-\dentrite,\yStep/2);
-\path[name path=upperConnKK](-\axon/2-2*\dentrite,4*\yStep+\cY/2) to [out=180,in=90] ++(-\axon/2-\dentrite,-\yStep/2);
-\draw[name intersections ={of=lowerConnKK and rodsConnectionUpper}](-\axon/2-2*\dentrite,3*\yStep+\cY/2) to [out=180,in=-45] (intersection-1);
-\draw[name intersections ={of=upperConnKK and rodsConnectionUpper}](-\axon/2-2*\dentrite,4*\yStep+\cY/2) to [out=180,in=45] (intersection-1);
+\draw[name path=rodsConnectionUpper] (-\axon/2-2*\dendrite,4*\yStep-\cY/2)++(-\axon/2-\dendrite,0) circle(\dendrite);
+\path[name path=lowerConnKK](-\axon/2-2*\dendrite,3*\yStep+\cY/2) to [out=180,in=-90] ++(-\axon/2-\dendrite,\yStep/2);
+\path[name path=upperConnKK](-\axon/2-2*\dendrite,4*\yStep+\cY/2) to [out=180,in=90] ++(-\axon/2-\dendrite,-\yStep/2);
+\draw[name intersections ={of=lowerConnKK and rodsConnectionUpper}](-\axon/2-2*\dendrite,3*\yStep+\cY/2) to [out=180,in=-45] (intersection-1);
+\draw[name intersections ={of=upperConnKK and rodsConnectionUpper}](-\axon/2-2*\dendrite,4*\yStep+\cY/2) to [out=180,in=45] (intersection-1);
 %
-\draw(-\axon-4*\dentrite,\yStep+\cY/2)--++(-\axon,0)++(-\dentrite,0) circle(\dentrite);
-\draw(-\axon-4*\dentrite,3.5*\yStep+\cY/2)--++(-\axon,0)++(-\dentrite,0) circle(\dentrite);
+\draw(-\axon-4*\dendrite,\yStep+\cY/2)--++(-\axon,0)++(-\dendrite,0) circle(\dendrite);
+\draw(-\axon-4*\dendrite,3.5*\yStep+\cY/2)--++(-\axon,0)++(-\dendrite,0) circle(\dendrite);
 %cones to optic nerve. top to bottom
 \path[name path=opticEnds] (0,8*\yStep+0.2)--++(-3.5,0);
 \path(0,7*\yStep+\cY) .. controls (0-0.5,7*\yStep+1.5*\cY) and (0-0.5,7*\yStep-0.5*\cY) .. (0,7*\yStep)coordinate[pos=0.5](coneOut);
-\draw(coneOut)++(-2*\axon-4*\dentrite,0)--++(-0.1,0) to [out=180,in=-90]++(-0.2,0.2)coordinate(toOptic);
+\draw(coneOut)++(-2*\axon-4*\dendrite,0)--++(-0.1,0) to [out=180,in=-90]++(-0.2,0.2)coordinate(toOptic);
 \path[name path=optic](toOptic)--++(0,0.5);
 \draw[name intersections={of=optic and opticEnds}] (toOptic)--(intersection-1);
 %
 \path(0,6*\yStep+\cY) .. controls (0-0.5,6*\yStep+1.5*\cY) and (0-0.5,6*\yStep-0.5*\cY) .. (0,6*\yStep)coordinate[pos=0.5](coneOut);
-\draw(coneOut)++(-2*\axon-4*\dentrite,0)--++(-0.2,0) to [out=180,in=-90]++(-0.2,0.2)coordinate(toOptic);
+\draw(coneOut)++(-2*\axon-4*\dendrite,0)--++(-0.2,0) to [out=180,in=-90]++(-0.2,0.2)coordinate(toOptic);
 \path[name path=optic](toOptic)--++(0,1*\yStep+0.5);
 \draw[name intersections={of=optic and opticEnds}] (toOptic)--(intersection-1);
 %
 \path(0,5*\yStep+\cY) .. controls (0-0.5,5*\yStep+1.5*\cY) and (0-0.5,5*\yStep-0.5*\cY) .. (0,5*\yStep)coordinate[pos=0.5](coneOut);
-\draw(coneOut)++(-2*\axon-4*\dentrite,0)--++(-0.3,0) to [out=180,in=-90]++(-0.2,0.2)coordinate(toOptic);
+\draw(coneOut)++(-2*\axon-4*\dendrite,0)--++(-0.3,0) to [out=180,in=-90]++(-0.2,0.2)coordinate(toOptic);
 \path[name path=optic](toOptic)--++(0,2*\yStep+0.5);
 \draw[name intersections={of=optic and opticEnds}] (toOptic)--(intersection-1);
 %rods to optic nerve. top to bottom
-\draw(-2*\axon-6*\dentrite,3.5*\yStep+\cY/2)--++(-0.4,0) to [out=180,in=-90] ++(-0.2,0.2) coordinate(toOptic);
+\draw(-2*\axon-6*\dendrite,3.5*\yStep+\cY/2)--++(-0.4,0) to [out=180,in=-90] ++(-0.2,0.2) coordinate(toOptic);
 \path[name path=optic](toOptic)--++(0,3.5*\yStep+0.5);
 \draw[name intersections={of=optic and opticEnds}] (toOptic)--(intersection-1);
 %
-\draw(-2*\axon-6*\dentrite,1*\yStep+\cY/2)--++(-0.5,0) to [out=180,in=-90] ++(-0.2,0.2) coordinate(toOptic);
+\draw(-2*\axon-6*\dendrite,1*\yStep+\cY/2)--++(-0.5,0) to [out=180,in=-90] ++(-0.2,0.2) coordinate(toOptic);
 \path[name path=optic](toOptic)--++(0,7.5*\yStep+0.5);
 \draw[name intersections={of=optic and opticEnds}] (toOptic)--(intersection-1);
 %external boundary
@@ -99,9 +99,13 @@
 \draw[stealth-] (0.4,7*\yStep+\cY) to [out=90,in=180] ++(1,0.5) node[right]{\RL{مخروط}};
 \draw[stealth-] (0.6,4*\yStep+\cY) to [out=90,in=180] ++(1,0.2) node[right]{\RL{سلاخ}};
 \draw[stealth-] (-1.2,4.55) to [out=120,in=180] ++(0.5,1.3) node[right]{\RL{دو قطبی خلیہ}};
-\draw[stealth-] (-\axon/2-\dentrite,\cY/2-\dentrite) to [out=-90,in=0]++(-0.5,-0.5)node[left]{مرکزہ};
+\draw[stealth-] (-\axon/2-\dendrite,\cY/2-\dendrite) to [out=-90,in=0]++(-0.5,-0.5)node[left]{مرکزہ};
 \draw[stealth-] (-0.2,4.55) to [out=90,in=180]++(0.5,0.75)node[right]{مرکزہ};
 \draw [decorate,decoration={brace,amplitude=5pt},xshift=0,yshift=0pt] (-3.1,5) -- (-2.3,5) node [black,midway,yshift=0.5cm] {\RL{عصب بصری}};
+\draw[stealth-](0,-0.2) to [out=-90,in=180]++(0.3,-0.7) node[right]{\RL{خلوی جھلیاں}};
+\draw[stealth-](-\axon-3*\dendrite,\cY/2+\yStep)++(-135:\dendrite) to [out=-135,in=0]++(-0.5,-0.5) node[left]{\RL{دو قطبی خلیہ}};
+\draw[stealth-](-1.3*\axon-4*\dendrite,\cY/2+\yStep) to [out=90,in=-60]++(-0.2,0.3) node[above]{\RL{عصبی ریشہ}};
+\draw[stealth-](-2*\axon-5*\dendrite,\cY/2+3.5*\yStep)++(90:\dendrite) to [out=90,in=180]++(0.2,0.2) node[shift={(0:0.3)}]{\RL{شجریہ}};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document} 

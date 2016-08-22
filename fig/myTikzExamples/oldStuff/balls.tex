@@ -1,0 +1,18 @@
+\documentclass[border=5]{standalone}
+\usepackage{tikz}
+\begin{document}
+%
+\foreach \c in {black, red, yellow, green, blue}{
+\begin{tikzpicture}[ball color=\c]
+%shadow below the balls
+\foreach \i in {0,0.25,...,10}
+   \fill [black, opacity=1/50] (270:1) 
+     ellipse [x radius=\i/10, y radius=\i/20];
+%draws the shaded balls
+\shade [shading=ball, shading angle=-15] circle [radius=1];
+%draws second light's effect
+\foreach \i in {0,0.25,...,10}  \fill [white, opacity=1/75] (180:0.5) circle [radius=\i/30];
+%not sure what this does
+\foreach \i [evaluate={\j=\i*3;}] in {0,0.25,...,10} \draw [white, opacity=1/200, line width=\i, line cap=round] (0+\j:0.875) arc (0+\j:-90-\j:0.875);
+\end{tikzpicture}}
+\end{document}

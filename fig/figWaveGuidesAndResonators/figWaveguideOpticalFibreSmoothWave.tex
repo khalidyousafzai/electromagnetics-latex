@@ -1,0 +1,80 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+
+\pgfmathsetmacro{\cX}{2} 
+\pgfmathsetmacro{\cY}{0.6} 
+\pgfmathsetmacro{\axon}{0.5} 
+\pgfmathsetmacro{\dendrite}{0.2} 
+
+\def\coneEye at (#1,#2){(#1,#2) to [out=0,in=-160] ++(\cX,1/3*\cY) --++(0,1/3*\cY) to [out=160,in=0] ++(-\cX,1/3*\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2);
+%\path(#1,#2+\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2)coordinate[pos=0.5](coneOut);
+%\draw(coneOut)--++(-3*\axon,0); 
+}
+%
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%
+\pgfmathsetmacro{\x}{0.3} 
+\pgfmathsetmacro{\y}{1} 
+
+\pgfmathsetmacro{\kb}{0.5} 
+\pgfmathsetmacro{\xb}{\kb*\x} 
+\pgfmathsetmacro{\yb}{\kb*\y} 
+
+\pgfmathsetmacro{\kc}{0.3} 
+\pgfmathsetmacro{\xc}{\kc*\x} 
+\pgfmathsetmacro{\yc}{\kc*\y} 
+
+\pgfmathsetmacro{\la}{1.5} 
+\pgfmathsetmacro{\lb}{1} 
+\pgfmathsetmacro{\lc}{0.75}
+
+\pgfmathsetmacro{\ll}{\la+\lb+\lc}
+\pgfmathsetmacro{\a}{30}
+\pgfmathsetmacro{\lll}{\yb/sin(\a)}
+
+\draw (0,-\y)--++(\ll,0);
+\draw (0,\y)--++(\ll,0);
+\draw (0,-\yb)--++(\ll,0);
+\draw (0,\yb)--++(\ll,0);
+\draw (0,-\y)--(0,\y);
+\draw[name path=rightEdge] (\ll,-\y)--(\ll,\y);
+\draw[gray,dashed](-1,0)--(\ll+1,0)node[right]{محور};
+%ray
+\draw[->-=0.25,->-=0.5,->-=0.8] (0,0) \foreach \kk in {0,2,...,540}{--(\kk*\ll/540,{0.5*\kb*sin(\kk)})};
+%text
+\draw (\ll/2,\yb+0.25) node[]{$n_2$};
+\draw (\ll/2,-\yb-0.25) node[]{$n_2$};
+\draw  (\ll/2,\yb-0.25)  node[]{$n_1(\rho)$};
+\draw (3/4*\ll,-\yb-0.25)node[]{\RL{غلاف}};
+\draw (3/4*\ll,\yb+0.25)node[]{\RL{غلاف}};
+\draw (\ll-0.5,-0.1)node[left]{\RL{ریشہ}};
+%
+\draw[-stealth] (0.5,0)--++(0,-0.75*\yb)node[pos=0.5,right]{$\rho$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

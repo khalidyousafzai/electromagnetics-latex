@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{pgf}
+\begin{document}
+
+% spheres definitions
+
+\pgfdeclareradialshading{sphere}{\pgfpoint{0cm}{0cm}}% 
+{rgb(0cm)=(1,1,1);
+rgb(0.7cm)=(0.7,0.1,0); rgb(1cm)=(0.5,0.05,0); rgb(1.05cm)=(1,1,1)}
+
+\pgfdeclareradialshading{sphere1}{\pgfpoint{0.5cm}{0cm}}% 
+{rgb(0cm)=(1,1,1);
+rgb(0.4cm)=(0.7,0.1,0); rgb(0.6cm)=(0.5,0.05,0); rgb(1.05cm)=(1,1,1)}
+
+
+\pgfdeclareradialshading{sphere2}{\pgfpoint{0.5cm}{0.5cm}}% 
+{rgb(0cm)=(1,1,1);
+rgb(0.9cm)=(0.7,0.1,0); rgb(1cm)=(0.5,0.05,0); rgb(1.05cm)=(1,1,1)}
+
+
+\pgfdeclareradialshading{sphere3}{\pgfpoint{0cm}{0.5cm}}% 
+{rgb(0cm)=(1,1,1);
+rgb(0.5cm)=(0.7,0.1,0); rgb(0.75cm)=(0.6,0.075,0); rgb(1cm)=(0.5,0.05,0); rgb(1.05cm)=(1,1,1)}
+
+\pgfdeclareradialshading{sphere4}{\pgfpoint{-0.2cm}{0.5cm}}% 
+{rgb(0cm)=(1,1,1);
+rgb(0.2cm)=(0.7,0.1,0); rgb(0.9cm)=(0.5,0.05,0); rgb(1.05cm)=(1,1,1)}
+
+
+\pgfuseshading{sphere}\pgfuseshading{sphere1}\pgfuseshading{sphere2}\pgfuseshading{sphere3}\pgfuseshading{sphere4}
+
+\end{document}
+
+
