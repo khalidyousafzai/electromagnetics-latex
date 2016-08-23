@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+
+\pgfmathsetmacro{\cX}{2} 
+\pgfmathsetmacro{\cY}{0.6} 
+
+\def\coneEye at (#1,#2){(#1,#2) to [out=0,in=-160] ++(\cX,1/3*\cY) --++(0,1/3*\cY) to [out=160,in=0] ++(-\cX,1/3*\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2);  }
+
+\pgfmathsetmacro{\g}{0.05} 
+\pgfmathsetmacro{\l}{0.5} 
+%
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%
+\draw[thick,name path=wire] (0,\g)--++(0,\l);
+\draw[thick] (0,-\g)--++(0,-\l);
+\draw (0,\g+\l)++(-\l/2,0)--++(\l,0)coordinate(top)coordinate[pos=0.75](topPlate);
+\draw (0,-\g-\l)++(-\l/2,0)--++(\l,0);
+\draw[gray] (0,\g)--++(-2*\l,0);
+\draw[gray] (0,-\g)--++(-2*\l,0)coordinate[pos=0.5](tLine);
+%text
+\draw[-latex] (0.2,-0.25)--++(0,0.5)node[pos=0.5,right]{$I$};
+\draw[stealth-stealth] (top)++(0.6,0)--++(0,-2*\g-2*\l)node[pos=0.5,right]{$l$};
+%
+\path[name path=d] (-0.3,3/4*\l)--++(\l,0);
+\draw[stealth-,name intersections={of={d and wire}}] (intersection-1)++(-0.01,0)--++(-0.5,0)node[left]{$d$};
+\draw[stealth-] (intersection-1)++(0.01,0)--++(0.2,0);
+%
+\draw[stealth-] (topPlate) to [out=90,in=180]++(0.5,0.5)node[right]{\RL{موصل چادر}};
+\draw[stealth-] (tLine) to [out=-90,in=0]++(-0.5,-0.5)node[left]{\RL{ترسیلی تار}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
