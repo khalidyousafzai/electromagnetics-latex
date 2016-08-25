@@ -109,15 +109,33 @@ I=\frac{\partial q}{\partial t}
 
 شکل سے ظاہر ہے کہ سمتی دباو کا صرف \عددیء{\az} جزو
 \begin{align}
-A_z =\abs{\kvec{A}}=\frac{\mu_0 I_0}{4\pi} \int_{-l/2}^{l/2} \frac{e^{j(\omega t -\beta s)}}{s} \dif z
+\kvec{A}=\frac{\az \mu_0 I_0}{4\pi} \int_{-l/2}^{l/2} \frac{e^{j(\omega t -\beta s)}}{s} \dif z
 \end{align}
- پایا جاتا ہے۔اگر جفت قطب کی لمبائی \عددیء{l}، نقطہ \عددیء{N} سے جفت قطب تک فاصلہ \عددیء{r} سے نہایت کم \عددیء{l\ll r} ہو اور ساتھ ہی ساتھ یہ طول موج \عددیء{\lambda} سے بھی نہایت کم \عددیء{l \ll \lambda} ہو تب مندرجہ بالا مساوات میں متغیر فاصلہ \عددیء{s} کی جگہ مستقل فاصلہ \عددیء{r} پر کیا جا سکتا ہے اور ساتھ ہی ساتھ \عددیء{l} پر مختلف نقطوں سے  \عددیء{N} پر پیدا دباو میں زاویائی فرق کو نظر انداز کیا جا سکتا ہے۔یوں مندرجہ بالا مساوات سے
+ پایا جاتا ہے۔اگر جفت قطب کی لمبائی \عددیء{l}، نقطہ \عددیء{N} سے جفت قطب تک فاصلہ \عددیء{r} سے نہایت کم \عددیء{l\ll r} اور طول موج \عددیء{\lambda} سے بھی نہایت کم \عددیء{l \ll \lambda} ہو تب مندرجہ بالا مساوات میں متغیر فاصلہ \عددیء{s} کی جگہ مستقل فاصلہ \عددیء{r} پر کیا جا سکتا ہے اور ساتھ ہی ساتھ \عددیء{l} پر مختلف نقطوں سے  \عددیء{N} پر پیدا دباو میں زاویائی فرق کو نظر انداز کیا جا سکتا ہے۔یوں مندرجہ بالا مساوات سے
 \begin{align}
-A_z =\frac{\mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r}
+\kvec{A} =\frac{\az \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r}
 \end{align}
-حاصل ہوتا ہے۔ساکن چارج جفت قطب کے سروں پر پایا جاتا ہے لہٰذا مقداری دباو
+حاصل ہوتا ہے۔ اس مساوات کو کروی محدد میں یوں
+\begin{align*}
+\kvec{A}=A_r \ar +A_{\theta} \atheta +A_{\phi} \aphi
+\end{align*}
+لکھا جائے گا جہاں
+\begin{gather}
+\begin{aligned}\label{مساوات_اینٹینا_کروی_سمتی_دباو}
+A_r&=\ar \cdot \kvec{A}= \frac{ \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r} \ar \cdot \az= \frac{ \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r} \cos \theta\\
+A_{\theta}&=\atheta \cdot \kvec{A}=\frac{ \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r} \atheta \cdot \az =-\frac{ \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r} \sin \theta \\
+A_{\phi}&=\aphi \cdot \kvec{A}=\frac{ \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r} \aphi \cdot \az =0
+\end{aligned}
+\end{gather}
+ہوں گے جہاں اکائی سمتیات کے مقداری ضرب صفحہ \حوالہصفحہ{جدول_سمتیہ_کروی_نلکی_اکائی_غیر-سمتی_ضرب} پر جدول \حوالہ{جدول_سمتیہ_کروی_نلکی_اکائی_غیر-سمتی_ضرب} سے حاصل کئے گئے۔اس طرح 
+\begin{align}\label{مساوات_اینٹینا_جفت_قطب_سمتی_دباو}
+\kvec{A}=\frac{ \mu_0 I_0 l e^{j(\omega t -\beta r)}}{4\pi r}\left(\cos \theta \ar-\sin \theta \atheta \right)
+\end{align}
+لکھا جائے گا۔
+
+ساکن چارج جفت قطب کے سروں پر پایا جاتا ہے لہٰذا مقداری دباو
 \begin{align}\label{مساوات_اینٹینا_مقداری_دباو_الف}
-V=\frac{q_0}{4\pi \epsilon_0} \left(\frac{e^{j(\omega t -\beta s_1)}}{s_1} -\frac{e^{j(\omega t -\beta s_2)}}{s_2}\right)
+V=\frac{q_0}{4\pi \epsilon_0} \left[\frac{e^{j(\omega t -\beta s_1)}}{s_1} -\frac{e^{j(\omega t -\beta s_2)}}{s_2}\right]
 \end{align}
 ہو گا جہاں مساوات \حوالہ{مساوات_اینٹینا_رو_اور_چارج} کے تحت
 \begin{align}\label{مساوات_اینٹینا_رو_اور_چارج_ب}
@@ -130,7 +148,7 @@ q&=q_0  e^{j(\omega t -\beta s)}
 \end{align*}
 ہیں۔مساوات \حوالہ{مساوات_اینٹینا_رو_اور_چارج_ب} سے \عددیء{q_0=\tfrac{I_0}{j\omega}} حاصل کرتے ہوئے مساوات \حوالہ{مساوات_اینٹینا_مقداری_دباو_الف} میں پر کرتے ہیں۔ 
 \begin{align}\label{مساوات_اینٹینا_مقداری_دباو_ب}
-V=\frac{I_0}{4\pi \epsilon_0 j \omega } \left(\frac{e^{j(\omega t -\beta s_1)}}{s_1} -\frac{e^{j(\omega t -\beta s_2)}}{s_2}\right)
+V=\frac{I_0}{4\pi \epsilon_0 j \omega } \left[\frac{e^{j(\omega t -\beta s_1)}}{s_1} -\frac{e^{j(\omega t -\beta s_2)}}{s_2}\right]
 \end{align}
 شکل کو دیکھ کر
 \begin{align*}
@@ -155,3 +173,71 @@ V=\frac{I_0 e^{j(\omega t -\beta r)}}{4\pi \epsilon_0 j \omega r^2} \left[\left(
 \begin{align}\label{مساوات_اینٹینا_مقداری_دباو_ت}
 V=\frac{I_0 l e^{j(\omega t -\beta r)} \cos \theta}{4\pi \epsilon_0 c}\left(\frac{1}{r}+\frac{c}{j\omega r^2} \right)
 \end{align}
+حاصل ہوتا ہے جہاں
+\begin{description}
+\جزو{$I_0$} برقی رو کا حیطہ یعنی اس کی زیادہ سے زیادہ قیمت، \عددیء{\si{\ampere}}
+\جزو{$l$} جفت قطب کی لمبائی، \عددیء{\si{\meter}}
+\جزو{$\omega$}  زاویائی تعدد \عددیء{(\omega=2\pi f)} ، اکائی \عددیء{\si{\radian / \second}}۔ جہاں ہرٹز \عددیء{\si{\hertz}}میں تعدد \عددیء{f} ہے
+\جزو{$\beta$} زاویائی مستقل \عددیء{(\beta=\tfrac{2\pi}{\lambda})}، اکائی \عددیء{\si{\radian /\meter}}
+\جزو{$t$}وقت،\عددیء{\si{\second}} 
+\جزو{$\theta$}جفت قطب اور جفت قطب سے نقطہ \عددیء{N} تک سمتیہ کے مابین زاویہ
+\جزو{$\epsilon_0$}خالی خلاء کا برقی مستقل، \عددیء{\SI{8.854}{\pico\farad/\meter}}
+\جزو{$c$}خالی خلاء میں شعاع کی رفتار، \عددیء{\SI{3e8}{\meter/\second}}
+\جزو{$j$}خیالی عدد \عددیء{\sqrt{-1}}
+\جزو{$r$}جفت قطب کے وسط سے نقطہ \عددیء{N} تک فاصلہ،\عددیء{\si{\meter}}
+\end{description}
+ہیں۔
+
+مختصر جفت قطب کے وسط سے، \عددیء{l \ll \lambda} اور \عددیء{l \ll r} کی صورت میں، \عددیء{r} فاصلے اور \عددیء{\theta} زاویے پر مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_سمتی_دباو} سمتی دباو اور مساوات \حوالہ{مساوات_اینٹینا_مقداری_دباو_ت} مقداری دباو دیتے ہیں۔کروی محدد میں مقداری دباو کی ڈھلوان
+\begin{gather}
+\begin{aligned}
+\nabla V&=\frac{\partial V}{\partial r}\ar+\frac{1}{r}\frac{\partial V}{\partial \theta}\atheta+\frac{1}{r\sin \theta} \frac{\partial V}{\partial \phi}\aphi\\
+&=\frac{I_0 l e^{j(\omega t -\beta r)}}{4\pi \epsilon_0 c}\left[-\left(\frac{ \cos \theta}{r^2}+\frac{2 c  \cos \theta}{j\omega r^3} \right)\ar -\left(\frac{\sin \theta}{r}+\frac{c \sin \theta}{j\omega r^2} \right) \atheta\right]
+\end{aligned}
+\end{gather}
+کے برابر ہے۔برقی میدان \عددیء{\kvec{E}=E_r \ar +E_{\theta} \atheta+E_{\phi}\aphi} کے اجزاء مساوات \حوالہ{مساوات_اینٹینا_عمومی_برقی} کی مدد سے 
+\begin{align*}
+E_r&=-\frac{\partial V}{\partial r}-j \omega A_r\\
+E_{\theta}&=-\frac{1}{r}\frac{\partial V}{\partial \theta}-j \omega A_{\theta}\\
+E_{\phi}&=-\frac{1}{r\sin \theta}\frac{\partial V}{\partial \phi}-j \omega A_{\phi}
+\end{align*}
+لکھے جا سکتے ہیں جن میں مطلوبہ تفاعل پر کرنے سے
+\begin{gather}
+\begin{aligned}\label{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء}
+E_r&=\frac{I_0 l \cos \theta e^{j(\omega t -\beta r)}}{2\pi \epsilon_0}\left(\frac{1}{c r^2}+\frac{1}{j \omega r^3} \right)\\
+E_{\theta}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0}\left(\frac{j \omega}{c^2 r}+\frac{1}{c r^2}+\frac{1}{j \omega r^3} \right)\\
+E_{\phi}&=0
+\end{aligned}
+\end{gather}
+حاصل ہوتے ہیں۔
+
+مقناطیسی میدان مساوات \حوالہ{مساوات_اینٹینا_عمومی_مقناطیسی} سے حاصل ہو گی۔کروی محدد میں سمتی دباو کی گردش
+\begin{multline}
+\nabla \times \kvec{A}=\frac{1}{r \sin \theta}\left[\frac{\partial (A_{\theta}  \sin \theta)}{\partial \theta}-\frac{\partial A_{\theta} }{\partial \phi} \right]\ar+\frac{1}{r }\left[\frac{1}{\sin \theta}\frac{\partial A_r }{\partial \phi}-\frac{\partial (r A_{\phi} )}{\partial r} \right]\atheta
+\\
+ +\frac{1}{r}\left[\frac{\partial (r A_\theta )}{\partial r}-\frac{\partial A_r }{\partial \theta} \right]\aphi
+\end{multline}
+میں مساوات \حوالہ{مساوات_اینٹینا_کروی_سمتی_دباو} پر کرنے سے
+\begin{gather}
+\begin{aligned}\label{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء}
+H_{\phi}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi} \left(\frac{j \omega}{c r}+\frac{1}{r^2} \right)\\
+H_r&=0\\
+H_{\theta}&=0
+\end{aligned}
+\end{gather}
+حاصل ہوتے ہیں۔
+
+مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} کے تحت جفت قطب سے پیدا  میدان کے صرف تین اجزاء \عددیء{E_r}، \عددیء{E_{\theta}} اور \عددیء{H_{\phi}} پائے جاتے ہیں۔جفت قطب سے زیادہ فاصلے پر میدان کی مساوات میں \عددیء{\tfrac{1}{r^2}} یا \عددیء{\tfrac{1}{r^3}} کو نظر انداز کیا جا سکتا ہے۔یوں \عددیء{E_r} قابل نظر انداز ہو گا لہٰذا \عددیء{E_r \approx 0} تصور کیا جائے گا جبکہ
+\begin{align}
+E_{\theta}&=\frac{j \omega I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0 c^2 r}=j \frac{30 I_0 \beta l}{r} \sin \theta e^{j(\omega t-\beta r)}\label{مساوات_اینٹینا_جفت_قطب_دور_برقی}\\
+H_{\phi}&=\frac{j \omega I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi c r}=j\frac{I_0 \beta l}{4\pi r} \sin \theta e^{j(\omega t -\beta r)}\label{مساوات_اینٹینا_جفت_قطب_دور_مقناطیسی}
+\end{align} 
+ہوں گے۔مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_دور_برقی} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_دور_مقناطیسی} کی شرح
+\begin{align}
+\frac{E_{\theta}}{H_{\phi}}=\frac{1}{\epsilon_0 c}=\sqrt{\frac{\mu_0}{\epsilon_0}}=\SI{376.7}{\ohm}
+\end{align}
+سے خالی خلاء کی قدرتی رکاوٹ حاصل ہوتی ہے۔
+
+یہاں اس حقیقت پر توجہ دیں کہ خالی خلاء میں \عددیء{\TEM} موج کی طرح، جفت قطب سے دور \عددیء{E_{\theta}} اور \عددیء{H_{\phi}}  آپس میں ہم قدم ہیں۔دونوں میدان  \عددیء{\sin \theta} کے راست تناسب بھی ہیں یعنی جفت قطب کے محوری سمت \عددیء{\theta=0^{\circ}} پر ان کی قیمت صفر جبکہ \عددیء{\theta=90^{\circ}} پر ان کی قیمت زیادہ سے زیادہ ہے۔اندرسہ\فرہنگ{اندرسہ}\حاشیہب{doughnut}\فرہنگ{doughnut} شکل کی ان میدان کو شکل میں دکھایا گیا ہے۔
+
+مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} کے تحت برقی میدان کے دو اجزاء \عددیء{ٰE_r} اور \عددیء{E_{\theta}} پائے جاتے ہیں اور یہ دونوں مقناطیسی میدان کے ساتھ لمحاتی طور پر عمودی تعلق رکھتے ہیں۔
