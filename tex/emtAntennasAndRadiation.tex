@@ -201,12 +201,12 @@ E_r&=-\frac{\partial V}{\partial r}-j \omega A_r\\
 E_{\theta}&=-\frac{1}{r}\frac{\partial V}{\partial \theta}-j \omega A_{\theta}\\
 E_{\phi}&=-\frac{1}{r\sin \theta}\frac{\partial V}{\partial \phi}-j \omega A_{\phi}
 \end{align*}
-لکھے جا سکتے ہیں جن میں مطلوبہ تفاعل پر کرنے سے
+لکھے جا سکتے ہیں جن میں مطلوبہ تفاعل پر کرنے سے برقی میدان کے عمومی مساوات
 \begin{gather}
 \begin{aligned}\label{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء}
 E_r&=\frac{I_0 l \cos \theta e^{j(\omega t -\beta r)}}{2\pi \epsilon_0}\left(\frac{1}{c r^2}+\frac{1}{j \omega r^3} \right)\\
-E_{\theta}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0}\left(\frac{j \omega}{c^2 r}+\frac{1}{c r^2}+\frac{1}{j \omega r^3} \right)\\
-E_{\phi}&=0
+E_{\theta}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0}\left(\frac{j \omega}{c^2 r}+\frac{1}{c r^2}+\frac{1}{j \omega r^3} \right)\quad \quad \text{\RL{عمومی میدان}}\\
+E_{\phi}&=0 
 \end{aligned}
 \end{gather}
 حاصل ہوتے ہیں۔
@@ -217,27 +217,95 @@ E_{\phi}&=0
 \\
  +\frac{1}{r}\left[\frac{\partial (r A_\theta )}{\partial r}-\frac{\partial A_r }{\partial \theta} \right]\aphi
 \end{multline}
-میں مساوات \حوالہ{مساوات_اینٹینا_کروی_سمتی_دباو} پر کرنے سے
+میں مساوات \حوالہ{مساوات_اینٹینا_کروی_سمتی_دباو} پر کرنے سے مقناطیسی میدان کی عمومی مساوات
 \begin{gather}
 \begin{aligned}\label{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء}
-H_{\phi}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi} \left(\frac{j \omega}{c r}+\frac{1}{r^2} \right)\\
+H_{\phi}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi} \left(\frac{j \omega}{c r}+\frac{1}{r^2} \right)\quad \quad\text{\RL{عمومی میدان}}\\
 H_r&=0\\
-H_{\theta}&=0
+H_{\theta}&=0 
 \end{aligned}
 \end{gather}
 حاصل ہوتے ہیں۔
 
 مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} کے تحت جفت قطب سے پیدا  میدان کے صرف تین اجزاء \عددیء{E_r}، \عددیء{E_{\theta}} اور \عددیء{H_{\phi}} پائے جاتے ہیں۔جفت قطب سے زیادہ فاصلے پر میدان کی مساوات میں \عددیء{\tfrac{1}{r^2}} یا \عددیء{\tfrac{1}{r^3}} کو نظر انداز کیا جا سکتا ہے۔یوں \عددیء{E_r} قابل نظر انداز ہو گا لہٰذا \عددیء{E_r \approx 0} تصور کیا جائے گا جبکہ
-\begin{align}
-E_{\theta}&=\frac{j \omega I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0 c^2 r}=j \frac{30 I_0 \beta l}{r} \sin \theta e^{j(\omega t-\beta r)}\label{مساوات_اینٹینا_جفت_قطب_دور_برقی}\\
-H_{\phi}&=\frac{j \omega I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi c r}=j\frac{I_0 \beta l}{4\pi r} \sin \theta e^{j(\omega t -\beta r)}\label{مساوات_اینٹینا_جفت_قطب_دور_مقناطیسی}
-\end{align} 
-ہوں گے۔مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_دور_برقی} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_دور_مقناطیسی} کی شرح
+\begin{gather}
+\begin{aligned}\label{مساوات_اینٹینا_جفت_قطب_دور_میدان}
+E_{\theta}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0 }\frac{j \omega}{c^2 r}=j \frac{30 I_0 \beta l}{r} \sin \theta e^{j(\omega t-\beta r)}\\
+H_{\phi}&=\frac{ I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi }\frac{j \omega}{c r}=j\frac{I_0 \beta l}{4\pi r} \sin \theta e^{j(\omega t -\beta r)}\quad \quad \text{\RL{دور میدان}}
+\end{aligned}
+\end{gather} 
+ہوں گے۔مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_دور_میدان} استعمال کرتے ہوئے برقی اور مقناطیسی میدان کی شرح
 \begin{align}
 \frac{E_{\theta}}{H_{\phi}}=\frac{1}{\epsilon_0 c}=\sqrt{\frac{\mu_0}{\epsilon_0}}=\SI{376.7}{\ohm}
 \end{align}
-سے خالی خلاء کی قدرتی رکاوٹ حاصل ہوتی ہے۔
+حاصل ہوتی ہے جو خالی خلاء کی قدرتی رکاوٹ ہے۔
 
-یہاں اس حقیقت پر توجہ دیں کہ خالی خلاء میں \عددیء{\TEM} موج کی طرح، جفت قطب سے دور \عددیء{E_{\theta}} اور \عددیء{H_{\phi}}  آپس میں ہم قدم ہیں۔دونوں میدان  \عددیء{\sin \theta} کے راست تناسب بھی ہیں یعنی جفت قطب کے محوری سمت \عددیء{\theta=0^{\circ}} پر ان کی قیمت صفر جبکہ \عددیء{\theta=90^{\circ}} پر ان کی قیمت زیادہ سے زیادہ ہے۔اندرسہ\فرہنگ{اندرسہ}\حاشیہب{doughnut}\فرہنگ{doughnut} شکل کی ان میدان کو شکل میں دکھایا گیا ہے۔
+یہاں اس حقیقت پر توجہ دیں کہ خالی خلاء میں \عددیء{\TEM} موج کی طرح، جفت قطب سے دور \عددیء{E_{\theta}} اور \عددیء{H_{\phi}}  آپس میں ہم قدم ہیں۔اس کے علاوہ دونوں میدان  \عددیء{\sin \theta} کے راست تناسب ہیں یعنی جفت قطب کے محوری سمت \عددیء{\theta=0^{\circ}} پر ان کی قیمت صفر جبکہ \عددیء{\theta=90^{\circ}} پر ان کی قیمت زیادہ سے زیادہ ہے۔اندرسہ\فرہنگ{اندرسہ}\حاشیہب{doughnut}\فرہنگ{doughnut} شکل کی ان میدان کو شکل میں دکھایا گیا ہے۔
 
-مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} کے تحت برقی میدان کے دو اجزاء \عددیء{ٰE_r} اور \عددیء{E_{\theta}} پائے جاتے ہیں اور یہ دونوں مقناطیسی میدان کے ساتھ لمحاتی طور پر عمودی تعلق رکھتے ہیں۔
+جفت قطب سے دور میدان حاصل کرتے وقت مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} میں \عددیء{\tfrac{1}{r^2}} یا \عددیء{\tfrac{1}{r^3}} رکھتے اجزاء کو نظر انداز کیا گیا یعنی \عددیء{E_{\theta}} میں 
+\begin{align*}
+\abs{j\frac{ \omega}{c^2 r}} & \gg \frac{1}{c r^2}\\
+\abs{j\frac{ \omega}{c^2 r}} &\gg \abs{\frac{1}{j \omega r^3}} 
+\end{align*}
+یا
+\begin{align}
+r \gg \frac{c}{\omega}
+\end{align}
+تصور کیا گیا۔اسی طرح \عددیء{H_{\phi}} میں بھی
+\begin{align*}
+\abs{j \frac{ \omega}{c r}} \gg \frac{1}{r^2}
+\end{align*}
+یا
+\begin{align}
+r \gg \frac{c}{\omega}
+\end{align}
+تصور کیا گیا جسے
+\begin{align}
+r \gg \frac{1}{\beta} \quad \quad (\text{\RL{دور میدان}})
+\end{align}
+بھی لکھا جا سکتا ہے۔اگر جفت قطب کے قریب میدان کی بات کی جائے تو \عددیء{r \ll \tfrac{c}{\omega}} یعنی \عددیء{r \ll \tfrac{1}{\beta}} لیا جائے گا۔یوں مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} میں
+\begin{align*}
+\frac{1}{c r^2}& \ll \abs{\frac{1}{j \omega r^3}}\\
+\abs{\frac{j \omega}{c^2 r}}& \ll \abs{\frac{1}{j \omega r^3}}\\
+\frac{1}{c r^2}& \ll \abs{\frac{1}{j \omega r^3}} \\
+\abs{\frac{j \omega}{c r}}& \ll \frac{1}{r^2}
+\end{align*}
+ہوں گے لہٰذا قریبی میدان
+\begin{gather}
+\begin{aligned}\label{مساوات_اینٹینا_جفت_قطب_قریب_میدان}
+E_r&=\frac{I_0 l \cos \theta e^{j(\omega t -\beta r)}}{2\pi \epsilon_0 }\frac{1}{j \omega r^3} =\frac{I_0 l \cos \theta e^{j(\omega t -\beta r-\tfrac{\pi}{2})}}{2\pi \epsilon_0 \omega r^3}\\
+E_{\theta}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0}\frac{1}{j \omega r^3}=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r-\tfrac{\pi}{2})}}{4\pi \epsilon_0 \omega r^3}\\
+H_{\phi}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi}\frac{1}{r^2}=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi r^2} \quad \text{\RL{قریبی میدان}}
+\end{aligned}
+\end{gather}
+لکھے جا سکتے ہیں۔ کل قریبی برقی میدان
+\begin{align}\label{مساوات_اینٹینا_قریب_کل_برقی}
+\kvec{E}=E_r \ar+E_{\theta}\atheta=\left[\frac{I_0 l \cos \theta }{2\pi \epsilon_0 \omega r^3}\ar+\frac{I_0 l \sin \theta }{4\pi \epsilon_0 \omega r^3}\atheta\right]e^{j(\omega t -\beta r-\tfrac{\pi}{2})}
+\end{align}
+ہو گا۔مساوات \حوالہ{مساوات_اینٹینا_قریب_کل_برقی} کے برقی میدان میں جزو ضربی \عددیء{e^{j(\omega t -\beta r-\tfrac{\pi}{2})}} پایا جاتا ہے جبکہ مقناطیسی میدان میں جزو ضربی \عددیء{e^{j(\omega t -\beta r)}} پایا جاتا ہے۔یوں جفت قطب کے قریب کسی بھی نقطے پر ہر لمحہ برقی میدان  اور مقناطیسی میدان میں \عددیء{\tfrac{\pi}{2}} زاویے کا فرق پایا جاتا ہے جو ساکن میدان کی نشانی ہے۔
+
+جفت قطب کے قریب برقی اور مقناطیسی میدان میں لمحاتی طور \عددیء{\tfrac{\pi}{2}} ریڈیئن  کا زاویہ پایا جاتا ہے جبکہ جفت قطب سے دور دونوں میدان لمحاتی طور پر ہم قدم ہیں لہٰذا کسی درمیانے فاصلے پر ان میدانوں میں \عددیء{45^{\circ}} کا زاویہ ہو گا۔آپ دیکھ سکتے ہیں کہ جفت قطب سے فاصلہ بڑھانے سے برقی میدان وقت کی نسبت سے گھوم کر مقناطیسی میدان کے ہم قدم ہوجاتا ہے۔
+
+پوئنٹنگ سمتیہ استعمال کرتے ہوئے مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_دور_میدان} سے  دور میدان میں کثافت توانائی
+\begin{align*}
+\kvec{E} \times \kvec{H}^*=E_{\theta} H_{\phi}^* \ar=\frac{30 I_0^2 \beta^2 l^2}{4 \pi r^2} \sin^2 \theta \ar \quad \text{\RL{دور میدان}}
+\end{align*}
+حاصل ہوتی ہے جو  رداسی \عددیء{r} سمت میں منتقل ہوتی حقیقی توانائی ہے۔یہی اینٹینا کی شعاعی اخراج ہے۔شعاعی اخراج \عددیء{\theta=90^{\circ}} پر زیادہ سے زیادہ ہے۔اسی طرح پوئنٹنگ سمتیہ استعمال کرتے ہوئے مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_قریب_میدان} سے قریبی میدان میں کثافت توانائی
+\begin{align*}
+\kvec{E} \times \kvec{H}^*&=(E_{r} \ar+E_{\theta} \atheta) \times H_{\phi}^* \aphi=\left[-\frac{I_0 l \cos \theta }{2\pi \epsilon_0 \omega r^3}\atheta+\frac{I_0 l \sin \theta }{4\pi \epsilon_0 \omega r^3}\ar \right]\frac{I_0 l \sin \theta }{4\pi r^2} e^{-j\tfrac{\pi}{2}}\\
+\end{align*}
+حاصل ہوتی ہے جس کا بیشتر حصہ خیالی ہے اور ساتھ ہی ساتھ شعاعی اخراج کے علاوہ یہاں \عددیء{\theta} سمت میں گھومتی طاقت بھی پائی جاتی ہے۔
+
+آئیں اب نہایت کم تعدد پر صورت حال دیکھیں۔ مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_برقی_اجزاء} میں \عددیء{I_0=j \omega q_0} پر کرتے ہوئے اور مساوات \حوالہ{مساوات_اینٹینا_جفت_قطب_مقناطیسی_اجزاء} کو جوں کا توں دوبارہ پیش کرتے ہیں۔
+\begin{align*}
+E_r&=\frac{q_0 l \cos \theta e^{j(\omega t -\beta r)}}{2\pi \epsilon_0}\left(\frac{j \omega}{c r^2}+\frac{1}{ r^3} \right)\\
+E_{\theta}&=\frac{q_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi \epsilon_0}\left(-\frac{\omega^2 }{c^2 r}+\frac{j \omega }{c r^2}+\frac{1}{ r^3} \right)\\
+H_{\phi}&=\frac{I_0 l \sin \theta e^{j(\omega t -\beta r)}}{4\pi} \left(\frac{j \omega}{c r}+\frac{1}{r^2} \right)
+\end{align*}
+ تعدد کو صفر کے قریب تر \عددیء{\omega \to 0} کرنے سے ان مساوات کو
+\begin{align*}
+E_r&=\frac{q_0 l \cos \theta e^{-j\beta r}}{2\pi \epsilon_0 r^3}\\
+E_{\theta}&=\frac{q_0 l \sin \theta e^{-j\beta r}}{4\pi \epsilon_0 r^3}\\
+H_{\phi}&=\frac{I_0 l \sin \theta e^{-j\beta r}}{4\pi r^2}
+\end{align*}
+لکھا جا سکتا ہے۔
