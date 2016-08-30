@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\x}{0.25}
+\pgfmathsetmacro{\y}{0.75}
+\pgfmathsetmacro{\d}{0.05}
+
+\pgfmathsetmacro{\h}{0.4}
+\pgfmathsetmacro{\w}{0.25}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%antenna
+\draw[thick] (0,\d)--++(0,\y);
+\draw[thick] (0,-\d)--++(0,-\y)coordinate[pos=0.75](rr);
+%connections
+\draw (0,\d)--++(-\x,0);
+\draw (0,-\d)--++(-\x,0);
+%load
+\draw (-\x,-\h/2) rectangle ++(-\w,\h);
+\draw (-\x-\w,0) node [left]{$Z_B$};
+%current
+\draw[-latex] (0.2,1/4*\y)--++(0,2/3*\y)node[pos=0.5,right]{$I$};
+%test
+\draw[stealth-] (rr) to [out=180,in=0]++(-0.3,-0.15) node[left]{\RL{وصولی اینٹینا}};
+%waves
+\foreach \yy in {-0.2,-0.6,-1,-1.4,0.2,0.6,1,1.4}{\draw[latex-] (0.75,\yy*\y)--++(\y,0);};
+\draw (1+\y+0.15,0) node[rotate=90]{\RL{آمدی موج}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
