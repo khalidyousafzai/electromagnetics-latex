@@ -6,32 +6,27 @@ clf
 format long
 
 
-n=20;
+
 lmda=1;
 d=lmda./2;
 B=2.*pi./lmda;
 
+# x is the angle, n is the number of elements in the array and del is the phase difference between array elements
+
 ang=@(x,del) B.*d.*(cos(x)+del);
 
-uniformArray=@(x,del)  sin(n.*ang(x,del)./2)./(n.*sin(ang(x,del)./2));
+uniformArray=@(x,n,del)  sin(n.*ang(x,del)./2)./(n.*sin(ang(x,del)./2));
 
 #solves the Half Power Band Width. The zerow cross can be read from the table provided
-broadsideHPBW=@(x) uniformArray(x,0)-0.707;
+broadsideHPBW=@(x) uniformArray(x,20,0)-0.707;
 
-#plots the polar plot of broadside array
 
-#hold off
-#x=0:0.011:2*pi;
-#polar (x,uniformArray(x,0),"k");
-
-#print  -dpdf  emtAntennasAndRadiationBroadsideArray.pdf
-
-# prints table of broadside array (angle in degrees, normalized electric field)
+### prints table of broadside array (angle in degrees, normalized electric field)
 
 kread=fopen("figAntennaAndRadiationBroadside.dat","w");
 
 for x=[0.01:0.01:2*pi+0.01];
-fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,0)); fprintf(kread,"\n")
+fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,20,0)); fprintf(kread,"\n")
 endfor
 
 fclose(kread);
@@ -41,7 +36,7 @@ fclose(kread);
 kread=fopen("figAntennaAndRadiationEndfire.dat","w");
 
 for x=[0.01:0.013:2*pi+0.01];
-fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,-1)); fprintf(kread,"\n")
+fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,20,-1)); fprintf(kread,"\n")
 endfor
 
 fclose(kread);
@@ -52,7 +47,7 @@ fclose(kread);
 kread=fopen("figAntennaAndRadiationBroadsideZerocross.dat","w");
 
 for x=[0.01:0.01:2*pi+0.01];
-fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,0)-0.7071067812); fprintf(kread,"\n")
+fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,4,0)); fprintf(kread,"\n")
 endfor
 
 fclose(kread);
@@ -61,7 +56,16 @@ fclose(kread);
 kread=fopen("figAntennaAndRadiationEndfireZerocross.dat","w");
 
 for x=[0.01:0.01:2*pi+0.01];
-fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,-1)-0.7071067812); fprintf(kread,"\n")
+fprintf(kread,"%i %s %i",x.*180./pi,"    ",uniformArray(x,4,-1)); fprintf(kread,"\n")
 endfor
 
 fclose(kread);
+
+#==========================================
+#plots pdf
+
+x=0:0.0011:2*pi;
+
+polar (x,abs(uniformArray(x,20,0)))
+
+print -dpdf "ktest.pdf" 
