@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\n}{2}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/4}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+\pgfmathsetmacro{\dlt}{1}
+
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) = 180/pi*\B*\d*(cos(\x)+\dlt);
+myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));
+                 },
+]
+\begin{polaraxis}[ymin=0,ymax=1,ytick={0.7071},yticklabels={0.7071}]
+\addplot[domain=0:360,samples=360] {myfunc(x)}; 
+%\addplot[domain=-2:2,samples=2] {myfunc(x)};                 %the function is plotted in pieces to avoid 0/0 that occurs at 0 degrees
+%\addplot[domain=2:10,samples=5] {myfunc(x)};
+%\addplot[domain=-10:-2,samples=5] {myfunc(x)};
+%\addplot[domain=10:170,samples=170] {myfunc(x)};
+\end{polaraxis}
+
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
