@@ -20,9 +20,9 @@
 
 \pgfmathsetmacro{\n}{2}
 \pgfmathsetmacro{\lmda}{1}
-\pgfmathsetmacro{\d}{\lmda/4}
+\pgfmathsetmacro{\d}{5*\lmda}
 \pgfmathsetmacro{\B}{2*pi/\lmda}
-\pgfmathsetmacro{\dlt}{-1}
+\pgfmathsetmacro{\dlt}{0}
 
 
 \pgfplotsset{major y grid style={dashed}}
@@ -31,19 +31,28 @@
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={ kpsi(\x) = 180/pi*\B*\d*(cos(\x)+\dlt);
-myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));
+declare function={ kpsi(\x) = 180/pi*\B*\d*cos(\x);
+myfunc(\x)=sin(\x)*cos(kpsi(\x));
                  },
 ]
 \begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
-\draw [fill] (-1.3cm,0) circle (1pt)node[above]{\RL{بایاں رکن}};
-\draw [fill] (1.3cm,0) circle (1pt)node[above]{\RL{دایاں رکن}};
-\addplot[domain=-3:3,samples=2] {myfunc(x)};  
-\addplot[domain=3:357,samples=707] {myfunc(x)}; 
-%\addplot[domain=-2:2,samples=2] {myfunc(x)};                 %the function is plotted in pieces to avoid 0/0 that occurs at 0 degrees
-%\addplot[domain=2:10,samples=5] {myfunc(x)};
-%\addplot[domain=-10:-2,samples=5] {myfunc(x)};
-%\addplot[domain=10:170,samples=170] {myfunc(x)};
+\addplot[domain=0:360,samples=1440] {myfunc(x)}; 
+\addplot[gray,dashed,domain=70:135,samples=1440] {sin(x)}node[left]{$\sin \theta$}; 
+%
+\draw[thick] (-2cm,0)--++(0.5cm,0);
+\draw[thick] (-2.2cm,0)--++(-0.5cm,0);
+\draw (-2cm,0)--++(0,-0.3cm);
+\draw (-2.2cm,0)--++(0,-0.3cm);
+%
+\draw[thick] (2cm,0)--++(-0.5cm,0);
+\draw[thick] (2.2cm,0)--++(0.5cm,0);
+\draw (2cm,0)--++(0,-0.3cm);
+\draw (2.2cm,0)--++(0,-0.3cm);
+%text
+\draw[stealth-stealth,gray] (-2.1cm,-0.5cm) --(2.1cm,-0.5cm)node[pos=0.15,fill=white]{$5 \lambda$};
+\draw (2.1cm,0) node[above]{\RL{پہلا جفت قطب}};
+\draw (-2.1cm,0) node[above]{\RL{دوسرا جفت قطب}};
+%
 \end{polaraxis}
 
 %

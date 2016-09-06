@@ -24,6 +24,8 @@
 \pgfmathsetmacro{\B}{2*pi/\lmda}
 \pgfmathsetmacro{\dlt}{-1}
 
+\pgfmathsetmacro{\l}{0.75}
+\pgfmathsetmacro{\s}{2.5}
 
 \pgfplotsset{major y grid style={dashed}}
 
@@ -32,19 +34,18 @@
 
 \begin{tikzpicture}[
 declare function={ kpsi(\x) = 180/pi*\B*\d*(cos(\x)+\dlt);
-myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));
-                 },
-]
-\begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
-\draw [fill] (-1.3cm,0) circle (1pt)node[above]{\RL{بایاں رکن}};
-\draw [fill] (1.3cm,0) circle (1pt)node[above]{\RL{دایاں رکن}};
-\addplot[domain=-3:3,samples=2] {myfunc(x)};  
-\addplot[domain=3:357,samples=707] {myfunc(x)}; 
-%\addplot[domain=-2:2,samples=2] {myfunc(x)};                 %the function is plotted in pieces to avoid 0/0 that occurs at 0 degrees
-%\addplot[domain=2:10,samples=5] {myfunc(x)};
-%\addplot[domain=-10:-2,samples=5] {myfunc(x)};
-%\addplot[domain=10:170,samples=170] {myfunc(x)};
-\end{polaraxis}
+myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));},]
+%
+\draw[fill] (0,0) circle (1pt);
+\draw[fill] (\s,0) circle (1pt);
+%
+\draw[stealth-stealth](0,0.3)--++(\s,0)node[pos=0.5,fill=white]{$\frac{\lambda}{4}$};
+%
+\draw[-latex] (0,0)--++(\l,0)node[below,pos=0.5]{$E_1$};
+\draw[-latex] (\s,0)--++(0,-\l)node[right]{$E_2$};
+%
+\draw[-latex,gray,dashed] (\s,0)--++(\l,0)node[above,pos=0.5]{$E_1$};
+\draw[-latex,gray,dashed] (\s+\l,0)--++(\l,0)node[above,pos=0.5]{$E_2$};
 
 %
 \end{tikzpicture}%
