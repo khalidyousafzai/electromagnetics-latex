@@ -1,0 +1,32 @@
+% An egg
+% Author: percusse
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shadings}
+\definecolor{eggshell}{RGB}{252,230,201}
+\pgfdeclareradialshading{eggshading}{\pgfpoint{1cm}{1cm}}%
+{color(0cm)=(eggshell!80);
+color(0.5cm)=(brown!75!eggshell);
+color(0.7cm)=(brown);
+color(0.9cm)=(brown!70!black);
+color(1.2cm)=(black)}
+
+
+\pgfdeclareradialshading{eggshadow}{\pgfpointorigin}%
+{color(0cm)=(black);
+color(2mm)=(gray!80);
+color(3mm)=(gray!40);
+%color(0.3cm)=(black!5!white);
+color(7mm)=(white)}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{scope}[yscale=0.93,transform shape]
+    \node[xscale=2,yscale=0.3,shading=eggshadow,circle,minimum size=7mm] at (0,2.75mm){};
+    \shade[shading=eggshading] (0,2.7mm)..controls (9mm,0.25cm) and (7mm,2cm)%
+    ..(0,20.5mm)..controls(-7mm,2cm) and (-9mm,2.5mm)..(0,2.7mm)--cycle;
+\end{scope}
+%
+
+\end{tikzpicture}
+\end{document}

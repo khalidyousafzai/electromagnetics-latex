@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\n}{4}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/2}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+\pgfmathsetmacro{\dlt}{0}
+
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) = 180/pi*\B*\d*(cos(\x)+\dlt);
+myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));
+                 },
+]
+\begin{polaraxis}[clip=false,ymin=0,ymax=1,ytick={0.7071},yticklabels={0.7071},grid=none,hide y axis,axis equal image]
+\addplot[domain=89:91,samples=20] {myfunc(x)};                  %the equation is split to avoid the undefined 0/0 at 90 and 270 degrees
+\addplot[name path global=kpattern,domain=91:269,samples=360] {myfunc(x)};
+\addplot[domain=269:271,samples=20] {myfunc(x)};
+\addplot[domain=271:449,samples=360] {myfunc(x)};
+%
+\addplot[name path global=halfPower,domain=0:360,samples=360,dashed] {0.7071}node[pos=0,fill=white]{$0.7071$};
+\addplot[mark=none,dashed] coordinates {(103.5,0)(103.5,1.25)};
+\addplot[mark=none,dashed] coordinates {(76.5,0)(76.5,1.25)};
+\addplot[domain=76.5:103.5,dashed,stealth-stealth] {1.2}node[pos=0.5,above,scale=0.8]{\RL{نصف طاقت چوڑائی}};
+\node[pin={[pin distance=0.3cm,text=gray]45:{$76.5^{\circ}$}}] at (76.5:1) {};
+\node[pin={[pin distance=0.3cm,text=gray]125:{$103.5^{\circ}$}}] at (103.5:1) {};
+\node[pin={[pin distance=0.65cm,scale=0.8]25:{\RL{مرکزی شعاع}}}] at (70.4738:0.4305) {};
+\node[pin={[pin distance=0.55cm,scale=0.8]25:{\RL{ثانوی شعاع}}}] at (45:0.25) {};
+%first zeroes
+\addplot[mark=none,dashed] coordinates {(119.75,0)(119.75,1.45)};
+\addplot[mark=none,dashed] coordinates {(60.16,0)(60.16,1.45)};
+\addplot[domain=60.16:119.75,dashed,stealth-stealth] {1.43}node[pos=0.5,above,scale=0.8]{\RL{پہلی صفر چوڑائی}};
+%the following works but not needed 
+%\draw[name intersections={of=kpattern and halfPower},fill]  (intersection-1) circle (1pt);
+%\draw[name intersections={of=kpattern and halfPower}]  (0,0)--(intersection-1);
+
+\end{polaraxis}
+
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

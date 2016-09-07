@@ -1,0 +1,11 @@
+\documentclass{beamer}
+\usepackage{tikz}
+
+\begin{document}
+\foreach \x in {0,0.1,...,2.1}{
+\begin{tikzpicture}
+  \draw (-2,2) rectangle (4,-2);
+\draw (\x,-0.2)--(\x,0.2);
+\end{tikzpicture}
+}
+\end{document}

@@ -1,0 +1,37 @@
+\documentclass{beamer}
+\usepackage{tikz}
+
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+\begin{document}
+% Create n frames with \xb as parameter
+\foreach \xb in {0,0.1,...,2.1}{
+    \def\setA{(0,0) circle (1)}
+    \def\setB{(\xb,0) circle (1)}
+
+    \begin{tikzpicture}
+        \draw (-2,2) rectangle (4,-2);
+        % intersection
+        \begin{scope}
+            \clip \setA;
+            \fill[black!20] \setB;
+        \end{scope}
+        \begin{scope}[even odd rule]% first circle without the second
+            \clip \setB \boundb;
+            \fill[red!20] \setA;
+        \end{scope}
+        \begin{scope}[even odd rule]% first circle without the second
+            \clip \setA \boundb;
+            \fill[blue!20] \setB;
+        \end{scope}
+        \draw \setA;
+        \draw \setB;
+        \node at (-1,0) [left] {$A$};
+        \node at (\xb+1,0) [right] {$B$};
+        \node at (4,2) [below left] {$A\cap B$};
+    \end{tikzpicture}
+}
+\end{document}
+
+

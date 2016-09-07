@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{animate}
+\usepackage{tikz}
+\usetikzlibrary{lindenmayersystems}
+\pgfdeclarelindenmayersystem{A}{%
+  \symbol{F}{\pgflsystemstep=0.6\pgflsystemstep\pgflsystemdrawforward}
+  \rule{A->F[+A][-A]}
+}
+
+\begin{document}
+hello this is my animation
+\begin{animateinline}[controls,autoplay,loop]{2}
+\multiframe{8}{n=1+1}{
+  \begin{tikzpicture}
+    \draw (-.1,-.2) rectangle (.4,0.2);
+   \draw(\n,0)--(\n,2);
+  \end{tikzpicture}    
+}
+\end{animateinline}
+\end{document}

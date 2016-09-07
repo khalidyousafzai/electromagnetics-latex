@@ -27,6 +27,18 @@
 \end{gather}
 ان مساوات میں زیر نوشت میں \عددیء{2} اس مقام کو ظاہر کرتی ہے جہاں میدان کی قیمت حاصل کی گئی ہے جبکہ زیر نوشت میں \عددیء{1} میدان کے منبع کے مقام کو ظاہر کرتی ہے۔دونوں میدان فاصلے کے مربع کا بالعکس تناسب رکھتے ہیں۔دونوں اقسام کے میدان کی شدت اور میدان کی منبع کا خطی تعلق ہے۔دونوں میں فرق میدان کی سمت کا ہے۔برقی میدان کی سمت منبع سے اس نقطہ کی جانب ہے جہاں میدان حاصل کیا جا رہے ہو۔مقناطیسی میدان کی سمت سمتی ضرب کے دائیں ہاتھ کے قانون سے حاصل ہوتی ہے۔
 
+شکل \حوالہ{شکل_مقناطیسی_تار_کا_ٹکڑا_اور_میدان} میں تار کے چھوٹے حصے \عددیء{\dif l} سے نقطہ \عددیء{N} پر مقناطیسی میدان کی مقدار
+\begin{align}\label{مساوات_مقناطیسی_تار_کا_ٹکڑا_اور_میدان}
+\dif H=\frac{I \dif l \sin \theta}{4\pi r^4}
+\end{align}
+ہو گا۔
+
+\begin{figure}
+\centering
+\includegraphics{figMagneticSectionOfWire}
+\caption{تار کے چھوٹے حصے سے پیدا میدان۔}
+\label{شکل_مقناطیسی_تار_کا_ٹکڑا_اور_میدان}
+\end{figure}
 بایوٹ-سیوارٹ کے قانون کو مساوات \حوالہ{مساوات_بایوٹ_سیوارٹ_تفرق_شکل} کی شکل میں تجرباتی طور پر ثابت نہیں کیا جا سکتا چونکہ باریک تار کے چھوٹی لمبائی میں برقی رو تب گزرے گی جب یہ اس تک پہنچائی جائے۔جو تار اس تک برقی رو پہنچائے گا، وہ بھی مقناطیسی میدان پیدا کرے گا۔انہیں علیحدہ علیحدہ نہیں کیا جا سکتا۔ہم فی الحال صرف یک سمتی برقی رو کی بات کر رہے ہیں۔ یک سمتی برقی رو کی صورت میں وقت کے ساتھ حجمی چارج کثافت تبدیل نہیں ہو گا لہٰذا صفحہ \حوالہصفحہ{مساوات_کپیسٹر_استمراری_مساوات_نقطہ_شکل} پر دئے  استمراری مساوات
 \begin{align*}
 \nabla \cdot \kvec{J}=-\frac{\partial \rho_h}{\partial t}
@@ -864,12 +876,11 @@ k_3&= r \sin \theta
 &\quad +\frac{1}{r}\left[\frac{\partial (H_\theta r)}{\partial r}-\frac{\partial H_r }{\partial \theta} \right]\aphi
 \end{align*}
 یا
-\begin{gather}
-\begin{aligned}\label{مساوات_مقناطیسی_کروی_گردش}
-\nabla \times \kvec{H}=\frac{1}{r \sin \theta}\left[\frac{\partial (H_\phi  \sin \theta)}{\partial \theta}-\frac{\partial H_{\theta} }{\partial \phi} \right]\ar+&\frac{1}{r }\left[\frac{1}{\sin \theta}\frac{\partial H_r }{\partial \phi}-\frac{\partial (H_\phi  r )}{\partial r} \right]\atheta\\
-&\quad +\frac{1}{r}\left[\frac{\partial (H_\theta r)}{\partial r}-\frac{\partial H_r }{\partial \theta} \right]\aphi
-\end{aligned}
-\end{gather}
+\begin{multline}\label{مساوات_مقناطیسی_کروی_گردش}
+\nabla \times \kvec{H}=\frac{1}{r \sin \theta}\left[\frac{\partial (H_{\phi}  \sin \theta)}{\partial \theta}-\frac{\partial H_{\theta} }{\partial \phi} \right]\ar+\frac{1}{r }\left[\frac{1}{\sin \theta}\frac{\partial H_r }{\partial \phi}-\frac{\partial (r H_{\phi} )}{\partial r} \right]\atheta
+\\
+ +\frac{1}{r}\left[\frac{\partial (r H_\theta )}{\partial r}-\frac{\partial H_r }{\partial \theta} \right]\aphi
+\end{multline}
 حاصل ہوتی ہے۔
 %==============
 
@@ -1203,18 +1214,18 @@ H_y&=\frac{aI}{4\pi}\int\limits_0^{2\pi} \frac{a\sin \phi' \dif \phi'}{\left(a^2
 \end{align*}
 لکھا جائے گا۔اس تکمل کو مجموعے کی شکل میں لکھا جا سکتا ہے۔شکل \حوالہ{شکل_مقناطیسی_عددی_حل_دائرہ_برقی_رو} کو دیکھ کر آگے پڑھیں۔تکمل کے راہ کو \عددیء{M} برابر ٹکڑوں میں تقسیم کرتے  ہوئے ہر ٹکڑا پر
  \عددیء{\Delta \phi'=\tfrac{2\pi}{M}} کے برابر ہو گا۔ان ٹکڑوں کے گنتی کا حساب ہم \عددیء{m} سے رکھتے ہیں جہاں \عددیء{m} کی قیمت \عددیء{0} تا \عددیء{(M-1)} ہے۔یوں پہلے ٹکڑے کو \عددیء{m=0} سے ظاہر کیا جائے گا اور اس ٹکڑے کے عین وسط میں زاویہ \عددیء{\phi_0'=0} ہو گا۔شکل میں راہ کے چھوٹے ٹکڑوں کے عین وسط کو نقطوں سے ظاہر کیا گیا ہے۔دوسرے ٹکڑے پر \عددیء{m=1} اور زاویہ \عددیء{\phi_1'=\Delta \phi'=\tfrac{2\pi}{M}} ہو گا۔جیسے شکل میں دکھایا گیا ہے، تیسرے پر \عددیء{m=2} اور زاویہ  \عددیء{\phi_2'=2\Delta \phi'=\tfrac{2\times 2\pi}{M}} ہو گا۔یوں عمومی ٹکڑے \عددیء{m} پر زاویہ
- \عددیء{\phi_m'=m\Delta \phi'=\tfrac{2\pi m}{M}} ہو گا۔
+ \عددیء{\phi_m'=m\Delta \phi'=\tfrac{2 m \pi}{M}} ہو گا۔
 
 اگر ان چھوٹے ٹکڑوں پر تفاعل کی قیمت میں تبدیلی کو رد کرنا ممکن ہو تب ہر چھوٹے ٹکڑے پر تکمل تقریباً
 \begin{align*}
 \Delta H_y&=\frac{I}{4\pi a} \frac{\sin \phi_m' \Delta \phi'}{\left(3-2\sin \phi_m'\right)^{\frac{3}{2}}} \\
-&=\frac{I}{4\pi a} \frac{\sin (\frac{2\pi m}{M}) \frac{2\pi}{M}}{\left(3-2\sin   \frac{2\pi m}{M}\right)^{\frac{3}{2}}} 
+&=\frac{I}{4\pi a} \frac{\sin (\frac{2 m \pi}{M}) \frac{2\pi}{M}}{\left(3-2\sin   \frac{2 m \pi}{M}\right)^{\frac{3}{2}}} 
 \end{align*}
 کے برابر ہو گا۔یوں تمام ٹکڑوں کا مجموعہ
 \begin{align*}
-H_y= \frac{I}{4\pi a} \frac{2\pi}{M} \sum_{m=0}^{M-1}\frac{\sin  \frac{2\pi m}{M} }{\left(3-2\sin  \frac{2\pi m}{M}\right)^{\frac{3}{2}}}
+H_y= \frac{I}{4\pi a} \frac{2\pi}{M} \sum_{m=0}^{M-1}\frac{\sin  \frac{2 m \pi}{M} }{\left(3-2\sin  \frac{2 m \pi}{M}\right)^{\frac{3}{2}}}
 \end{align*}
-ہو گا۔جدول \حوالہ{جدول_مقناطیسی_دائرہ_مقناطیسی_شدت_عددی_حل} میں \عددیء{M=10} کی صورت میں \عددیء{m} کے تمام قیمتوں پر حاصل \عددیء{\tfrac{\sin  \frac{2\pi m}{M}}{\left(3-2\sin  \frac{2\pi m}{M}\right)^{\frac{3}{2}}}}  اجزاء دئے گئے ہیں۔ان تمام کا مجموعہ
+ہو گا۔جدول \حوالہ{جدول_مقناطیسی_دائرہ_مقناطیسی_شدت_عددی_حل} میں \عددیء{M=10} کی صورت میں \عددیء{m} کے تمام قیمتوں پر حاصل \عددیء{\tfrac{\sin  \frac{2 m \pi}{M}}{\left(3-2\sin  \frac{2 m \pi}{M}\right)^{\frac{3}{2}}}}  اجزاء دئے گئے ہیں۔ان تمام کا مجموعہ
 \begin{align*}
 H_y&=\frac{I}{4\pi a} \frac{2\pi}{M} \left(0.00000+0.23852 +  0.82674 +  0.82674  + 0.23852  + 0.00000 \right.  \\
 & \quad \quad \quad \quad \quad \left.-0.06889  -0.08763  -0.08763  -0.06889\right)\\
@@ -1225,7 +1236,7 @@ H_y&=\frac{I}{4\pi a} \frac{2\pi}{M} \left(0.00000+0.23852 +  0.82674 +  0.82674
 \begin{table}
 \centering
 \begin{tabular}{c c}
-$m$& $\frac{\sin  \frac{2\pi m}{M}}{\left(3-2\sin  \frac{2\pi m}{M}\right)^{\frac{3}{2}}}$\\[3ex]
+$m$& $\frac{\sin  \frac{2 m \pi}{M}}{\left(3-2\sin  \frac{2 m \pi}{M}\right)^{\frac{3}{2}}}$\\[3ex]
 \hline
 $0$& $0.00000$\\
 $1$& $0.23852$\\

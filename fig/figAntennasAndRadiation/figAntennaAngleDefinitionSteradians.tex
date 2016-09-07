@@ -1,0 +1,69 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+\usepackage{filecontents}
+\begin{filecontents}{data.txt}
+ 0 0 
+1 1 
+1 2
+0.5 3
+0 3.5
+-1,3.6
+-1.5,3
+-1,2.5
+-0.5,2
+-0.25,1
+\end{filecontents}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%grid
+%\draw[gray,thick](0,0) grid (4,4);
+%\draw[gray,thin,xstep=0.1,ystep=0.1] (0,0) grid (4,4);
+%
+\draw (0,0) circle (1.5);
+%\draw(0,0) ellipse (1.5 and 0.4);
+\draw ([shift={(0:1.5 and 0.4)}]0,0) arc (0:360:1.5 and 0.4);
+\path ([shift={(0:1.5 and 0.4)}]0,0) arc (0:120:1.5 and 0.4)coordinate(ellp);
+\draw[-stealth](0,0)--(ellp)node[pos=0.5,fill=white]{$r$};
+%
+\draw[shade,name path=actualArea,smooth cycle, tension=1,shift={(30:2.5)},scale=0.4] plot coordinates {(0,0) (1,1) (1,2) (0.5,3) (0,3.5) (-1,3.6) (-1.5,3) (-1,2.5)  (-0.5,2) (-0.25,1) };
+\draw[shade,name path=solidAngle,dashed,smooth cycle, tension=1,shift={(30:2.5/2.5)},scale=0.4/2.5] plot coordinates {(0,0) (1,1) (1,2) (0.5,3) (0,3.5) (-1,3.6) (-1.5,3) (-1,2.5)  (-0.5,2) (-0.25,1) };
+\draw[gray,smooth cycle, tension=1,shift={(30:2.5/8)},scale=0.4/8] plot coordinates {(0,0) (1,1) (1,2) (0.5,3) (0,3.5) (-1,3.6) (-1.5,3) (-1,2.5)  (-0.5,2) (-0.25,1) };
+\draw[gray,shift={(30:2.5/8)},scale=0.4/8](1,2)coordinate (sldA); 
+\draw[gray,stealth-] (sldA) to [out=20,in=160]++(0.5,-0.15)node[right] {$\Omega$};
+%
+\path[name path=tangentAbove] (0,0) --(2.2,1.25);
+\draw[dashed,scale=0.4] (0,0) --(1.6,2.6)coordinate(kk);
+\draw[] (kk) --(1.6,2.6);
+\draw[dashed,name intersections={of={tangentAbove and solidAngle}}] (0,0)--(intersection-1);
+\draw (intersection-1)--(2.2,1.25);
+%text
+\path[shift={ (30:2.5)},scale=0.4] (0,0)++(1,2)coordinate(AA);
+\draw[stealth-] (AA) to [out=45,in=180]++(0.5,0.5)node[right]{$S'$};
+%
+\path[shift={ (30:1)},scale=0.4/2.5] (0,0)++(1,2)coordinate(BB);
+\draw[stealth-] (BB) to [out=45,in=180]++(0.5,0.5)node[right]{$S$};
+%
+\draw (2,0) node[above right]{\RL{ٹھوس زاویہ}}node[below right]{ $\Omega=\frac{S}{r^2}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

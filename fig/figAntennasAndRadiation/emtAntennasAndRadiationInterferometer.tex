@@ -1,0 +1,61 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\n}{2}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{5*\lmda}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+\pgfmathsetmacro{\dlt}{0}
+
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) = 180/pi*\B*\d*cos(\x);
+myfunc(\x)=sin(\x)*cos(kpsi(\x));
+                 },
+]
+\begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
+\addplot[domain=0:360,samples=1440] {myfunc(x)}; 
+\addplot[gray,dashed,domain=70:135,samples=1440] {sin(x)}node[left]{$\sin \theta$}; 
+%
+\draw[thick] (-2cm,0)--++(0.5cm,0);
+\draw[thick] (-2.2cm,0)--++(-0.5cm,0);
+\draw (-2cm,0)--++(0,-0.3cm);
+\draw (-2.2cm,0)--++(0,-0.3cm);
+%
+\draw[thick] (2cm,0)--++(-0.5cm,0);
+\draw[thick] (2.2cm,0)--++(0.5cm,0);
+\draw (2cm,0)--++(0,-0.3cm);
+\draw (2.2cm,0)--++(0,-0.3cm);
+%text
+\draw[stealth-stealth,gray] (-2.1cm,-0.5cm) --(2.1cm,-0.5cm)node[pos=0.15,fill=white]{$5 \lambda$};
+\draw (2.1cm,0) node[above]{\RL{پہلا جفت قطب}};
+\draw (-2.1cm,0) node[above]{\RL{دوسرا جفت قطب}};
+%
+\end{polaraxis}
+
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

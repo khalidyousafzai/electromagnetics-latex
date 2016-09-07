@@ -1,0 +1,83 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+
+\pgfmathsetmacro{\cX}{2} 
+\pgfmathsetmacro{\cY}{0.6} 
+\pgfmathsetmacro{\axon}{0.5} 
+\pgfmathsetmacro{\dendrite}{0.2} 
+
+\def\coneEye at (#1,#2){(#1,#2) to [out=0,in=-160] ++(\cX,1/3*\cY) --++(0,1/3*\cY) to [out=160,in=0] ++(-\cX,1/3*\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2);
+%\path(#1,#2+\cY) .. controls (#1-5/3*\cY,#2+1.5*\cY) and (#1-5/3*\cY,#2-0.5*\cY) .. (#1,#2)coordinate[pos=0.5](coneOut);
+%\draw(coneOut)--++(-3*\axon,0); 
+}
+%
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-3,0) grid (1,5);
+%\draw[gray,xstep=0.1,ystep=0.1] (-3,0) grid (1,5);
+%rods and cones
+\draw[name path=bipolarNucleus]\coneEye at (0,0);
+%axon
+\path[name path=axon] (-1,\cY/2)--++(2,0);
+\draw[name intersections={of={axon and bipolarNucleus}}] (intersection-1)--++(-1.3,0)node[below,pos=0.5]{\RL{عصبی ریشہ}};
+%rays
+\path[name path=ray] (-1,1*\cY)--++(2,0);
+\draw[->-=0.5,name intersections={of={ray and bipolarNucleus}}] (-2,1*\cY)--(intersection-2)coordinate(kA)node[pos=0.5,above]{شعاع};
+\path[name path=rayA] (kA)--++(-30:2);
+\draw[->-=0.5,name intersections={of={rayA and bipolarNucleus}}] (kA)--(intersection-1)coordinate(kB);
+\path[name path=rayA] (kB)--++(30:2);
+\draw[->-=0.5,name intersections={of={rayA and bipolarNucleus}}] (kB)--(intersection-2)coordinate(kC);
+\path[name path=rayA] (kC)--++(-40:2);
+\draw[->-=0.5,name intersections={of={rayA and bipolarNucleus}}] (kC)--(intersection-1)coordinate(kD);
+\draw[name path=rayA,-latex] (kD)--++(60:0.5)node[right]{شعاع};
+%membrane
+\path[name path=membrane](0,-0.5)--++(0,1.5);
+\draw[name intersections={of={membrane and bipolarNucleus}}] (intersection-1)--++(0,-0.4)coordinate(membraneL);
+\draw[] (intersection-2)--++(0,0.6)coordinate(membraneT);
+\draw[stealth-](membraneL)++(0,-0.1) to [out=-90,in=0]++(-0.3,-0.3)node[left]{\RL{خلوی جھلی}};
+%dimensions
+\path[name path=leftEndL] (0.5,-0.5)--++(0,1.5);
+\draw[stealth-,name intersections={of={leftEndL and bipolarNucleus}}] (intersection-1)--++(0,-0.3);
+\draw[stealth-] (intersection-2)coordinate(reflectiveL)--++(0,0.3)node[above]{$\SI{3}{\micro\meter}$};
+\path[name path=leftEndL] (4/5*\cX,-0.5)--++(0,1.5);
+\draw[stealth-,name intersections={of={leftEndL and bipolarNucleus}}](intersection-1)coordinate(reflectiveR)--++(0,-0.3);
+\draw[stealth-] (intersection-2)--++(0,0.3)node[above]{$\SI{1}{\micro\meter}$};
+%braces
+\draw [decorate,decoration={brace,amplitude=10pt},xshift=-4pt,yshift=0pt](\cX+0.2,-1.2)--(-\cY,-1.2) node [midway,yshift=-0.55cm] {مخروط};
+\draw [decorate,decoration={brace,amplitude=5pt},xshift=-4pt,yshift=0pt] (membraneT)++(0,0.2)--++(\cX/2,0) node [midway,yshift=0.55cm] {\RL{اگلا حصہ}};
+\draw [decorate,decoration={brace,amplitude=5pt},xshift=-4pt,yshift=0pt] (membraneT)++(0,0.2)++(\cX/2+0.05,0)--++(\cX/2,0) node [midway,yshift=0.55cm] {\RL{پچھلا حصہ}};
+%reflective index
+\draw[stealth-](reflectiveL)++(-0.3,-\cY/2) to [out=-30,in=180]++(1.6,-0.75)node[right]{$n_1=1.36$};
+\draw[stealth-](reflectiveR)++(0,1/3*\cY) to [out=-30,in=180]++(0.5,-0.3)node[right]{$n_1=1.39$};
+\draw[stealth-](\cX/2,-0.5) to [out=-30,in=180]++(0.5,-0.3)node[right]{$n_2=1.34$};
+%nucleus
+\path[name path=nucleus](-0.3,0)--++(90:0.75);
+\draw[stealth-,name intersections={of={nucleus and bipolarNucleus}}] (intersection-1) to [out=90,in=0]++(-1,1)node[left]{مرکزہ};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

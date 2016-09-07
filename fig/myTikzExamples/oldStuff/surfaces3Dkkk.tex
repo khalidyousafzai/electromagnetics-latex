@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\begin{document}
+
+% rotated around the y-axis
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1,0)},z={(0,1)}]
+\pgfmathsetmacro{\t}{2};
+ \draw[domain=0:360,smooth,variable=\s,blue] plot (\s,{cos(\s)});
+
+\end{tikzpicture}
+
+
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\m}{0} 
+\pgfmathsetmacro{\na}{1.5} 
+\pgfmathsetmacro{\nb}{1} 
+\pgfmathsetmacro{\d}{0.01} 
+\pgfmathsetmacro{\lm}{0.01} 
+
+\pgfmathsetmacro{\k}{2*pi*\na*\d/\lm}  %\k=2*pi*na*d/lambda
+%\pgfmathsetmacro{\k}{9.424777961}
+\pgfmathdeclarefunction{funcA}{1}{\pgfmathparse{tan(180/pi*(\k*cos(#1)-\m*pi))}}
+\pgfmathdeclarefunction{funcB}{1}{\pgfmathparse{sqrt(\na*\na*(sin(#1))*(sin(#1))-\nb*\nb)/(\na*cos(#1))}}
+
+\pgfmathsetmacro{\zTa}{90-81.6} 
+\pgfmathsetmacro{\zTb}{90-64.29} 
+\pgfmathsetmacro{\zTc}{90-45.35} 
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+\begin{axis}[ymin=-2,ymax=6,axis x line*=middle, axis y line*=middle,xtick={0,10,20,30,40,50},xticklabels={{$90^{\circ}$},{$80^{\circ}$},{$70^{\circ}$},{$60^{\circ}$},{$50^{\circ}$},{$40^{\circ}$}}
+]
+\addplot [domain=40:58,smooth](90-x,{funcA(x)});
+\addplot [domain=62:79,smooth](90-x,{funcA(x)})coordinate[pos=0.03](fA);
+\addplot [domain=81:90,smooth](90-x,{funcA(x)});
+
+\addplot [domain=41.83:83,smooth](90-x,{funcB(x)}) node [pos=0.92,pin={right:{$\frac{\sqrt{n_1^2 \sin^2 \theta_i-n_2^2}}{n_1 \cos \theta_i}$}},inner sep=0pt] {};
+\addplot [domain=41.83:83,smooth](90-x,{funcB(x)}) coordinate [pos=0.8](fnA);
+
+%\draw (fA) node[right,scale=0.7]{$\tan\left(\frac{2\pi}{\lambda_0}n_1 d \cos \theta_i-m \pi \right)$};
+
+%\draw (fB) node[right]{$kkk$};
+
+\addplot[mark=none,gray,dashed] coordinates { (\zTc,0) (\zTc,0.354) };
+\addplot[mark=none,gray,dashed] coordinates { (\zTb,0) (\zTb,1.39) };
+\addplot[mark=none,gray,dashed] coordinates { (\zTa,0) (\zTa,5) };
+
+\draw[fill] (axis cs:\zTc,0.354) ellipse [x radius=1.5pt, y radius=1.5pt]node[shift={(110:0.4cm)}]{$\textup{TE}_2$};
+\draw[fill] (axis cs:\zTb,1.39) ellipse [x radius=1.5pt, y radius=1.5pt]node[shift={(20:0.5cm)}]{$\textup{TE}_1$};
+\draw[fill] (axis cs:\zTa,5) ellipse [x radius=1.5pt, y radius=1.5pt]node[shift={(20:0.5cm)}]{$\textup{TE}_0$};
+
+\addplot[mark=none,stealth-] coordinates {(\zTc,-0.1) (\zTc-0.75,-0.7)}node[below]{$45.35^{\circ}$};
+\addplot[mark=none,stealth-] coordinates {(\zTb,-0.1) (\zTb-0.75,-0.7)}node[below]{$64.29^{\circ}$};
+\addplot[mark=none,stealth-] coordinates {(\zTa,-0.1) (\zTa-0.75,-0.7)}node[below]{$81.6^{\circ}$};
+\addplot[mark=none,stealth-] coordinates{(90-41.81,-0.2)(90-41.81,-1.5)}coordinate(cA);
+
+
+
+\pgfplotsset{
+ after end axis/.code={
+\draw (cA) node[below]{$\theta_{ic}=41.8^{\circ}$};
+\draw (fA) node [pin={right:{$\tan\left(\frac{2\pi}{\lambda_0}n_1 d \cos \theta_i-m \pi \right)$}},inner sep=0pt] {};
+}}
+
+\end{axis}%
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

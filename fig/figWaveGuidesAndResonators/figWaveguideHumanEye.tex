@@ -1,0 +1,69 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+
+\pgfmathsetmacro{\xLens}{0.1} 
+\pgfmathsetmacro{\yLens}{0.5} 
+
+\pgfmathsetmacro{\h}{0.5} 
+\pgfmathsetmacro{\w}{0.5} 
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}
+%grid
+%\draw[gray,thick] (-1,-2) grid (3,2);
+%\draw[gray,xstep=0.1,ystep=0.1] (-1,-2) grid (3,2);
+%lens
+\draw (0,0) ellipse (\xLens cm and \yLens cm);
+%cornea
+\draw (0,-\yLens) .. controls (-0.5,-2/3*\yLens) and (-0.5,2/3*\yLens) .. (0,\yLens);
+%outer structure
+\draw (0,\yLens) to [out=60,in=180]++(2*\w,\h+0.05)  to [out=0,in=120]++(2*\w,-\h) .. controls ++(0.2,-0.4) .. ++(0.5,0.5);
+\draw[name path=outerLower] (0,-\yLens) to [out=-60,in=180]++(2*\w,-\h-0.05)  to [out=0,in=-120]++(2*\w,\h) to [out=60,in=-120] ++(0.6,1.5);
+%inner structure
+\draw (0,\yLens) to [out=60,in=180]++(2*\yLens,\yLens-0.1)  to [out=0,in=120]++(2*\yLens,-\yLens-0.1) to [out=-60,in=-120]++(0.25,-0.05)coordinate(optic);
+\draw[name path=innerLower] (0,-\yLens) to [out=-60,in=180]++(2*\yLens,-\yLens+0.1)  to [out=0,in=-120]++(2*\yLens,\yLens+0.1) to [out=60,in=-120] (optic);
+%rays
+\draw[-<-=0.5,-<-=0.93] (2.12,0)--++(175:3);
+\draw[-<-=0.5,-<-=0.93] (2.12,0)--++(-175:3);
+%dimensions
+\draw[stealth-stealth](1,0.9)--(1,-0.9)node[pos=0.2,fill=white,scale=0.7]{$\approx \SI{25}{\milli\meter}$};
+\path[name path=retinaThickness](1.7,-0.4)--++(-45:0.5);
+\draw[-stealth,name intersections={of={retinaThickness and innerLower}}](1.7,-0.4)--(intersection-1);
+\draw[stealth-,name intersections={of={retinaThickness and outerLower}}](intersection-1)--++(-45:0.3)node[right]{$\SI{0.5}{\milli\meter}$};
+%
+\draw[stealth-](-0.1,-0.3)--++(-135:0.5)node[left]{\RL{عدصہ}};
+\path[name path=retina](1,0)--++(-45:1.5);
+\draw[stealth-,name intersections={of=retina and innerLower}] (intersection-1) .. controls ++(135:0.5) and (1.4,-1.3) .. (1,-1.3)node[left]{\RL{پردہ چشم}};
+\draw[stealth-] (2.4,0.7) to [out=135,in=0]++(-0.5,0.75)node[left]{\RL{عصب بصری}};
+\draw[stealth-](-0.2,0.4)--++(135:0.5)node[above]{\RL{قرنیا}};
+\draw (0.5,-0.5)node{شعاع};
+\draw[-stealth](0.4,-0.4)--++(0.1,0.25);
+\draw[-stealth](0.4,-0.4)--++(-0.1,0.55);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

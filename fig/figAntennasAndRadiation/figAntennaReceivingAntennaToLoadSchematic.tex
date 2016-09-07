@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\x}{0.25}
+\pgfmathsetmacro{\y}{0.75}
+\pgfmathsetmacro{\d}{0.05}
+
+\pgfmathsetmacro{\h}{0.4}
+\pgfmathsetmacro{\w}{0.25}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\draw (0,0) to [ sinusoidal voltage source,l={$v$}] ++(0,2) to [european resistor,l={$Z_A$},i=$I$] ++(2,0)--++(0.5,0) to [short,*-]++(0.5,0) to [european resistor,l={$Z_B$}] ++(0,-2) to [short,-*]++(-0.5,0)--(0,0);
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
