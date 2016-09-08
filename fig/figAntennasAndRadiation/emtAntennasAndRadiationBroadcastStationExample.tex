@@ -36,8 +36,8 @@ myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));
                  },
 ]
 \begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
-\draw [fill] (-1.3cm,0) circle (1pt)node[above]{\RL{بایاں رکن}};
-\draw [fill] (1.3cm,0) circle (1pt)node[above]{\RL{دایاں رکن}};
+\draw [fill] (-1.3cm,0) circle (1pt)node[above]{\RL{پہلا رکن}};
+\draw [fill] (1.3cm,0) circle (1pt)node[above]{\RL{دوسرا رکن}};
 \addplot[domain=-3:3,samples=2] {myfunc(x)};  
 \addplot[domain=3:357,samples=707] {myfunc(x)}; 
 %\addplot[domain=-2:2,samples=2] {myfunc(x)};                 %the function is plotted in pieces to avoid 0/0 that occurs at 0 degrees

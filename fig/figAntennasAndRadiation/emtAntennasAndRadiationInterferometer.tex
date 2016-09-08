@@ -35,9 +35,14 @@ declare function={ kpsi(\x) = 180/pi*\B*\d*cos(\x);
 myfunc(\x)=sin(\x)*cos(kpsi(\x));
                  },
 ]
-\begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
+\begin{polaraxis}[ymin=0,ymax=1.2,hide axis,clip=false]
 \addplot[domain=0:360,samples=1440] {myfunc(x)}; 
 \addplot[gray,dashed,domain=70:135,samples=1440] {sin(x)}node[left]{$\sin \theta$}; 
+%
+\draw[dashed,gray] (90-5.739:2.5cm)--(90-5.739:3.3cm);
+\draw[dashed,gray] (90+5.739:2.5cm)--(90+5.739:3.3cm);
+\draw[dashed,gray,stealth-stealth] ([shift={(90-5.739:3.2cm)}]0,0) arc (90-5.739:90+5.739:3.2cm);
+\draw[gray] (88.5:3.5cm)node{$11.46^{\circ}$};
 %
 \draw[thick] (-2cm,0)--++(0.5cm,0);
 \draw[thick] (-2.2cm,0)--++(-0.5cm,0);
