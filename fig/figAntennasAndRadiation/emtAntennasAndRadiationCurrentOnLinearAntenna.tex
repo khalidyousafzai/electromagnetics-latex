@@ -1,0 +1,52 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\a}{1}
+\pgfmathsetmacro{\xx}{4}
+
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
+                 },
+]
+\draw[thick](-1.5,0)--(1.5*\xx,0);
+\draw (\xx,0)--++(-\xx,0) to [sinusoidal voltage source] ++(0,2)--++(\xx+0.2,0);
+%
+\draw (\xx+0.2,2)
+\foreach \x in {0,0.01,...,\xx}{--(\xx+0.2-\x,{2+sin(2.55*360*\x/\xx)})};
+%text
+\draw (-0.5,1) node[left]{ٹرانسمٹر};
+\draw[stealth-stealth] (\xx/2,0) --++(0,2)node[pos=0.5,fill=white]{$h$};
+\draw[stealth-] (\xx+0.25,2) to [out=45,in=180]++(0.5,0.5)node[right]{\RL{کھلا سر}};
+\draw[stealth-] (\xx-0.4,2) to [out=-60,in=180]++(0.5,-0.5)node[right]{\RL{خطی اینٹینا}};
+\draw[stealth-] (0.5,{2+sin(2.55*360*1.8/\xx)})  to [out=135,in=0]++(-0.5,0.2)node[left]{\RL{ساکن موج}};
+\draw[stealth-] (3.5,0)  to [out=90,in=180]++(0.5,0.5)node[right]{\RL{موصل زمین}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

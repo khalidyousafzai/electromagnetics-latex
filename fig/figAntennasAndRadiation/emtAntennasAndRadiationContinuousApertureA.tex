@@ -1,0 +1,71 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\xx}{2}
+\pgfmathsetmacro{\yy}{3}
+\pgfmathsetmacro{\zz}{1.5}
+\pgfmathsetmacro{\a}{2.25}
+\pgfmathsetmacro{\ang}{50}
+\pgfmathsetmacro{\l}{2.5}
+\pgfmathsetmacro{\r}{1.25}
+
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{5*\lmda}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) =0.5*\B*\d*cos(\x);
+myfunc(\x)=sin( 180/pi*kpsi(\x))/(kpsi(\x));
+                 },
+]
+%axis
+\draw(-\yy,0)--(\yy,0)node[right]{$y$};
+\draw (0,0)--(0,\zz)node[left]{$z$};
+\draw[thick] (-\a,0)node[below]{$-\frac{a}{2}$}--(\a,0)node[below]{$\frac{a}{2}$};
+\draw[fill=white] (0,0) circle (3pt);
+\draw[fill] (0,0) circle (1.5pt)++(0,-0.3)node[]{$x$};
+%rays
+\draw[-latex](0,0)coordinate(aa)--++(\ang:\l)coordinate(a)node[shift={(\ang-90:0.25)},pos=0.75]{$r_0$};
+\path[name path=lowerRay](\r,0)coordinate(b)--++(\ang:\l)coordinate(c);
+\draw[-latex] (\r,0)node[below]{$\dif y$}--($(b)!(a)!(c)$)node[shift={(\ang-90:0.25)},pos=0.75]{$r$};
+\draw (\r-0.2,0)--++(0,-0.1);
+\draw (\r+0.2,0)--++(0,-0.1);
+\draw[very thick] (\r-0.2,0)--(\r+0.2,0);
+\draw(\r,0)--($(aa)!(1,0)!(a)$)coordinate(kk);
+%text
+\draw([shift={(0:0.3)}]0,0) arc (0:\ang:0.3);
+\draw(\ang/2:0.5)node[]{$\theta$};
+\draw[gray,-stealth](0,-0.6)--++(\r,0)node[pos=0.5,fill=white]{$y$};
+\draw[gray,stealth-] (0,0)++(\ang:0.4) to [out=135,in=0]++(-0.6,0.5)node[left]{$y \cos \theta$};
+%delta y
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

@@ -1,0 +1,58 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\a}{1}
+\pgfmathsetmacro{\xx}{2}
+
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
+                 },
+]
+\begin{polaraxis}[ymin=0,ymax=2,hide axis]
+%aperture
+\addplot[domain=0.5:360.5,samples=360] {myfunc(x)}; 
+%current
+\draw[gray] (-2 cm,{20*cos(-2/2*270)})
+\foreach \x in {-2,-1.99,...,2}{--(\x cm,{20*cos(\x/2*270)} )};
+%text
+\draw[gray,stealth-] (-1.5 cm ,{20*cos(-1.5/2*270)}) to [out=-135,in=0]++(-0.5 cm,-0.5 cm) node[left]{\RL{برقی رو}};
+\draw[gray,stealth-] (78:55) to [out=0,in=180] ++(0.5cm,0.3cm) node[right]{شعاع};
+%dipole
+\draw[thick,-<-=0.4,->-=0.85](-\xx cm,0)--(-0.1 cm,0)--++(0,-0.1 cm);
+\draw[thick,->-=0.4,-<-=0.85](\xx cm,0)--(0.1 cm,0)--++(0,-0.1 cm);
+%phase
+\draw (90:70) node {$+$};
+\draw (-40:70) node {$-$};
+\draw (-140:70) node {$-$};
+\end{polaraxis}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

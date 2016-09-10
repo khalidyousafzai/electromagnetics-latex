@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\x}{4}
+\pgfmathsetmacro{\y}{2}
+
+\pgfmathsetmacro{\a}{0.5}
+\pgfmathsetmacro{\b}{1}
+\pgfmathsetmacro{\c}{0.5}
+\pgfmathsetmacro{\d}{1.7}
+\pgfmathsetmacro{\e}{1.5}
+
+\pgfmathsetmacro{\ep}{0.3}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}
+%axis
+\draw[gray] (0,0)--++(\x,0);
+\draw[gray] (0,0)--++(0,\y);
+%
+\draw[name path=kcurve](0,\a) to [out=60,in=170] (1,\b) to [out=-10,in=-135] (2,\c) to [out=45,in=180] (3,\d) to [out=0,in=170] (4,\e)node[right]{$f(x)$};
+\path[name path=klimitL] (0.5,0)--++(0,2);
+\path[name path=klimitR] (3,0)--++(0,2);
+\draw[dashed, gray,name intersections={of=klimitL and kcurve}](0.5,0)node[below]{$x_1$}--(intersection-1);
+\draw[dashed,gray,name intersections={of=klimitR and kcurve}](3,0)node[below]{$x_2$}--(intersection-1);
+%
+\begin{scope}[yscale=0.5]
+\draw[gray](0,\a) to [out=60,in=170] (1,\b) to [out=-10,in=-135] (2,\c) to [out=45,in=180] (3,\d) to [out=0,in=170] (4,\e)node[right]{$\epsilon f(x)$};
+\end{scope}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

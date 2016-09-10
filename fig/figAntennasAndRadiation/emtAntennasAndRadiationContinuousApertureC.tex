@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/2}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) =0.5*\B*\d*cos(\x);
+myfunc(\x)=sin( 180/pi*kpsi(\x))/(kpsi(\x));
+                 },
+]
+%axis
+\begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
+%aperture
+\addplot[domain=0.5:360.5,samples=360] {myfunc(x)}; 
+\end{polaraxis}
+%rays
+%delta y
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
