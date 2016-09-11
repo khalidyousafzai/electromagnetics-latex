@@ -35,19 +35,15 @@
 declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
                  },
 ]
-\draw[thick](-1.5,0)--(1.5*\xx,0);
-\draw (\xx,0)--++(-\xx,0) to [sinusoidal voltage source] ++(0,2)--++(\xx+0.2,0);
-%
-\draw (\xx+0.2,2)
-\foreach \x in {0,0.01,...,\xx}{--(\xx+0.2-\x,{2+sin(2.55*360*\x/\xx)})};
+\draw[thick](0,0.5)--(0,-0.5)coordinate(Ld);
+\draw (0,0) to [sinusoidal voltage source] ++(2,0)--++(2,0) to [resistor,l=$R$]++(2,0)coordinate(lEnd);
+\draw[thick](lEnd)++(0,-0.5)--++(0,1)coordinate(Rd);
 %text
-\draw (-0.5,1) node[left]{ٹرانسمٹر};
-\draw[stealth-stealth] (\xx/2,0) --++(0,2)node[pos=0.5,fill=white]{$h$};
-\draw[stealth-] (\xx+0.25,2) to [out=45,in=180]++(0.5,0.5)node[right]{\RL{کھلا سر}};
-\draw[stealth-] (\xx-0.4,2) to [out=-60,in=180]++(0.5,-0.5)node[right]{\RL{خطی اینٹینا}};
-\draw[stealth-] (0.5,{2+sin(2.55*360*1.8/\xx)})  to [out=135,in=0]++(-0.5,0.2)node[left]{\RL{ساکن موج}};
-\draw[stealth-] (3.5,0)  to [out=90,in=180]++(0.5,0.5)node[right]{\RL{موصل زمین}};
-\draw (\xx+2.5,1)node[]{الف};
+\draw[stealth-](Ld) to [out=-45,in=180]++(0.5,-0.5) node[right]{\text{\RL{$\frac{\lambda}{2}$ جفت قطب}}};
+\draw[stealth-](Rd)++(0,-0.2) to [out=0,in=180]++(0.5,0.5) node[right]{\text{\RL{$\frac{\lambda}{2}$ جفت قطب}}};
+\draw (\xx+1,-0.7)node{\RL{اختتامی مزاحمت}};
+\draw (1.6,0.7) node[left]{ٹرانسمٹر};
+\draw (\xx+4.25,0)node[]{پ};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}

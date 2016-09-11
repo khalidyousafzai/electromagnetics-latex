@@ -24,30 +24,25 @@
 \tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
 \tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
 
-\pgfmathsetmacro{\a}{1}
-\pgfmathsetmacro{\xx}{4}
+\pgfmathsetmacro{\n}{40}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/10}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+\pgfmathsetmacro{\L}{9.75*\lmda}
 
 
 \begin{document}
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
+declare function={ kpsi(\x) =0.5*\B*\L*cos(\x)-0.5*\B*\L;
+myfunc(\x)=sin(\x) * sin( 180/pi*kpsi(\x))/kpsi(\x);
                  },
 ]
-\draw[thick](-1.5,0)--(1.5*\xx,0);
-\draw (\xx,0)--++(-\xx,0) to [sinusoidal voltage source] ++(0,2)--++(\xx+0.2,0);
-%
-\draw (\xx+0.2,2)
-\foreach \x in {0,0.01,...,\xx}{--(\xx+0.2-\x,{2+sin(2.55*360*\x/\xx)})};
-%text
-\draw (-0.5,1) node[left]{ٹرانسمٹر};
-\draw[stealth-stealth] (\xx/2,0) --++(0,2)node[pos=0.5,fill=white]{$h$};
-\draw[stealth-] (\xx+0.25,2) to [out=45,in=180]++(0.5,0.5)node[right]{\RL{کھلا سر}};
-\draw[stealth-] (\xx-0.4,2) to [out=-60,in=180]++(0.5,-0.5)node[right]{\RL{خطی اینٹینا}};
-\draw[stealth-] (0.5,{2+sin(2.55*360*1.8/\xx)})  to [out=135,in=0]++(-0.5,0.2)node[left]{\RL{ساکن موج}};
-\draw[stealth-] (3.5,0)  to [out=90,in=180]++(0.5,0.5)node[right]{\RL{موصل زمین}};
-\draw (\xx+2.5,1)node[]{الف};
+\begin{polaraxis}[hide axis]
+%aperture
+\addplot[domain=0.5:360,samples=720] {myfunc(x)}; 
+\end{polaraxis}
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}

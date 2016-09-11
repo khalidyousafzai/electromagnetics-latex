@@ -8,6 +8,7 @@
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{polar}
 \usepackage{circuitikz}
+\usepackage{tikz}
 \usepackage{tikz-3dplot}
 \usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
 
@@ -25,29 +26,23 @@
 \tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
 
 \pgfmathsetmacro{\a}{1}
-\pgfmathsetmacro{\xx}{4}
+\pgfmathsetmacro{\xx}{2}
 
 
 \begin{document}
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
+declare function={myfunc(\x)=cos( 180/2*cos(\x))/sin(\x);
                  },
 ]
-\draw[thick](-1.5,0)--(1.5*\xx,0);
-\draw (\xx,0)--++(-\xx,0) to [sinusoidal voltage source] ++(0,2)--++(\xx+0.2,0);
+\begin{axis}[ymin=0,ymax=1.2,xtick={0,18,36,54,72,90,108,126,144,162,180},xticklabels={$0$,,$0.2\pi$,,$0.4\pi$,,$0.6\pi$,,$0.8\pi$,,$\pi$}, ytick={\empty},grid,]
+%aperture
+\addplot[domain=0.5:180.5,samples=100] {myfunc(x)}; 
+
 %
-\draw (\xx+0.2,2)
-\foreach \x in {0,0.01,...,\xx}{--(\xx+0.2-\x,{2+sin(2.55*360*\x/\xx)})};
-%text
-\draw (-0.5,1) node[left]{ٹرانسمٹر};
-\draw[stealth-stealth] (\xx/2,0) --++(0,2)node[pos=0.5,fill=white]{$h$};
-\draw[stealth-] (\xx+0.25,2) to [out=45,in=180]++(0.5,0.5)node[right]{\RL{کھلا سر}};
-\draw[stealth-] (\xx-0.4,2) to [out=-60,in=180]++(0.5,-0.5)node[right]{\RL{خطی اینٹینا}};
-\draw[stealth-] (0.5,{2+sin(2.55*360*1.8/\xx)})  to [out=135,in=0]++(-0.5,0.2)node[left]{\RL{ساکن موج}};
-\draw[stealth-] (3.5,0)  to [out=90,in=180]++(0.5,0.5)node[right]{\RL{موصل زمین}};
-\draw (\xx+2.5,1)node[]{الف};
+\end{axis}
+
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
