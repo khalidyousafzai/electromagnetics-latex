@@ -26,7 +26,7 @@
 
 \pgfmathsetmacro{\n}{40}
 \pgfmathsetmacro{\lmda}{1}
-\pgfmathsetmacro{\d}{\lmda/10}
+\pgfmathsetmacro{\d}{\lmda/4}
 \pgfmathsetmacro{\B}{2*pi/\lmda}
 \pgfmathsetmacro{\L}{9.75*\lmda}
 
@@ -35,13 +35,13 @@
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={ kpsi(\x) =0.5*\B*\L*cos(\x)-0.5*\B*\L;
-myfunc(\x)=sin(\x) * sin( 180/pi*kpsi(\x))/kpsi(\x);
+declare function={ kpsi(\x) =0.5*\B*\d*(cos(\x)-1);
+myfunc(\x)= sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x));
                  },
 ]
 \begin{polaraxis}[hide axis]
 %aperture
-\addplot[domain=0.5:360,samples=720] {myfunc(x)}; 
+\addplot[domain=0.5:360.5,samples=360] {myfunc(x)}; 
 \end{polaraxis}
 \end{tikzpicture}%
 \end{urdufont}
