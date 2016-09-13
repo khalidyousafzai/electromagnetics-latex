@@ -18,7 +18,7 @@
 \newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
 \newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
 
-\pgfmathsetmacro{\n}{2}
+\pgfmathsetmacro{\n}{10}
 \pgfmathsetmacro{\lmda}{1}
 \pgfmathsetmacro{\d}{5*\lmda}
 \pgfmathsetmacro{\B}{2*pi/\lmda}
@@ -31,8 +31,8 @@
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={ kpsi(\x) = 180/pi*\B*\d*cos(\x);
-myfunc(\x)=sin(\x)*cos(kpsi(\x));
+declare function={ kpsi(\x) = 180/pi*0.5*\B*\d*cos(\x);
+myfunc(\x)=abs(sin(\x)*cos(kpsi(\x)));
                  },
 ]
 \begin{polaraxis}[ymin=0,ymax=1.2,hide axis,clip=false]

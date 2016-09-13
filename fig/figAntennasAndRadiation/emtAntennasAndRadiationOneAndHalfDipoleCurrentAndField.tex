@@ -32,7 +32,7 @@
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
+declare function={myfunc(\x)=abs(cos( 3*180/2*cos(\x))/sin(\x));
                  },
 ]
 \begin{polaraxis}[ymin=0,ymax=2,hide axis]
@@ -43,14 +43,17 @@ declare function={myfunc(\x)=cos( 3*180/2*cos(\x))/sin(\x);
 \foreach \x in {-2,-1.99,...,2}{--(\x cm,{20*cos(\x/2*270)} )};
 %text
 \draw[gray,stealth-] (-1.5 cm ,{20*cos(-1.5/2*270)}) to [out=-135,in=0]++(-0.5 cm,-0.5 cm) node[left]{\RL{برقی رو}};
-\draw[gray,stealth-] (78:55) to [out=0,in=180] ++(0.5cm,0.3cm) node[right]{شعاع};
+\draw[gray,stealth-] (90:100) to [out=90,in=180] ++(0.5cm,0.4cm) node[right]{شعاع};
 %dipole
 \draw[thick,-<-=0.4,->-=0.85](-\xx cm,0)--(-0.1 cm,0)--++(0,-0.1 cm);
 \draw[thick,->-=0.4,-<-=0.85](\xx cm,0)--(0.1 cm,0)--++(0,-0.1 cm);
 %phase
 \draw (90:70) node {$+$};
+\draw (-90:70) node {$+$};
 \draw (-40:70) node {$-$};
 \draw (-140:70) node {$-$};
+\draw (40:70) node {$-$};
+\draw (140:70) node {$-$};
 \end{polaraxis}
 
 \end{tikzpicture}%

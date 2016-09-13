@@ -32,7 +32,7 @@
 
 \begin{tikzpicture}[
 declare function={ kpsi(\x) = 180/pi*\B*\d*(cos(\x)+\dlt);
-myfunc(\x)=sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2));
+myfunc(\x)=abs(sin(\n*kpsi(\x)/2)/(\n*sin(kpsi(\x)/2)));
                  },
 ]
 \begin{polaraxis}[ymin=0,ymax=1.2,hide axis]

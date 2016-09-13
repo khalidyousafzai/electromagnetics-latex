@@ -24,27 +24,28 @@
 \tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
 \tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
 
+\pgfmathsetmacro{\n}{20}
 \pgfmathsetmacro{\lmda}{1}
-\pgfmathsetmacro{\d}{\lmda/2}
+\pgfmathsetmacro{\d}{\lmda/4}
 \pgfmathsetmacro{\B}{2*pi/\lmda}
+%\pgfmathsetmacro{\L}{9.75*\lmda}
 
-\pgfplotsset{major y grid style={dashed}}
 
 \begin{document}
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={ kpsi(\x) =0.5*\B*\d*cos(\x);
-myfunc(\x)=abs(sin( 180/pi*kpsi(\x))/(kpsi(\x)));
+declare function={ kpsi(\x) =0.5*\B*\d*(cos(\x)-1);
+myfunc(\x)= abs(sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x)));
                  },
 ]
-%axis
-\begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
-%aperture
-\addplot[domain=0.5:360.5,samples=360] {myfunc(x)}; 
-\end{polaraxis}
-%rays
-%delta y
+%
+\draw (0,0) to [short,*-]++(0.5,0) to [european resistor,l={$Z_{11}$}]++(2,0)coordinate(a) to [european resistor,l={$Z_{22}$}]++(2,0)to[short,-*]++(0.5,0);
+\draw (0,-2) to [short,*-*]++(5,0);
+\draw (a) to [european resistor,l={$Z_{m}$}]++(0,-2);
+%text
+\draw (-0.5,-1)node[rotate=90]{\RL{پہلی اینٹینا کے سرے}};
+\draw (5.5,-1)node[rotate=90]{\RL{دوسری اینٹینا کے سرے}};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}

@@ -35,7 +35,7 @@
 
 \begin{tikzpicture}[
 declare function={ kpsi(\x) =0.5*\B*\d*cos(\x);
-myfunc(\x)=sin( 180/pi*kpsi(\x))/(kpsi(\x));
+myfunc(\x)=abs(sin( 180/pi*kpsi(\x))/(kpsi(\x)));
                  },
 ]
 %axis

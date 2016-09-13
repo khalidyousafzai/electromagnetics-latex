@@ -32,7 +32,7 @@
 \begin{urdufont}
 
 \begin{tikzpicture}[
-declare function={myfunc(\x)=cos( 180/2*cos(\x))/sin(\x);
+declare function={myfunc(\x)=abs(cos( 180/2*cos(\x))/sin(\x));
                  },
 ]
 \begin{polaraxis}[ymin=0,ymax=1.2,hide axis]

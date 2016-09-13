@@ -24,11 +24,11 @@
 \tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
 \tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
 
-\pgfmathsetmacro{\n}{40}
+\pgfmathsetmacro{\n}{20}
 \pgfmathsetmacro{\lmda}{1}
 \pgfmathsetmacro{\d}{\lmda/4}
 \pgfmathsetmacro{\B}{2*pi/\lmda}
-\pgfmathsetmacro{\L}{9.75*\lmda}
+%\pgfmathsetmacro{\L}{9.75*\lmda}
 
 
 \begin{document}
@@ -36,13 +36,18 @@
 
 \begin{tikzpicture}[
 declare function={ kpsi(\x) =0.5*\B*\d*(cos(\x)-1);
-myfunc(\x)= sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x));
+myfunc(\x)= abs(sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x)));
                  },
 ]
 \begin{polaraxis}[hide axis]
 %aperture
-\addplot[domain=0.5:360.5,samples=360] {myfunc(x)}; 
-\end{polaraxis}
+\addplot[domain=0.5:360.5,samples=720] {myfunc(x)}; 
+\draw[dashed](0,0)--(270,0);
+\draw[dashed](0,0)--(22:270);
+\draw[-stealth,gray] ([shift={(0:230)}]0,0) arc (0:22:230);
+\draw[gray] (10:230)node[right]{$22^{\circ}$};
+\end{polaraxis}%
+%
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
