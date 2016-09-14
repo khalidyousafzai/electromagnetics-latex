@@ -1,0 +1,92 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+\newcommand{\RightAngle}[4][5pt]{\draw[] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) --($#3!#1!#4$) ;     }
+
+\pgfmathsetmacro{\n}{20}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/4}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+%\pgfmathsetmacro{\L}{9.75*\lmda}
+
+\pgfmathsetmacro{\rr}{0.5}
+\pgfmathsetmacro{\dd}{0.5}
+\pgfmathsetmacro{\aa}{45}
+
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) =0.5*\B*\d*(cos(\x)-1);
+myfunc(\x)= abs(sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x)));
+                 },
+]
+%
+\def\khelical{++(0.05,0.05)to [out=\aa,in=180-\aa]++(\dd,0) to[out=-\aa,in=0]++(0,-\rr)to[out=180,in=-180+\aa]++(0,\rr-0.05)}
+
+\draw (0,0)--++(0.3,0) to [out=0,in=-180+\aa]++(0.2,\rr/2)++(-0.05,-0.05) \khelical \khelical \khelical \khelical \khelical \khelical;
+\draw(0,0.1)--++(0.3,0)--++(0,0.5)coordinate(gg);
+\draw(0,-0.1)--++(0.3,0)--++(0,-0.5)coordinate(ggb);
+%text
+\draw[stealth-] (0,-0.1) to [out=-135,in=90]++(-0.5,-0.5)node[below]{\RL{ہم محوری تار}};
+\draw[stealth-](gg)++(0,0.1) to [out=90,in=180]++(0.5,0.3)node[right]{\RL{برقی زمین}};
+\draw[gray] (gg)++(0.1,0)--++(0.3,0);
+\draw[gray] (ggb)++(0.1,0)--++(0.3,0);
+\draw[gray,stealth-stealth] (gg)++(0.25,0)--++(0,-1.2)coordinate[pos=0.8](g);
+\draw[gray,stealth-](g) to [out=0,in=180]++(0.5,-0.5)node[right]{\RL{$\frac{\lambda}{2}$ تا $\frac{3}{4}\lambda$}};
+\draw[gray,stealth-stealth] (2.66,-0.4)--++(\dd+0.03,0)node[pos=0.5,below]{$d$};
+\draw[gray,stealth-stealth] (7*\dd+0.5,\rr/2+0.1)--++(0,-\rr-0.11)node[pos=0.5,right]{$D$};
+\draw[gray,dashed](0,0)--++(7.8*\dd,0)coordinate[pos=0.9](mm);
+\draw[gray,stealth-](mm) to[out=-90,in=180]++(0.3,-0.6)node[right]{محور};
+\draw(2.5,-1.75)node{الف};
+%
+\begin{scope}[xshift=-4.5cm]
+\draw(0,0)coordinate(a)--++(30:2)coordinate(c);
+\draw(0,0)--++({2*cos(30)},0)coordinate(b);
+\draw(b)--(c);
+\draw([shift={(0:0.5)}]a) arc (0:30:0.5);
+\draw(15:0.8) node{$\alpha$};
+\RightAngle{(a)}{(b)}{(c)};
+\draw(1,-0.3) node{$C=\pi D$};
+\draw ({2*cos(30)+0.2},0.5)node{$d$};
+\draw (1,0.8)node{$l$};
+%
+\draw (0.75,-1) node{$\left(\frac{2}{3}\lambda \le C \le \frac{3}{2}\lambda \right)$};
+\draw(1,-1.75)node{ب};
+%third figure
+\draw[->-=0.5] ([shift={(90:0.5)}]-3,0) arc (90:270:0.5); 
+\draw[->-=0.5] ([shift={(90:0.5)}]-3,0) arc (90:-90:0.5); 
+\draw[fill] (-3,0.5) circle (1.5pt) node[shift={(90:0.3)}]{$+$};
+\draw[fill] (-3,-0.5) circle (1.5pt) node[shift={(-90:0.3)}]{$-$};
+\draw(-3.5,0) node[left]{\RL{برقی رو}};
+\draw[-stealth,gray,dashed] ([shift={(-135:0.3)}]-3,0) arc (-135:135:0.3);
+\draw[gray](-3,0)node{$E$};
+\draw(-3,-1.75)node{پ};
+\end{scope}
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
