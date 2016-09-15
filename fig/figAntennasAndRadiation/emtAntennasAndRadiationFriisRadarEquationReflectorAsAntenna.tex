@@ -1,0 +1,81 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+%draws right angles \RightAngle{A}{B}{C}
+\newcommand{\RightAngle}[4][5pt]{\draw[gray] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) --($#3!#1!#4$) ;     }
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{1}
+\pgfmathsetmacro{\z}{0.5}
+
+\pgfmathsetmacro{\xx}{1}
+\pgfmathsetmacro{\yy}{3}
+\pgfmathsetmacro{\zz}{2*\z}
+\pgfmathsetmacro{\ang}{atan(\zz/\yy)}
+
+
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[x={(-0.75cm,-0.5cm)},y={(1cm,0)},z={(0,1cm)}]
+%
+\draw[rotate=-90](0,0) parabola (-0.5,0.5);
+\draw[rotate=-90] (0,0) parabola (0.5,0.5);
+\draw(0,0)--++(0.3,0);
+\draw[fill](0.3,0) circle (1pt);
+\draw (0.3,0.5)node[above]{$S_t$};
+%
+\draw[-latex] (0.5,0)--++(3.4,0)node[pos=0.5,fill=white]{$r$};
+\draw[latex-] (0.5,-1.4)--++(3.4,0)node[pos=0.5,fill=white]{$r$};
+%
+\begin{scope}[yshift=-1.4cm]
+\draw[rotate=-90](0,0) parabola (-0.5,0.5);
+\draw[rotate=-90] (0,0) parabola (0.5,0.5);
+\draw(0,0)--++(0.3,0);
+\draw[fill](0.3,0) circle (1pt);
+\draw (0.3,-0.5)node[below]{$S_w$};
+\end{scope}
+%
+\begin{scope}[xshift=4.4cm,xscale=-1]
+\draw[rotate=-90](0,0) parabola (-0.5,0.5);
+\draw[rotate=-90] (0,0) parabola (0.5,0.5);
+\draw(0,0)--++(0.3,0);
+\draw (0.3,0.5)node[above]{$S_e$};
+\draw[fill](0.3,0) circle (1pt);
+\draw[->-=0.5](0,0)--++(-0.5,0)--++(0,-1.4)--++(0.5,0);
+\path (0,0)--++(-0.55,0);
+\begin{scope}[yshift=-1.4cm]
+\draw[rotate=-90](0,0) parabola (-0.5,0.5);
+\draw[rotate=-90] (0,0) parabola (0.5,0.5);
+\draw(0,0)--++(0.3,0);
+\draw[fill](0.3,0) circle (1pt);
+\draw (0.3,-0.5)node[below]{$S_e$};
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

@@ -37,9 +37,14 @@
 %\draw(0,0,0)--++(\x,0,0)--++(0,0,\z)--++(-\x,0,0)--++(0,0,-\z);
 \draw(0,0,\z)--++(0,-\y,0)--++(\x,0,0)--++(0,\y,0) ++(0,0,-\z)--++(0,-\y,0)--++(0,0,\z)++(0,\y,0)--++(-\x,0,0);
 %funnel
-\draw(0,0,0)--++(0,\yy,-\zz)--++(0,0,2*\zz+\z)--++(\x,0,0)--++(0,0,-2*\zz-\z)--++(-\x,0,0)++(0,0,2*\zz+\z)--++(0,-\yy,-\zz);
+\draw(0,0,0)--++(0,\yy,-\zz)coordinate(kk)--++(0,0,2*\zz+\z)--++(\x,0,0)--++(0,0,-2*\zz-\z)--++(-\x,0,0)++(0,0,2*\zz+\z)--++(0,-\yy,-\zz);
 \draw[fill=white] (\x,0,0)--++(0,\yy,-\zz)--++(0,0,2*\zz+\z)--++(0,-\yy,-\zz)--++(0,0,-\z);
 %
+\draw[stealth-stealth] (kk)++(0,0.3,0)--++(0,0,2*\zz+\z)node[pos=0.5,fill=white]{$h$};
+\draw[stealth-stealth] (kk)++(0,0,-0.4)--++(\x,0,0)node[pos=0.5,fill=white]{$w$};
+%text
+\draw[stealth-](0,0,\z)++(0,-\y/4,0) to [out=90,in=0]++(0,-0.3,0.3)node[left]{\RL{مستطیل مویج}};
+\draw[stealth-] (\x,0,0)++(0,\yy/3,-\zz/3) to [out=-90,in=0]++(0,-0.3,-0.3) node[left]{\RL{پیپا}};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}

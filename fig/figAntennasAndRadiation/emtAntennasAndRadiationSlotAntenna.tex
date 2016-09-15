@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+\newcommand{\RightAngle}[4][5pt]{\draw[] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) --($#3!#1!#4$) ;     }
+
+\pgfmathsetmacro{\n}{20}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/4}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+%\pgfmathsetmacro{\L}{9.75*\lmda}
+
+\pgfmathsetmacro{\dd}{0.05}
+\pgfmathsetmacro{\xx}{1.5}
+\pgfmathsetmacro{\yy}{0.3}
+
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) =0.5*\B*\d*(cos(\x)-1);
+myfunc(\x)= abs(sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x)));
+                 },
+]
+%
+  \shade  plot[smooth, tension=.7,color=0.2!gray!0.8] coordinates {(-2.5,0.5) (-2,1.5) (-1,2) (1.5,2) (2,1.5) (2.5,1.5) (3,0.5) (2.5,-1) (0,-0.5) (-2,-1) (-2.5,0.5)};
+\draw[fill=white] (0.5,0.5)coordinate(a)--++(0.1,-\yy)--++(\xx,0)--++(0,2*\yy+2*\dd)coordinate(sz)--++(-\xx,0)--++(-0.1,-\yy)--++(-0.1,\yy)--++(-\xx,0)--++(0,-2*\yy-2*\dd)coordinate(kk)--++(\xx,0)--++(0.1,\yy);
+\draw[fill](a) circle (1pt);
+\draw[fill](a)++(0,2*\dd) circle (1pt);
+\draw (a) node[shift={(-20:0.2)}]{$a$};
+\draw(a)++(0,2*\dd)node[shift={(20:0.25)}]{$a'$};
+%
+\draw[stealth-stealth](sz)++(0,0.2)--++(-2*\xx-0.2,0)node[pos=0.25,above]{$\frac{\lambda}{2}$};
+\draw[stealth-stealth](sz)++(0.2,0)--++(0,-2*\yy-2*\dd)node[pos=0.5,right]{$w$};
+%
+\draw (1.5,-0.5)node{\RL{موصل چادر}};
+\draw[stealth-](kk)++(3*\xx/4,0) to [out=-90,in=60]++(-0.4,-1)node[below]{\RL{جھری اینٹینا}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{1}
+\pgfmathsetmacro{\z}{0.5}
+
+\pgfmathsetmacro{\xx}{1}
+\pgfmathsetmacro{\yy}{3}
+\pgfmathsetmacro{\zz}{2*\z}
+\pgfmathsetmacro{\ang}{atan(\zz/\yy)}
+
+
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[x={(-0.75cm,-0.5cm)},y={(1cm,0)},z={(0,1cm)}]
+%thinner section
+%\draw(0,0,0)--++(\x,0,0)--++(0,0,\z)--++(-\x,0,0)--++(0,0,-\z);
+%\draw(0,0,\z)--++(0,-\y,0)--++(\x,0,0)--++(0,\y,0) ++(0,0,-\z)--++(0,-\y,0)--++(0,0,\z)++(0,\y,0)--++(-\x,0,0);
+\draw(-\y,-\z/2)--++(\y,0)--++(\yy,-\zz)coordinate(kk);
+\draw(-\y,\z/2)--++(\y,0)--++(\yy,\zz)coordinate(kkk);
+\draw(kk)++(0.1,0)--++(0.2,0);
+\draw(kkk)++(0.1,0)--++(0.2,0);
+\draw[-stealth](0,0)--++(\yy,0)node[pos=0.6,below]{$l$};
+\draw[stealth-stealth](kk)++(0.2,0)--++(0,2*\zz+\z)node[pos=0.5,right]{$h$};
+\draw[-stealth](0,0)--++(\yy,1*\zz)node[pos=0.7,below,rotate=\ang]{$l+\delta$};
+\draw([shift={(0:0.5)}]0,0) arc (0:\ang:0.5);
+\draw(\ang/2:0.8) node{$\alpha$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

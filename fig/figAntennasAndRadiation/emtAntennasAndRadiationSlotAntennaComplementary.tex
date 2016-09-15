@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+\newcommand{\RightAngle}[4][5pt]{\draw[] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) --($#3!#1!#4$) ;     }
+
+\pgfmathsetmacro{\n}{20}
+\pgfmathsetmacro{\lmda}{1}
+\pgfmathsetmacro{\d}{\lmda/4}
+\pgfmathsetmacro{\B}{2*pi/\lmda}
+%\pgfmathsetmacro{\L}{9.75*\lmda}
+
+\pgfmathsetmacro{\dd}{0.05}
+\pgfmathsetmacro{\xx}{1.5}
+\pgfmathsetmacro{\yy}{0.3+\dd}
+
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={ kpsi(\x) =0.5*\B*\d*(cos(\x)-1);
+myfunc(\x)= abs(sin(\x)*sin( 180/pi*\n*kpsi(\x))/(\n*kpsi(\x)));
+                 },
+]
+%
+\draw[fill,color=gray] (0,1)coordinate(a)--++(0.1,-\yy)--++(\xx,0)coordinate(kk)--++(0,2*\yy)--++(-\xx,0)--++(-0.1,-\yy)++(-0.15,0)coordinate(b)--++(-0.1,\yy)--++(-\xx,0)--++(0,-2*\yy)--++(\xx,0)--++(0.1,\yy);
+\draw[fill](a) circle (1pt)node[shift={(10:0.3)}]{$a'$};
+\draw[fill](b) circle (1pt)node[left]{$a$};
+\draw[stealth-stealth](kk)++(0.2,0)--++(0,2*\yy)node[pos=0.5,right]{$w$};
+%text
+\draw[stealth-](0,1)coordinate(a)++(0.1,-\yy)++(\xx/2,0) to [out=-90,in=0]++(-0.5,-0.5) node[left]{\RL{موصل چادر}}; 
+\draw[stealth-](b)++(-0.1,\yy)++(-\xx/2,0) to [out=90,in=0]++(-0.5,0.3)node[left]{\RL{تکملہ اینٹینا}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

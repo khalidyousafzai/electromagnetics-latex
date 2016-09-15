@@ -1,0 +1,60 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\pgfmathsetmacro{\x}{1}
+\pgfmathsetmacro{\y}{1}
+\pgfmathsetmacro{\z}{0.5}
+
+\pgfmathsetmacro{\xx}{1}
+\pgfmathsetmacro{\yy}{3}
+\pgfmathsetmacro{\zz}{2*\z}
+\pgfmathsetmacro{\ang}{atan(\zz/\yy)}
+
+
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[x={(-0.75cm,-0.5cm)},y={(1cm,0)},z={(0,1cm)}]
+%
+\draw[rotate=-90](0,0) parabola (-0.5,0.5);
+\draw[rotate=-90] (0,0) parabola (0.5,0.5);
+\draw(0,0)--++(0.3,0);
+\draw[fill](0.3,0) circle (1pt);
+\draw (0.3,0.5)node[above]{\RL{ترسیل کنندہ}};
+\draw (-0.2,0)node[above]{$S_t$};
+%
+\draw (4,0.5)--++(0,-2.4)node[pos=0.5,right]{\RL{عاکس}};
+\draw[-latex] (0.5,0)--++(3.4,-0.6)node[pos=0.5,fill=white]{$r$};
+%
+\begin{scope}[yshift=-1.4cm]
+\draw[rotate=-90](0,0) parabola (-0.5,0.5);
+\draw[rotate=-90] (0,0) parabola (0.5,0.5);
+\draw(0,0)--++(0.3,0);
+\draw[fill](0.3,0) circle (1pt);
+\draw (0.3,-0.5)node[below]{\RL{وصول کنندہ}};
+\draw (-0.2,0)node[below]{$S_w$};
+\draw[latex-] (0.5,0)--++(3.4,0.6)node[pos=0.5,fill=white]{$r$};
+\end{scope}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
