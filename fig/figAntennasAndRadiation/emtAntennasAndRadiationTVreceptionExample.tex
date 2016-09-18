@@ -1,0 +1,60 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+%draws right angles \RightAngle{A}{B}{C}
+\newcommand{\RightAngle}[4][5pt]{\draw[gray] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) --($#3!#1!#4$) ;     }
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+\pgfmathsetmacro{\xx}{3}
+\pgfmathsetmacro{\yy}{2}
+\pgfmathsetmacro{\yyy}{1.5}
+\pgfmathsetmacro{\ang}{atan(\yy/\xx)}
+\pgfmathsetmacro{\rA}{\yy/sin(\ang)}
+\pgfmathsetmacro{\rB}{\yyy/sin(\ang)}
+
+\pgfplotsset{major y grid style={dashed}}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[x={(-0.75cm,-0.5cm)},y={(1cm,0)},z={(0,1cm)}]
+%
+\draw[thick] (-1,0)--(5.5,0);
+\draw[-<-=0.5](\xx,0)--++(180-\ang:\rA)node[pos=0.5,above]{$r_1$}coordinate(aT);
+\draw[->-=0.5](\xx,0)--++(\ang:\rB)node[pos=0.5,above]{$r_2$}coordinate(bT);
+\draw[->-=0.5](aT)--(bT)node[pos=0.5,above]{$r_0$};
+\draw(aT) --($(-1.1,0)!(aT)!(5,0)$)node[pos=0.5,left]{$h_1$};
+\draw(bT) --($(-1.1,0)!(bT)!(5,0)$)node[pos=0.5,right]{$h_2$};
+\draw([shift={(180-\ang:0.5)}]\xx,0) arc (180-\ang:180:0.5);
+\draw([shift={(0:0.5)}]\xx,0) arc (0:\ang:0.5);
+\draw(\xx,0)++(180-\ang/2:0.8)node[]{$\theta$};
+\draw(\xx,0)++(\ang/2:0.8)node{$\theta$};
+\draw (\xx/2,-0.3)node{$d_1$};
+\draw (\xx+1.3,-0.3)node{$d_2$};
+%test
+\draw[fill](aT) circle (1pt) node[shift={(90:0.3)}]{\RL{ترسیل کنندہ}};
+\draw[fill](bT) circle (1pt) node[shift={(90:0.3)}]{\RL{وصول کنندہ}};
+\draw (\xx/3,0.3)node{\RL{موصل زمین}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
