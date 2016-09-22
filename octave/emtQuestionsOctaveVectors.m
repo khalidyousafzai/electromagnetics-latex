@@ -201,3 +201,103 @@ BAp/norm(BAp)
 
 B=[Bc(1)*cos(Bp(2))+Bc(2)*sin(Bp(2)) -Bc(1)*sin(Bp(2))+Bc(2)*cos(Bp(2)) Bc(3)];
 -B/norm(B)
+
+#====================
+disp("========================================")
+
+clear all
+
+rA=2;
+rB=6;
+angA=30;
+angB=60;
+zA=11;
+zB=13;
+
+volume=pi*(rB^2-rA^2)*(zB-zA)*(angB-angA)/360
+
+surface=2*pi*(rB^2-rA^2)*(angB-angA)/360+(rA+rB)*(angB-angA)/180*pi*(zB-zA)+2*(rB-rA)*(zB-zA)
+#====================
+disp("========================================")
+
+clear all
+
+N=[5 3 8];
+P=[3 -4 2];
+
+PN=P-N
+
+nc=cart2pol(N)
+Ncyl=[nc(2) nc(1) nc(3)]
+
+ansA=kcart2cylVector(PN(1),PN(2),PN(3),Ncyl(2))
+
+ansSP=cart2sph(N);
+
+ansB=kcart2sphVector(PN(1),PN(2),PN(3),ansSP(1),ansSP(2))
+
+sqrt(dot(ansA,ansA))
+sqrt(dot(ansB,ansB))
+#====================
+disp("========================================")
+
+clear all
+
+F=[3 -2 8]
+G=[2 5 2]
+
+dot(F,G)
+
+dot(G,F/sqrt(dot(F,F)))
+
+dot(G,F/sqrt(dot(F,F))) *F/(sqrt(dot(F,F)))
+
+cross(G,F)
+
+cross(F,G)/sqrt(dot(cross(F,G),cross(F,G)))
+#====================
+disp("========================================")
+
+clear all
+
+ra=6;
+rb=10;
+tha=30*pi/180;
+thb=70*pi/180;
+pha=25*pi/180;
+phb=100*pi/180;
+
+As=[ra tha pha];
+Bs=[rb thb phb];
+
+A=ksph2cart(As(1),As(2),As(3));
+B=ksph2cart(Bs(1),Bs(2),Bs(3));
+
+ansA=A-B;
+
+sqrt(dot(ansA,ansA))
+
+#surface areas. top, front, left, right
+aa=dblquad(@(r,ph) r*sin(tha),ra,rb,pha,phb);
+aab=dblquad(@(r,ph) r*sin(thb),ra,rb,pha,phb);
+bb=dblquad(@(r,th) r,ra,rb,tha,thb);
+cc=dblquad(@(th,ph) ra*ra*sin(th),tha,thb,pha,phb);
+dd=dblquad(@(th,ph) rb*rb*sin(th),tha,thb,pha,phb);
+
+area=aa+aab+2*bb+cc+dd
+
+#volume
+triplequad(@(r,th,ph) r.^2.*sin(th),ra,rb,tha,thb,pha,phb)
+#================
+disp("========================================")
+clear all
+
+P=[5 4 -2]
+Q=[6 4 10]
+
+ansA=cart2pol(P(1),P(2),P(3));
+Pc=[ansA(2) ansA(1) ansA(3)]
+
+QP=Q-P;
+
+kcart2cylVector(QP(1),QP(2),QP(3),Pc(2))
