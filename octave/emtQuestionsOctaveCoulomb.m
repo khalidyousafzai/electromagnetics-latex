@@ -21,7 +21,8 @@ Qa=20*10^(-9);
 Q=25*10^(-9);
 
 
-k=9*10^(9);
+k=1/(4*pi*8.854187818*10^(-12));
+
 
 NA=N-A;
 NB=N-B;
@@ -56,7 +57,7 @@ D=[0 x 0]
 
 Q=30*10^(-9);
 
-k=9*10^(9);
+k=1/(4*pi*8.854187818*10^(-12));
 
 NB=N-B;
 NC=N-C;
@@ -89,7 +90,7 @@ NB=N-B;
 Qa=15*10^(-9);
 Qb=-6*10^(-9);
 
-k=9*10^(9);
+k=1/(4*pi*8.854187818*10^(-12));
 
 aNA=NA/sqrt(dot(NA,NA));
 aNB=NB/sqrt(dot(NB,NB));
@@ -116,7 +117,7 @@ NB=N-B;
 Qa=20*10^(-6);
 Qb=20*10^(-6);
 
-k=9*10^(9);
+k=1/(4*pi*8.854187818*10^(-12));
 
 aNA=NA/sqrt(dot(NA,NA));
 aNB=NB/sqrt(dot(NB,NB));
@@ -138,16 +139,19 @@ format long
 A=[6,3,7]
 N=[5,4,2]
 Q=6*10^(-6)
-k=9*10^(9);
+k=1/(4*pi*8.854187818*10^(-12));
 
 nc=cart2pol(N)
 Nc=[nc(2) nc(1) nc(3)]
+[r,theta,phi]=kcart2sph(N(1),N(2),N(3))
+
 
 NA=N-A
 aNA=NA/sqrt(dot(NA,NA))
 E=k*Q*aNA/dot(NA,NA)
 
 kcart2cylVector(E(1),E(2),E(3),Nc(2))
+kcart2sphVector(E(1),E(2),E(3),theta,phi)
 #==============================
 disp("========================================")
 
@@ -161,7 +165,7 @@ N=[3,1,2];
 Qa=50*10^(-9);
 Qb=50*10^(-9);
 Qc=-35*10^(-9);
-k=9*10^(9);
+k=1/(4*pi*8.854187818*10^(-12));
 
 [r,theta,phi]=kcart2sph(N(1),N(2),N(3));
 
@@ -179,4 +183,29 @@ Ec=k*Qc*aNC/dot(NC,NC);
 E=Ea+Eb+Ec
 
 kcart2sphVector(E(1),E(2),E(3),theta,phi)
+#==============================
+disp("========================================")
 
+clear all
+format long
+
+function rhoH=myFunc(rho,phi,z)
+rhoH=(rho+0.002).*z.^2.*tan(phi)
+endfunction
+
+triplequad(@(rho,phi,z) rho.*(rho+0.002).*z.^2.*tan(phi),0,0.008,0.5236,1.309,2,5)
+#==============================
+disp("========================================")
+
+clear all
+format long
+
+triplequad(@(rho,phi,z) rho.*e.^(-rho.^2),0,100,0,2*pi,0,1)
+
+#==============================
+disp("========================================")
+
+clear all
+format long
+triplequad(@(r,theta,phi) r.^(2.5).*sin(theta),0,1,0,pi,0,2*pi)
+triplequad(@(r,theta,phi) r.^(2.5).*sin(theta),0,1,0,pi*25/180,0,pi/3)
