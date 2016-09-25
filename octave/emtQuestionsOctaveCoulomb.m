@@ -200,7 +200,7 @@ disp("========================================")
 clear all
 format long
 
-triplequad(@(rho,phi,z) rho.*e.^(-rho.^2),0,100,0,2*pi,0,1)
+triplequad(@(rho,phi,z) rho.*e.^(-rho.^2),0,Inf,0,2*pi,0,1)
 
 #==============================
 disp("========================================")
@@ -209,3 +209,99 @@ clear all
 format long
 triplequad(@(r,theta,phi) r.^(2.5).*sin(theta),0,1,0,pi,0,2*pi)
 triplequad(@(r,theta,phi) r.^(2.5).*sin(theta),0,1,0,pi*25/180,0,pi/3)
+#==============================
+disp("========================================")
+
+clear all
+
+epsilon=8.854187818*10^(-12);
+
+qL=5*10^(-9);
+Qa=-2*10^(-9);
+
+L=[4,0,0];
+A=[0,3,0];
+B=[0,0,-1];
+N=[4,8,1];
+
+NL=N-L;
+NA=N-A;
+
+
+EL=qL*NL/(2*pi*epsilon*dot(NL,NL))
+Ea=Qa*NA/(4*pi*epsilon*(dot(NA,NA))^(3/2))
+
+E=EL+Ea
+#==============================
+disp("========================================")
+
+clear all
+
+epsilon=8.854187818*10^(-12);
+
+qL=2*10^(-9);
+Qa=7*10^(-9);
+
+L=[0,8/5,4/5];
+A=[6,1,2];
+N=[6,8,4];
+
+NL=N-L;
+NA=N-A;
+
+
+EL=qL*NL/(2*pi*epsilon*dot(NL,NL))
+Ea=Qa*NA/(4*pi*epsilon*(dot(NA,NA))^(3/2))
+
+E=EL+Ea
+#==============================
+disp("========================================")
+
+clear all
+
+
+
+rhoL=5*10^(-9);
+
+zU=100000;
+zL=0;
+x=0;
+y=0;
+z=-2;
+
+a=[x/sqrt(x.^2+y.^2) y/sqrt(x.^2+y.^2)];
+
+N=[x,y,z];
+
+ansCylindrical=kfieldOfLineCharge(rhoL,zU,zL,x,y,z);
+ansCartesian=[a.*ansCylindrical(1) ansCylindrical(2)]
+x=5;
+y=2;
+z=6;
+a=[x/sqrt(x.^2+y.^2) y/sqrt(x.^2+y.^2)];
+N=[x,y,z];
+
+ansCylindrical=kfieldOfLineCharge(rhoL,zU,zL,x,y,z);
+ansCartesian=[a.*ansCylindrical(1) ansCylindrical(2)]
+#==============================
+disp("========================================")
+
+clear all
+
+
+
+rhoL=2*10^(-6);
+
+zU=10;
+zL=2;
+x=2;
+y=12;
+z=8;
+
+a=[x/sqrt(x.^2+y.^2) y/sqrt(x.^2+y.^2)];
+
+N=[x,y,z];
+
+ansCylindrical=kfieldOfLineCharge(rhoL,zU,zL,x,y,z);
+ansCartesian=[a.*ansCylindrical(1) ansCylindrical(2)]
+

@@ -1,0 +1,65 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+f(r,theta,phi):=k*r/a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(r,theta,phi)integrate(integrate(integrate(f(r,theta,phi)*r^2*sin(theta),r,0,a)theta,0,pi),phi,0,2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(integrate(integrate(f(r,theta,phi)*r^2*sin(theta),r,0,a)theta,0,pi),phi,0,2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+clear all;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(r,theta,phi):=k*r/2*r^2*sin(theta);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f(r,theta,phi),r,0,a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi)phi,0,2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi),phi,0,2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(r,theta,phi):=k*r/(2*a)*r^2*sin(theta);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi),phi,0,2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi),phi,0,0.2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(r,theta,phi):=(k*r)/a*r^2*sin(theta);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi),phi,0,0.2*pi);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

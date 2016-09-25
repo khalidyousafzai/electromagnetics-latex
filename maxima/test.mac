@@ -1,0 +1,5 @@
+
+f(r,theta,phi):=(k*r)/a*r^2*sin(theta);
+
+integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi),phi,0,0.2*pi);
+
