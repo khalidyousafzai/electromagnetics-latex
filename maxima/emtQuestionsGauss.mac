@@ -1,0 +1,148 @@
+
+print("======================================");
+kill(all);
+print("Q3-11");
+
+rhoA(rho):=rho^2/1000;
+rhoB:2*10^(-6);
+A:0.003;
+B:0.005;
+
+rho1:0.002;
+rho2:0.004;
+rho3:0.006;
+
+ansA:integrate(integrate(integrate(rhoA(rho)*rho,rho,0,rho1),phi,0,2*pi),z,0,1);
+ans1:ansA/(2*pi*rho1*1);
+
+ansB:integrate(integrate(integrate(rhoA(rho)*rho,rho,0,A),phi,0,2*pi),z,0,1);
+ansC:integrate(integrate(integrate(rhoB*rho,rho,A,rho2),phi,0,2*pi),z,0,1);
+ans2:(ansB+ansC)/(2*pi*rho2);
+
+ansD:integrate(integrate(integrate(rhoA(rho)*rho,rho,0,A),phi,0,2*pi),z,0,1);
+ansE:integrate(integrate(integrate(rhoB*rho,rho,A,B),phi,0,2*pi),z,0,1);
+ans3:(ansD+ansE)/(2*pi*rho3);
+
+
+print("======================================");
+kill(all);
+print("Q3-12");
+
+
+rhoHA:22*10^(-6);
+rhoHB(r):=55*10^(-9)/r;
+
+rA:0.003;
+rB:0.005;
+rC:0.007;
+
+r1:0.003;
+r2:0.01;
+
+Qa:integrate(integrate(integrate(rhoHA*r^2*sin(theta),r,0,rA),theta,0,%pi),phi,0,2*%pi);
+Qb:integrate(integrate(integrate(rhoHB(r)*r^2*sin(theta),r,rB,rC),theta,0,%pi),phi,0,2*%pi);
+
+DA:Qa/(4*%pi*r1^2);
+DB:(Qa+Qb)/(4*%pi*r2^2);
+
+print("======================================");
+kill(all);
+print("Q3-16a");
+
+fx(x,y,z) := x*z*%e^(2*y)*(z);
+fy(x,y,z) := x*z*%e^(2*y)*(x*z);
+fz(x,y,z) := x*z*%e^(2*y)*(x);
+
+myDivergenceCartesian(x,y,z):=''(diff(fx(x,y,z),x)+diff(fy(x,y,z),y)+diff(fz(x,y,z),z));
+myDivergenceCartesian(1,-1,2);
+print("======================================");
+kill(all);
+print("Q3-16b");
+
+d(x,y,z):=sqrt(x^2+y^2+z^2);
+
+fx(x,y,z) := x/d(x,y,z);
+fy(x,y,z) := y/d(x,y,z);
+fz(x,y,z) := z/d(x,y,z);
+
+myDivergenceCartesian(x,y,z):=''(diff(fx(x,y,z),x)+diff(fy(x,y,z),y)+diff(fz(x,y,z),z));
+myDivergenceCartesian(1,-1,2);
+print("======================================");
+kill(all);
+print("Q3-16d");
+
+d(x,y,z):=x*y^2*z^3;
+
+fx(x,y,z) := 1*d(x,y,z);
+fy(x,y,z) := 2*d(x,y,z);
+fz(x,y,z) := 3*d(x,y,z);
+
+myDivergenceCartesian(x,y,z):=''(diff(fx(x,y,z),x)+diff(fy(x,y,z),y)+diff(fz(x,y,z),z));
+myDivergenceCartesian(1,-1,2);
+
+print("======================================");
+kill(all);
+print("Q3-16a");
+
+d(x,y,z):=x+y*z;
+
+fx(x,y,z) := d(x,y,z)*(3*x);
+fy(x,y,z) := d(x,y,z)*(-5*z);
+fz(x,y,z) := d(x,y,z)*(2*y^2*z);
+
+myDivergenceCartesian(x,y,z):=''(diff(fx(x,y,z),x)+diff(fy(x,y,z),y)+diff(fz(x,y,z),z));
+myDivergenceCartesian(3,5,-2);
+print("======================================");
+kill(all);
+print("Q3-16b");
+
+d(x,y,z):=sqrt(x^2+y^2+z^2);
+
+fx(x,y,z) := x/d(x,y,z);
+fy(x,y,z) := y/d(x,y,z);
+fz(x,y,z) := z/d(x,y,z);
+
+myDivergenceCartesian(x,y,z):=''(diff(fx(x,y,z),x)+diff(fy(x,y,z),y)+diff(fz(x,y,z),z));
+myDivergenceCartesian(3,5,-2);
+print("======================================");
+kill(all);
+print("Q3-16d");
+
+d(x,y,z):=x^2*y*z^3;
+
+fx(x,y,z) := 2*d(x,y,z);
+fy(x,y,z) := -3*d(x,y,z);
+fz(x,y,z) := 1*d(x,y,z);
+
+myDivergenceCartesian(x,y,z):=''(diff(fx(x,y,z),x)+diff(fy(x,y,z),y)+diff(fz(x,y,z),z));
+myDivergenceCartesian(3,5,-2);
+print("======================================");
+kill(all);
+print("Q3-17a");
+
+fr(r,th,ph) := 2*r*sin(th)*cos(ph)+cos(th);
+fth(r,th,ph) := r*cos(th)*cos(ph)-sin(th);
+fph(r,th,ph) := r*sin(ph);
+
+myDivergenceSpherical(r,th,ph):=''(1/(r^2)*diff(r^2*fr(r,th,ph),r)+1/(r*sin(th))*diff(sin(th)*fth(r,th,ph),th)+1/(r*sin(th))*diff(fph(r,th,ph),ph));
+myDivergenceSpherical(3,%pi/4,%pi/6);
+print("======================================");
+kill(all);
+print("Q3-17b");
+
+fr(r,th,ph) := (sin(th))^2*sin(ph);
+fth(r,th,ph) :=sin(2*th)*sin(ph);
+fph(r,th,ph) := sin(th)*cos(ph);
+
+myDivergenceSpherical(r,th,ph):=''(1/(r^2)*diff(r^2*fr(r,th,ph),r)+1/(r*sin(th))*diff(sin(th)*fth(r,th,ph),th)+1/(r*sin(th))*diff(fph(r,th,ph),ph));
+myDivergenceSpherical(3,%pi/4,%pi/6);
+print("======================================");
+kill(all);
+print("Q3-17d");
+
+fr(r,th,ph) := 0.2*r^3*ph*(sin(th))^2;
+fth(r,th,ph) :=0.2*r^3*ph*(sin(th))^2;
+fph(r,th,ph) := 0.2*r^3*ph*(sin(th))^2;
+
+myDivergenceSpherical(r,th,ph):=''(1/(r^2)*diff(r^2*fr(r,th,ph),r)+1/(r*sin(th))*diff(sin(th)*fth(r,th,ph),th)+1/(r*sin(th))*diff(fph(r,th,ph),ph));
+myDivergenceSpherical(3,%pi/4,%pi/6);
