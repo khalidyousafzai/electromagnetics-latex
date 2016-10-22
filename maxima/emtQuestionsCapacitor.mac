@@ -1,7 +1,7 @@
 
 print("======================================");
 kill(all);
-print("Q5.1a");
+print("Q5.1");
 
 epsilon:8.85418782*10^(-12);
 
@@ -13,9 +13,9 @@ ansA:integrate(integrate(c(rho,phi,0)*rho,rho,0,1),phi,0,2*%pi);
 ansB:integrate(integrate(c(rho,phi,1)*rho,rho,0,1),phi,0,2*%pi);
 ansC:integrate(integrate(a(1,phi,z)*1,z,0,1),phi,0,2*%pi);
 
-display(ansA);
-display(ansB);
-display(ansB-ansA+ansC);
+float(ansA);
+float(ansB);
+float(ansB-ansA+ansC);
 print("======================================");
 kill(all);
 print("Q5.2");
@@ -27,9 +27,9 @@ b(r,theta,phi):=0;
 c(r,theta,phi):=0;
 
 ansA:integrate(integrate(a(r,theta,phi)*r^2*sin(theta),theta,0.1*%pi,0.25*%pi),phi,0,2*%pi);
-ev(%,r=0.5);
-ansB:integrate(integrate(r^2*sin(theta),theta,0.1*%pi,0.25*%pi),phi,0,2*%pi);
-ev(%,r=0.5);
+float(ev(%,r=0.5));
+area:integrate(integrate(r^2*sin(theta),theta,0.1*%pi,0.25*%pi),phi,0,2*%pi);
+float(ev(ansA,r=0.5)/ev(area,r=0.5))
 print("======================================");
 kill(all);
 print("Q5.4");
@@ -40,7 +40,7 @@ a(x,y,z):=J0*%e^(-alpha*z)/((x+1)*(y+1));
 
 
 ansA:integrate(integrate(a(x,y,z),x,0,1),y,0,1);
-ev(%,z=0);
+float(ev(%,z=0));
 print("======================================");
 kill(all);
 print("Q5.5");
@@ -60,7 +60,7 @@ ansX:integrate(integrate(a(x0-d,y,z),y,y0-d,y0+d),z,z0-d,z0+d)-integrate(integra
 ansY:integrate(integrate(b(x,y0-d,z),x,x0-d,x0+d),z,z0-d,z0+d)-integrate(integrate(b(x,y0+d,z),x,x0-d,x0+d),z,z0-d,z0+d);
 ansZ:integrate(integrate(c(x,y,z0-d),y,y0-d,y0+d),x,x0-d,x0+d)-integrate(integrate(c(x,y,z0+d),y,y0-d,y0+d),x,x0-d,x0+d);
 
-ansX+ansY+ansZ;
+float(ansX+ansY+ansZ);
 print("======================================");
 kill(all);
 print("Q5.6");
@@ -77,9 +77,9 @@ zB:0.08;
 
 a(rho,phi,z):=0.005/rho;
 
-current:integrate(integrate(sigma*a(rho,phi,z),rho,rhoA,rhoB),z,zA,zB);
-voltage:integrate(a(rho,phi,z)*rho,phi,phiA,phiB);
-resistance:voltage/current;
+current:float(integrate(integrate(sigma*a(rho,phi,z),rho,rhoA,rhoB),z,zA,zB));
+voltage:float(integrate(a(rho,phi,z)*rho,phi,phiA,phiB));
+resistance:float(voltage/current);
 print("======================================");
 kill(all);
 print("Q5.7");
@@ -96,9 +96,9 @@ zB:0.08;
 
 a(rho,phi,z):=0.005/rho;
 
-current:integrate(integrate(sigma*a(rho,phi,z)*rho,phi,phiA,phiB),z,zA,zB);
-voltage:integrate(a(rho,phi,z),rho,rhoA,rhoB);
-resistance:voltage/current;
+current:float(integrate(integrate(sigma*a(rho,phi,z)*rho,phi,phiA,phiB),z,zA,zB));
+voltage:float(integrate(a(rho,phi,z),rho,rhoA,rhoB));
+resistance:float(voltage/current);
 
 print("======================================");
 kill(all);
@@ -113,10 +113,9 @@ display(float(ev(current,r=3)));
 display(float(ev(current,r=4)));
 
 Div:1/r^2*diff(r^2*J(r,theta,phi,t),r);
-chargeDensity:-integrate(Div,t);
-velocity:J(r,theta,phi,t)/chargeDensity;
-display(chargeDensity);
-display(velocity);
+chargeDensity:float(-integrate(Div,t));
+velocity:float(J(r,theta,phi,t)/chargeDensity);
+
 print("======================================");
 kill(all);
 print("Q5.19a");
@@ -129,7 +128,7 @@ rho:-4*10^(9);
 
 sigma:mu*rho;
 J:sigma*E;
-display(J);
+float(abs(J));
 print("======================================");
 kill(all);
 print("Q5.19b");
@@ -140,7 +139,7 @@ q:-1.6*10^(-19);
 
 rho:n*q;
 J:rho*v;
-display(J);
+float(abs(J));
 print("======================================");
 kill(all);
 print("Q5.19c");
@@ -148,7 +147,7 @@ print("Q5.19c");
 resistivity:4*10^(-7);
 E:0.050;
 J:E/resistivity;
-display(J);
+float(abs(J));
 print("======================================");
 kill(all);
 print("Q5.20");
@@ -158,16 +157,16 @@ epsilon:8.85418782*10^(-12);
 V:150*rho^3;
 E:-diff(V,rho);
 D:epsilon*E;
-ev(D,rho=0.2);
-ev(D,rho=0.5);
+float(ev(D,rho=0.2));
+float(ev(D,rho=0.5));
 print("the charge is positive if the flux is leaving the conducting wall");
 
 rhoH:1/rho*diff(rho*D,rho);
-chargeSpace:integrate(integrate(integrate(rhoH*rho,rho,0.2,0.5),phi,0,2*%pi),z,0,1);
+chargeSpace:float(integrate(integrate(integrate(rhoH*rho,rho,0.2,0.5),phi,0,2*%pi),z,0,1));
 chargeInnerRadius:ev(integrate(integrate(D*rho,z,0,1),phi,0,2*%pi),rho=0.2);
 chargeOuterRadius:ev(integrate(integrate(D*rho,z,0,1),phi,0,2*%pi),rho=0.5);
 
-charge:chargeSpace+chargeInnerRadius-chargeOuterRadius;
+charge:float(chargeSpace+chargeInnerRadius-chargeOuterRadius);
 print("======================================");
 kill(all);
 print("Q5.21");
@@ -185,12 +184,12 @@ E:J/sigma;
 V:-integrate(E,rho,rhoA,rhoB);
 R:V/I;
 
-display(J);
-display(E);
-display(V);
-display(R);
+float(J);
+float(E);
+float(V);
+float(R);
 
-P:integrate(integrate(integrate(E*J*rho,rho,rhoA,rhoB),phi,0,2*%pi),z,0,l);
+P:float(integrate(integrate(integrate(E*J*rho,rho,rhoA,rhoB),phi,0,2*%pi),z,0,l));
 print("======================================");
 kill(all);
 print("Q5.22");
@@ -199,10 +198,10 @@ epsilon:8.85418782*10^(-12);
 
 sigma:sigmaA*%e^(-z);
 
-R:integrate(1/(A*sigma),z,0,d);
-I:V/R;
-J:I/A;
-E:J/sigma;
+R:float(integrate(1/(A*sigma),z,0,d));
+I:float(V/R);
+J:float(I/A);
+E:float(J/sigma);
 print("======================================");
 kill(all);
 print("Q5.23");
@@ -215,28 +214,29 @@ solve(V(0.65,0.25*%pi,z)-100,z);
 
 
 E:[-diff(V(rho,phi,z),rho),-1/rho*diff(V(rho,phi,z),phi),-diff(V(rho,phi,z),z)];
-ev(E,rho=0.65,phi=0.25*%pi,z=1.9883494);
+float(ev(E,rho=0.65,phi=0.25*%pi,z=1.9883494));
 D:epsilon*E;
 
-surfaceChargeDensity:sqrt(D.D);
+surfaceChargeDensity:float(sqrt(D.D));
 
-ev(surfaceChargeDensity,rho=0.65,phi=0.25*%pi,z=1.9883494);
+float(ev(surfaceChargeDensity,rho=0.65,phi=0.25*%pi,z=1.9883494));
 print("======================================");
 kill(all);
 print("Q5.24");
 
 epsilon:8.85418782*10^(-12);
 
+az:[0,0,1];
 V:50*z*(x+y)/(x^2+9);
 E:[-diff(V,x), -diff(V,y),-diff(V,z)];
-ev(E,z=0);
+float(ev(E,z=0));
 D:epsilon*E;
 
-rhoS:sqrt(D.D);
+rhoS:D.az;
 
 ev(rhoS,z=0);
 
-Q:integrate(integrate(-epsilon*diff(V,z),x,2,5),y,3,6);
+Q:float(integrate(integrate(-epsilon*diff(V,z),x,2,5),y,3,6));
 print("======================================");
 kill(all);
 print("Q5.25");
@@ -245,22 +245,22 @@ epsilon:8.85418782*10^(-12);
 
 V:50*log(((x+1)^2+(y+1)^2)/(x^2+(y-1)^2));
 E:[-diff(V,x), -diff(V,y),-diff(V,z)];
-ev(E,x=3,y=1,z=2);
+float(ev(E,x=3,y=1,z=2));
 D:epsilon*E;
 
 rhoS:sqrt(D.D);
 
-ev(rhoS,x=3,y=1,z=2);
+float(ev(rhoS,x=3,y=1,z=2));
 
 aE:E/sqrt(E.E);
-ev(aE,x=3,y=1,z=2);
+float(ev(aE,x=3,y=1,z=2));
 print("======================================");
 kill(all);
 print("Q5.26");
 
 epsilon:8.85418782*10^(-12);
 
-Q:8*%pi;
+Q:8*%pi*10^(-6);
 n:[x,0,0];
 na:[2,0,4];
 nb:[-2,0,4];
@@ -272,10 +272,10 @@ Rb:n-nb;
 Raa:n-naa;
 Rbb:n-nbb;
 
-D:Q/(4*%pi)*(Ra/(Ra.Ra)^(3/2)+Rb/(Rb.Rb)^(3/2)-Raa/(Raa.Raa)^(3/2)-Rbb/(Rbb.Rbb)^(3/2));
+D:float(Q/(4*%pi)*(Ra/(Ra.Ra)^(3/2)+Rb/(Rb.Rb)^(3/2)-Raa/(Raa.Raa)^(3/2)-Rbb/(Rbb.Rbb)^(3/2)));
 
 rhoS:D.[0,0,1];
-ev(rhoS,x=0,y=0,z=0);
+float(ev(rhoS,x=0,y=0,z=0));
 print("======================================");
 kill(all);
 print("Q5.27");
@@ -308,28 +308,8 @@ fRb:sqrt((n-nb).(n-nb));
 fRaa:sqrt((n-naa).(n-naa));
 fRbb:sqrt((n-nbb).(n-nbb));
 
-V:-1/(2*%pi*epsilon)*[rhoLa*log(fRa/2)+rhoLb*log(fRb/1)-rhoLa*log(fRaa/1)-rhoLb*log(fRbb/2)];
-print("======================================");
-kill(all);
-print("Q5.28");
+V:float(-1/(2*%pi*epsilon)*[rhoLa*log(fRa/2)+rhoLb*log(fRb/1)-rhoLa*log(fRaa/1)-rhoLb*log(fRbb/2)]);
 
-epsilon:8.85418782*10^(-12);
-
-rhoL:%pi*yy*10^(-9);
-
-/*R:[x,y-yy,-1];
-Ra:[x,y-yy,1]; */
-
-R:[0,1-yy,-1];
-Ra:[0,1-yy,1];
-
-absR:sqrt(R.R);
-absRa:sqrt(Ra.Ra);
-
-dD:rhoL*R/(4*%pi*absR^3);
-dDa:-1*rhoL*Ra/(4*%pi*absRa^3);
-
-D:integrate(-1*dD,yy,-1,0)+integrate(dD,yy,0,1)+integrate(-1*dDa,yy,-1,0)+integrate(dDa,yy,0,1);
 print("======================================");
 kill(all);
 print("Q5.31");
@@ -347,12 +327,12 @@ absE:sqrt(E.E);
 
 ansA:A.E;
 ansB:ansA/(absA*absE);
-ansC:180/%pi*acos(ansB);
+ansC:float(180/%pi*acos(ansB));
 
 a:A/absA;
 
-Ean:(E.a)*a;
-Eat:E-Ean;
+Ean:float((E.a)*a);
+Eat:float(E-Ean);
 
 Ebn:Ean*ea/eb;
 Ebt:Eat;
@@ -363,7 +343,7 @@ absEb:sqrt(Eb.Eb);
 
 ansE:A.Eb;
 ansF:ansE/(absA*absEb);
-ansG:180/%pi*acos(ansF);
+ansG:float(180/%pi*acos(ansF));
 print("======================================");
 kill(all);
 print("Q5.32");
@@ -382,7 +362,7 @@ epsilonRB:2.5;
 epsilonA:epsilonRA*epsilon;
 epsilonB:epsilonRB*epsilon;
 
-V:-integrate(rhoA*rhoS/(epsilonA*rho),rho,rhoB,rhoA)-integrate(rhoA*rhoS/(epsilonB*rho),rho,rhoC,rhoB);
+V:float(-integrate(rhoA*rhoS/(epsilonA*rho),rho,rhoB,rhoA)-integrate(rhoA*rhoS/(epsilonB*rho),rho,rhoC,rhoB));
 print("======================================");
 kill(all);
 print("Q5.33");
@@ -401,18 +381,29 @@ epsilonRB:2.5;
 epsilonA:epsilonRA*epsilon;
 epsilonB:epsilonRB*epsilon;
 
-V:-integrate(rhoA^2*rhoS/(epsilonA*rho^2),rho,rhoB,rhoA)-integrate(rhoA^2*rhoS/(epsilonB*rho^2),rho,rhoC,rhoB);
+V:float(-integrate(rhoA^2*rhoS/(epsilonA*rho^2),rho,rhoB,rhoA)-integrate(rhoA^2*rhoS/(epsilonB*rho^2),rho,rhoC,rhoB));
 print("======================================");
 kill(all);
 print("Q5.34");
 
 epsilon:8.85418782*10^(-12);
 
-d:0.004;
-S:64*10^(-4);
+d:0.001;
+S:100*10^(-4);
 epsilonR:5;
+V0:50;
 
 epsilonA:epsilonR*epsilon;
 
-C:epsilonA*S/d;
+C:float(epsilonA*S/d);
+E:float(V0/d);
+D:float(epsilonA*E);
+Q:float(C*V0);
+W:float(1/2*C*V0^2);
 
+C:epsilon*S/d;
+V:Q/C;
+
+E:float(V/d);
+D:float(epsilon*E);
+W:float(1/2*C*V^2);

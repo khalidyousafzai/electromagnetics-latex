@@ -11,7 +11,7 @@ aa:integrate(a(x,2,3),x,1,6);
 bb:integrate(b(6,y,3),y,2,1);
 cc:integrate(c(6,1,z),z,3,2);
 
-ansA:aa+bb+cc;
+ansA:float(aa+bb+cc);
 print("======================================");
 kill(all);
 print("Q4.4b");
@@ -25,12 +25,12 @@ path:[x=11-5*t,y=t,z=t+1];
 sublis(path,integrand);
 ev(%,diff);
   %, del(t) = 1;
-integrate(%,t,2,1);
+float(integrate(%,t,2,1));
 print("======================================");
 kill(all);
 print("Q4.5");
 
-Q:5;
+Q:5*10^(-6);
 a(x,y,z):=2*x;
 b(x,y,z):=-3*z;
 c(x,y,z):=2;
@@ -39,19 +39,19 @@ aa:integrate(a(x,2,-4),x,0,2);
 bb:integrate(b(2,y,-4),y,2,4);
 cc:integrate(c(2,4,z),z,-4,-12);
 
-ansA:-Q*(aa+bb+cc);
+ansA:float(-Q*(aa+bb+cc));
 
 integrand:a(x,y,z)*diff(x)+b(x,y,z)*diff(y)+c(x,y,z)*diff(z);
 path:[x=t,y=t+2,z=t^2-(t+2)^2];
 sublis(path,integrand);
 ev(%,diff);
   %, del(t) = 1;
--Q*integrate(%,t,0,2);
+float(-Q*integrate(%,t,0,2));
 print("======================================");
 kill(all);
-print("Q4.6");
+print("Q4.7");
 
-Q:-2.2;
+Q:-2.2*10^(-6);
 a(x,y,z):=2*x^2*y;
 b(x,y,z):=y^2;
 c(x,y,z):=x+z;
@@ -61,7 +61,7 @@ path:[x=t,y=(t^2+2)/6,z=1];
 sublis(path,integrand);
 ev(%,diff);
   %, del(t) = 1;
--Q*integrate(%,t,2,4);
+float(-Q*integrate(%,t,2,4));
 print("======================================");
 kill(all);
 print("Q4.8");
@@ -86,14 +86,14 @@ path:[rho=t,phi=5*%pi/6,z=0];
 sublis(path,integrand);
 ev(%,diff);
   %, del(t) = 1;
-ansA:-Q*integrate(%,t,0,2);
+ansA:float(-Q*integrate(%,t,0,2));
 
 integrand:a(rho,phi,z)*diff(rho)+b(rho,phi,z)*rho*diff(phi)+c(rho,phi,z)*diff(z);
 path:[rho=2,phi=5*%pi/6,z=t];
 sublis(path,integrand);
 ev(%,diff);
   %, del(t) = 1;
-ansB:-Q*integrate(%,t,0,3);
+ansB:float(-Q*integrate(%,t,0,3));
 
 ans:ansA+ansB
 
@@ -102,10 +102,10 @@ path:[rho=12*t/(5*%pi),phi=t,z=18*t/(5*%pi)];
 sublis(path,integrand);
 ev(%,diff);
   %, del(t) = 1;
-ansC:-Q*integrate(%,t,0,5*%pi/6);
+ansC:float(-Q*integrate(%,t,0,5*%pi/6));
 print("======================================");
 kill(all);
-print("Q4.12");
+print("Q4.13");
 
 epsilon:8.85418782*10^(-12);
 rhoZ:5*10^(-9);
@@ -116,13 +116,13 @@ rZN:sqrt(68);
 rXA:sqrt(45);
 rXN:sqrt(29);
 
-vX:-rhoX/(2*%pi*permitivity)*log(rXN/rXA);
-vZ:-rhoZ/(2*%pi*permitivity)*log(rZN/rZA);
+vX:-rhoX/(2*%pi*epsilon)*log(rXN/rXA);
+vZ:-rhoZ/(2*%pi*epsilon)*log(rZN/rZA);
 
-ans:vA+vX+vZ
+ans:float(vA+vX+vZ);
 print("======================================");
 kill(all);
-print("Q4.13 and Q4.14");
+print("Q4.14 and Q4.15");
 
 rhoSS:2*10^(-9);
 epsilonA:8.85418782*10^(-12);
@@ -139,7 +139,7 @@ voltageRing:-1*integrate(integrate(integrate(b(rho,phi,z),rho,a,b),phi,0,2*%pi),
 print("======================================");
 kill(all);
 
-print("Q15a");
+print("Q16");
 rhoL(x):=15*x*10^(-9);
 epsilon:8.85418782*10^(-12);
 
@@ -147,11 +147,11 @@ x0:2;
 y0:4;
 z0:2;
 
-voltage:-1/(4*%pi*epsilon)*integrate(integrate(rhoL(x)*(z-z0)/(x^2+y0^2+(z-z0)^2)^(3/2),x,0,x0),z,inf,0);
+voltage:float(-1/(4*%pi*epsilon)*integrate(integrate(rhoL(x)*(z-z0)/(x^2+y0^2+(z-z0)^2)^(3/2),x,0,x0),z,inf,0));
 print("======================================");
 kill(all);
 
-print("Q4.16");
+print("Q4.17");
 
 epsilon:8.85418782*10^(-12);
 
@@ -174,7 +174,7 @@ print("rho=",ev(%,x=5,y=-3,z=8));
 print("======================================");
 kill(all);
 
-print("Q4.17");
+print("Q4.20");
 
 f:2*x^2-4*y^3+2*z+100;
 
@@ -193,11 +193,11 @@ d:ev(%,x=x0,y=y0,z=z0);
 e:sqrt(d.d);
 a:d/e;
 
-E:E0*a;
+E:float(E0*a);
 print("======================================");
 kill(all);
 
-print("Q4.18");
+print("Q4.21");
 
 epsilon:8.85418782*10^(-12);
 p1:[0,0,15*10^(-9)];
@@ -217,27 +217,9 @@ aB:Rb/sqrt(Rb.Rb);
 Va:p1.aA/(4*%pi*epsilon*(Ra.Ra));
 Vb:p2.aB/(4*%pi*epsilon*(Rb.Rb));
 V:Va+Vb;
-ev(%,x=0,y=0,z=-5);
+float(ev(%,x=0,y=0,z=-5));
 E:[-1*diff(V,x), -1*diff(V,y),-1*diff(V,z)];
-ev(%,x=0,y=0,z=-5);
-print("======================================");
-kill(all);
-
-print("Q4.19");
-
-epsilon:8.85418782*10^(-12);
-p:[0,0,15*epsilon];
-
-a:[0,0,0];
-c:[x,y,z];
-
-Ra:c-a;
-
-aA:Ra/sqrt(Ra.Ra);
-
-V:p.aA/(4*%pi*epsilon*(Ra.Ra));
-
-E:[-1*diff(V,x), -1*diff(V,y),-1*diff(V,z)];
+float(ev(%,x=0,y=0,z=-5));
 
 print("======================================");
 kill(all);
