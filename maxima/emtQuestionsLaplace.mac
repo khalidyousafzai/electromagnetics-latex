@@ -73,4 +73,45 @@ aE:float(E/sqrt(E.E));
 
 voltage:-(E.aE)*d;
 C:A*epsilon/d;
+print("======================================");
+kill(all);
+print("Q6.8");
 
+epsilon:8.85418782*10^(-12);
+
+N:[2.2,62/180*%pi,3];
+
+V(rho,phi,z) :=55*phi+72;
+
+float(V(2.2,62/180*%pi,3));
+
+E:-[diff(V(rho,phi,z),rho),1/rho*diff(V(rho,phi,z),phi),diff(V(rho,phi,z),z)];
+
+float(ev(%,rho=2.2,phi=62/180*%pi,z=3));
+
+energyDensity:epsilon/2*(E.E);
+
+float(ev(%,rho=2.2,phi=62/180*%pi,z=3));
+
+energy:integrate(integrate(integrate(rho*energyDensity,rho,rhoA,rhoB),phi,phiA,phiB),z,zA,zB);
+print("======================================");
+kill(all);
+print("Q6.10");
+
+epsilon:8.85418782*10^(-12);
+
+V(rho,phi,z):= sin(2*phi)/rho;
+
+laplace:1/rho*diff(rho*diff(V(rho,phi,z),rho),rho)+1/rho^2*diff(V(rho,phi,z),phi,2)+1/rho^2*diff(V(rho,phi,z),z,2);
+
+rho[h]:-epsilon*laplace;
+
+float(ev(%,rho=0.4,phi=45/180*%pi,z=2));
+
+gradient:[diff(V(rho,phi,z),rho),1/rho*diff(V(rho,phi,z),phi),diff(V(rho,phi,z),z)];
+
+E:-gradient;
+
+EB:float(ev(%,rho=2.5,phi=75/180*%pi,z=3));
+
+rho[S]:epsilon*sqrt(EB.EB);
