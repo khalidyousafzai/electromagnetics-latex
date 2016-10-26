@@ -1,5 +1,23 @@
+print("======================================");
 
-f(r,theta,phi):=(k*r)/a*r^2*sin(theta);
+epsilon:8.85418782*10^(-12)$
+mu:4*%pi*10^(-7)$
 
-integrate(integrate(integrate(f(r,theta,phi),r,0,a),theta,0,pi),phi,0,0.2*pi);
+
+I:1$
+N:[0,0,1]$
+
+P:[xa,y,0]$
+
+R:N-P$
+aR:R/sqrt(R.R)$
+dL:[0,diff(y),0]$
+k:I/(4*%pi*(R.R))*dL~aR$
+express(%)$
+integrand:%$
+path:[x=xa,y=t,z=0]$
+sublis(path,integrand)$
+ev(%,diff)$
+  %, del(t) = 1$
+ansA:float(integrate(%,t,minf,inf));
 
