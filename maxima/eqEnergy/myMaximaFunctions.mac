@@ -1,0 +1,96 @@
+/* cartesian, cylindrical and spherical  Divergence, Grad, Curl, Laplace */
+
+
+/* cartesian Divergence
+the function br difened first 
+*/
+
+Gx:x;
+Gy:x^2*y;
+Gz:1;
+
+G:[Gx,Gy,Gz];
+DivG:diff(Gx,x)+diff(Gy,y)+diff(Gz,z);
+
+/* cylindrical Divergence
+the function br difened first 
+*/
+
+Grho:rho^2*sin(phi);
+Gphi:3;
+Gz:z^2;
+
+G:[Grho,Gphi,Gz];
+DivG:1/rho*diff(rho*Grho,rho)+1/rho*diff(Gphi,phi)+diff(Gz,z);
+
+/* spherical Divergence
+the function be defined first 
+*/
+
+Gr:0;
+Gtheta:4*r^2/sin(theta);
+Gphi:50*r*sin(theta);
+
+G:[Gr,Gtheta,Gphi];
+DivG:1/r^2*diff(r^2*Gr,r)+1/(r*sin(theta))*diff(sin(theta)*Gtheta,theta)+1/(r*sin(theta))*diff(Gphi,phi);
+
+/* cartesian LAPLACIAN
+the function V must be defined first as shown
+*/
+
+V:10*x^3+y^2+x*z^4;
+
+LapV:diff(V,x,2)+diff(V,y,2)+diff(V,z,2);
+
+/* cartesian GRADIENT
+the function V must be defined first as shown
+*/
+
+V:10*x^3+y^2+x*z^4;
+
+Gx:diff(V,x);
+Gy:diff(V,y);
+Gz:diff(V,z);
+GradV:-[Gx,Gy,Gz];
+
+/* cartesian CURL 
+Gx, Gy and Gz must be defined first as shown below
+*/
+Gx:3*x*y/z^2;
+Gy:-2*(x+y*z);
+Gz:x^2*y^3/z;
+G:[Gx,Gy,Gz];
+
+AA:diff(Gz,y)-diff(Gy,z);
+BB:diff(Gx,z)-diff(Gz,x);
+CC:diff(Gy,x)-diff(Gx,y);
+
+curlG:[AA,BB,CC];
+
+/* cylindrical CURL 
+Grho, Gphi and Gz must be defined first as shown below
+*/
+Grho:3000*rho^(1.3)*cos(omega*t-0.3*z);
+Gphi:0;
+Gz:0;
+
+AA:1/rho*diff(Gz,phi)-diff(Gphi,z);
+BB:diff(Grho,z)-diff(Gz,rho);
+CC:1/rho*diff(rho*Gphi,rho)-1/rho*diff(Grho,phi);
+
+curlG:[AA,BB,CC];
+
+/* spherical CURL 
+Gr, Gtheta and Gphi must be defined first as shown below
+*/ 
+Gr:0;
+Gtheta:0;
+Gphi:10^6*r*sin(theta);
+
+G:[Gr,Gtheta,Gphi];
+
+AA:1/(r*sin(theta))*(diff(sin(theta)*Gphi,theta)-diff(Gtheta,phi));
+BB:1/(r*sin(theta))*diff(Gr,phi)-1/r*diff(r*Gphi,r);
+CC:1/r*diff(r*Gtheta,r)-1/r*diff(Gr,theta);
+
+curlG:[AA,BB,CC];
