@@ -554,13 +554,14 @@ epsilon:8.85418782*10^(-12);
 mu:4*%pi*10^(-7);
 load("vect");
 
+xx=4;
 I:2*0.2;
 N:[0,0,z];
-P:[-4,0,0];
+P:[-xx,0,0];
 
 R:N-P;
 absR:sqrt(R.R);
 aR:R/sqrt(R.R);
 
-H:I/(2*pi*absR)*2/absR;
+H:I/(2*pi*absR)*xx/absR;
 integrate(-H,z);
