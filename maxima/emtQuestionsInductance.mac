@@ -226,7 +226,27 @@ expand(%);
 ansA:float(%);
 print("======================================");
 kill(all);
-print("Q8.8a");
+print("Q8.8");
+
+epsilon:8.85418782*10^(-12);
+
+load("vect");
+
+
+A:[-b,0,0];
+B:[b,0,0];
+
+Bmag:mu*I1/(2*%pi*(x^2+y^2))*[-y,x,0];
+
+dF:express(I2*[1,0,0]~Bmag);
+R:[x,y,0];
+dT:express(R~dF);
+integrand:dT;
+integrate(integrand,x,-b,b);
+T:ev((%),y=a);
+print("======================================");
+kill(all);
+print("Q8.9");
 
 epsilon:8.85418782*10^(-12);
 mu:4*%pi*10^(-7);
@@ -243,12 +263,6 @@ Lba:B-A;
 Lcb:C-B;
 Ldc:D-C;
 Lad:A-D;
-
-Lba:B-A;
-Lcb:C-B;
-Ldc:D-C;
-Lad:A-D;
-
 
 Bmag:5*[1,0,0];
 
@@ -279,11 +293,16 @@ dT:express(R~dF);
 integrand:dT;
 TAD:float(integrate(integrand,z,4,0),z,4,0);
 
-T:TBA+TCB+TDC+TAD;
+TBA;
+TCB;
+TDC;
+TAD;
 
+T:TBA+TCB+TDC+TAD;
 print("======================================");
 kill(all);
-print("Q8.8b");
+print("Q8.10");
+/*THIS TIME USING MAGNETIC MOMENTS */ 
 
 epsilon:8.85418782*10^(-12);
 mu:4*%pi*10^(-7);
@@ -301,11 +320,31 @@ Lcb:C-B;
 Ldc:D-C;
 Lad:A-D;
 
+Bmag:5*[1,0,0];
+dS:[0,-1,0];
+dT:express(I*dS~Bmag);
+integrand:dT;
+T:float(integrate(integrate(integrand,x,2,5),z,0,4));
+
+print("======================================");
+kill(all);
+print("Q8.11");
+
+epsilon:8.85418782*10^(-12);
+mu:4*%pi*10^(-7);
+load("vect");
+
+IB:25;
+I:6;
+A:[2,0,0];
+B:[5,0,0];
+C:[5,0,4];
+D:[2,0,4];
+
 Lba:B-A;
 Lcb:C-B;
 Ldc:D-C;
 Lad:A-D;
-
 
 Bmag:mu*IB/(2*%pi*x)*[0,1,0];
 
@@ -336,60 +375,76 @@ integrand:dT;
 float(integrate(integrand,z,4,0),z,4,0);
 TAD:ev(%,x=2);
 
+TBA;
+TCB;
+TDC;
+TAD;
 T:TBA+TCB+TDC+TAD;
 print("======================================");
 kill(all);
-print("Q8.8a AGAIN");
-/*THIS TIME USING MAGNETIC MOMENTS */ 
+print("Q8.12");
 
 epsilon:8.85418782*10^(-12);
 mu:4*%pi*10^(-7);
 load("vect");
 
-IB:25;
-I:6;
-A:[2,0,0];
-B:[5,0,0];
-C:[5,0,4];
-D:[2,0,4];
+B:1.5*[0,1,0];
+N:500;
+I:3;
+R:0.02;
+S:%pi*R^2*[1,0,0];
 
-Lba:B-A;
-Lcb:C-B;
-Ldc:D-C;
-Lad:A-D;
-
-Bmag:5*[1,0,0];
-dS:[0,-1,0];
-dT:express(I*dS~Bmag);
-integrand:dT;
-T:float(integrate(integrate(integrand,x,2,5),z,0,4));
+T:float(express(N*I*S~B));
 print("======================================");
 kill(all);
-print("Q8.8b AGAIN");
-/*THIS TIME USING MAGNETIC MOMENTS 
-THIS GIVES WRONG ANSWER AS MAGNETIC FIELD IS NOT CONSTANT
-ADD THIS AS AN EXAMPLE
-*/ 
+print("Q8.13");
 
 epsilon:8.85418782*10^(-12);
 mu:4*%pi*10^(-7);
 load("vect");
 
-IB:25;
-I:6;
-A:[2,0,0];
-B:[5,0,0];
-C:[5,0,4];
-D:[2,0,4];
+chi:2.5;
+B:0.15*z*[0,1,0];
 
-Lba:B-A;
-Lcb:C-B;
-Ldc:D-C;
-Lad:A-D;
+uR:1+chi;
+muu:float(uR*mu);
 
-Bmag:mu*IB/(2*%pi*x)*[0,1,0];
-dS:[0,-1,0];
-dT:express(I*dS~Bmag);
-integrand:dT;
-T:float(integrate(integrate(integrand,x,2,5),z,0,4));
+H:B/muu;
+M:chi*H;
 
+
+/* cartesian CURL 
+Gx, Gy and Gz must be defined first as shown below
+*/
+Gx:0;
+Gy:0.4*z/muu;
+Gz:0;
+G:[Gx,Gy,Gz];
+
+AA:diff(Gz,y)-diff(Gy,z);
+BB:diff(Gx,z)-diff(Gz,x);
+CC:diff(Gy,x)-diff(Gx,y);
+
+J:[AA,BB,CC];
+
+Gx:0;
+Gy:chi*0.4*z/muu;
+Gz:0;
+G:[Gx,Gy,Gz];
+
+AA:diff(Gz,y)-diff(Gy,z);
+BB:diff(Gx,z)-diff(Gz,x);
+CC:diff(Gy,x)-diff(Gx,y);
+
+Jb:[AA,BB,CC];
+
+Gx:0;
+Gy:0.4*z/mu;
+Gz:0;
+G:[Gx,Gy,Gz];
+
+AA:diff(Gz,y)-diff(Gy,z);
+BB:diff(Gx,z)-diff(Gz,x);
+CC:diff(Gy,x)-diff(Gx,y);
+
+JT:float([AA,BB,CC]);

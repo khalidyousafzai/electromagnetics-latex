@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%
+\pgfmathsetmacro{\ys}{1.5}
+\pgfmathsetmacro{\y}{2}
+\pgfmathsetmacro{\z}{2}
+
+%grid
+\draw[gray] (0,0,0)--(1,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,4.5,0)node[right]{$y$};
+\draw[->-=0.5] (0,0,0)--(0,0,2.5)node[left]{$z$}node[pos=0.5,left]{\SI{1.5}{\ampere}};
+%loop
+\draw[->-=0.4](0,\ys,0)coordinate(a)node[below]{$\scriptstyle N_1(0,3,0)$}--++(0,0,\z)coordinate(b)node[above]{$\scriptstyle N_2(0,3,4)$}node[pos=0.4, right]{$\SI{2}{\ampere}$};
+\draw(0,\ys,\z)--++(0,\y,0)coordinate(c)node[above right]{$\scriptstyle N_3(0,6,4)$}--++(0,0,-\z)coordinate(d)node[below]{$\scriptstyle N_4(0,6,0)$}--++(0,-\y,0);
+\draw[-latex](0,0,0)--($(b)!0.6!(c)$)node[pos=0.3,fill=white]{$\kvec{R}$}coordinate(yy);
+\draw[very thick](yy)++(0,-0.2,0)--++(0,0.4,0)node[pos=0.5,above]{$\dif y$};
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
