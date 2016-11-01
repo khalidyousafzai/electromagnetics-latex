@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+  \begin{axis}[
+      hide axis,
+      view={60}{60}
+    ]
+    \addplot3 [
+      surf, shader=interp,
+      point meta=x,
+      colormap/greenyellow,
+      samples=40,
+      samples y=40,
+      z buffer=sort,
+      domain=0:360,
+      y domain=0:360
+    ] (
+              {(3.5 + 0.5*cos(y))*cos(x)},
+              {(3.5 + 0.5*cos(y))*sin(x)},
+              {0.5*sin(y)});
+
+  \end{axis}
+\end{tikzpicture}
+\end{urdufont}
+\end{document}

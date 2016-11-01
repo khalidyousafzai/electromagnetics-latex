@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+    \begin{axis}[hide axis,view={60}{60}]
+       \addplot3[
+	surf,
+%colormap name=viridis,
+       colormap={bw}{gray(0 cm)=(0);gray(1 cm)=(1)},
+       samples=30,
+       domain=0:360,y domain=0:360,
+       z buffer=sort]
+       ({(2+cos(x))*cos(y)}, 
+        {(2+cos(x))*sin(y)}, 
+        {0.2*sin(x)});
+\pgfmathsetmacro{\ang}{0}
+\addplot3[latex-, domain=50:120, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{45}
+\addplot3[latex-, domain=60:150, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{90}
+\addplot3[latex-, domain=80:150, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{135}
+\addplot3[latex-, domain=80:150, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{180}
+\addplot3[latex-, domain=80:150, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{225}
+\addplot3[latex-, domain=80:150, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{270}
+\addplot3[latex-, domain=60:140, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+\pgfmathsetmacro{\ang}{315}
+\addplot3[latex-, domain=50:120, samples y=0] ({(2+cos(x))*cos(\ang)},{(2+cos(x))*sin(\ang)},{0.2*sin(x)}); 
+    \end{axis}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

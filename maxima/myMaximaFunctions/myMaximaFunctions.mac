@@ -1,0 +1,135 @@
+/* cartesian, cylindrical and spherical  Divergence, Grad, Curl, Laplace */
+
+
+
+
+/* cartesian Divergence
+the function br difened first 
+*/
+G:[x^2*y,2+y*z,x*(y-z^2)];
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+Gx:ax.G;
+Gy:ay.G;
+Gz:az.G;
+
+
+DivG:diff(Gx,x)+diff(Gy,y)+diff(Gz,z);
+
+/* cylindrical Divergence
+the function br difened first 
+*/
+
+
+G:[GGrho,GGphi,GGz];
+
+arho:[1,0,0];
+aphi:[0,1,0];
+az:[0,0,1];
+
+Grho:arho.G;
+Gphi:aphi.G;
+Gz:az.G;
+
+DivG:1/rho*diff(rho*Grho,rho)+1/rho*diff(Gphi,phi)+diff(Gz,z);
+
+/* spherical Divergence
+the function be defined first 
+*/
+
+G:[Gr,Gtheta,Gphi];
+
+ar:[1,0,0];
+atheta:[0,1,0];
+aphi:[0,0,1];
+
+Gr:ar.G;
+Gtheta:atheta.G;
+Gphi:aphi.G;
+
+DivG:1/r^2*diff(r^2*Gr,r)+1/(r*sin(theta))*diff(sin(theta)*Gtheta,theta)+1/(r*sin(theta))*diff(Gphi,phi);
+
+/* cartesian LAPLACIAN
+the function V must be defined first as shown
+*/
+
+V:10*x^3+y^2+x*z^4;
+
+LapV:diff(V,x,2)+diff(V,y,2)+diff(V,z,2);
+
+/* cartesian GRADIENT
+the function V must be defined first as shown
+*/
+
+V:10*x^3+y^2+x*z^4;
+
+Gx:diff(V,x);
+Gy:diff(V,y);
+Gz:diff(V,z);
+GradG:[Gx,Gy,Gz];
+
+E:-GradG;
+
+/* cartesian CURL 
+Gx, Gy and Gz must be defined first as shown below
+*/
+
+
+G:[x^2*y,2+y*z,x*(y-z^2)];
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+Gx:ax.G;
+Gy:ay.G;
+Gz:az.G;
+
+AA:diff(Gz,y)-diff(Gy,z);
+BB:diff(Gx,z)-diff(Gz,x);
+CC:diff(Gy,x)-diff(Gx,y);
+
+curlG:[AA,BB,CC];
+
+/* cylindrical CURL 
+Grho, Gphi and Gz must be defined first as shown below
+*/
+
+G:[GGrho,GGphi,GGz];
+
+arho:[1,0,0];
+aphi:[0,1,0];
+az:[0,0,1];
+
+Grho:arho.G;
+Gphi:aphi.G;
+Gz:az.G;
+
+AA:1/rho*diff(Gz,phi)-diff(Gphi,z);
+BB:diff(Grho,z)-diff(Gz,rho);
+CC:1/rho*diff(rho*Gphi,rho)-1/rho*diff(Grho,phi);
+
+curlG:[AA,BB,CC];
+
+/* spherical CURL 
+Gr, Gtheta and Gphi must be defined first as shown below
+*/ 
+
+G:[Gr,Gtheta,Gphi];
+
+ar:[1,0,0];
+atheta:[0,1,0];
+aphi:[0,0,1];
+
+Gr:ar.G;
+Gtheta:atheta.G;
+Gphi:aphi.G;
+
+AA:1/(r*sin(theta))*(diff(sin(theta)*Gphi,theta)-diff(Gtheta,phi));
+BB:1/(r*sin(theta))*diff(Gr,phi)-1/r*diff(r*Gphi,r);
+CC:1/r*diff(r*Gtheta,r)-1/r*diff(Gr,theta);
+
+curlG:[AA,BB,CC];

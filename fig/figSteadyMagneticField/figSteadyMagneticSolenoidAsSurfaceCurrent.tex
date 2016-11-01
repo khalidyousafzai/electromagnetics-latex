@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+
+\pgfmathsetmacro{\x}{2.5}
+\pgfmathsetmacro{\y}{1}
+\pgfmathsetmacro{\h}{2}
+
+   \draw (0,2) ellipse (\x cm and \y cm);
+  \draw ([shift={(180:\x cm and \y cm)}]0,0) arc  (180:360: \x cm and \y cm);
+\draw(\x,0)--++(0,\h);
+\draw(-\x,0)--++(0,\h);
+\draw[-stealth] (0,\h)--++(\x,0)node[pos=0.5,fill=white]{$a$};
+%
+\foreach \yy in {0,0.25}{
+\draw[-latex] (-0.25,\yy*\h) to [out=-10,in=190] ++(0.5,0);}
+\draw[stealth-stealth] (-1.25*\x,0)--++(0,\h)node[pos=0.5,fill=white]{$d$};
+%
+\path[-latex] (-0.25,0.125*\h) to [out=-10,in=190] ++(0.5,0)coordinate(kk);
+\draw (kk) node[right]{$\kvec{K}=K\aphi$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
