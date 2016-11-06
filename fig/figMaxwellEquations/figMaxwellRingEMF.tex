@@ -1,0 +1,71 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\r}{1}
+\pgfmathsetmacro{\delR}{0.075}
+\pgfmathsetmacro{\start}{15}
+\pgfmathsetmacro{\ang}{2*\start/6}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american voltages]
+%grid
+\draw  ([shift={(\start:\r)}]0,0) arc (\start:360-\start:\r);
+\draw (-\start:\r)--(-\start+\ang/2:\r-\delR)--(-\start+\ang+\ang/2:\r+\delR)--(-\start+2*\ang+\ang/2:\r-\delR)--(-\start+3*\ang+\ang/2:\r+\delR)--(-\start+4*\ang+\ang/2:\r-\delR)--(-\start+5*\ang+\ang/2:\r+\delR)--(-\start+6*\ang:\r);
+
+\draw[fill] (\start+10:\r) circle (1pt)node[right]{$a$};
+\draw[fill] (-\start-10:\r) circle (1pt)node[right]{$b$};
+\draw[fill] (0:\r) node[right]{$\SI{55}{$\Omega$}$};
+
+\draw[-latex] ([shift={(140:\r+0.2)}]0,0) arc (140:170:\r+0.2); 
+\draw (160:\r+0.2)node[left]{$i(t)$};
+\draw (0:\r-0.4) node {$e(t)$};
+\draw (0:\r-0.4) node [shift={(0,-0.35)}]{$+$};
+\draw (0:\r-0.4) node [shift={(0,0.35)}]{$-$};
+%
+\draw (-2/3*\r,0.3) circle (2pt);
+\draw[fill] (-2/3*\r,0.3) circle (1pt);
+\draw (-2/3*\r,0) circle (2pt);
+\draw[fill] (-2/3*\r,0) circle (1pt);
+\draw (-2/3*\r,-0.3) circle (2pt);
+\draw[fill] (-2/3*\r,-0.3) circle (1pt);
+\draw (-1/3*\r,0.6) circle (2pt);
+
+\draw[fill] (-1/3*\r,0.6) circle (1pt);
+\draw (-1/3*\r,0.3) circle (2pt);
+\draw[fill] (-1/3*\r,0.3) circle (1pt);
+\draw (-1/3*\r,0) circle (2pt);
+\draw[fill] (-1/3*\r,0) circle (1pt);
+\draw (-1/3*\r,-0.3) circle (2pt);
+\draw[fill] (-1/3*\r,-0.3) circle (1pt);
+\draw (-1/3*\r,-0.6) circle (2pt);
+\draw[fill] (-1/3*\r,-0.6) circle (1pt);
+
+\draw (0,0.6) circle (2pt);
+\draw[fill] (0,0.6) circle (1pt);
+\draw (0,0.3) circle (2pt);
+\draw[fill] (0,0.3) circle (1pt);
+\draw (0,0) circle (2pt);
+\draw[fill] (0,0) circle (1pt);
+\draw (0,-0.3) circle (2pt);
+\draw[fill] (0,-0.3) circle (1pt);
+\draw (0,-0.6) circle (2pt);
+\draw[fill] (0,-0.6) circle (1pt);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

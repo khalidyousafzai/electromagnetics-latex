@@ -1,0 +1,43 @@
+\documentclass[b5paper]{standalone} 
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{commath}
+\usepackage{polyglossia}                %is loaded the last
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\x}{2}
+\pgfmathsetmacro{\y}{0.5}
+\pgfmathsetmacro{\del}{0.3}
+\pgfmathsetmacro{\ang}{10}
+\pgfmathsetmacro{\l}{0.6/cos(\ang)}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american voltages]
+%axis
+\draw[gray] (2,-0.25)--++(0.4,0)node[right]{$x$};
+\draw[gray] (2,-0.25)--++(0,0.4)node[above]{$y$};
+%
+\draw (0,\y)node[left]{$a$}--++(\ang:\x);
+\draw(0,-\y)node[left]{$b$}--++(-\ang:\x);
+\draw (1,2*\y)coordinate(s)--++(0,-4*\y);
+%text
+\draw[stealth-] (s)++(0.05,0.05) to [out=45,in=180] ++(0.5,0.5) node[right]{\RL{محرک سلاخ}};
+\draw[gray] (0,\y)--++(0.75,0);
+\draw[stealth-] (0.6,\y)--++(0,-0.2);
+\draw[stealth-] (0,\y)++(\ang:\l)--++(0,0.3)--++(-0.4,0.4)node[above]{$10^{\circ}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

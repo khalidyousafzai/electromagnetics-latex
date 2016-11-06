@@ -1,0 +1,55 @@
+print("======================================");
+kill(all);
+print("example 8.1");
+
+mu0:4*%pi*10^(-7);
+epsilon:8.85418782*10^(-12);
+
+load("vect");
+a1:[1,0,0];
+a2:[0,1,0];
+a3:[0,0,1];
+
+print("======================================");
+kill(all);
+print("Q 9.1");
+
+mu0:4*%pi*10^(-7);
+epsilon:8.85418782*10^(-12);
+
+load("vect");
+R:55;
+rho:0.12;
+A:%pi*rho^2;
+B:0.15*sin(1000*t);
+
+phi:B*A;
+e:float(-diff(phi,t));
+i:e/R;
+print("======================================");
+kill(all);
+print("Q 9.2");
+
+R:4200;
+A:4*3;
+B:0.1*sin(1200*t);
+
+phi:B*A;
+e:float(-diff(phi,t));
+i:e/R;
+print("======================================");
+kill(all);
+print("Q 9.4");
+
+mu0:4*%pi*10^(-7);
+epsilon:8.85418782*10^(-12);
+
+load("vect");
+
+omega:5*10^(8)*%pi;
+H:0.122/rho*cos(omega*t)*cos(0.5*%pi*z);
+B:mu0*H;
+phi:integrate(integrate(B,z,0,1.5),rho,0.001,0.003);
+e:float(-diff(phi,t));
+
+
