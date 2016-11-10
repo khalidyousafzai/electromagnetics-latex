@@ -133,3 +133,37 @@ BB:1/(r*sin(theta))*diff(Gr,phi)-1/r*diff(r*Gphi,r);
 CC:1/r*diff(r*Gtheta,r)-1/r*diff(Gr,theta);
 
 curlG:[AA,BB,CC];
+
+/*================================================
+travelling waves
+*/
+w:10^9;
+
+epsilonR1:1;
+muR1:1;
+sigma1:0;
+epsilonR2:9;
+muR2:4;
+sigma2:0;
+
+f:w/(2*%pi);
+
+epsilon1:epsilonR1*epsilon0;
+mu1:muR1*mu0;
+epsilon2:epsilonR2*epsilon0;
+mu2:muR2*mu0;
+
+Z1:sqrt(mu1/epsilon1);
+Z2:sqrt(mu2/epsilon2);
+reflectionCoefficient:(Z2-Z1)/(Z2+Z1);
+transmissionCoefficient:1+reflectionCoefficient;
+
+c1:1/sqrt(mu1*epsilon1);
+c2:1/sqrt(mu2*epsilon2);
+
+lambda1:c1/f;
+lambda2:c2/f;
+
+k1:float(2*%pi/lambda1);
+k2:float(2*%pi/lambda2);
+
