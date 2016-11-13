@@ -749,3 +749,11 @@ curlE:curlG;
 B:-integrate(curlE,t);
 
 A:integrate(B.ax,y)*az;
+
+G:A;
+Gx:ax.G;
+Gy:ay.G;
+Gz:az.G;
+DivG:diff(Gx,x)+diff(Gy,y)+diff(Gz,z);
+
+V:float(-integrate(DivG,t)/(mu0*epsilon0));
