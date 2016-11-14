@@ -1,6 +1,6 @@
 Print("======================================");
 kill(all);
-print("Quiz 10.1");
+print("Q 10.1");
 load("vect");
 mu0:4*%pi*10^(-7);
 epsilon0:8.85418782*10^(-12);
@@ -19,7 +19,6 @@ t:1*10^(-9);
 lambda:c/f;
 
 beta:2*%pi/lambda;
-z:2*%pi*f*t/beta;
 
 E:E0*aN*cos(w*t-beta *z);
 Print("======================================");
@@ -37,9 +36,14 @@ az:[0,0,1];
 f:200*10^6;
 E:[150,250];
  absE:float(sqrt(E.E));
+aE:E/absE;
+aH:[-aE.[0,1], aE.[1,0]];
 
 lambda:c/f;
 beta:2*%pi/lambda;
+H0:float(absE/(120*%pi));
+
+H:H0*aH*e^(-beta*z);
 
 Ewave:absE*cos(2*%pi*f*t-beta*z);
 float(ev(Ewave,z=0,t=0*10^(-9)));
@@ -123,3 +127,37 @@ aaH:[c1,c2,0];
 
 aE~aaH;
 express(%);
+Print("======================================");
+kill(all);
+print("Quiz 10.5");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+f:250*10^6;
+
+epsilonR:4.4;
+muR:1;
+sigma:0;
+
+epsilon:epsilonR*epsilon0;
+mu:muR*mu0;
+
+v:float(1/sqrt(mu*epsilon));
+
+beta:float(2*%pi*f/v);
+lambda:float(2*%pi/beta);
+eta:float(sqrt(mu/epsilon));
+
+Es:E0*ay*e^{-%i*beta*x};
+Hs:E0/eta*az*e^(-%i*beta*x);
+
+P:1/2*E0^2/eta;
+
+
