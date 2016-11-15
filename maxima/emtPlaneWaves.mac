@@ -159,5 +159,81 @@ Es:E0*ay*e^{-%i*beta*x};
 Hs:E0/eta*az*e^(-%i*beta*x);
 
 P:1/2*E0^2/eta;
+Print("======================================");
+kill(all);
+print("Quiz 10.7");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
 
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+E0:[0,30,22];
+E:E0*cos(omega*t-60*x);
+absE0:sqrt(E0.E0);
+
+lambda:2*pi/60;
+f:c/lambda;
+omega:2*pi*f;
+
+P:1/(2*120*%pi)*absE0^2;
+Print("======================================");
+kill(all);
+print("Quiz 10.8");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+E0:1200;
+f:200*10^6;
+beta:20;
+H0:[5,0,4];
+absH:sqrt(H0.H0);
+lambda:2*pi/beta;
+eta:float(E0/absH);
+vp:float(2*%pi*f/beta);
+
+a:float((eta/(120*%pi))^2);
+b:float((c0/vp)^2);
+
+eqs:[muR/epR=a, muR*epR=b];
+float(solve(eqs,[muR,epR]));
+Print("======================================");
+kill(all);
+print("Quiz 10.9");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+E0:700;
+H0:1.5;
+omega:2.5*10^7;
+vp:1.7*10^8;
+
+
+beta:float(omega/vp);
+lambda:float(2*%pi/beta);
+eta:float(E0/H0);
+
+a:float((eta/(120*%pi))^2);
+b:float((c0/vp)^2);
+
+eqs:[muR/epR=a, muR*epR=b];
+float(solve(eqs,[muR,epR]));
 
