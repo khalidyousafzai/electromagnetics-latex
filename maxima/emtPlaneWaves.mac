@@ -1108,7 +1108,7 @@ eta2:float(rectform(sqrt(%i*omega*mu2/(sigma2+%i*omega*epsilon2))));
 etaIN:rectform(eta1*(eta2+%i*eta1*tan(beta1*z0))/(eta1+%i*eta2*tan(beta1*z0)));
 
 T1:rectform((etaIN-eta0)/(etaIN+eta0));
-T1Polar:polarform(Ta);
+T1Polar:polarform(T1);
 
 s1:(1+cabs(T1))/(1-cabs(T1));
 
@@ -1116,3 +1116,88 @@ T2:rectform((eta2-eta1)/(eta2+eta1));
 T2Polar:polarform(T2);
 
 s2:(1+cabs(T2))/(1-cabs(T2));
+
+z:float((-2*%pi+carg(T1))/(2*beta1));
+Print("======================================");
+kill(all);
+print("Q 10.34");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+alpha:0.4;
+L:100;
+T:0.4-%i*0.5;
+ratio:float((cabs(T))^2*%e^(-4*alpha*L));
+Print("======================================");
+kill(all);
+print("Q 10.35");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+omega:2*10^10;
+lambda1:0.08;
+lambda2:0.06;
+
+epsilonR1:(2*%pi*c/(omega*lambda1))^2;
+epsilonR2:(2*%pi*c/(omega*lambda2))^2;
+muR1:1;
+sigma1:0;
+muR2:1;
+sigma2:0;
+
+mu1:muR1*mu0;
+epsilon1:epsilonR1*epsilon0;
+mu2:muR2*mu0;
+epsilon2:epsilonR2*epsilon0;
+
+gamma1:rectform(sqrt(%i*omega*mu1*(sigma1+%i*omega*epsilon1)));
+gamma2:rectform(sqrt(%i*omega*mu2*(sigma2+%i*omega*epsilon2)));
+
+alpha1:float(realpart(gamma1));
+beta1:float(imagpart(gamma1));
+alpha2:float(realpart(gamma2));
+beta2:float(imagpart(gamma2));
+
+eta1:float(rectform(sqrt(%i*omega*mu1/(sigma1+%i*omega*epsilon1))));
+eta2:float(rectform(sqrt(%i*omega*mu2/(sigma2+%i*omega*epsilon2))));
+
+
+T1:rectform((eta2-eta1)/(eta2+eta1));
+T1Polar:polarform(T1);
+
+ratioReflected:float(cabs(T1))^2;
+ratioTransmitted:1-ratioReflected;
+
+s:(1+cabs(T1))/(1-cabs(T1));
+Print("======================================");
+kill(all);
+print("Q 10.36");
+load("vect");
+mu0:4*%pi*10^(-7);
+epsilon0:8.85418782*10^(-12);
+c0:1/sqrt(mu0*epsilon0);
+c:3*10^8;
+
+ax:[1,0,0];
+ay:[0,1,0];
+az:[0,0,1];
+
+eq:(sqrt(epsilon1)-1)/(sqrt(epsilon1)+1)=1/2;
+solve(eq,epsilon1);
+
+eq:(sqrt(epsilon2)-1)/(sqrt(epsilon2)+1)=sqrt(1/2);
+float(solve(eq,epsilon2));
