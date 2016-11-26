@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\l}{3}
+\pgfmathsetmacro{\w}{1.5}
+\pgfmathsetmacro{\s}{0.5}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+\draw[line width=2] (0,0)--++(\l,0);
+\draw[line width=2] (0,\w)--++(\l,0);
+%
+\draw (\l+\s,-0.25) to [resistor,l_=$80 \, \Omega$] ++(0,2);
+%
+\draw(\l,0)--++(\s/2,0)--++(0,-0.25)--++(\s/2,0);
+\draw(\l,\w)--++(\s/2,0)--++(0,0.25)--++(\s/2,0);
+%
+\draw(0,\w)--++(-\s/2,0)--++(0,0.25) to [resistor,l_=$15 \, \Omega$] ++(-2,0);
+\draw(0,0)--++(-\s/2,0)--++(0,-0.25)--++(-2,0) to [voltage source,l=$40 \phase{0}$]++(0,2);
+%
+\draw[stealth-stealth] (0,-0.3)--++(\l,0)node[pos=0.5,fill=white]{$\SI{78}{\meter}$};
+%
+\draw (-1.5,\w+1.5) node {\RL{منبع}};
+\draw (\l+0.25,\w+1.5) node {\RL{بار}};
+\draw (\l/2,\w/2) node{$Z_0=50\, \Omega $};
+%
+\draw (\l/2,-1) node{الف};
+%
+\begin{scope}[xshift=-7cm]
+\draw (0,-0.25) to [voltage source,l=$40 \phase {0}$] ++(0,2) to [resistor,l=$15 \, \Omega$] ++(2,0) to [resistor,l=$80 \, \Omega$]++(0,-2)--(0,-0.25);
+\draw (1,-1) node {ب};
+\end{scope}
+%
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
