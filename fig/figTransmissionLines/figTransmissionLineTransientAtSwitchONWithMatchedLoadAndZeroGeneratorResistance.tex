@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+\draw(0,0)node[below]{$z=0$} to [voltage source,l=$V_0$]++(0,2.7) to [cspst]++(0.9,0) to [short]++(4.5,0) to [resistor,l=$Z_0$]++(0,-2.7)node[below]{$z=l$} to [short]++(-5.4,0);
+\draw(0.4,3.2) node{$t=0$};
+\draw (1,1.35) node{$Z_0$};
+%
+\draw[dashed] (3,-0.5)coordinate(waveBot)node[below]{$z=vt$}--++(0,4)coordinate(waveTop)node[right]{$V^+$};
+\draw[-latex] (waveTop)++(0.1,-0.5)--++(0.6,0);
+\draw[-latex] (waveBot)++(0.1,0.2)--++(0.6,0);
+\draw(3,2.7)++(0.3,-0.3) node{$+$};
+\draw(3,0)++(0.3,0.3) node{$-$};
+%current
+\draw[line width=2,-<-=0.8] (0,0)--++(3,0);
+\draw[line width=2,->-=0.75] (0.6,2.7)--++(2.4,0)node[pos=0.5,above]{$V_0$};
+\draw(3,2.7)++(-0.5,-0.3)node{$I^+$};
+\draw((4.5,3)node{$0$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

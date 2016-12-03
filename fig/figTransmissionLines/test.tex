@@ -1,0 +1,137 @@
+\documentclass[a3,convert]{standalone}
+\usepackage{fontspec}
+\usepackage{pgfplots}
+\usepgfplotslibrary{smithchart}    
+\usepgfplotslibrary{polar}   
+\usepackage{siunitx} 
+\usepackage{polyglossia} 
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+
+\begin{document}
+
+    \begin{tikzpicture}
+%outer most arrows showing lambda distances from and to generator
+      \pgfmathsetmacro{\xoffset}{10.45*(1-cos(3))-1.25}  
+      \pgfmathsetmacro{\yoffset}{sin(3)*10.45+9.2}  
+      \draw[,thick,->] (+\xoffset,\yoffset) arc [radius=10.45cm,start angle=177,end angle=166];
+      \pgfmathsetmacro{\xoffset}{10.45*(1-cos(27))-1.25}  
+      \pgfmathsetmacro{\yoffset}{sin(27)*10.45+9.2} 
+		\draw (\xoffset,\yoffset) node[rotate=63]{\RL{منجانب جنریٹر}};
+
+      \pgfmathsetmacro{\xoffset}{9.95*(1-cos(-3))-0.75}  
+      \pgfmathsetmacro{\yoffset}{sin(-3)*9.95+9.2} 
+      \draw[,thick,->] (\xoffset,\yoffset) arc [radius=9.95cm,start angle=183,end angle=193] ;
+      \pgfmathsetmacro{\xoffset}{9.95*(1-cos(-27))-0.75}  
+      \pgfmathsetmacro{\yoffset}{sin(-27)*9.95+9.2} 
+    			\draw (\xoffset,\yoffset) node[rotate=-63]{\RL{منجانب بار}};
+
+    \begin{polaraxis}[
+                      rotate=180,
+                      width=23cm,
+                      xshift=1.5cm, 
+                      yshift=1.5cm,
+                      %xticklabels={$0\lambda$,$0.05\lambda$,$0.1\lambda$,$0.15\lambda$,$0.2\lambda$,$0.25\lambda$},
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=south}},
+                              reset nontranslations=false
+                          },
+                          anchor=north,
+                      },
+                      xticklabel={\small\pgfmathparse{0.5-\tick/720}\pgfmathprintnumber[fixed,precision=3]{\pgfmathresult}$\lambda$},
+                      xtick align=center,
+                      xtick={18,36,...,360},
+                      grid=none,
+                      axis y line = none,
+                      minor x tick num={4},
+                      ymax=1,
+                     ]   
+   \end{polaraxis}
+%============
+%the first zero
+\begin{polaraxis}[
+                      rotate=180,
+                      width=23cm,
+                      xshift=1.5cm, 
+                      yshift=1.5cm,
+                      %xticklabels={$0\lambda$,$0.05\lambda$,$0.1\lambda$,$0.15\lambda$,$0.2\lambda$,$0.25\lambda$},
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=south}},
+                              reset nontranslations=false
+                          },
+                          anchor=north,
+                      },
+                      xticklabel={\small\pgfmathparse{0}\pgfmathprintnumber[fixed,precision=3]{\pgfmathresult}$\lambda$},
+                      xtick align=center,
+                      xtick={0},
+                      grid=none,
+                      axis y line = none,
+                      minor x tick num={0},
+                      ymax=1,
+                     ]   
+   \end{polaraxis}
+%=======================
+    \begin{polaraxis}[
+                      rotate=180,
+                      width=22cm,
+                      xshift=1cm, 
+                      yshift=1cm,
+                      %xticklabels={$0\lambda$,$0.05\lambda$,$0.1\lambda$,$0.15\lambda$,$0.2\lambda$,$0.25\lambda$},
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=south}},
+                              reset nontranslations=false
+                          },
+                          anchor=north,
+                      },
+                      xticklabel={\small\pgfmathparse{\tick/720}\pgfmathprintnumber[fixed,precision=3]{\pgfmathresult}$\lambda$},
+                      xtick align=center,
+                      xtick={0,18,...,360},
+                      grid=none,
+                      axis y line = none,
+                      minor x tick num={4},
+                      ymax=1,
+                     ]    
+
+    \end{polaraxis}
+
+
+
+    \begin{polaraxis}[
+                      width=21cm,
+                      xshift=-0.5cm, 
+                      yshift=-0.5cm,
+                      %xticklabels={$0\lambda$,$0.05\lambda$,$0.1\lambda$,$0.15\lambda$,$0.2\lambda$,$0.25\lambda$},
+                      xticklabel style={
+                          sloped like x axis={%
+                              execute for upside down={\tikzset{anchor=north}},
+                              reset nontranslations=false
+                          },
+                          anchor=south,
+                      },
+                      xticklabel={\small\pgfmathprintnumber{\tick}\si{\degree}},
+                      xtick align=center,
+                      grid=none,
+                      axis y line = none,
+                     ]    
+   \end{polaraxis}
+
+   \begin{smithchart}[ show origin,width=22cm,]
+\draw(-0.2,-0.05) node{\RL{مزاحمتی جزو $\left(r=\frac{R}{Z_0} \right)$}};
+\draw(130:0.9) node[rotate=40]{\RL{خیالی جزو $\left(jx=j\frac{X}{Z_0} \right)$}};
+   \end{smithchart}
+   \end{tikzpicture} 
+
+
+\end{document}
