@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\xL}{1}
+\pgfmathsetmacro{\xa}{4/5*\xL}
+\pgfmathsetmacro{\xb}{2*1/5*\xL}
+\pgfmathsetmacro{\xc}{2*4/5*\xL}
+
+\pgfmathsetmacro{\f}{3/4}  %forward reflection coefficient
+\pgfmathsetmacro{\b}{2/3}   %backward reflection coefficient
+\pgfmathsetmacro{\ya}{2}
+\pgfmathsetmacro{\yb}{-\ya*\b}
+\pgfmathsetmacro{\yc}{-\yb*\f}
+\pgfmathsetmacro{\yd}{-\yc*\b}
+\pgfmathsetmacro{\ye}{-\yd*\f}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%axis
+\draw[gray](0,0)--++(7,0)node[right]{$t$};
+\draw[gray](0,0)--++(0,2.5)node[left]{$I_{\tfrac{4l}{5}}$};
+%wave
+\draw(0,0)--++(\xa,0)--++(0,\ya)coordinate(a)--++(\xb,0)coordinate(b)--++(0,\yb)coordinate(c)--++(\xc,0)coordinate(d)--++(0,\yc)coordinate(e)--++(\xb,0)coordinate(f)--++(0,\yd)coordinate(g)--++(\xc,0)coordinate(h)--++(0,\yd)coordinate(i)--++(\xb,0)coordinate(j)--++(0,\ye)coordinate(k)--++(\xc,0)coordinate(l);
+\draw[dashed,gray](0,0.75)--++(7,0);
+\draw[](0,0.75)node[left]{$I_L=\frac{V_0}{Z_g+Z_L}$};
+%text
+\draw (\xa,0)node[shift={(-0.15,-0.3)}]{$\tfrac{4l}{5v}$};
+\draw (\xa+\xb,0)node[shift={(0.15,-0.3)}]{$\tfrac{6l}{5v}$}--++(0,0.1);
+\draw (\xa+\xb+\xc,0)node[shift={(-0.15,-0.3)}]{$\tfrac{14l}{5v}$}--++(0,0.1);
+\draw (\xa+\xb+\xc+\xb,0)node[shift={(0.15,-0.3)}]{$\tfrac{16l}{5v}$}--++(0,0.1);
+\draw (\xa+\xb+\xc+\xb+\xc,0)node[shift={(-0.15,-0.3)}]{$\tfrac{24l}{5v}$}--++(0,0.1);
+\draw (\xa+\xb+\xc+\xb+\xc+\xb,0)node[shift={(0.15,-0.3)}]{$\tfrac{26l}{5v}$}--++(0,0.1);
+%voltages
+\draw[stealth-] ($(a)!0.5!(b)$) to [out=90,in=-90]++(-0.3,0.3)node[above,scale=0.75]{$I_1^+$};
+\draw ($(c)!0.5!(d)$) node[above,scale=0.75]{$I_1^+ + I_1^-$};
+\draw[stealth-] ($(e)!0.5!(f)$) to [out=90,in=-90]++(-0.3,0.85)node[above,scale=0.75]{$I_1^+ +I_1^- + I_2^+$};
+\draw[stealth-] ($(g)!0.5!(h)$) to [out=-90,in=90]++(-0.5,-0.4)node[below,scale=0.75]{$I_1^+ +I_1^- + I_2^++I_2^-$};
+\draw[stealth-] ($(i)!0.5!(j)$) to [out=90,in=-135]++(0.3,0.8)node[above,scale=0.75]{$I_1^+ +I_1^- + I_2^++I_2^-+I_3^+$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
