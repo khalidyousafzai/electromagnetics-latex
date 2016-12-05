@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\T}{-0.5}
+\pgfmathsetmacro{\va}{1.5}
+\pgfmathsetmacro{\vb}{\va*\T}
+\pgfmathsetmacro{\vc}{\vb*\T}
+\pgfmathsetmacro{\vd}{\vc*\T}
+
+\pgfmathsetmacro{\ta}{1}
+\pgfmathsetmacro{\tb}{2}
+\pgfmathsetmacro{\tc}{3}
+\pgfmathsetmacro{\td}{4}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%axis
+\draw[gray](0,0)--++(4.5,0)node[right]{$t$};
+\draw[gray](0,0)--++(0,2)node[left]{$V_L$};
+%wave
+\draw(0,\va)coordinate(a)--(\ta,\va)coordinate(b)--(\ta,\vb)coordinate(c)--(\tb,\vb)coordinate(d)--(\tb,\vc)coordinate(e)--(\tc,\vc)coordinate(f)--(\tc,\vd)coordinate(g)--(\td,\vd)coordinate(h);
+\draw[gray] (h)--++(0,0.3);
+%
+\draw ($(a)!0.5!(b)$) node [above]{\SI{80}{\volt}};
+\draw ($(c)!0.5!(d)$) node [below]{\SI{-40}{\volt}};
+\draw ($(e)!0.5!(f)$) node [above]{\SI{20}{\volt}};
+\draw ($(g)!0.5!(h)$) node [below]{\SI{-10}{\volt}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

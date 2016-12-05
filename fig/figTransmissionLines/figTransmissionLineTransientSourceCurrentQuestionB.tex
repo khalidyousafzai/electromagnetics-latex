@@ -1,0 +1,105 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\k}{2}
+
+\pgfmathsetmacro{\Z}{50}
+\pgfmathsetmacro{\ZG}{100}
+\pgfmathsetmacro{\ZL}{100}
+\pgfmathsetmacro{\t}{1}
+
+\pgfmathsetmacro{\V}{120}
+
+\pgfmathsetmacro{\Tg}{(\ZG-\Z)/(\ZG+\Z)}
+\pgfmathsetmacro{\TL}{(\ZL-\Z)/(\ZL+\Z)}
+
+
+\pgfmathsetmacro{\vap}{\V*\Z/(\Z+\ZG)}
+\pgfmathsetmacro{\van}{\vap*\TL}
+\pgfmathsetmacro{\vbp}{\van*\Tg}
+\pgfmathsetmacro{\vbn}{\vbp*\TL}
+\pgfmathsetmacro{\vcp}{\vbn*\Tg}
+\pgfmathsetmacro{\vcn}{\vcp*\TL}
+\pgfmathsetmacro{\vdp}{\vcn*\Tg}
+\pgfmathsetmacro{\vdn}{\vdp*\TL}
+
+
+\pgfmathsetmacro{\iap}{\vap/\Z}  
+\pgfmathsetmacro{\ian}{-\van/\Z}
+\pgfmathsetmacro{\ibp}{\vbp/\Z}
+\pgfmathsetmacro{\ibn}{-\vbn/\Z}
+\pgfmathsetmacro{\icp}{\vcp/\Z}
+\pgfmathsetmacro{\icn}{-\vcn/\Z}
+\pgfmathsetmacro{\idp}{\vdp/\Z}
+\pgfmathsetmacro{\idn}{-\vdn/\Z}
+
+
+\pgfmathsetmacro{\vla}{\vap+\van}
+\pgfmathsetmacro{\vlb}{\vla+\vbp+\vbn}
+\pgfmathsetmacro{\vlc}{\vlb+\vcp+\vcn}
+\pgfmathsetmacro{\vld}{\vlc+\vdp+\vdn}
+
+\pgfmathsetmacro{\vga}{\vap}
+\pgfmathsetmacro{\vgb}{\vga+\van+\vbp}
+\pgfmathsetmacro{\vgc}{\vgb+\vbn+\vcp}
+\pgfmathsetmacro{\vgd}{\vgc+\vcn+\vdp}
+
+\pgfmathsetmacro{\iga}{\iap}
+\pgfmathsetmacro{\igb}{\iga+\ian+\ibp}
+\pgfmathsetmacro{\igc}{\igb+\ibn+\icp}
+\pgfmathsetmacro{\igd}{\igc+\icn+\idp}
+
+
+\pgfmathsetmacro{\ta}{1}
+\pgfmathsetmacro{\tb}{3}
+\pgfmathsetmacro{\tc}{5}
+\pgfmathsetmacro{\td}{7}
+\pgfmathsetmacro{\te}{9}
+
+\pgfmathsetmacro{\tta}{2}
+\pgfmathsetmacro{\ttb}{4}
+\pgfmathsetmacro{\ttc}{6}
+\pgfmathsetmacro{\ttd}{8}
+\pgfmathsetmacro{\tte}{10}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american,yscale=1]
+%axis
+\draw[gray](0,0)--++(9,0)node[right]{$t$};
+\draw[gray](0,0)--++(0,2)node[left]{$I_g$};
+%wave
+\draw(0,\iga*\k)coordinate(a)--(\tta,\iga*\k)coordinate(b)--(\tta,\igb*\k)coordinate(c)--(\ttb,\igb*\k)coordinate(d)--(\ttb,\igc*\k)coordinate(e)--(\ttc,\igc*\k)coordinate(f)--(\ttc,\igd*\k)coordinate(g)--(\ttd,\igd*\k)coordinate(h);
+%
+\draw ($(a)!0.5!(b)$) node [above]{$\iga \, \si{A}$};
+\draw ($(c)!0.5!(d)$) node [below]{$\igb \, \si{A}$};
+\draw ($(e)!0.5!(f)$) node [above]{$\igc \, \si{A}$};
+\draw ($(g)!0.5!(h)$) node [below]{$\igd \, \si{A}$};
+%
+\draw (\tta,0)node[below]{$\tfrac{2l}{v}$}--++(0,0.1);
+\draw (\ttb,0)node[below]{$\tfrac{4l}{v}$}--++(0,0.1);
+\draw (\ttc,0)node[below]{$\tfrac{6l}{v}$}--++(0,0.1);
+\draw (\ttd,0)node[below]{$\tfrac{8l}{v}$}--++(0,0.1);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

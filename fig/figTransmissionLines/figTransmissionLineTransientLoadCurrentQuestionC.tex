@@ -1,0 +1,110 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\k}{0.003}
+\pgfmathsetmacro{\kt}{0.75}
+
+\pgfmathsetmacro{\Z}{50}
+\pgfmathsetmacro{\ZG}{100}
+\pgfmathsetmacro{\ZL}{25}
+
+\pgfmathsetmacro{\c}{240}
+\pgfmathsetmacro{\ll}{480}
+\pgfmathsetmacro{\d}{360}
+\pgfmathsetmacro{\tta}{\d/\c}
+\pgfmathsetmacro{\ttb}{2*(\ll-\d)/\c}
+\pgfmathsetmacro{\ttc}{2*\d/\c}
+
+
+\pgfmathsetmacro{\V}{10}
+
+\pgfmathsetmacro{\Tg}{(\ZG-\Z)/(\ZG+\Z)}
+\pgfmathsetmacro{\TL}{(\ZL-\Z)/(\ZL+\Z)}
+
+
+\pgfmathsetmacro{\vap}{\V*\Z/(\Z+\ZG)}
+\pgfmathsetmacro{\van}{\vap*\TL}
+\pgfmathsetmacro{\vbp}{\van*\Tg}
+\pgfmathsetmacro{\vbn}{\vbp*\TL}
+\pgfmathsetmacro{\vcp}{\vbn*\Tg}
+\pgfmathsetmacro{\vcn}{\vcp*\TL}
+\pgfmathsetmacro{\vdp}{\vcn*\Tg}
+\pgfmathsetmacro{\vdn}{\vdp*\TL}
+
+\pgfmathsetmacro{\vla}{\vap}
+\pgfmathsetmacro{\vlb}{\vla+\van}
+\pgfmathsetmacro{\vlc}{\vlb+\vbp}
+\pgfmathsetmacro{\vld}{\vlc+\vbn}
+\pgfmathsetmacro{\vle}{\vld+\vcp}
+\pgfmathsetmacro{\vlf}{\vle+\vcn}
+\pgfmathsetmacro{\vlg}{\vlf+\vdp}
+
+\pgfmathsetmacro{\iap}{\vap/\Z}
+\pgfmathsetmacro{\ian}{-\van/\Z}
+\pgfmathsetmacro{\ibp}{\vbp/\Z}
+\pgfmathsetmacro{\ibn}{-\vbn/\Z}
+\pgfmathsetmacro{\icp}{\vcp/\Z}
+\pgfmathsetmacro{\icn}{-\vcn/\Z}
+\pgfmathsetmacro{\idp}{\vdp/\Z}
+\pgfmathsetmacro{\idn}{-\vdn/\Z}
+
+\pgfmathsetmacro{\ila}{\iap*1000}
+\pgfmathsetmacro{\ilb}{\ila+\ian*1000}
+\pgfmathsetmacro{\ilc}{\ilb+\ibp*1000}
+\pgfmathsetmacro{\ild}{\ilc+\ibn*1000}
+\pgfmathsetmacro{\ile}{\ild+\icp*1000}
+\pgfmathsetmacro{\ilf}{\ile+\icn*1000}
+\pgfmathsetmacro{\ilg}{\ilf+\idp*1000}
+
+\pgfmathsetmacro{\ta}{\tta}
+\pgfmathsetmacro{\tb}{\ta+\ttb}
+\pgfmathsetmacro{\tc}{\tb+\ttc}
+\pgfmathsetmacro{\td}{\tc+\ttb}
+\pgfmathsetmacro{\te}{\td+\ttc}
+\pgfmathsetmacro{\tf}{\te+\ttb}
+\pgfmathsetmacro{\tg}{\tf+\ttc}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american,yscale=4]
+%axis
+\draw[gray](0,0)--++(9,0)node[right]{$t (\si{\micro\second})$};
+\draw[gray](0,0)--++(0,0.4)node[left]{$I$};
+%wave
+\draw (0,0) --(\ta*\kt,0)--(\ta*\kt,\ila*\k)coordinate(a)--(\tb*\kt,\ila*\k)coordinate(b)--(\tb*\kt,\ilb*\k)coordinate(c)--(\tc*\kt,\ilb*\k)coordinate(d)--(\tc*\kt,\ilc*\k)coordinate(e)--(\td*\kt,\ilc*\k)coordinate(f)--(\td*\kt,\ild*\k)coordinate(g)--(\te*\kt,\ild*\k)coordinate(h)--(\te*\kt,\ile*\k)coordinate(i)--(\tf*\kt,\ile*\k)coordinate(j);
+%
+\draw ($(a)!0.5!(b)$) node [shift={(-0.3,0.3)}]{\pgfmathprintnumber[precision=1]{\ila} \, $\si{\milli\ampere}$};
+\draw ($(c)!0.5!(d)$) node [below]{\pgfmathprintnumber[precision=1]{\ilb} \, $\si{\milli\ampere}$};
+\draw ($(e)!0.5!(f)$) node [shift={(0,0.4)}]{\pgfmathprintnumber[precision=1]{\ilc} \, $\si{\milli\ampere}$};
+\draw ($(g)!0.5!(h)$) node [below]{\pgfmathprintnumber[precision=1]{\ild} \, $\si{\milli\ampere}$};
+\draw ($(i)!0.5!(j)$) node [above]{\pgfmathprintnumber[precision=1]{\ile} \, $\si{\milli\ampere}$};
+%
+\draw (\ta*\kt,0)node[below]{$\ta$}--++(0,0.03);
+\draw (\tb*\kt,0)node[below]{$\tb$}--++(0,0.03);
+\draw (\tc*\kt,0)node[below]{$\tc$}--++(0,0.03);
+\draw (\td*\kt,0)node[below]{$\td$}--++(0,0.03);
+\draw (\te*\kt,0)node[below]{$\te$}--++(0,0.03);
+\draw (\tf*\kt,0)node[below]{$\tf$}--++(0,0.03);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

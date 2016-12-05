@@ -1,0 +1,83 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\k}{0.006}
+
+\pgfmathsetmacro{\Z}{50}
+\pgfmathsetmacro{\ZG}{100}
+\pgfmathsetmacro{\ZL}{100}
+\pgfmathsetmacro{\t}{1}
+
+\pgfmathsetmacro{\V}{120}
+
+\pgfmathsetmacro{\Tg}{(\ZG-\Z)/(\ZG+\Z)}
+\pgfmathsetmacro{\TL}{(\ZL-\Z)/(\ZL+\Z)}
+
+
+\pgfmathsetmacro{\vap}{\V*\Z/(\Z+\ZG)}
+\pgfmathsetmacro{\van}{\vap*\TL}
+\pgfmathsetmacro{\vbp}{\van*\Tg}
+\pgfmathsetmacro{\vbn}{\vbp*\TL}
+\pgfmathsetmacro{\vcp}{\vbn*\Tg}
+\pgfmathsetmacro{\vcn}{\vcp*\TL}
+\pgfmathsetmacro{\vdp}{\vcn*\Tg}
+\pgfmathsetmacro{\vdn}{\vdp*\TL}
+
+\pgfmathsetmacro{\vga}{\vap}
+\pgfmathsetmacro{\vgb}{\vga+\van+\vbp}
+\pgfmathsetmacro{\vgc}{\vgb+\vbn+\vcp}
+\pgfmathsetmacro{\vgd}{\vgc+\vcn+\vdp}
+
+\pgfmathsetmacro{\vla}{\vap+\van}
+\pgfmathsetmacro{\vlb}{\vla+\vbp+\vbn}
+\pgfmathsetmacro{\vlc}{\vlb+\vcp+\vcn}
+\pgfmathsetmacro{\vld}{\vlc+\vdp+\vdn}
+
+
+\pgfmathsetmacro{\ta}{1}
+\pgfmathsetmacro{\tb}{3}
+\pgfmathsetmacro{\tc}{5}
+\pgfmathsetmacro{\td}{7}
+\pgfmathsetmacro{\te}{9}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american,yscale=4]
+%axis
+\draw[gray](0,0)--++(9,0)node[right]{$t$};
+\draw[gray](0,0)--++(0,0.4)node[left]{$V_L$};
+%wave
+\draw (0,0) --(\ta,0)--(\ta,\vla*\k)coordinate(a)--(\tb,\vla*\k)coordinate(b)--(\tb,\vlb*\k)coordinate(c)--(\tc,\vlb*\k)coordinate(d)--(\tc,\vlc*\k)coordinate(e)--(\td,\vlc*\k)coordinate(f)--(\td,\vld*\k)coordinate(g)--(\te,\vld*\k)coordinate(h);
+%
+\draw ($(a)!0.5!(b)$) node [above]{$\vla \, \si{\volt}$};
+\draw ($(c)!0.5!(d)$) node [below]{$\vlb \, \si{\volt}$};
+\draw ($(e)!0.5!(f)$) node [above]{$\vlc \, \si{\volt}$};
+\draw ($(g)!0.5!(h)$) node [below]{$\vld \, \si{\volt}$};
+%
+\draw (\ta,0)node[below]{$\tfrac{l}{v}$}--++(0,0.03);
+\draw (\tb,0)node[below]{$\tfrac{3l}{v}$}--++(0,0.03);
+\draw (\tc,0)node[below]{$\tfrac{5l}{v}$}--++(0,0.03);
+\draw (\td,0)node[below]{$\tfrac{7l}{v}$}--++(0,0.03);
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
