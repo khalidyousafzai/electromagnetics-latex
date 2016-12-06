@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+\draw(0,0)--++(5,0)node[right]{$t$};
+\draw(0,0)--++(0,1.5)node[left]{$V_L$};
+%voltage
+\draw(1,0)coordinate(a)--++(0,0.5)coordinate(b)--++(2,0)coordinate(c)--++(0,0.5)coordinate(d)--++(2,0)coordinate(e);
+%
+\draw($(b)!0.5!(c)$) node[above]{$\frac{V_0}{2}$};
+\draw($(d)!0.5!(e)$) node[above]{$V_0$};
+%
+\draw(a) node[below]{$\tfrac{l}{2v}$};
+\draw(3,0) node[below]{$\tfrac{3l}{2v}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+\draw(0,0)node[below]{$z=0$} to [voltage source,l=$V_0$]++(0,2)  to [short]++(2.5,0) to [cspst]++(1,0) to [short]++(2.5,0) to [resistor,l=$Z_L$]++(0,-2)node[below]{$z=l$} to [short]++(-6,0);
+\draw(3,2.5) node{$t=0$};
+\draw (2,1) node{$Z_0$};
+\draw(1.25,2)node[above]{$V=V_0$};
+\draw(4.75,2)node[above]{$V=\SI{0}{\volt}$};
+\draw(3,0)node[below]{$V=\SI{0}{\volt}$};
+%current
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

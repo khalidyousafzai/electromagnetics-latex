@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+\draw(0,2)  to [short,*-]++(1,0) to [cspst]++(2,0)to [cspst]++(2,0) to [short]++(1,0) to [resistor,l=$R_L$]++(0,-2) to [short,-*]++(-6,0);
+%
+\draw (1,1) node{$Z_0$};
+\draw(0.75,2)node[above,scale=0.8]{$V=-V_0$};
+\draw(3,2)node[above,scale=0.8]{$V=+V_0$};
+\draw(5,2)node[above,scale=0.8]{$V=0$};
+\draw(3,0)node[above,scale=0.8]{$V=0$};
+%text
+\draw (4,1.7)node[]{\RL{الف}};
+\draw (2,1.7)node[]{\RL{ب}};
+%dimensions
+\draw[stealth-stealth](0,-0.3)--++(2,0)node[pos=0.5,fill=white]{$l$};
+\draw[stealth-stealth](2,-0.3)--++(2,0)node[pos=0.5,fill=white]{$l$};
+\draw[stealth-stealth](4,-0.3)--++(2,0)node[pos=0.5,fill=white]{$l$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
