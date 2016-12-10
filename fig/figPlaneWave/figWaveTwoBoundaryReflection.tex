@@ -21,8 +21,7 @@
 \newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
 \setlength{\parskip}{5mm plus 4mm minus 3mm}
 
-\pgfmathsetmacro{\lb}{1.75}
-\pgfmathsetmacro{\la}{2.5}
+\pgfmathsetmacro{\l}{4}
 \pgfmathsetmacro{\h}{2}
 
 \begin{document}
@@ -31,26 +30,18 @@
 %axis
 \draw[gray](-7,0)--(0.5,0)node[right]{$z$};
 \draw(0,-0.5)--++(0,3)node[above]{$x$};
-\draw (-\lb,-0.5)--++(0,3);
-\draw (-\la-\lb,-0.5)--++(0,3);
+\draw (-\l,-0.5)--++(0,3);
 %
 \draw(0,0)node[below right]{$0$};
-\draw(-\lb,0)node[below left]{$-l_b$};
-\draw(-\la-\lb,0)node[below left]{$-(l_a+l_b)$};
+\draw(-\l,0)node[below left]{$-l$};
+\draw(-\l-0.5,\h) node{$\eta_1$};
+\draw(-\l/2,\h) node{$\eta_2$};
+\draw(0.5,\h) node{$\eta_3$};
 %
-\draw(-\lb-\la-0.5,\h) node{$\eta_1$};
-\draw(-\la/2-\lb,\h) node{$\eta_2$};
-\draw(-\lb/2,\h) node{$\eta_3$};
-\draw(0.5,\h) node{$\eta_4$};
-%
-\draw[-latex] (-\lb-0.5,1/3*\h+0.5)node[below]{$\eta_{b}$}--++(0,0.2)--++(0.5,0);
-\draw[-latex] (-\la-\lb-0.5,1/3*\h+0.5)node[below]{$\eta_{a}$}--++(0,0.2)--++(0.5,0);
+\draw[-latex] (-\l-0.5,1/3*\h+0.5)node[below]{$\eta_{\text{داخلی}}$}--++(0,0.2)--++(0.5,0);
 \draw[-latex](-7,\h)--++(1,0)node[above,pos=0.5]{\RL{آمدی موج}};
 \draw[-latex](-7,2/3*\h)--++(1,0);
 \draw[-latex](-7,1/3*\h)--++(1,0);
-%
-\draw[gray,stealth-stealth](0,0.4)--++(-\lb,0)node[pos=0.5,fill=white]{$l_b$};
-\draw[gray,stealth-stealth](-\lb,0.4)--++(-\la,0)node[pos=0.5,fill=white]{$l_a$};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
