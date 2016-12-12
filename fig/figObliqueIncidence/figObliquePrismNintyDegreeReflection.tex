@@ -1,0 +1,60 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\angA}{30}
+\pgfmathsetmacro{\angB}{20}
+\pgfmathsetmacro{\l}{2.5}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipIn/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipOut/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,scale=0.1cm] (0,0) grid (3,3);
+%prism
+\draw[name path=left](0,0)--++(-90:\l)coordinate(a)coordinate[pos=0.5](c);
+\draw[name path=top](0,0)--++(0:\l)coordinate(b)coordinate[pos=0.5](d);
+\draw[name path=diagonalR](a)--(b);
+\draw[gray](0.3,0)--++(0,-0.3)--++(-0.3,0);
+%anti reflective coating
+\shade[left color=white,right color=gray](0,0) rectangle ++(-0.15,-\l);
+\shade[top color=white,bottom color=gray](0,0) rectangle ++(\l,0.15);
+\draw[stealth-,gray] (-0.15,0) to [out=135,in=0]++(-0.5,0.5) node[left]{\RL{انعکاس مخالف تہہ}};
+%ray
+\draw[latex-] (c)--++(-1.5,0);
+\path[name path=internalA](c)--++(2,0);
+\draw[gray,-latex,name intersections={of=internalA and diagonalR}](c)--(intersection-1)coordinate(ref);
+\path[name path=rayUp](ref)--++(90:1.5);
+\draw[gray,name intersections={of=rayUp and top}](ref)--(intersection-1);
+\draw[-latex](intersection-1) --++(90:1);
+\draw[gray](ref)--++(-45:0.5);
+\draw[gray](ref)--++(90+45:1);
+\draw[gray]([shift={(90:0.5)}]ref) arc (90:90+45:0.5);
+\draw[gray](ref)++(90+22.5:0.8)node{$45^{\circ}$};
+%text
+\draw(\l-0.7,-0.3)node{$n_1$};
+\draw(\l+0.1,-0.3)node[]{$n_0$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

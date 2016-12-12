@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\ya}{1.5}
+\pgfmathsetmacro{\yb}{0.5}
+\pgfmathsetmacro{\l}{5}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipIn/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipOut/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,scale=0.1cm] (0,0) grid (3,3);
+%guide
+\draw(0,\ya)--++(0,-2*\ya);
+\draw(0,\ya)--++(\l,0);
+\draw[name path=upper](0,\yb)--++(\l,0);
+\draw(0,-\ya)--++(\l,0);
+\draw[name path=lower](0,-\yb)--++(\l,0);
+\draw[gray,dashed](\l,\ya)--++(0,-2*\ya);
+\path[name path=rightEnd](\l,\ya)--++(0,-2*\ya);
+%ray
+\draw[latex-](0,0)--++(-140:1);
+\path[name path=rayA](0,0)--++(15:2.5);
+\draw[-latex,name intersections={of=rayA and upper}](0,0)--(intersection-1)coordinate(top);
+\path[name path=rayB](top)--++(-15:5);
+\draw[-latex,name intersections={of=rayB and rightEnd}](top)--(intersection-1);
+%eta
+\draw(\l,-\yb-0.5)node[right]{$n_0$};
+\draw(\l-1.5,-\yb-0.5)node[left]{$n_2$};
+\draw(\l-1.5,\yb+0.5)node[left]{$n_2$};
+\draw(\l-1.5,-\yb+0.3)node[left]{$n_1$};
+\draw(\l+1.5,\yb) node{$n_1>n_2$};
+%angles
+\draw(0,0)--++(-1,0);
+\draw ([shift={(180:0.5)}]0,0) arc (180:220:0.5);
+\draw (-160:0.8)node{$\theta$};
+\draw(top)--++(0,-0.7);
+\draw([shift={(-90:0.3)}]top) arc (-90:-165:0.3);
+\draw(top)++(-130:0.5)node{$\phi$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

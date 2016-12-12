@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\angA}{30}
+\pgfmathsetmacro{\angB}{20}
+\pgfmathsetmacro{\l}{2.5}
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipIn/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipOut/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,scale=0.1cm] (0,0) grid (3,3);
+%prism
+\draw[name path=left](0,0)--++(-90-\angA:\l)coordinate(a)coordinate[pos=0.6](c);
+\draw[name path=right](0,0)--++(-90+\angA:\l)coordinate(b)coordinate[pos=0.6](d);
+\draw(a)--(b);
+%ray
+\draw[latex-](c)--++(180+\angB:1.5);
+\draw[gray] (c)--(d);
+\draw[-latex](d)--++(-\angB:1.5);
+%angle
+\draw([shift={(-90+\angA:0.4)}]0,0) arc (-90+\angA:-90-\angA:0.4);
+\draw(0,0) node[shift={(-90:0.6)}]{$\alpha$};
+\draw(0,-2)node{$n$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
