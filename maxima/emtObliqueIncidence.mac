@@ -152,3 +152,4 @@ refPerp:GammaPerp^2;
 ref:(refParallel+refPerp)/2;
 
 AR:float((Eperp*GammaPerp)/(Eparallel*GammaParallel));
+

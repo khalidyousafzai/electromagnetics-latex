@@ -35,17 +35,23 @@
 \draw[thick] (-\x-1,0)--(\x+3,0)node[right]{$x$};
 \draw[dashed] (0,-2.1)--(0,\y)node[above]{$y$};
 %incident wave
-\draw (0,0)--(90-\angI:\l)coordinate[pos=0.8](kIn)node[shift={(90-\angI:0.3)}]{$x'$};
+\draw (0,0)--(90-\angI:\l)coordinate(x'y')coordinate[pos=0.8](kIn)node[shift={(90-\angI:0.3)}]{$x'$};
 \draw[-latex] (kIn)--++(90-\angI:-0.1);
 \draw (kIn)++(90-\angI+90:0.2)  circle (3pt)node[shift={(180:0.35)}]{$\kvec{E}_i$};
 \draw[fill] (kIn)++(90-\angI+90:0.2)  circle (1pt);
 \draw[-latex] (kIn)++(90-\angI+90:0.35) --++(90-\angI+90:0.5)node[shift={(90-\angI+90:0.2)}]{$\kvec{H}_i$};
+%x'y' cartesian coordinates
+\draw[-latex] (x'y')++(90-\angI:1)--++(90-\angI:0.75)node[above right]{$\ax'$};
+\draw[-latex] (x'y')++(90-\angI:1)--++(90-\angI+90:0.75)node[above left]{$\ay'$};
 %reflected
 %\draw[dashed] (0,0)--(\angI+90:2.8)node[shift={(\angI+90:0.3)}]{$y'$};
 \draw[-latex](0,0)--++(90+\angR:\lR)coordinate(refTip)coordinate[pos=0.8](kRef);
 \draw (kRef)++(\angR:0.2) circle (3pt)node[shift={(0:0.4)}]{$\kvec{E}_r$};
 \draw[fill] (kRef)++(\angR:0.2) circle (1pt);
 \draw[-latex] (kRef)++(\angR:0.35)--++(\angR:0.5)node[shift={(\angR:0.2)}]{$\kvec{H}_r$} ;
+%x''y'' cartesian coordinates
+\draw[-latex] (refTip)++(90+\angR:1)--++(90+\angR:0.75)node[above left]{$\ax''$};
+\draw[-latex] (refTip)++(90+\angR:1)--++(90+\angR+90:0.75)node[below left]{$\ay''$};
 %angle of incidence and reflection
 \draw[stealth-stealth] ([shift={(90-\angI:0.8)}]0,0) arc (90-\angI:90:0.8);
 \draw  ({(90-\angI+90)/2}:1.1) node{$\theta_i$};
@@ -54,7 +60,7 @@
 \draw  (90+\angR/2:1.1) node{$\theta_r$};
 \draw  ({90+\angR/2}:1.5) node[gray,rotate=\angR/2]{\RL{زاویہ انعکاس}};
 %transmission
-\draw[-latex] (0,0)--++(-90-\angT:2.8)coordinate[pos=0.5](kT);
+\draw[-latex] (0,0)--++(-90-\angT:2.8)coordinate(x'''y''')coordinate[pos=0.5](kT);
 \draw[stealth-stealth] ([shift={(-90:0.8)}]0,0) arc (-90:-90-\angT:0.8);
 \draw (-90-\angT/2:1.1) node{$\theta_t$};
 \draw (-90-\angT/2:1.9) node[align=right,gray]{زاویہ \\ انحراف};
@@ -62,6 +68,9 @@
 \draw[fill] (kT)++(-90-\angT-90:0.2) circle (1pt);
 \draw[] (kCT)node[above]{$\kvec{E}_t$};
 \draw[-latex] (kT)++(-90-\angT-90:0.35)--++(-90-\angT-90:0.5)node[left]{$\kvec{H}_t$};
+%x'''y''' cartesian coordinates
+\draw[-latex] (x'''y''')++(-90-\angT:0.5)--++(-90-\angT:0.75)node[left]{$\ax'''$};
+\draw[-latex] (x'''y''')++(-90-\angT:0.5)--++(-90-\angT+90:0.75)node[right]{$\ay'''$};
 %text
 \draw[gray] (kIn)++(90-\angI-90:0.3) node[rotate=90-\angI]{\RL{آمد موج}};
 \draw[gray] (kRef)++(180+\angR:0.3) node[rotate=-90+\angR]{\RL{انعکاسی موج}};

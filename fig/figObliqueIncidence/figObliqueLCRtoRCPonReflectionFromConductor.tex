@@ -44,15 +44,16 @@
 \fill[white] (midI)++(90-\angI+90:0.1)--++(90-\angI:-1.5)--++(90-\angI-90:0.2)--++(90-\angI:1.5)--cycle;
 \draw (0,0)--++(90-\angI:\lA);
 %reflected
-\draw[myTipOut] (90+\angI:\lA)coordinate(midR)--++(90+\angI:\lB);
+\draw[myTipOut] (90+\angI:\lA)coordinate(midR)--++(90+\angI:\lB)node[left]{$R$};
 \draw[fill=white] (midR)++(-\delX/2,-\delX/2)--++(\delX,0)--++(0,\delX)--++(-\delX,0)--++(0,-\delX);
 \draw (midR) circle (0.3);
-\draw[-latex] (midR)++(90:0.3)++(0:-0.05)--++(180:-0.1);
+\draw[-latex] (midR)++(90:0.3)++(0:0.05)--++(180:0.1);
 \fill[white] (midR)++(90+\angI+90:0.1)--++(90+\angI:-1.5)--++(90+\angI-90:0.2)--++(90+\angI:1.5)--cycle;
 \draw (0,0)--++(90+\angI:\lA);
 %text
 \draw (midI)node[shift={(0:0.7)},right]{\RL{الٹ گھڑی قطبی موج}};
 \draw (midR)node[shift={(180:0.7)},left]{\RL{سمت گھڑی قطبی موج}};
+\draw(0,0)node[below]{$M$};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document} 
