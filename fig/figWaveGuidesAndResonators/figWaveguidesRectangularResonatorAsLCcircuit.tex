@@ -1,0 +1,74 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\x}{3}
+\pgfmathsetmacro{\y}{0.5}
+\pgfmathsetmacro{\l}{0.5}
+
+\pgfmathsetmacro{\wf}{0.3}
+
+
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+%grid
+%\draw[gray,thick] (0,0) grid (3,3);
+%\draw[gray,xscale=0.1,yscale=0.1] (0,0) grid (3,3);
+%LC
+\draw (0,0) to [capacitor,l=C]++(0,2) --++(1,0) to [inductor,l=L]++(0,-2)--++(-1,0);
+\draw (0.5,-0.3)node{الف};
+%LC single turn
+\begin{scope}[shift={(-\x,0)}]
+\draw(0+\l,1) circle (0.75);
+\fill[white] (0-\l,2-\y) rectangle ++(2*\l,-2*\y);
+ \draw(0-\l,2-\y)--++(2*\l,0)coordinate[pos=0.5](top);
+\draw(0-\l,\y)--++(2*\l,0)coordinate[pos=0.5](bot);
+\draw (0.5,-0.3)node{ب};
+\end{scope}
+%
+\begin{scope}[shift={(-2*\x,1)}]
+\path (0,0.25)coordinate(a) --++(1,0)coordinate(b)--++(25:0.5)coordinate(c)--++(-1,0)coordinate(d)--cycle;
+\path (0,-0.25)coordinate(aa) --++(1,0)coordinate(bb)--++(25:0.5)coordinate(cc)--++(-1,0)coordinate(dd)--cycle;
+%left
+\path (a)--(d)coordinate[pos=0.4](tla)coordinate[pos=0.6](tlb);
+\path (aa)--(dd)coordinate[pos=0.4](bla)coordinate[pos=0.6](blb);
+%right
+\path (b)--(c)coordinate[pos=0.25](bL)coordinate[pos=0.75](bR);
+\path (bb)--(cc)coordinate[pos=0.25](bbL)coordinate[pos=0.75](bbR);
+%back
+\path (c)--(d)coordinate[pos=0.4](tba)coordinate[pos=0.6](tbb);
+\path (cc)--(dd)coordinate[pos=0.4](bba)coordinate[pos=0.6](bbb);
+%bottom plate
+\draw[fill=white] (0,-0.25)--++(1,0)--++(25:0.5)--++(-1,0)--cycle;
+%back, left, right, front
+\draw[fill=white] (tba)--(tbb)--(bbb)--(bba)--cycle;
+\draw[fill=white] (bla)--(blb)--(tlb)--(tla)--cycle;
+\draw[fill=white] (bL)--(bR)--(bbR)--(bbL)--cycle;
+\draw[fill=white] (0.5-\wf/2,-0.25)--++(0,0.5)--++(\wf,0)--++(0,-0.5)--cycle;
+%top and bottom plates
+\draw[fill=white] (0,0.25) --++(1,0)--++(25:0.5)--++(-1,0)--cycle;
+\draw (0.5,-1)node{پ};
+\end{scope}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
