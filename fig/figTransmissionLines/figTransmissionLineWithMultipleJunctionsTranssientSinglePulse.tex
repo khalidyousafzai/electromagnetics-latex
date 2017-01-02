@@ -1,0 +1,161 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\pgfmathsetmacro{\pw}{1}
+\pgfmathsetmacro{\pda}{1.3}
+
+\pgfmathsetmacro{\za}{100}
+\pgfmathsetmacro{\zb}{200}
+\pgfmathsetmacro{\zc}{400}
+
+\pgfmathsetmacro{\ra}{(\zb-\za)/(\zb+\za)}
+\pgfmathsetmacro{\ta}{1+\ra}
+
+\pgfmathsetmacro{\rb}{(\zc-\zb)/(\zc+\zb)}
+\pgfmathsetmacro{\tb}{1+\rb}
+
+\pgfmathsetmacro{\rc}{(\za-\zb)/(\za+\zb)}
+\pgfmathsetmacro{\tc}{1+\rc}
+
+\pgfmathsetmacro{\shift}{-1.3}
+\pgfmathsetmacro{\ja}{2}
+\pgfmathsetmacro{\jb}{7}
+\pgfmathsetmacro{\vi}{0.5}
+\pgfmathsetmacro{\vra}{\vi*\ra}
+\pgfmathsetmacro{\vta}{\vi*\ta}
+\pgfmathsetmacro{\vrb}{\vta*\rb}
+\pgfmathsetmacro{\vtb}{\vta*\tb}
+\pgfmathsetmacro{\vrc}{\vrb*\rc}
+\pgfmathsetmacro{\vtc}{\vrb*\tc}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+%
+\draw(0,2) to [short]++(2,0) to [short,o-o]++(5,0) to [short]++(2,0) to [resistor]++(0,-2) to [short]++(-2,0) to [short,o-o]++(-5,0) to [short]++(-2,0);
+%text
+\draw(2,2)node[above]{\RL{پہلی جوڑ}};
+\draw(7,2)node[above]{\RL{دوسری جوڑ}};
+\draw(1,1)node{$100 \, \Omega$};
+\draw(4.5,1)node{$200 \, \Omega$};
+\draw(8,1)node{$400\, \Omega$};
+\draw(9.8,1)node{$400\, \Omega$};
+\draw[] (\ja,-0.3)--++(0,7*\shift);
+\draw[] (\jb,-0.3)--++(0,7*\shift);
+%
+\begin{scope}[shift={(0,\shift)}]
+\draw (0,0)--++(9,0) node[right]{$x$};
+\draw (0.5,0)--++(0,\vi)--++(\pw,0)--++(0,-\vi);
+\draw[-latex] (0.7, 0.6)--++(0.6,0);
+\draw(0.5,0.5)node[left]{$V_i$};
+\end{scope}%
+%
+\begin{scope}[shift={(0,2*\shift)}]
+\draw (0,0)--++(9,0);
+\draw (2-0.7,0)--++(0,\vi)--++(0.7,0);
+\draw[-latex] (1.3+0.1, \vi+0.1)--++(0.3,0);
+%
+\draw(2,\vta)--++(0.3,0)--++(0,-\vta);
+\draw[-latex] (2.1,\vta+0.1)--++(0.3,0);
+%
+\draw(2,\vra)--++(-0.3,0)--++(0,-\vra);
+\draw[-latex] (2-0.1,\vra+0.1)--++(-0.3,0);
+
+%\draw(0.5,0.5)node[left]{$V$};
+\end{scope}%
+%
+\begin{scope}[shift={(0,3*\shift)}]
+\draw (0,0)--++(9,0);
+\draw (2+0.8,0)--++(0,\vta)--++(\pw,0)--++(0,-\vta);
+\draw[-latex] (2.6, \vta+0.1)--++(0.5,0);
+%
+\draw(2-0.8,0)--++(0,\vra)--++(-\pw,0)--++(0,-\vra);
+\draw[latex-] (2-0.8,\vra+0.1)--++(0.3,0);
+%
+\draw(2+0.8+\pw,\vta)node[right]{$\frac{4}{3} V_i$};
+\draw (0.2,\vra+0.2)node[left]{$\frac{V_i}{3}$};
+
+%\draw(0.5,0.5)node[left]{$V$};
+\end{scope}%
+%
+\begin{scope}[shift={(0,4*\shift)}]
+\draw (0,0)--++(9,0);
+\draw (\jb-0.7,0)--++(0,\vta)--++(0.7,0);
+\draw[-latex] (\jb-0.6, \vta+0.1)--++(0.5,0);
+%
+\draw(\jb,\vtb)--++(0.3,0)--++(0,-\vtb);
+\draw[-latex] (\jb+0.1,\vtb+0.1)--++(0.3,0)node[shift={(0.3,-0.2)}]{$\frac{16 V_i}{9}$};
+%
+\draw(\jb-0.3,0) --++(0,\vrb)--++(0.3,0);
+\draw[latex-] (\jb-0.4,\vrb+0.1)--++(0.3,0);
+
+%\draw(0.5,0.5)node[left]{$V$};
+\end{scope}%
+%
+\begin{scope}[shift={(0,5*\shift)}]
+\draw (0,0)--++(9,0);
+\draw (\jb+1.5,0)--++(0,\vtb)--++(0.5,0)--++(0,-\vtb);
+\draw[-latex] (\jb+1.5, \vtb+0.1)--++(0.3,0);
+%
+\draw(\jb-1.5,0)--++(0,\vrb)--++(\pw,0)--++(0,-\vrb);
+\draw[latex-] (\jb-1.5,\vrb+0.1)--++(0.3,0)node[shift={(-0.3,0.3)}]{$\frac{4 V_i}{9}$};
+%
+%\draw(\jb-0.3,0) --++(0,\vrb)--++(0.3,0);
+%\draw[latex-] (\jb-0.4,\vrb+0.1)--++(0.3,0);
+
+%\draw(0.5,0.5)node[left]{$V$};
+\end{scope}%
+%
+\begin{scope}[shift={(0,6*\shift)}]
+\draw (0,0)--++(9,0);
+\draw (\ja,\vrb)--++(0.75,0)--++(0,-\vrb);
+\draw[-latex] (\ja+0.75, \vrb+0.1)--++(-0.5,0);
+%
+\draw(\ja,\vtc)--++(-0.25,0)--++(0,-\vtc);
+\draw[-latex] (\ja-0.1,\vtc+0.1)--++(-0.3,0)node[shift={(-0.3,0.3)}]{$\frac{V_i}{3}$};
+%
+\draw(\ja,\vrc) --++(0.25,0)--++(0,-\vrc);
+\draw[latex-] (\ja+0.1,\vrc-0.1)--++(0.3,0)node[below ]{$-\frac{4V_i}{27}$};
+
+%\draw(0.5,0.5)node[left]{$V$};
+\end{scope}%
+%
+\begin{scope}[shift={(0,7*\shift)}]
+\draw (0,0)--++(9,0);
+\draw (\ja+0.3,0)--++(0,\vrc)--++(\pw,0)--++(0,-\vrc);
+\draw[-latex] (\ja+0.3, \vrc-0.1)--++(0.5,0)node[below]{$-\frac{4V_i}{27}$};
+%
+\draw(\ja-0.3,0)--++(0,\vtc)--++(-\pw,0)--++(0,-\vtc);
+\draw[-latex] (\ja-0.3,\vtc+0.1)--++(-0.5,0)node[shift={(-0.3,0.3)}]{$\frac{V_i}{3}$};
+%
+%\draw(\ja,\vrc) --++(0.25,0)--++(0,-\vrc);
+%\draw[latex-] (\ja+0.1,\vrc-0.1)--++(0.3,0)node[below right]{$-\frac{4V_i}{27}$};
+
+%\draw(0.5,0.5)node[left]{$V$};
+\end{scope}%
+
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

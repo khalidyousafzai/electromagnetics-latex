@@ -1,0 +1,74 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{intersections,decorations.markings,calc,decorations.pathreplacing}
+
+%\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\a}{1}
+\pgfmathsetmacro{\xx}{2}
+
+
+\begin{document}
+\begin{urdufont}
+
+\begin{tikzpicture}[
+declare function={myfunc(\x)=abs(cos( 180/2*cos(\x))/sin(\x));
+                 },
+]
+\begin{polaraxis}[ymin=0,ymax=1.2,hide axis]
+%aperture
+%\addplot[domain=0.5:360.5,samples=100] {myfunc(x)}; 
+%blank region between two sides of dipole
+\fill[white] (-0.1 cm,0.2 cm) --++(0.2 cm,0)--++(0,-0.4cm)--++(-0.2cm,0)--cycle;
+%currents
+\draw[gray] (-2 cm,0)
+\foreach \x in {-2,-1.99,...,-0.15}{--(\x cm,{20*sin(120*(2+\x)/1)} )};
+\draw[gray] (2 cm,0)
+\foreach \x in {2,1.99,...,0.15}{--(\x cm,{20*sin(120*(2-\x)/1)} )};
+%text
+\draw[gray,stealth-] (-1.5 cm ,{20*sin(120*(2-1)/1)}) to [out=135,in=0]++(-0.5 cm,0.5 cm) node[left]{\RL{برقی رو}};
+%dipole
+\draw[thick](-\xx cm,0)--(-0.1 cm,0)--++(0,-0.2 cm);
+\draw[thick](\xx cm,0)coordinate(rightE)--(0.1 cm,0)--++(0,-0.2 cm);
+\draw[gray,-latex] (rightE)++(0.2cm ,0)--++(0.3cm,0)node[right]{$y$};
+%distant object
+\draw[-latex] (0,0)--++(50:2 cm)coordinate(tip)node[pos=0.75,right]{$r_0$};
+\draw ([shift={(0:0.3 cm)}]0,0) arc (0:50:0.3 cm);
+\draw (30:0.5cm) node{$\theta$};
+\path[name path=rightLimit](tip)--++(50-90:1.2cm);
+%second ray to distant object
+\path[name path=arrowEnd] (1 cm,0)--++(50:2 cm);
+\draw[-latex,name intersections={of=arrowEnd and rightLimit}] (1 cm,0)--(intersection-1)node[pos=0.7,right]{$r$};
+\draw ([shift={(0:0.3 cm)}]1 cm,0) arc (0:50:0.3 cm);
+\draw (1cm,0)++(30:0.5cm) node{$\theta$};
+%del y
+\draw(1 cm, 0)++(-0.1 cm,0) --++(0,-0.1cm);
+\draw(1 cm, 0)++(0.1 cm,0) --++(0,-0.1cm);
+\draw (1 cm,0)node[below]{$\dif y$};
+%dimensions
+\draw[stealth-stealth] (-\xx cm,-0.5 cm)--++(2*\xx cm,0 cm)node[pos=0.3,fill=white]{$L$};
+\end{polaraxis}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

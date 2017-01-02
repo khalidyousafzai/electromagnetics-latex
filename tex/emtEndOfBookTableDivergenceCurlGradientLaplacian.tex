@@ -1,0 +1,92 @@
+\حصہء{ڈھلوان، پھیلاو، گردش اور لاپلاسی}
+
+\جزوحصہء{کارتیسی محدد}
+\begin{align*}
+\nabla f&=\frac{\partial f}{\partial x}\ax+\frac{\partial f}{\partial y}\ay+\frac{\partial f}{\partial z}\az\\
+\nabla \cdot \kvec{A}&=\frac{\partial A_x}{\partial x}+\frac{\partial A_y}{\partial y}+\frac{\partial A_z}{\partial z}\\
+\nabla \times \kvec{A}&=\left(\frac{\partial A_z}{\partial y}-\frac{\partial A_y}{\partial z} \right)\ax+\left(\frac{\partial A_x}{\partial z}-\frac{\partial A_z}{\partial x} \right)\ay+\left(\frac{\partial A_y}{\partial x}-\frac{\partial A_x}{\partial y} \right)\az=\begin{vmatrix}  \ax & \ay & az\\ \frac{\partial}{\partial x}& \frac{\partial }{\partial y} & \frac{\partial }{\partial z}\\ A_x & A_y & A_z \end{vmatrix}\\
+\nabla^2 f &=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}+\frac{\partial^2 f}{\partial z^2}
+\end{align*}
+
+
+\جزوحصہء{نلکی محدد}
+\begin{align*}
+\nabla f &=\frac{\partial f}{\partial \rho}\arho+\frac{1}{\rho}\frac{\partial f}{\partial \phi}\aphi+\frac{\partial f}{\partial z}\az\\
+\nabla \cdot \kvec{A}&=\frac{1}{\rho}\frac{\partial (\rho A_{\rho})}{\partial \rho}+\frac{1}{\rho}\frac{\partial A_{\phi}}{\partial \phi}+\frac{\partial A_z}{\partial z}\\
+\nabla \times \kvec{A}&=\left(\frac{1}{\rho}\frac{\partial A_z}{\partial \phi}-\frac{\partial A_{\phi}}{\partial z} \right)\arho+\left(\frac{\partial A_{\rho}}{\partial z}-\frac{\partial A_z}{\partial \rho} \right)\aphi+\frac{1}{\rho}\left(\frac{\partial (\rho A_{\phi})}{\partial \rho}-\frac{\partial A_{\rho}}{\partial \phi} \right)\az =\begin{vmatrix}\frac{1}{\rho}\arho & \aphi & \frac{1}{\rho} \az \\ \frac{\partial}{\partial\rho} & \frac{\partial}{\partial \phi} & \frac{\partial}{\partial z}\\ A_{\rho} & \rho A_{\phi} & A_z \end{vmatrix}\\
+\nabla^2 f &=\frac{1}{\rho}\frac{\partial}{\partial \rho}\left(\rho \frac{\partial f}{\partial \rho} \right)+\frac{1}{\rho^2}\frac{\partial^2 f}{\partial \phi^2}+\frac{\partial^2  f}{\partial z^2}=\frac{\partial^2 f}{\partial \rho^2}+\frac{1}{\rho}\frac{\partial f}{\partial \rho}+\frac{1}{\rho^2}\frac{\partial^2 f}{\partial \phi^2}+\frac{\partial^2 f}{\partial z^2}
+\end{align*}
+
+
+\جزوحصہء{کروی محدد}
+\begin{align*}
+\nabla f &=\frac{\partial f}{\partial r}\ar+\frac{1}{r}\frac{\partial f}{\partial \theta}\atheta+\frac{1}{r \sin \theta}\frac{\partial f}{\partial \phi}\aphi\\
+\nabla \cdot \kvec{A}&=\frac{1}{r^2}\frac{\partial (r^2 A_r)}{\partial r}+\frac{1}{r \sin \theta }\frac{\partial ( \sin \theta A_{\theta})}{\partial \theta}+\frac{1}{r \sin \theta}\frac{\partial A_{\phi}}{\partial \phi}\\
+\nabla \times \kvec{A}&=\frac{1}{r \sin \theta}\left[\frac{\partial (\sin \theta A_{\phi})}{\partial \theta}-\frac{\partial A_{\theta}}{\partial \phi} \right]\ar+\frac{1}{r}\left(\frac{1}{\sin \theta}\frac{\partial A_r}{\partial \phi}-\frac{\partial (r A_{\phi})}{\partial r} \right)\atheta+\frac{1}{r}\left(\frac{\partial (r A_{\theta})}{\partial r}-\frac{\partial A_r}{\partial \theta} \right)\aphi \\
+\nabla^2 f &=\frac{1}{r^2}\frac{\partial}{\partial r}\left(r \frac{\partial f}{\partial r} \right)+\frac{1}{r^2 \sin \theta}\frac{\partial}{\partial \theta}\left(\sin \theta \frac{\partial f}{\partial \theta} \right)+\frac{1}{r^2 \sin^2 \theta}\frac{\partial^2  f}{\partial {\phi}^2}
+\end{align*}
+
+
+\جزوحصہء{عمومی محدد}
+\begin{align*}
+\nabla f &=\frac{1}{k_1}\frac{\partial f}{\partial u}\au+\frac{1}{k_2}\frac{\partial f}{\partial v}\av+\frac{1}{k_3}\frac{\partial f}{\partial w}\aw\\
+\nabla \cdot \kvec{A}&=\frac{1}{k_1 k_2 k_3}\left(\frac{\partial (k_2 k_3 A_u)}{\partial u}+\frac{\partial ( k_3 k_1 A_v)}{\partial v}+\frac{\partial (k_1 k_2 A_w)}{\partial w}\right)\\
+\nabla \times \kvec{A}&=\frac{1}{k_2 k_3}\left[\frac{\partial (k_3 A_w)}{\partial v}-\frac{\partial (k_2 A_v)}{\partial w} \right]\au+\frac{1}{k_3 k_1}\left[\frac{\partial (k_1 A_u)}{\partial w}-\frac{\partial (k_3 A_w)}{\partial u} \right]\av\\
+& \quad \quad \quad \quad +\frac{1}{k_1 k_2}\left[\frac{\partial (k_2 A_v)}{\partial u}-\frac{\partial (k_1 A_u)}{\partial v} \right]\aw \\
+\nabla^2 f &=\frac{1}{k_1 k_2 k_3} \left[\frac{\partial}{\partial u}\left(\frac{k_2 k_3}{k_1}\frac{\partial f}{\partial u} \right)+\frac{\partial}{\partial v}\left(\frac{k_3 k_1}{k_2}\frac{\partial f}{\partial v} \right)+\frac{\partial}{\partial w}\left(\frac{k_1 k_2}{k_3}\frac{\partial f}{\partial w} \right)\right]
+\end{align*}
+
+\حصہء{سمتی مماثل}
+\begin{align*}
+\kvec{F} \cdot \kvec{G}&= F G \cos \theta \quad \quad \text{\RL{غیر سمتی (نقطہ) ضرب}}\\
+\theta&=\cos^{-1}\left(\frac{\kvec{F} \cdot \kvec{G}}{F G}\right)\\
+\kvec{F} \times \kvec{G}&=F G \sin \theta \aN \quad \quad \text{\RL{سمتی (صلیبی) ضرب}}\\
+\theta&=\sin^{-1}\left(\frac{\kvec{F} \times \kvec{G}}{\aN F G}\right)
+\end{align*}
+%
+\begin{align*}
+\nabla \cdot (\nabla \times \kvec{F})&=0\\
+\nabla \cdot \nabla f &=\nabla^2 f\\
+\nabla \times \nabla f&=0
+\end{align*}
+%
+\begin{align*}
+\nabla (f+g)&=\nabla f + \nabla g\\
+\nabla \cdot (\kvec{F}+\kvec{G})&=\nabla \cdot \kvec{F}+\nabla \cdot \kvec{G}\\
+\nabla \times (\kvec{F}+\kvec{G})&=\nabla \times \kvec{F}+\nabla \times \kvec{G}
+\end{align*}
+%
+\begin{align*}
+\nabla (f g)&=f \nabla g+g \nabla f\\
+\nabla \cdot (f \kvec{G})&=f (\nabla \cdot \kvec{G})+\kvec{G} \cdot (\nabla f)\\
+\nabla \times (f\kvec{G})&=f (\nabla \times \kvec{G})+(\nabla f) \times \kvec{G}
+\end{align*}
+%
+\begin{align*}
+\nabla \times (\nabla \times \kvec{F})&=\nabla (\nabla \cdot \kvec{F})-\nabla^2 \kvec{F} 
+\end{align*}
+جہاں \عددی{\nabla^2 \kvec{F}} سے مراد
+\begin{align*}
+\nabla^2 \kvec{F}&=\nabla^2 F_x \ax+\nabla^2 F_y \ay+\nabla^2 F_z \az\\ 
+\end{align*}
+ہے۔
+\begin{align*}
+\nabla \cdot (\kvec{F} \times \kvec{G})&=\kvec{G} \cdot (\nabla \times \kvec{F})-\kvec{F} \cdot (\nabla \times \kvec{G})\\
+\kvec{F} \cdot (\kvec{G} \times \kvec{H})&=\kvec{G} \cdot (\kvec{H} \times \kvec{F})=\kvec{H} \cdot (\kvec{F} \times \kvec{G})\\
+\nabla \times (\kvec{F} \times \kvec{G})&=\kvec{F} (\nabla \cdot \kvec{G})-\kvec{G} (\nabla \cdot \kvec{F})+(\kvec{G} \cdot \nabla)\kvec{F}-(\kvec{F} \cdot \nabla)\kvec{G}\\
+\nabla (\kvec{F} \cdot \kvec{G})&=(\kvec{F} \cdot \nabla)\kvec{G}+(\kvec{G} \cdot \nabla)\kvec{F}+\kvec{F} \times (\nabla \times \kvec{G})+\kvec{G}\times (\nabla \times \kvec{F})
+\end{align*}
+
+\حصہء{سطحی اور حجمی تکمل کے تعلق}
+مندرجہ ذیل تین مساوات میں دائیں جانب حجمی تکمل کے حجم کو بائیں جانب سطحی تکمل کی سطح گھیرتی ہے۔
+\begin{align*}
+\oint_S f \dif \kvec{S}&=\int_h \nabla f \dif h\\
+\oint_S \kvec{F} \cdot \dif \kvec{S}&=\int_h \nabla \cdot \kvec{F} \dif h \quad \quad \text{\RL{مسئلہ پھیلاو}}  \\
+\oint_S \aN \times \kvec{F} \dif S&=\int_h \nabla \times \kvec{F} \dif h
+\end{align*}
+\حصہء{خطی اور سطحی تکمل کے تعلق}
+مندرجہ ذیل دو مساوات میں دائیں جانب سطحی تکمل کی سطح  کو بائیں جانب خطی تکمل کی بند راہ گھیرتی ہے۔
+\begin{align*}
+\oint_l f \dif \kvec{l}&=\int_S \aN \times \nabla f \dif S\\
+\oint_l \kvec{F} \cdot \dif \kvec{l}&=\int_S (\nabla \times \kvec{F}) \cdot \dif \kvec{S}\quad \quad \text{\RL{مسئلہ سٹوکس}}
+\end{align*}
