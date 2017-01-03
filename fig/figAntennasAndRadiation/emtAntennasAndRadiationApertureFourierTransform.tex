@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{polar}
+\usepackage{circuitikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+
+\pgfmathsetmacro{\x}{2}
+\pgfmathsetmacro{\y}{0.2}
+\pgfmathsetmacro{\z}{3}
+\pgfmathsetmacro{\aA}{20}
+\pgfmathsetmacro{\aB}{-15}
+\pgfmathsetmacro{\aC}{30}
+
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[x={(-0.75cm,-0.5cm)},y={(1cm,0)},z={(0,1cm)}]
+%grid
+%\draw[gray,thick](0,-2) grid (\xx+3,2);
+%\draw[gray,thin,xstep=0.1,ystep=0.1](0,-2) grid (\xx+3,2);
+%axis
+\draw(0,0,0)--++(1.5,0,0)node[left]{$x$};
+\draw(0,0,0)--++(0,3,0)node[above]{$y$};
+\draw(0,0,0)--++(0,0,1)node[above right]{$z$};
+\draw[-latex](0,0,0)--++(0,2,1)node[pos=0.7,above]{$\kvec{r}$};
+%aperture
+\draw (0,0) ellipse (1cm and 0.5cm);
+\draw[-latex] (0.7,0.2,0)--++(0,0.5,0)node[shift={(-0.3,0.05,0)}]{$\kvec{E}_a$};
+%text
+\draw[stealth-] (0,-1,0) to [out=180,in=0]++(0,-0.5,0.5)node[left]{درز};
+%text
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
