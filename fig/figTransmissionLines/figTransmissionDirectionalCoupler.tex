@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{circuitikz}
+\usetikzlibrary{intersections,decorations.markings}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{steinmetz}		%\phase to show angle of phasors
+\input{../../tex/myEMTvectors.tex}
+
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}[american]
+%
+\pgfmathsetmacro{\la}{4}
+\pgfmathsetmacro{\lb}{1}
+\pgfmathsetmacro{\w}{1.5}
+\pgfmathsetmacro{\sx}{0.1}
+\pgfmathsetmacro{\sy}{0.2}
+%outer conductor
+\draw(0,0)--++(\la,0)--++(0,-0.3)++(0.3,0)--++(0,0.3)--++(\lb,0);
+\draw(0,\w)--++(\lb,0)--++(0,0.3)++(0.3,0)--++(0,-0.3)--++(\la,0);
+\draw[gray] (\la+\lb+0.6,0)--++(0.5,0)node[right]{$x$};
+%inner conductor
+\draw[line width=0.2cm](0,\w/2)--++(\la+\lb+0.3,0);
+%upper coupler
+\draw[line width=0.05cm] (\lb+0.15,\w-0.3)--++(2.5,0)coordinate(upperRight);
+\draw(\lb+0.15,\w-0.3-0.025)--++(0,0.3+0.3)coordinate(upperOut);
+\draw(upperRight)--++(\sx,0)--++(\sx/2,\sy/2)--++(\sx,-\sy)--++(\sx,\sy)--++(\sx,-\sy)--++(\sx,\sy)--++(\sx/2,-\sy/2)--++(\sx,0)node[right]{$R_1$}--++(0,0.3)coordinate(upperJoint);
+\draw[fill] (upperJoint) circle (1pt);
+\draw[stealth-](upperOut)++(0,0.1) to [out=90,in=180]++(0.5,0.5) node[right]{\RL{بائیں جانب موج کی پیمائش}};
+%lower coupler
+\draw[line width=0.05cm] (\la+0.15,0.3)--++(-2.5,0)coordinate(lowerLeft);
+\draw(\la+0.15,0.3+0.025)--++(0,-0.3-0.3)coordinate(lowerOut);
+\draw(lowerLeft)--++(-\sx,0)--++(-\sx/2,\sy/2)--++(-\sx,-\sy)--++(-\sx,\sy)--++(-\sx,-\sy)--++(-\sx,\sy)--++(-\sx/2,-\sy/2)--++(-\sx,0)node[left]{$R_1$}--++(0,-0.3)coordinate(lowerJoint);
+\draw[fill] (lowerJoint) circle (1pt);
+\draw[stealth-](lowerOut)++(0,0.1) to [out=-90,in=0]++(-0.5,-0.75) node[left]{\RL{دائیں جانب موج کی پیمائش}};
+%text
+\draw[stealth-] (\la+\lb,\w) to [out=90,in=180]++(0.5,0.5)node[right]{\RL{بیرونی تار}};
+\draw[stealth-] (\la+\lb,\w/2+0.05) to [out=90,in=180]++(0.5,0.5)node[right]{\RL{اندرونی تار}};
+\draw[stealth-] (\la/3+\lb,0.3-0.025) to [out=-90,in=0]++(-1,-0.6)node[left]{\RL{اضافی تار}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
