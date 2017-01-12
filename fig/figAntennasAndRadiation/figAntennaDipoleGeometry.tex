@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+%\newcommand{\RightAngle}[4][5pt]{\draw[gray] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)--($#3!#1!#4$) ;        }
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\d}{1.5}
+\pgfmathsetmacro{\r}{4}
+\pgfmathsetmacro{\ang}{30}
+%axis
+%\draw[gray] (0,0,0)--(2.5,0,0)node[left]{$x$};
+\draw[gray] (0,0)--(3.2,0)node[below]{$y$};
+\draw[gray] (0,0)--(0,2.5)node[left]{$z$};
+%dipole
+\draw[gray,line width=1mm] (0,-\d)coordinate(dpBot)--(0,\d)coordinate(dpTop);
+\draw[gray] (dpTop)++(-0.2,0)--++(-1,0);
+\draw[gray] (dpBot)++(-0.2,0)--++(-1,0);
+\draw[stealth-stealth,gray] (dpTop)++(-1,0)--++(0,-2*\d)node[pos=0.5,left]{$l$};
+\draw[gray] (dpBot)++(-0.5mm,-0.1)--++(0,-0.3);
+\draw[gray] (dpBot)++(0.5mm,-0.1)--++(0,-0.3);
+\draw[gray,stealth-] (dpBot)++(-0.5mm,-0.2)--++(-0.3,0);
+\draw[gray,stealth-] (dpBot)++(0.5mm,-0.2)--++(0.5,0)node[right]{$d$};
+%small section
+\draw[line width=1mm] (0,2/3*\d)coordinate(dpMid)++(0,-0.1)--++(0,0.2)node[below right]{$\dif z$};
+\draw[gray] (-0.1,0)--++(-0.3,0);
+\draw[gray,stealth-stealth] (dpMid)++(-0.3,0)--++(0,-2/3*\d)node[pos=0.5,left]{$z$};
+%point N
+\draw (0,0)--++(\ang:\r)coordinate(N)node[right]{$N$}node[pos=0.5,below]{$r$};
+\draw[fill] (N)circle(1pt);
+\draw(N)--(dpTop)node[pos=0.25,above]{$s_1$};
+\draw(N)--(dpBot)node[pos=0.25,below]{$s_2$};
+\draw(N)--(dpMid)node[pos=0.5,below]{$s$};
+%angle
+\draw[-stealth] ([shift={(90:1.3)}]0,0) arc (90:\ang:1.3);
+\draw (40:1.5)node{$\theta$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

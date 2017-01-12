@@ -1,0 +1,71 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+%\newcommand{\RightAngle}[4][5pt]{\draw[gray] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)--($#3!#1!#4$) ;        }
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}%[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\d}{1}
+\pgfmathsetmacro{\r}{3}
+\pgfmathsetmacro{\ang}{30}
+\pgfmathsetmacro{\dd}{\d*cos(\ang)}
+%axis
+%\draw[gray] (0,0,0)--(2.5,0,0)node[left]{$x$};
+%\draw[gray] (0,0)--(3.2,0)node[below]{$y$};
+%\draw[gray] (0,0)--(0,2.5)node[left]{$z$};
+%dipole
+\draw[line width=1mm] (0,-\d)coordinate(dpBot)--(0,\d)coordinate(dpTop);
+
+\draw[stealth-stealth] (dpTop)++(-0.15,0)--++(0,-2*\d)node[pos=0.75,left]{$l$};
+%far away
+
+\draw[-latex](dpTop)--++(\ang:\r)coordinate(T)node[pos=0.5,below]{$s_1$};
+\path[name path=tillHere](T)--++(-90+\ang:3);
+\path[name path=kmid] (0,0)--++(\ang:4);
+\path[name path=klow](dpBot)--++(\ang:4.4);
+\draw[-latex,name intersections={of =tillHere and kmid}] (0,0)--(intersection-1)node[pos=0.5,below]{$r$};
+\draw[-latex,name path=kklower,name intersections={of=tillHere and klow}](dpBot)--(intersection-1)node[pos=0.5,below]{$s_2$};
+%angle
+\draw[-stealth] ([shift={(90:0.5)}]0,0) arc (90:\ang:0.5);
+\draw (60:0.8)node{$\theta$};
+%distances
+\draw(0,0)++(90+\ang:\dd)coordinate(topL)--++(\ang-90:2*\dd)coordinate(botL);
+\draw(topL)--(dpTop);
+%
+\draw [decorate,decoration={brace,amplitude=2pt,mirror,raise=4pt},yshift=0pt]
+ (dpTop)--(topL) node [black,midway,shift={(90+\ang:0.5)}] {\footnotesize$\frac{l}{2}\cos \theta$};
+%
+\draw [decorate,decoration={brace,amplitude=2pt,mirror,raise=4pt},yshift=0pt]
+ (dpBot)--(botL) node [black,midway,shift={(90+\ang:-0.6)}] {\footnotesize$\frac{l}{2}\cos \theta$};
+%
+\draw [decorate,decoration={brace,amplitude=2pt,raise=4pt},yshift=0pt]
+ (T)--++(\ang-90:2*\dd) node [black,midway,shift={(\ang:0.6)},rotate=\ang-90] {\RL{دور نقطہ $N$}};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

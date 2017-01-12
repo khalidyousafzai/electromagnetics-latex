@@ -1,0 +1,68 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\a}{1}
+\pgfmathsetmacro{\b}{1}
+\pgfmathsetmacro{\c}{0.2}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+    \begin{axis}[hide axis,view={0}{40}]
+       \addplot3[
+	surf,
+%colormap name=viridis,
+       colormap={bw}{gray(0 cm)=(0);gray(1 cm)=(1)},
+       samples=60,
+       domain=0:360,y domain=0:360,
+       z buffer=sort]
+       ({(\a+\b*cos(x))*cos(y)}, 
+        {(\a+\b*cos(x))*sin(y)}, 
+        {\c*sin(x)});
+
+%\pgfmathsetmacro{\tilt}{8}
+
+%\pgfmathsetmacro{\ang}{0}
+%\addplot3[-<-=0.5, domain=-50:135, samples y=0] ({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{45}
+%\addplot3[domain=-20:175, samples y=0]({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{90}
+%\addplot3[ domain=40:240, samples y=0] ({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{135}
+%\addplot3[domain=60:230, samples y=0] ({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{180}
+%\addplot3[ domain=55:200, samples y=0] ({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{225}
+%\addplot3[ domain=20:165, samples y=0]({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{270}
+%\addplot3[-<-=0.5, domain=-20:135, samples y=0] ({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+%\pgfmathsetmacro{\ang}{315}
+%\addplot3[-<-=0.5, domain=-50:120, samples y=0] ({(2+cos(x))*cos(\ang+x/\tilt)},{(2+cos(x))*sin(\ang+x/\tilt)},{0.2*sin(x)}); 
+    \end{axis}
+
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

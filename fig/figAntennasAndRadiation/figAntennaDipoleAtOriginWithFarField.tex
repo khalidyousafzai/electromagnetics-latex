@@ -1,0 +1,93 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{amsmath}
+\usepackage{commath}	
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings,decorations.pathreplacing}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\newdimen\XCoord
+\newdimen\YCoord
+
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+%\newcommand{\RightAngle}[4][5pt]{\draw[gray] ($#3!#1!#2$)--($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)--($#3!#1!#4$) ;        }
+%draws left and right arrows where needed e.g.  
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
+%\pgfmathsetseed{1}
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\kphiN}{60}
+\pgfmathsetmacro{\kthetaN}{40}
+%
+%axis
+\draw[gray] (0,0,0)--(2.5,0,0)node[left]{$x$};
+\draw[gray] (0,0,0)--(0,3.2,0)node[below]{$y$};
+\draw[gray] (0,0,0)--(0,0,2.5)node[left]{$z$};
+%dipole
+\draw[thick,->-=0.8] (0,0,-0.5)coordinate(dpBot)--(0,0,0.5)coordinate(dpTop)node[pos=0.75,left]{$I$};
+\draw[gray] (dpTop)++(0,-0.1,0)--++(0,-0.5,0);
+\draw[gray] (dpBot)++(0,-0.1,0)--++(0,-0.5,0);
+\draw[stealth-stealth,gray] (0,-0.4,-0.5)--++(0,0,1)node[pos=0.5,left]{$l$};
+%
+\pgfmathsetmacro{\ktheta}{\kthetaN}
+\draw[gray] (0,0,0)--({\kr*sin(\ktheta)*cos(\kphiN)},{\kr*sin(\ktheta)*sin(\kphiN)},{\kr*cos(\ktheta)})coordinate(N)node[shift={(0,-0.3,0.05)}]{$N$}node[pos=0.6,right]{$r$};
+\draw[gray,fill] (N) circle(1pt);
+%theta line
+%\pgfmathsetmacro{\kr}{2.7}
+\draw[gray](0,0,\kr)    \foreach \ktheta in {0,1,...,90}{--({\kr*sin(\ktheta)*cos(\kphiN)},{\kr*sin(\ktheta)*sin(\kphiN)},{\kr*cos(\ktheta)})}--(0,0,0);
+%theta angle
+\pgfmathsetmacro{\kr}{0.7}
+\draw[gray,-stealth](0,0,\kr)    \foreach \ktheta in {0,1,...,\kthetaN}{--({\kr*sin(\ktheta)*cos(\kphiN)},{\kr*sin(\ktheta)*sin(\kphiN)},{\kr*cos(\ktheta)})};
+\pgfmathsetmacro{\kr}{1.1}
+\pgfmathsetmacro{\kthetaA}{\kthetaN/2}
+\draw[gray] ({\kr*sin(\kthetaA)*cos(\kphiN)},{\kr*sin(\kthetaA)*sin(\kphiN)},{\kr*cos(\ktheta)}) node{$\theta$};
+%\path[gray] (N)--({\kr*sin(\ktheta)*cos(\kphi)},{\kr*sin(\ktheta)*sin(\kphi)},0)coordinate(Nb);
+%\draw[gray,dashed,name path=xPlane radial](0,0,0)--(Nb);
+\draw[gray,-stealth] ([shift=(0:0.45)]0,0) arc (0:\kphiN:0.45);
+\node[gray] at (2/3*\kphiN:1){$\phi$};
+%phi line
+%phi line
+\pgfmathsetmacro{\kr}{2}
+\draw[gray](\kr,0,0)    \foreach \kphi in {0,1,...,90}{--({\kr*sin(90)*cos(\kphi)},{\kr*sin(90)*sin(\kphi)},{\kr*cos(90)})};
+%phi line
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\kphiA}{0}
+\draw[gray](0,0,\kr)    \foreach \ktheta in {0,1,...,90}{--({\kr*sin(\ktheta)*cos(\kphiA)},{\kr*sin(\ktheta)*sin(\kphiA)},{\kr*cos(\ktheta)})};
+%phi line
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\kphiA}{90}
+\draw[gray](0,0,\kr)    \foreach \ktheta in {0,1,...,90}{--({\kr*sin(\ktheta)*cos(\kphiA)},{\kr*sin(\ktheta)*sin(\kphiA)},{\kr*cos(\ktheta)})};
+%phi line
+\pgfmathsetmacro{\kr}{2}
+\pgfmathsetmacro{\kthetaA}{\kthetaN}
+\draw[gray]({\kr*sin(\kthetaA)*cos(0)},{\kr*sin(\kthetaA)*sin(0)},{\kr*cos(\kthetaA)})    \foreach \kphi in {0,1,...,90}{--({\kr*sin(\kthetaA)*cos(\kphi)},{\kr*sin(\kthetaA)*sin(\kphi)},{\kr*cos(\kthetaA)})};
+%vectors fields Er
+\pgfmathsetmacro{\krr}{\kr+2}
+\draw[-latex] (N)--({\krr*sin(\ktheta)*cos(\kphiN)},{\krr*sin(\ktheta)*sin(\kphiN)},{\krr*cos(\ktheta)})node[above]{$\kvec{E}_r$};
+%vectors fields Etheta
+\pgfmathsetmacro{\krr}{\kr/cos(30)}
+\pgfmathsetmacro{\kthetaNA}{\kthetaN+30}
+\draw[-latex] (N)--({\krr*sin(\kthetaNA)*cos(\kphiN)},{\krr*sin(\kthetaNA)*sin(\kphiN)},{\krr*cos(\kthetaNA)})node[pos=0.7,right]{$\kvec{E}_{\theta}$};
+%vectors fields Ephi
+\pgfmathsetmacro{\krr}{\kr*sin(\kthetaN)/cos(30)}
+\pgfmathsetmacro{\kphiNA}{\kphiN+30}
+\draw[-latex] (N)--++(-1,0.5,0)node[right]{$\kvec{E}_{\phi}$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}

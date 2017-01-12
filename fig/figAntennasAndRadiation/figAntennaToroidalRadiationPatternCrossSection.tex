@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{bm}	
+\usepackage{commath}									%differentiation symbols
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,decorations.pathreplacing,decorations.markings}
+
+\input{../../tex/myEMTvectors.tex}
+
+  \setmainlanguage{english}
+\setotherlanguages{arabic}
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+
+\definecolor{lgray}{cmyk}{0,0,0,0.2}
+\definecolor{dgray}{cmyk}{0,0,0,0.7}
+
+% \draw[->-=0.5] (0,0)--(3,0); draws arrow at the middle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow{latex}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow{latex reversed}}},postaction={decorate}}}
+
+\pgfmathsetmacro{\a}{1.5}
+\pgfmathsetmacro{\b}{1}
+\pgfmathsetmacro{\c}{0.2}
+\pgfmathsetmacro{\d}{0.75}
+
+\begin{document}
+\begin{urdufont}
+
+
+\begin{tikzpicture}
+%axis
+\draw[gray] (0,0)--++(0,1.5)node[left]{$z$};
+\draw[thick] (0,-\d)--++(0,2*\d);
+  \draw[name path=kcircle](\a,0) circle(\a);
+ \draw(-\a,0) circle(\a);
+%angle
+\path[name path=kray](0,0)--++(30:2*\a);
+\draw[-latex,name intersections={of=kray and kcircle}] (0,0)--(intersection-1)node[pos=0.8,below]{$r$};
+\draw[stealth-] ([shift={(30:0.5)}]0,0) arc (30:90:0.5);
+\draw(50:0.8)node{$\theta$};
+\end{tikzpicture}%
+\end{urdufont}
+\end{document}
