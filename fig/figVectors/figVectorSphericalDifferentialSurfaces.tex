@@ -52,37 +52,43 @@
 \coordinate (oUL) at ({\krD*sin(\ktheta)*cos(\kphiD)},{\krD*sin(\ktheta)*sin(\kphiD)},{\krD*cos(\ktheta)});
 \coordinate (oUR) at ({\krD*sin(\ktheta)*cos(\kphi)},{\krD*sin(\ktheta)*sin(\kphi)},{\krD*cos(\ktheta)});
 %
-%inner face
-\draw (iLL) 
-\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\kr*sin(\i)*cos(\kphiD)},{\kr*sin(\i)*sin(\kphiD)},{\kr*cos(\i)})}
-\foreach \i in {\kphiD,\kphiDN,...,\kphi}{-- ({\kr*sin(\ktheta)*cos(\i)},{\kr*sin(\ktheta)*sin(\i)},{\kr*cos(\ktheta)})}
-\foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\kr*sin(\i)*cos(\kphi)},{\kr*sin(\i)*sin(\kphi)},{\kr*cos(\i)})}
-\foreach \i in {\kphi,\kphiN,...,\kphiD}{--({\kr*sin(\kthetaD)*cos(\i)},{\kr*sin(\kthetaD)*sin(\i)},{\kr*cos(\kthetaD)})};
-%outer face
-\draw (oLL) 
-\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\krD*sin(\i)*cos(\kphiD)},{\krD*sin(\i)*sin(\kphiD)},{\krD*cos(\i)})}
-\foreach \i in {\kphiD,\kphiDN,...,\kphi}{-- ({\krD*sin(\ktheta)*cos(\i)},{\krD*sin(\ktheta)*sin(\i)},{\krD*cos(\ktheta)})}
-\foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\krD*sin(\i)*cos(\kphi)},{\krD*sin(\i)*sin(\kphi)},{\krD*cos(\i)})}
-\foreach \i in {\kphi,\kphiN,...,\kphiD}{--({\krD*sin(\kthetaD)*cos(\i)},{\krD*sin(\kthetaD)*sin(\i)},{\krD*cos(\kthetaD)})};
-%edges
-\draw (iLL)--(oLL)  (iLR)--(oLR)  (iUL)--(oUL)  (iUR)--(oUR);
-%drop to ground
-%\draw[gray,dashed] (0,0,0)--(iLL)  (0,0,0)--(iLR)  (0,0,0)--(iUL)  (0,0,0)--(iUR);
-%\draw[gray,dashed] (iLL)--({\kr*sin(\kthetaD)*cos(\kphiD)},{\kr*sin(\kthetaD)*sin(\kphiD)},0);
-%\draw[gray,dashed] (iLR)--({\kr*sin(\kthetaD)*cos(\kphi)},{\kr*sin(\kthetaD)*sin(\kphi)},0);
 %theta
 \draw[gray,dashed] (0,0,\kr) 
 \foreach \i in {0,1,...,90}{--({\kr*sin(\i)*cos(\kphi)},{\kr*sin(\i)*sin(\kphi)},{\kr*cos(\i)})}--(0,0,0);
 \draw[gray,dashed] (0,0,\kr) 
 \foreach \i in {0,1,...,90}{--({\kr*sin(\i)*cos(\kphiD)},{\kr*sin(\i)*sin(\kphiD)},{\kr*cos(\i)})}--(0,0,0);
-%text
-\draw[stealth-] ($(iLR)!0.5!(iUR)$) to [out=-140,in=0] ++(0,-1,-0.4)node[left]{$r \textup{d} \theta$};
-\draw[stealth-] ($(iLL)!0.5!(iLR)$) to [out=-45,in=180] ++(0,1,-0.4)node[right]{$r \sin \theta \textup{d} \phi$};
-\draw[stealth-] ($(iLL)!0.5!(oLL)$) to [out=-10,in=180] ++(0,1,0.2)node[right]{$\textup{d} r$};
-\node at (0,2,2.5){\RL{حجم= $r^2 \sin \theta \textup{d} r \textup{d} \theta \textup{d} \phi$}};
-%
-\draw (2,3,0)node{(الف)};
+%edges
+\draw[] (iLL)--(oLL) (iLR)--(oLR) ;
+\draw[]  (iUL)--(oUL)--(oUR)--(iUR)--cycle;
+%inner face
+\draw[] (iLL) 
+\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\kr*sin(\i)*cos(\kphiD)},{\kr*sin(\i)*sin(\kphiD)},{\kr*cos(\i)})}
+\foreach \i in {\kphiD,\kphiDN,...,\kphi}{-- ({\kr*sin(\ktheta)*cos(\i)},{\kr*sin(\ktheta)*sin(\i)},{\kr*cos(\ktheta)})}
+\foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\kr*sin(\i)*cos(\kphi)},{\kr*sin(\i)*sin(\kphi)},{\kr*cos(\i)})}
+\foreach \i in {\kphi,\kphiN,...,\kphiD}{--({\kr*sin(\kthetaD)*cos(\i)},{\kr*sin(\kthetaD)*sin(\i)},{\kr*cos(\kthetaD)})};
+%outer face
+\draw[shade] (oLL) 
+\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\krD*sin(\i)*cos(\kphiD)},{\krD*sin(\i)*sin(\kphiD)},{\krD*cos(\i)})}
+\foreach \i in {\kphiD,\kphiDN,...,\kphi}{-- ({\krD*sin(\ktheta)*cos(\i)},{\krD*sin(\ktheta)*sin(\i)},{\krD*cos(\ktheta)})}
+\foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\krD*sin(\i)*cos(\kphi)},{\krD*sin(\i)*sin(\kphi)},{\krD*cos(\i)})}
+\foreach \i in {\kphi,\kphiN,...,\kphiD}{--({\krD*sin(\kthetaD)*cos(\i)},{\krD*sin(\kthetaD)*sin(\i)},{\krD*cos(\kthetaD)})};
+\draw[stealth-] ($(oLL)!0.5!(oUR)$) to [out=60,in=180] ++(0,0.5,0.5)node[right]{$r^2 \sin \theta \textup{d} \theta \textup{d} \phi$};
+%left front face
+\draw[shade] (iUR) \foreach \i in {\ktheta,\kthetaN,...,\kthetaD}{--({\kr*sin(\i)*cos(\kphi)},{\kr*sin(\i)*sin(\kphi)},{\kr*cos(\i)})}--(oLR)\foreach \i in {\kthetaD,\kthetaDN,...,\ktheta}{--({\krD*sin(\i)*cos(\kphi)},{\krD*sin(\i)*sin(\kphi)},{\krD*cos(\i)})}--cycle;
+%text front face
+\draw[stealth-] ($(iLR)!0.5!(oUR)$) to [out=180,in=0] ++(0,-1,-0.4)node[left]{$r \textup{d} \theta \textup{d} r$};
+%shades
+\draw[shade] (iLL)--(iLR)--(oLR)--(oLL)--cycle;
+\draw[stealth-] ($(iLR)!0.5!(oLL)$) to [out=-60,in=180] ++(0,0.5,-0.2)node[right]{$r \sin \theta \textup{d} \phi \textup{d}r$};
 
+%drop to ground
+%\draw[gray,dashed] (0,0,0)--(iLL)  (0,0,0)--(iLR)  (0,0,0)--(iUL)  (0,0,0)--(iUR);
+%\draw[gray,dashed] (iLL)--({\kr*sin(\kthetaD)*cos(\kphiD)},{\kr*sin(\kthetaD)*sin(\kphiD)},0);
+%\draw[gray,dashed] (iLR)--({\kr*sin(\kthetaD)*cos(\kphi)},{\kr*sin(\kthetaD)*sin(\kphi)},0);
+%text
+\draw (2,3,0)node{(ب)};
+
+%
 \end{tikzpicture}%
 \end{urdufont}
 \end{document}
