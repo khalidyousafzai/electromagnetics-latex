@@ -19,10 +19,11 @@
 \newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
 
 
-\pgfmathsetmacro{\angA}{70}
-\pgfmathsetmacro{\angB}{45}
-\pgfmathsetmacro{\angC}{20}
+\pgfmathsetmacro{\ang}{27}
+\pgfmathsetmacro{\l}{1.1}
 
+\pgfmathsetmacro{\A}{1.4}
+\pgfmathsetmacro{\del}{0.3}
 %
 
 \begin{document}
@@ -36,31 +37,25 @@
 %curve
 \draw[name path=kcurve](0,0) arc (180:100:4cm and 2cm);
 %mid point intersects
-\path[name path=st](0,0)--++(50:2.5);
-\draw[name intersections={of=st and kcurve}] (0,0)--(intersection-2)coordinate(kpoint)coordinate[pos=0.3](nn);
-\draw[stealth-] (nn) to [out=135,in=0]++(-1.3,0.3)node[left]{ڈھلوان $=v_{\text{سواری}}$};
-\draw(intersection-2)--++(27:0.9)coordinate[pos=0.8](nnn);
-\draw[stealth-](nnn) to [out=135,in=180]++(1.5,0.75) node[right]{ڈھلوان$=v_{\text{سوار}}=v_{\text{مجموعی}}$};
-\draw(intersection-2)--++(27:-0.9);
-\path[name path=hA] (intersection-2)--++(-1.5,0);
-\path[name path=vA] (intersection-2)--++(0,-1.7);
-\draw[dashed,name intersections={of=hA and yy}] (kpoint)--(intersection-1)node[left]{$\omega_0$};
-\draw[dashed,name intersections={of=vA and xx}] (kpoint)--(intersection-1)node[below]{$\beta_0$};
-%lower freq intercepts
-\path[name path=st](0,0)--++(60:2);
-\path[name intersections={of=st and kcurve}] (0,0)--(intersection-2)coordinate(kpoint);
-\path[name path=hA] (intersection-2)--++(-1.5,0);
-\path[name path=vA] (intersection-2)--++(0,-1.7);
-\draw[dashed,name intersections={of=hA and yy}] (kpoint)--(intersection-1)node[left]{$\omega_a$};
-\draw[dashed,name intersections={of=vA and xx}] (kpoint)--(intersection-1)node[below]{$\beta_a$};
-%higher freq intercepts
-\path[name path=st](0,0)--++(42:3.5);
-\path[name intersections={of=st and kcurve}] (0,0)--(intersection-2)coordinate(kpoint);
-\path[name path=hA] (intersection-2)--++(-2,0);
-\path[name path=vA] (intersection-2)--++(0,-1.7);
-\draw[dashed,name intersections={of=hA and yy}] (kpoint)--(intersection-1)node[left]{$\omega_b$};
-\draw[dashed,name intersections={of=vA and xx}] (kpoint)--(intersection-1)node[below]{$\beta_b$};
-
+\path[name path=yL](0,\A-\del)node[left]{$\omega_a$}--++(2,0);
+\path[name path=yM](0,\A)node[left]{$\omega_0$}--++(2,0);
+\path[name path=yR](0,\A+\del)node[left]{$\omega_b$}--++(2.5,0);
+\draw[dashed,name intersections={of=yL and kcurve}] (0,\A-\del)--(intersection-1)coordinate(L);
+\draw[dashed,name intersections={of=yM and kcurve}] (0,\A)--(intersection-1)coordinate(M);
+\draw[dashed,name intersections={of=yR and kcurve}] (0,\A+\del)--(intersection-1)coordinate(R);
+%
+\path[name path=klow](L)--++(0,-1.5);
+\path[name path=kmid](M)--++(0,-1.8);
+\path[name path=khigh](R)--++(0,-2.2);
+\draw[dashed,name intersections={of=klow and xx}](L)--(intersection-1)node[below]{$\beta_a$};
+\draw[dashed,name intersections={of=kmid and xx}](M)--(intersection-1)node[below]{$\beta_0$};
+\draw[dashed,name intersections={of=khigh and xx}](R)--(intersection-1)node[below]{$\beta_b$};
+%
+\draw(0,0)--(M)coordinate[pos=0.3](velC);
+\draw[stealth-] (velC) to [out=135,in=0]++(-1,0.1)node[left]{ڈھلوان $=v_{\text{سواری}}$};
+%
+\draw (M)++(\ang:-\l)--++(\ang:2*\l)coordinate[pos=0.9](velS);
+\draw[stealth-] (velS) to [out=135,in=180]++(1,0.5)node[right]{ڈھلوان $=v_{\text{سوار}}=v_{\text{مجموعی}}$};
 \end{tikzpicture}%
 \end{urdufont}
 \end{document} 

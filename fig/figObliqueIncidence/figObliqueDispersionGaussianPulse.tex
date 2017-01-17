@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\B}{20}
+\pgfmathsetmacro{\delB}{1}
+
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipIn/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipOut/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+\begin{axis}[hide axis,clip=false]
+       \addplot[ samples=100,domain=-3:3]{e^(-0.5*(\x)^2)};
+ \addplot[ samples=10,domain=-4:4]({\x},{0})node[right]{$\omega$};
+ \addplot[ samples=10,domain=0:1.2]({-4},{\x})node[left]{$\left|\frac{E_{\text{مجموعی}}(0,\omega)}{E_{\text{مجموعی}}(0,\omega_0)} \right|^2$};
+%y ticks
+ \addplot[ dashed,samples=10,domain=-4:4]({\x},{e^(-1)});
+ \addplot[ dashed,samples=10,domain=-4:-4.1]({\x},{1});
+ \addplot[ dashed,samples=10,domain=-4:-4.1]({\x},{0.5});
+\node[left] at (axis cs:-4,1/e){$\tfrac{1}{e}$};
+\node[left] at (axis cs:-4,1){$1$};
+\node[left] at (axis cs:-4,0.5){$0.5$};
+%x ticks
+ \addplot[samples=10,domain=0:-0.03]({-1.5},{\x})node[below]{$\omega_a$};
+ \addplot[samples=10,domain=0:-0.03]({0},{\x})node[below]{$\omega_0$};
+ \addplot[samples=10,domain=0:-0.03]({1.5},{\x})node[below]{$\omega_b$};
+\end{axis}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 
