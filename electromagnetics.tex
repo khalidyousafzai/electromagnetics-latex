@@ -6,6 +6,8 @@
 \usepackage{ mathrsfs }   %for Poynting symbol
 \usepackage{IEEEtrantools}
 
+
+
 \sisetup{math-micro=\textup{µ},text-micro=µ,math-ohm  =\upOmega}   %with mathpazo this is needed else must not be here. now size of micro is smaller
 
 \input{./tex/myUrduCommandsEMT.tex}                  %turning latex into urdu
@@ -39,7 +41,7 @@
 \date{}                           %if absent gives date in arabic which is a rubbish
 
 \linenumbers
-\makeindex
+%\makeindex
 
 %==========
 \begin{document}
@@ -55,8 +57,11 @@
 
 \tableofcontents
 \pagestyle{empty}
+\newpage
 \include{./tex/emtPreface}
+\newpage
 \include{./tex/prefaceFirstBook}
+\newpage
 \include{./tex/emtSymbols}
 
 
@@ -91,7 +96,7 @@
 \renewcommand*{\indexname}{فرہنگ}      %this command has to be placed right here just before printindex command
 \cleardoublepage
 \addcontentsline{toc}{chapter}{فرہنگ}
-%\printindex
+\printindex
 
 
 \end{urdufont}

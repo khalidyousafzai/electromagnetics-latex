@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{intersections,decorations.markings,calc}
+\usepackage{polyglossia}                %is loaded the last
+\usepackage{siunitx}
+\usepackage{amsmath}
+\input{../../tex/myEMTvectors.tex}
+
+\setmainlanguage[numerals=maghrib]{arabic}     %for english numbers use numerals=maghrib, for arabic numerals=arabicdigits
+\setotherlanguages{english}
+
+
+\newfontfamily\arabicfont[Scale=1.0,Script=Arabic]{Scheherazade}
+%\newfontfamily\urdufont[Scale=1.0,Script=Arabic]{XB Tabriz}
+\newfontfamily\urdufont[Scale=1.25,WordSpace=6.0,,Script=Arabic]{Jameel Noori Nastaleeq}
+
+
+\pgfmathsetmacro{\B}{20}
+\pgfmathsetmacro{\delB}{1}
+
+%
+
+\begin{document}
+\begin{urdufont}
+\begin{tikzpicture}%[z={(-0.5cm,-0.5cm)},x={(1cm,0cm)},y={(0cm,1cm)}]
+\tikzset{myTipIn/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{<}}},postaction={decorate}}}
+\tikzset{myTipOut/.style={decoration={markings,mark=at position 0.75 with {\arrow[>=latex]{>}}},postaction={decorate}}}
+\begin{axis}[hide axis,clip=false]
+       \addplot[ samples=100,domain=-3:3]{e^(-0.5*(\x)^2)}node[pos=0.6,right]{غلاف};
+       \addplot[ samples=1000,domain=-3:3]{0.75*sin((2*\B+\x*5)*\x*30)*e^(-0.5*(\x)^2)};
+  %     \addplot[ samples=1000,domain=0:180]{1*sin(\delB*x)};
+ \addplot[ samples=10,domain=-5:5]({\x},{0})node[right]{$t$};
+\end{axis}
+\end{tikzpicture}%
+\end{urdufont}
+\end{document} 

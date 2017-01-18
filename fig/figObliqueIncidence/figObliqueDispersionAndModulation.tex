@@ -33,6 +33,7 @@
        \addplot[ samples=1000,domain=0:1000]{0.75*cos(\delB*x)*cos(\B*x)};
  \addplot[ samples=10,domain=0:1100]({\x},{0})node[right]{$z$};
  \addplot[ samples=10,domain=-1:1]({0},{\x})node[left]{$E_{\text{مجموعی}}(z,0)$};
+ \addplot[ samples=1000,domain=270:450]{0.2+0.75*cos(\delB*x)}node[pos=0.6,right]{غلاف};
 \end{axis}
 \end{tikzpicture}%
 \end{urdufont}
