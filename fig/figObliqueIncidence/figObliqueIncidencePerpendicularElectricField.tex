@@ -34,6 +34,7 @@
 %axis
 \draw[thick] (-\x-1,0)--(\x+3,0)node[right]{$x$};
 \draw[dashed] (0,-2.1)--(0,\y)node[above]{$y$};
+\draw[stealth-] (0,0)++(0.1,-0.1) to [out=-45,in=180]++(0.5,-0.5)node[right]{\RL{نقطہ وقوع}};
 %incident wave
 \draw (0,0)--(90-\angI:\l)coordinate(x'y')coordinate[pos=0.8](kIn)node[shift={(90-\angI:0.3)}]{$x'$};
 \draw[-latex] (kIn)--++(90-\angI:-0.1);
@@ -63,7 +64,7 @@
 \draw[-latex] (0,0)--++(-90-\angT:2.8)coordinate(x'''y''')coordinate[pos=0.5](kT);
 \draw[stealth-stealth] ([shift={(-90:0.8)}]0,0) arc (-90:-90-\angT:0.8);
 \draw (-90-\angT/2:1.1) node{$\theta_t$};
-\draw (-90-\angT/2:1.9) node[align=right,gray]{زاویہ \\ انحراف};
+\draw (-90-\angT/2:1.9) node[align=right,gray]{زاویہ \\ انعطاف};
 \draw[] (kT)++(-90-\angT-90:0.2)coordinate(kCT) circle (3pt);
 \draw[fill] (kT)++(-90-\angT-90:0.2) circle (1pt);
 \draw[] (kCT)node[above]{$\kvec{E}_t$};
@@ -74,7 +75,7 @@
 %text
 \draw[gray] (kIn)++(90-\angI-90:0.3) node[rotate=90-\angI]{\RL{آمد موج}};
 \draw[gray] (kRef)++(180+\angR:0.3) node[rotate=-90+\angR]{\RL{انعکاسی موج}};
-\draw[gray](kCT)++(-90-\angT-90:0.2)node[left,rotate=90-\angT]{\RL{ترسیلی موج}};
+\draw[gray](kCT)++(-90-\angT-90:0.2)node[left,rotate=90-\angT]{\RL{انعطافی موج}};
 %medium
 \draw (\x+2.5,0.3) node[left]{\RL{{\small خطہ-1:} ${\scriptstyle \epsilon_1,\mu_1,\sigma_1}$}};
 \draw (\x+2.5,-0.3) node[left]{\RL{{\small خطہ-2:} ${\scriptstyle \epsilon_2,\mu_2,\sigma_2}$}};

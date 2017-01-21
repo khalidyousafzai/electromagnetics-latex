@@ -34,18 +34,18 @@
 %\draw[gray,thick] (0,0) grid (3,3);
 %\draw[gray,scale=0.1cm] (0,0) grid (3,3);
 %prism
-\draw(0,0)--++(\ls,0);
+\draw(0,0)--++(\ls,0)node[pos=0.5,below]{منشور};
 \draw(0,0)--++(\ang:\ls)coordinate[pos=0.6](left);
 \draw(\ls,0)--++(180-\ang:\ls)coordinate[pos=0.7](rA)coordinate[pos=0.65](rB)coordinate[pos=0.6](rC)coordinate[pos=0.55](rD)coordinate[pos=0.5](rE)coordinate[pos=0.45](rF)coordinate[pos=0.4](rG);
 %incoming
 \draw[-latex](-0.5,0.2)--(left)node[pos=0.5,above,rotate=\ang/2]{\RL{سفید شعاع}};
 %outgoing
 \draw[-latex](left)--(rA)--++(10:\l)node[right]{سُرخ};
-\draw[-latex](left)--(rB)--++(0:\l)node[right]{نارنگی};
+\draw[-latex](left)--(rB)--++(0:\l)node[right]{نارنجی};
 \draw[-latex](left)--(rC)--++(-10:\l)node[right]{پیلا}coordinate(kmeasure);
 \draw[-latex](left)--(rD)--++(-20:\l)node[right]{سبز};
 \draw[-latex](left)--(rE)--++(-30:\l)node[right]{نیلا};
-\draw[-latex](left)--(rF)--++(-40:\l)node[right]{\RL{گہرا نیلا}};
+\draw[-latex](left)--(rF)--++(-40:\l)node[right]{آسمانی};
 \draw[-latex](left)--(rG)--++(-50:\l)node[shift={(-55:0.35)}]{بنفشی};
 %instrument
 \draw(kmeasure)++(0.75,0)--++(80:0.4)--++(80-90:0.5)--++(80:-0.9)coordinate[pos=0.5](ins)--++(80-90:-0.5)--++(80:0.4);
