@@ -368,7 +368,7 @@ z=\rho \tan \alpha
 لکھ سکتے ہیں۔
 %===================
 \ابتدا{مثال}
-\عددیء{y} محدد کے  متوازی اور \عددیء{(x,0,0)} سے گزرتی لامحدود لکیر پر \عددیء{\rho_L} کثافت کا بار پایا جاتا ہے۔نقطہ \عددیء{(x',y',z')} پر \سمتیہ{E} حاصل کریں۔
+\عددیء{y} محدد کے  متوازی اور \عددیء{(x,0,0)} سے گزرتی لامحدود لکیر پر \عددیء{\rho_L} کثافت کا بار پایا جاتا ہے۔نقطہ \عددیء{(x',y',z')} پر \سمتیہ{E} حاصل کریں۔شکل \حوالہ{شکل_کولمب_کسی_بھی_سمت_لامحدود_لکیر_پر_بار_کا_میدان} میں صورت حال دکھائی گئی ہے۔
 \begin{figure}
 \centering
 \includegraphics[height=3.5cm]{figCoulombElectricFieldOfInfiniteLineChargeAlongYaxis}
@@ -376,7 +376,7 @@ z=\rho \tan \alpha
 \label{شکل_کولمب_کسی_بھی_سمت_لامحدود_لکیر_پر_بار_کا_میدان}
 \end{figure}
 
-حل:شکل \حوالہ{شکل_کولمب_کسی_بھی_سمت_لامحدود_لکیر_پر_بار_کا_میدان} میں صورت حال دکھایا گیا ہے۔\عددیء{(x',y',z')} سے بار کے لکیر پر عمود \عددیء{(x,y',0)} پر ٹکراتا ہے۔ان دو نقطوں کا آپس میں فاصلہ \عددیء{\sqrt{(x'-x)^2+z^2}} ہے جبکہ 
+حل:\عددیء{(x',y',z')} سے بار کے لکیر پر عمود \عددیء{(x,y',0)} پر ٹکراتا ہے۔ان دو نقطوں کا آپس میں فاصلہ \عددیء{\sqrt{(x'-x)^2+z^2}} ہے جبکہ 
 \begin{align*}
 \kvec{R}&=(x'-x)\ax+z\az\\
 \kvec{a}_R&=\frac{(x'-x)\ax+z\az}{\sqrt{(x'-x)^2+z^2}}
@@ -568,13 +568,13 @@ Q=\int\limits_{\textrm{h}} \rho_h \dif h
 \ابتدا{مثال}
 شکل \حوالہ{شکل_کولمب_محدود_لکیر_پر_بار} میں \عددیء{z=z_1} سے \عددیء{z=z_2} تک کی سیدھی لکیر پر  یکساں \عددیء{\rho_L} پایا جاتا ہے۔نقطہ دار گول دائرے پر \سمتیہ{E} حاصل کریں۔اس گول دائرے کا مرکز  کارتیسی محدد کے مرکز \عددیء{(0,0,0)} پر ہے جبکہ دائرہ از خود \عددیء{z=0} سطح پر پایا جاتا ہے۔ 
 \begin{figure}
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[height=3.5cm]{figCoulombElectricFieldOfFiniteLineCharge}
 \caption{محدود لکیر پر بار کی یکساں کثافت}
 \end{subfigure}
 %
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[height=3.5cm]{figCoulombElectricFieldOfFiniteLineChargeLimits}
 \caption{\عددی{z} اور \عددیء{\alpha} کا تعلق}
@@ -621,7 +621,7 @@ Q=\int\limits_{\textrm{h}} \rho_h \dif h
 
 اگر نقطہ دار گول دائرہ \عددی{z=z_0} سطح پر پایا جاتا تب مندرجہ بالا مساوات 
 \begin{align*}
-\kvec{E}=\frac{\rho_L \arho}{4\pi\epsilon_0 \rho} \left(\frac{z_2-z_0}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{z_1-z_0}{\sqrt{\rho^2+(z_1-z_0)^2}}\right)+\frac{\rho_L \az}{4\pi\epsilon_0 } \left(\frac{1}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{1}{\sqrt{\rho^2+(z_1-z_0)^2}} \right)
+\kvec{E}=\frac{\rho_L \arho}{4\pi\epsilon_0 \rho} \left[\frac{z_2-z_0}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{z_1-z_0}{\sqrt{\rho^2+(z_1-z_0)^2}}\right]+\frac{\rho_L \az}{4\pi\epsilon_0 } \left[\frac{1}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{1}{\sqrt{\rho^2+(z_1-z_0)^2}} \right]
 \end{align*}
 صورت اختیار کرتا۔
 \انتہا{مثال}
@@ -676,9 +676,9 @@ Q=\int\limits_{\textrm{h}} \rho_h \dif h
 \انتہا{مثال}
 %=====================
 \ابتدا{مثال}\شناخت{مثال_کولمب_کرہ_بار_کا_میدان}
-رداس \عددیء{a} کرہ کی سطح پر یکساں کثافتِ بار \عددیء{\rho_S} پایا جاتا ہے۔کرہ کے باہر اور اس کے اندر برقی میدان \عددیء{\kvec{E}}  حاصل کریں۔
+رداس \عددیء{a} کرہ کی سطح پر یکساں کثافتِ بار \عددیء{\rho_S} پایا جاتا ہے۔کرہ کے باہر اور اس کے اندر برقی میدان \عددیء{\kvec{E}}  حاصل کریں۔کرہ کو کروی محدد کے مرکز پر رکھتے ہوئے حل کریں۔
 
-حل:ہم کرہ کو کروی محدد کے مرکز پر رکھتے ہوئے حل کرتے ہیں۔کرہ کی سطح پر نقطہ \عددیء{M(a,\theta,\phi)} پر چھوٹی رقبہ \عددیء{a^2\sin \theta \dif \theta \dif \phi} میں بار \عددیء{\rho_S a^2 \sin \theta \dif \theta \dif \phi} پایا جائے گا جو  نقطہ \عددیء{N(0,0,b)} پر برقی میدان \عددیء{\dif \kvec{E}} پیدا کرے گا۔محدد کے مرکز سے \عددیء{M} تک سمتی فاصلہ \عددیء{a\ar} جبکہ مرکز سے \عددیء{N} تک سمتی فاصلہ \عددیء{b\az} ہے۔یوں \عددیء{M} سے \عددیء{N} تک سمتی فاصلہ 
+حل:کرہ کی سطح پر نقطہ \عددیء{M(a,\theta,\phi)} پر چھوٹی رقبہ \عددیء{a^2\sin \theta \dif \theta \dif \phi} میں بار \عددیء{\rho_S a^2 \sin \theta \dif \theta \dif \phi} پایا جائے گا جو  نقطہ \عددیء{N(0,0,b)} پر برقی میدان \عددیء{\dif \kvec{E}} پیدا کرے گا۔محدد کے مرکز سے \عددیء{M} تک سمتی فاصلہ \عددیء{a\ar} جبکہ مرکز سے \عددیء{N} تک سمتی فاصلہ \عددیء{b\az} ہے۔یوں \عددیء{M} سے \عددیء{N} تک سمتی فاصلہ 
 \begin{align}
 \kvec{R}=b\az-a\ar
 \end{align}
@@ -870,12 +870,12 @@ E_z&=\frac{2 \pi\rho_S a^2 b}{4 \pi \epsilon_0} \left(\frac{2}{a(a^2-b^2)}\right
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics{figCoulombEquipotentials}
 \end{subfigure}%
 %
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics{figCoulombEquipotentialsOfLineCharge}
 \end{subfigure}%
