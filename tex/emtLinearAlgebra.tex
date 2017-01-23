@@ -1,0 +1,48 @@
+\باب{خطی الجبرائی مماثل}\شناخت{ضمیمہ_خطی_الجبرا}
+\begin{align*}
+\kvec{F} \cdot \kvec{G}&= F G \cos \theta \quad \quad\quad \quad\quad \quad \text{\RL{غیر سمتی (نقطہ) ضرب}}\\
+&=F_x G_x+F_y G_y+F_z G_z\\
+\theta&=\cos^{-1}\left(\frac{\kvec{F} \cdot \kvec{G}}{F G}\right)\\
+\kvec{F} \times \kvec{G}&=F G \sin \theta \aN \quad \quad\quad \quad\quad \quad  \text{\RL{سمتی (صلیبی) ضرب}}\\
+&=\begin{vmatrix}
+\ax & \ay & \az\\
+A_x & A_y & A_z\\
+B_x & B_y & B_z
+\end{vmatrix}\\
+\theta&=\sin^{-1}\left[\frac{(\kvec{F} \times \kvec{G})\cdot \aN}{ F G}\right]
+\end{align*}
+%
+\حصہء{مماثل}
+\begin{align*}
+\nabla \cdot (\nabla \times \kvec{F})&=0\\
+\nabla \cdot \nabla f &=\nabla^2 f\\
+\nabla \times \nabla f&=0
+\end{align*}
+%
+\begin{align*}
+\nabla (f+g)&=\nabla f + \nabla g\\
+\nabla \cdot (\kvec{F}+\kvec{G})&=\nabla \cdot \kvec{F}+\nabla \cdot \kvec{G}\\
+\nabla \times (\kvec{F}+\kvec{G})&=\nabla \times \kvec{F}+\nabla \times \kvec{G}
+\end{align*}
+%
+\begin{align*}
+\nabla (f g)&=f \nabla g+g \nabla f\\
+\nabla \cdot (f \kvec{G})&=f (\nabla \cdot \kvec{G})+\kvec{G} \cdot (\nabla f)\\
+\nabla \times (f\kvec{G})&=f (\nabla \times \kvec{G})+(\nabla f) \times \kvec{G}
+\end{align*}
+%
+\begin{align*}
+\nabla \times (\nabla \times \kvec{F})&=\nabla (\nabla \cdot \kvec{F})-\nabla^2 \kvec{F} 
+\end{align*}
+جہاں \عددی{\nabla^2 \kvec{F}} سے مراد
+\begin{align*}
+\nabla^2 \kvec{F}&=\nabla^2 F_x \ax+\nabla^2 F_y \ay+\nabla^2 F_z \az\\ 
+\end{align*}
+ہے۔
+\begin{align*}
+\nabla \cdot (\kvec{F} \times \kvec{G})&=\kvec{G} \cdot (\nabla \times \kvec{F})-\kvec{F} \cdot (\nabla \times \kvec{G})\\
+\kvec{F} \cdot (\kvec{G} \times \kvec{H})&=\kvec{G} \cdot (\kvec{H} \times \kvec{F})=\kvec{H} \cdot (\kvec{F} \times \kvec{G})\\
+\nabla \times (\kvec{F} \times \kvec{G})&=\kvec{F} (\nabla \cdot \kvec{G})-\kvec{G} (\nabla \cdot \kvec{F})+(\kvec{G} \cdot \nabla)\kvec{F}-(\kvec{F} \cdot \nabla)\kvec{G}\\
+\nabla (\kvec{F} \cdot \kvec{G})&=(\kvec{F} \cdot \nabla)\kvec{G}+(\kvec{G} \cdot \nabla)\kvec{F}+\kvec{F} \times (\nabla \times \kvec{G})+\kvec{G}\times (\nabla \times \kvec{F})
+\end{align*}
+
