@@ -109,13 +109,13 @@ AB \sin \theta = \frac{b}{2}\sin \theta =\frac{n \lambda_0}{4}
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesTwoConducorsAngleNinty}
 \caption{طول موج، عین انقطاعی طول موج کے برابر ہے۔}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesTwoConducorsAngleAbitLessThanNinty}
 \caption{طول موج، انقطاعی طول موج سے قدر کم ہے۔}
@@ -180,19 +180,19 @@ f \lambda=\frac{f \lambda_0}{\cos \theta}
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesInfiniteParallelPlatesToRectangularWaveguide}
 \caption{لامحدود متوازی چادر مویج سے مستطیلی مویج کا حصول۔}
 \label{شکل_مویج_حصول_مستطیل}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesRectangularWaveguide}
 \caption{مستطیلی مویج کا رقبہ عمودی تراش۔}
 \label{شکل_مویج_رقبہ_عمودی_تراش_مستطیل}
-\end{subfigure}
+\end{subfigure}%
 \caption{مستطیلی مویج کا حصول اور اس کا رقبہ عمودی تراش۔}
 \label{شکل_مویج_مستطیل}
 \end{figure}
@@ -516,11 +516,13 @@ E_x&=0 \label{مساوات_مویج_مکمل_ث}
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
+\centering
 \includegraphics{figWaveguidesTE10Fields}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
+\centering
 \includegraphics{figWaveguidesTE20Fields}
 \end{subfigure}%
 \caption{بلند  انداز \عددیء{\TE{}} امواج۔}
@@ -546,25 +548,25 @@ H_z&=\frac{\gamma H_0}{k^2}\frac{\pi}{z_1}  \sin \frac{\pi z}{z_1} e^{j \omega t
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesTE10VectorEy}
 \caption*{\عددیء{\TE{10}} کا \عددیء{E_y} میدان۔}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.45\textwidth}
 \centering
 \includegraphics{figWaveguidesTE10VectorHz}
 \caption*{\عددیء{\TE{10}} کا \عددیء{H_z} میدان۔}
 \end{subfigure}%
 \vspace{1cm}
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesTE20VectorEy}
 \caption*{\عددیء{\TE{20}} کا \عددیء{E_y} میدان۔}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesTE20VectorHz}
 \caption*{\عددیء{\TE{20}} کا \عددیء{H_z} میدان۔}
@@ -591,7 +593,7 @@ H_z&=\frac{\gamma H_0}{k^2}\frac{ \pi}{z_1} \cos \frac{\pi y}{y_1} \sin \frac{ \
 %
 \begin{figure}
 \centering
-\includegraphics{figWaveguidesTE11Fields}
+\includegraphics[width=\textwidth]{figWaveguidesTE11Fields}
 \caption{\عددیء{\TE{11}} میدان۔}
 \label{شکل_مویج_مستطیل_ایک_ایک_برقی}
 \end{figure}
@@ -1343,7 +1345,9 @@ P_{\text{منتقل}}=\frac{E^2}{2 Z_z}  S=\frac{E_{\text{موثر}}}{Z_z}  S=\f
 \end{align*}
  ہو گا جبکہ تانبے کی پٹی اور تانبے کی چادر  میں پٹی کے برابر حصے میں مل کر کل طاقت کا ضیاع
 \begin{align*}
-P_{\text{ضیاع}}= 2\frac{Z_{c,h} H^2}{2} S=2Z_{c,h} H^2_{\text{موثر}} S =2\times 0.00639 \times \left(0.881 \times 10^{-3}\right)^2 \times 0.02\times 0.001=\SI{0.195}{\nano\watt\per\meter}
+P_{\text{ضیاع}}= 2\frac{Z_{c,h} H^2}{2} S &=2Z_{c,h} H^2_{\text{موثر}} S \\
+&=2\times 0.00639 \times \left(0.881 \times 10^{-3}\right)^2 \times 0.02\times 0.001 \\
+&=\SI{0.195}{\nano\watt\per\meter}
 \end{align*}
 ہو گا۔ اس طرح تضعیفی مستقل
 \begin{align*}
@@ -1358,17 +1362,17 @@ P_{\text{ضیاع}}= 2\frac{Z_{c,h} H^2}{2} S=2Z_{c,h} H^2_{\text{موثر}} S =
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesAirWaterSurface}
 \caption*{الف: غیر کامل موصل اور ذو برق کی سرحد}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figWaveguidesAirWaterSurfaceTiltAngle}
 \caption*{ب: زاویہ جھکاو}
-\end{subfigure}
+\end{subfigure}%
 \caption{دو خطوں کے سرحد پر امواج۔}
 \label{شکل_مویج_ہوا_غیر_کامل_ذو_برق_سرحد}
 \end{figure}
@@ -1664,17 +1668,17 @@ AB+BE&=d\tan \theta_i\\
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.45\textwidth}
+\begin{subfigure}{1\textwidth}
 \centering
 \includegraphics{figWaveguideOpticalFibre}
 \caption*{الف: شیش ریشے کی بنیادی ساخت}
-\end{subfigure}%
+\end{subfigure}
 %
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{1\textwidth}
 \centering
 \includegraphics{figWaveguideOpticalFibreTotalInternalReflection}
 \caption*{ب: شیش ریشے میں شعاع کے  زاویے}
-\end{subfigure}%
+\end{subfigure}
 \caption{شیش ریشے کی ساخت اور ممکنہ آمدی زاویے}
 \label{شکل_مویج_شیش_ریشہ}
 \end{figure}
@@ -1743,20 +1747,20 @@ AB+BE&=d\tan \theta_i\\
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figWaveguideHumanEye}
+\includegraphics[scale=0.9]{figWaveguideHumanEye}
 \caption*{الف: انسانی آنکھ}
 \label{شکل_مویج_انسانی_آنکھ_مکمل_شکل}
 \end{subfigure}%
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figWaveguideHumanEyeRetina}
+\includegraphics[scale=0.9]{figWaveguideHumanEyeRetina}
 \caption*{ب: آنکھ کا پردہ}
 \label{شکل_مویج_انسانی_آنکھ_کا_پردہ}
 \end{subfigure}%
 \\
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{1\textwidth}
 \centering
 \includegraphics{figWaveguideHumanEyeCone}
 \caption*{پ: مخروط}

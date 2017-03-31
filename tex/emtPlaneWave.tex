@@ -1836,7 +1836,12 @@ E_y&=E_2 \cos (\omega t  -\delta)
 \begin{align*}
 E_y=E_2 \left(\cos \omega t \cos \delta + \sin \omega t \sin \delta\right)
 \end{align*}
-لکھنا ممکن ہے۔اس مساوات میں،  \عددیء{E_x} کی مساوات استعمال کرتے ہوئے،  \عددیء{\cos \omega t =\tfrac{E_x}{E_1}} اور \عددیء{\sin \omega t=\sqrt{1-\left(\tfrac{E_x}{E_1} \right)^2}} پر کر کے
+لکھنا ممکن ہے۔اس مساوات میں،  \عددیء{E_x} کی مساوات استعمال کرتے ہوئے
+\begin{align*}
+\cos \omega t &=\tfrac{E_x}{E_1}\\
+\sin \omega t&=\sqrt{1-\left(\tfrac{E_x}{E_1} \right)^2}
+\end{align*}
+پر کر کے
 \begin{align*}
 E_y=E_2 \left[\frac{E_x}{E_1} \cos \delta+\sqrt{1-\left(\frac{E_x}{E_1}\right)^2} \sin \delta\right]
 \end{align*}
@@ -1977,7 +1982,12 @@ E_x^2 \sin 2\theta +E_y^2 [\sin 2 \theta \cos 2 \delta +\cos 2 \theta \sin 2 \de
 \انتہا{مثال}
 %========================
 \ابتدا{مثال}
-صفحہ کتاب کے عمودی باہر کی جانب موج کے اجزاء \عددی{E_x=5\cos \omega t} اور \عددی{E_y=15\cos(\omega t +90^{\circ})} ہیں۔موج کی شرح رداس، تقطیب اور زاویہ جھکاو حاصل کریں۔
+صفحہ کتاب کے عمودی باہر کی جانب موج کے اجزاء درج ذیل ہیں۔
+\begin{align*}
+E_x&=5\cos \omega t\\
+E_y&=15\cos(\omega t +90^{\circ})
+\end{align*}
+ موج کی شرح رداس، تقطیب اور زاویہ جھکاو حاصل کریں۔
 
 حل:
 \begin{align*}
@@ -2005,7 +2015,8 @@ E_y&=15\cos(30^\circ+90^{\circ})=-7.5
 \begin{align*}
 \kvec{E}&=E_0(\ax-j\ay)e^{j(\omega t -\beta z)}\\
 &=E_0(\ax-j\ay)[\cos(\omega t -\beta z)+j \sin(\omega t -\beta z)]\\
-&=E_0 [\ax \cos (\omega t -\beta z)+\ay \sin(\omega t -\beta z)]+j E_0[\ax \sin(\omega t -\beta z)-\ay \cos(\omega t -\beta z)]
+&=E_0 [\ax \cos (\omega t -\beta z)+\ay \sin(\omega t -\beta z)] \\
+& \quad \quad \quad \quad +j E_0[\ax \sin(\omega t -\beta z)-\ay \cos(\omega t -\beta z)]
 \end{align*}
 اس کا حقیقی جزو 
 \begin{align*}
@@ -2087,7 +2098,7 @@ H_{sx}=-H_2 e^{j(\omega t -\beta z+\delta-\theta_{Z})}
 \end{align}
 مخلوط پوئنٹنگ سمتیہ سے اوسط طاقت
 \begin{align*}
-\pmb{\mathscr{P}}_{\text{اوسط}}&=\frac{1}{2}\left[\left(\ax E_1 e^{j \omega t}+\ay E_2 e^{j(\omega t +\delta)}\right) \times \left(-\ax H_2 e^{-j(\omega t +\delta-\theta_{Z})}+\ay H_1 e^{-j(\omega t -\theta_{Z})}\right) \right]_{\text{حقیقی}}\\
+\pmb{\mathscr{P}}_{\text{اوسط}}&=\frac{1}{2}\left.\left(\ax E_1 e^{j \omega t}+\ay E_2 e^{j(\omega t +\delta)}\right) \times \left(-\ax H_2 e^{-j(\omega t +\delta-\theta_{Z})}+\ay H_1 e^{-j(\omega t -\theta_{Z})}\right) \right|_{\text{حقیقی}}\\
 &=\frac{1}{2} \az \left[E_1 H_1 e^{j\theta_{Z}}+E_2 H_2 e^{j \theta_{Z}} \right]_{\text{حقیقی}}
 \end{align*}
 یعنی
@@ -2210,9 +2221,9 @@ E_y&=3 \cos (\omega t -\beta z+75^{\circ})
 \ابتدا{سوال}
 خطی قطبی موج \عددی{\kvec{E}_s=(E_{y0}\ay+E_{z0}\az)e^{\alpha x}e^{j \beta x} \, \si{\volt\per\meter}} ایسے ضیاع کار خطے میں پائی جاتی ہے جہاں \عددی{Z=\abs{Z_0}e^{j \phi}} ہے۔ \عددی{\kvec{H}_s}، \عددی{\kvec{E}(x,y,z,t)}، \عددی{\kvec{H}(x,y,z,t)} اور \عددی{\pmb{\mathscr{P}}_{\text{اوسط}}}  کے مساوات لکھیں۔
 
-جوابات:\عددی{\kvec{H}_s=\tfrac{1}{\abs{Z_0}}(E_{z0}\ay-E_{y0}\az)e^{\alpha x}e^{e^{j(\beta x -\phi)}}\, \si{\ampere\per\meter}}،
- \عددی{\kvec{E}(x,y,z,t)=(E_{y0}\ay+E_{z0}\az)e^{\alpha x}\cos(\omega t +\beta x) \, \si{\volt\per\meter}}،
-  \عددی{\kvec{H}(x,y,z,t)=\tfrac{1}{\abs{Z_0}}(E_{z0}\ay-E_{y0}\az)e^{\alpha x}\cos(\omega t +\beta x-\phi) \, \si{\ampere\per\meter}}،
+جوابات:\عددی{\kvec{H}_s=\tfrac{1}{\abs{Z_0}}(E_{z0}\ay-E_{y0}\az)e^{\alpha x}e^{e^{j(\beta x -\phi)}}\, \si{\ampere\per\meter}}، \\
+ \عددی{\kvec{E}(x,y,z,t)=(E_{y0}\ay+E_{z0}\az)e^{\alpha x}\cos(\omega t +\beta x) \, \si{\volt\per\meter}}، \\
+  \عددی{\kvec{H}(x,y,z,t)=\tfrac{1}{\abs{Z_0}}(E_{z0}\ay-E_{y0}\az)e^{\alpha x}\cos(\omega t +\beta x-\phi) \, \si{\ampere\per\meter}}، \\
 \عددی{\pmb{\mathscr{P}}_{\text{اوسط}}=\tfrac{1}{2\abs{Z_0}}(E^2_{y0}+E^2_{z0})e^{2\alpha x}\cos \phi  \ax \, \si{\watt\per\meter\squared}}
 \انتہا{سوال}
 %========================
@@ -2309,7 +2320,7 @@ E_y&=3 \cos (\omega t -\beta z+75^{\circ})
  \عددی{\beta_2=\SI{7.8}{\radian\per\meter}}، \عددی{\Gamma=-0.0913}، \عددی{\tau=0.9087}،
  \عددی{E_1=5.6\cos(4.2\times 10^8 t -2.5z)-0.511\cos(4.2 \times 10^8 t +2.5 z) \, \si{\volt\per\meter}}،
  \عددی{E_2=5.09\cos(4.2\times 10^8 t -7.8z) \, \si{\volt\per\meter}}،\\
- \عددی{H_1=26.59 \cos (4.2\times 10^ 8 t -2.5z) +2.43\cos(4.2\times 10^8 t +2.5 z) \, \si{\milli\ampere\per\meter}} ،\عددی{H_1=\SI{16.49}{\milli\ampere\per\meter}}
+ \عددی{H_1=26.59 \cos (4.2\times 10^ 8 t -2.5z) +2.43\cos(4.2\times 10^8 t +2.5 z) \, \si{\milli\ampere\per\meter}} ، \\ \عددی{H_1=\SI{16.49}{\milli\ampere\per\meter}}
 \انتہا{سوال}
 %===================
 \ابتدا{سوال}
@@ -2362,7 +2373,7 @@ E_y&=3 \cos (\omega t -\beta z+75^{\circ})
 \ابتدا{سوال}
 خطہ \عددی{0<z<\SI{1.5}{\meter}} میں بے ضیاع ذو برق پایا جاتا ہے جس  کے مستقل \عددی{\sigma_2=0}، \عددی{\mu_{R2}=1} اور \عددی{\epsilon_{R2}=6} ہیں۔اس خطے کو دونوں جانب خالی خلاء پائی جاتی ہے۔مستوی موج جس کی تعدد \عددی{\omega=\SI{6e8}{\radian\per\meter}} ہے سرحد \عددی{z=0} کی جانب \عددی{\az} سمت میں حرکت کر رہی ہے۔ الف)  ذو برق میں \عددی{\beta_2} حاصل کرتے ہوئے سرحد \عددی{z=0} پر \عددی{Z_{\text{داخلی}}} حاصل کریں۔ ب) خطہ \عددی{z<0} میں \عددی{\Gamma_{1}} اور \عددی{s_1} حاصل کریں۔ پ) ذو برقی میں \عددی{z=\SI{1.5}{\meter}} پر سرحد سے منعکس موج کو استعمال کرتے ہوئے \عددی{\Gamma_2} اور \عددی{s_2} حاصل کریں۔ ت) خطہ \عددی{z>\SI{1.5}{\meter}} میں \عددی{s_3} حاصل کریں۔ ٹ) خطہ \عددی{z<0} میں سرحد کے قریب ترین ایسا نقطہ حاصل کریں جہاں بلند تر برقی میدان پایا جاتا ہے۔ 
 
-جوابات:\عددی{\beta_2=\SI{2}{\radian\per\meter}}، \عددی{Z_{\text{داخلی}}=77.69-j66.76 \, \si{\ohm}}، \عددی{\Gamma_1=-0.623-j0.238=0.667e^{-j2.776}}، \عددی{s_1=5}، \عددی{\Gamma_2=0.42}، \عددی{s_2=2.45}، \عددی{s_3=1}، \عددی{z=\SI{-0.924}{\meter}}
+جوابات:\عددی{\beta_2=\SI{2}{\radian\per\meter}}، \عددی{Z_{\text{داخلی}}=77.69-j66.76 \, \si{\ohm}}، \\ \عددی{\Gamma_1=-0.623-j0.238=0.667e^{-j2.776}}، \\ \عددی{s_1=5}، \عددی{\Gamma_2=0.42}، \عددی{s_2=2.45}، \عددی{s_3=1}، \عددی{z=\SI{-0.924}{\meter}}
 \انتہا{سوال}
 %=========================
 \ابتدا{سوال}

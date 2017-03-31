@@ -376,7 +376,11 @@ z=\rho \tan \alpha
 \label{شکل_کولمب_کسی_بھی_سمت_لامحدود_لکیر_پر_بار_کا_میدان}
 \end{figure}
 
-حل:\عددیء{(x',y',z')} سے بار کے لکیر پر عمود \عددیء{(x,y',0)} پر ٹکراتا ہے۔ان دو نقطوں کا آپس میں فاصلہ \عددیء{\sqrt{(x'-x)^2+z^2}} ہے جبکہ 
+حل:\عددیء{(x',y',z')} سے بار کے لکیر پر عمود \عددیء{(x,y',0)} پر ٹکراتا ہے۔ان دو نقطوں کا آپس میں فاصلہ
+\begin{align*}
+\sqrt{(x'-x)^2+z^2}
+\end{align*}
+ہے جبکہ 
 \begin{align*}
 \kvec{R}&=(x'-x)\ax+z\az\\
 \kvec{a}_R&=\frac{(x'-x)\ax+z\az}{\sqrt{(x'-x)^2+z^2}}
@@ -396,8 +400,7 @@ z=\rho \tan \alpha
 %====================
 
 \ابتدا{مشق}
-\عددیء{x} محدد پر \عددیء{-\infty} سے \عددیء{+\infty} تک \عددیء{\SI{5}{\nano \coulomb \per \meter}} بار کی کثافت پائی جاتی ہے۔ نقطہ \عددیء{N_1(0,5,0)} اور نقطہ
-  \عددیء{N_2(7,3,4)}  پر \سمتیہ{E} حاصل کریں۔
+\عددیء{x} محدد پر \عددیء{-\infty} سے \عددیء{+\infty} تک \عددیء{\SI{5}{\nano \coulomb \per \meter}} کثافت بار پائی جاتی ہے۔ نقطہ \عددیء{N_1(0,5,0)} اور نقطہ  \عددیء{N_2(7,3,4)}  پر \سمتیہ{E} حاصل کریں۔
 
 جوابات:\عددیء{\kvec{E}_1=18 \az \, \si{\volt \per \meter}} اور \عددیء{ \kvec{E}_2=18 \left(\frac{3\ay+4\az}{5}\right) \,\si{\volt \per \meter}}
 
@@ -568,13 +571,14 @@ Q=\int\limits_{\textrm{h}} \rho_h \dif h
 \ابتدا{مثال}
 شکل \حوالہ{شکل_کولمب_محدود_لکیر_پر_بار} میں \عددیء{z=z_1} سے \عددیء{z=z_2} تک کی سیدھی لکیر پر  یکساں \عددیء{\rho_L} پایا جاتا ہے۔نقطہ دار گول دائرے پر \سمتیہ{E} حاصل کریں۔اس گول دائرے کا مرکز  کارتیسی محدد کے مرکز \عددیء{(0,0,0)} پر ہے جبکہ دائرہ از خود \عددیء{z=0} سطح پر پایا جاتا ہے۔ 
 \begin{figure}
-\begin{subfigure}{0.4\textwidth}
+\centering
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics[height=3.5cm]{figCoulombElectricFieldOfFiniteLineCharge}
 \caption{محدود لکیر پر بار کی یکساں کثافت}
-\end{subfigure}
+\end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics[height=3.5cm]{figCoulombElectricFieldOfFiniteLineChargeLimits}
 \caption{\عددی{z} اور \عددیء{\alpha} کا تعلق}
@@ -620,9 +624,9 @@ Q=\int\limits_{\textrm{h}} \rho_h \dif h
 \end{align}
 
 اگر نقطہ دار گول دائرہ \عددی{z=z_0} سطح پر پایا جاتا تب مندرجہ بالا مساوات 
-\begin{align*}
-\kvec{E}=\frac{\rho_L \arho}{4\pi\epsilon_0 \rho} \left[\frac{z_2-z_0}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{z_1-z_0}{\sqrt{\rho^2+(z_1-z_0)^2}}\right]+\frac{\rho_L \az}{4\pi\epsilon_0 } \left[\frac{1}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{1}{\sqrt{\rho^2+(z_1-z_0)^2}} \right]
-\end{align*}
+\begin{multline*}
+\kvec{E}=\frac{\rho_L \arho}{4\pi\epsilon_0 \rho} \left[\frac{z_2-z_0}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{z_1-z_0}{\sqrt{\rho^2+(z_1-z_0)^2}}\right]  \\+\frac{\rho_L \az}{4\pi\epsilon_0 } \left[\frac{1}{\sqrt{\rho^2+(z_2-z_0)^2}}-\frac{1}{\sqrt{\rho^2+(z_1-z_0)^2}} \right]
+\end{multline*}
 صورت اختیار کرتا۔
 \انتہا{مثال}
 %=============================
@@ -732,7 +736,7 @@ Q=\int\limits_{\textrm{h}} \rho_h \dif h
 \end{gather}
 اس مساوات میں جدول \حوالہ{جدول_سمتیہ_کروی_کارتیسی_اکائی_غیر-سمتی_ضرب} کی مدد سے \عددیء{\ar=\sin \theta \cos \phi \ax+\sin \theta \sin \phi \ay+\cos \theta \az} لکھتے ہوئے
 \begin{align}\label{مساوات_کولمب_کرہ-سطحی_بار_کثافت_کا_میدان}
-\kvec{E}=\frac{\rho_S a^2}{4 \pi \epsilon_0}\int_{0}^{2\pi} \int_0^{\pi} \frac{[-a \sin \theta \cos \phi \ax-a \sin \theta \sin \phi \ay+ (b-a \cos \theta)\az ]\sin \theta }{ \left(b^2+a^2-2 ab \cos \theta \right)^{\frac{3}{2}}} \dif \theta \dif \phi
+\kvec{E}=\frac{\rho_S a^2}{4 \pi \epsilon_0}\int \limits_{0}^{2\pi} \int \limits_0^{\pi} \frac{[-a \sin \theta \cos \phi \ax-a \sin \theta \sin \phi \ay+ (b-a \cos \theta)\az ]\sin \theta }{ \left(b^2+a^2-2 ab \cos \theta \right)^{\frac{3}{2}}} \dif \theta \dif \phi
 \end{align}
 حاصل ہوتا ہے۔\عددیء{z} محدد سے دیکھتے ہوئے صاف ظاہر ہے کہ اس محدد پر میدان صرف اور صرف \عددیء{\az} سمت میں ہی ممکن ہے۔یوں \عددیء{\ax} اور \عددیء{\ay} اجزاء کو صفر لیتے ہوئے
 \begin{align}
@@ -870,12 +874,12 @@ E_z&=\frac{2 \pi\rho_S a^2 b}{4 \pi \epsilon_0} \left(\frac{2}{a(a^2-b^2)}\right
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figCoulombEquipotentials}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figCoulombEquipotentialsOfLineCharge}
 \end{subfigure}%

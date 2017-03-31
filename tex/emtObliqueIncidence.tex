@@ -29,18 +29,18 @@
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figObliqueIncidencePerpendicularElectricFieldCoordinateTransformation}
 \caption{فاصلے کا کارتیسی محدد میں اظہار۔}
 \label{شکل_ترچھی_محدد_کی_تبدیلی}
-\end{subfigure}
-\begin{subfigure}{0.4\textwidth}
+\end{subfigure}%
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figObliqueIncidencePerpendicularElectricFieldUnitVectorTransformation}
 \caption{اکائی سمتیہ کا کارتیسی محدد میں اظہار۔}
 \label{شکل_ترچھی_اکائی_سمتیہ}
-\end{subfigure}
+\end{subfigure}%
 \caption{کسی بھی سمت میں فاصلے اور اکائی سمتیہ کو کارتیسی محدد میں لکھنے کا طریقہ۔}
 \label{شکل_ترچھی_تبادلہ_فاصلہ_اور_اکائی_سمتیہ}
 \end{figure}
@@ -87,13 +87,13 @@ x'=x\sin \theta_i +y \cos \theta_i
 لکھا جائے گا۔
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figObliqueIncidencePerpendicularElectricFieldCoordinateTransformationReflecTedWave}
 \caption{انعکاسی موج کے فاصلے کی کارتیسی محدد میں اظہار۔}
 \label{شکل_ترچھی_انعکاسی_برقی}
 \end{subfigure}%
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figObliqueIncidencePerpendicularElectricFieldUnitMagneticVectorTransformation}
 \caption{انعکاسی مقناطیسی موج کی اکائی سمتیہ کا کارتیسی محدد میں اظہار۔}
@@ -371,7 +371,8 @@ v&=\frac{c}{n}\\
 \end{align}
 لکھے جا سکتے ہیں۔سرحد \عددیء{(y=0)} پر برقی شرط لاگو کرنے کی خاطر برقی میدان کا وہ حصہ استعمال کیا جائے گا جو سرحد کے متوازی ہے۔یوں \عددیء{\ay} جزو کو رد کیا جائے گا جبکہ \عددیء{\ax} جزو کو استعمال کیا جائے گا لہٰذا
 \begin{align*}
--\cos \theta_i \ax E_0  e^{j\beta_1 (x\sin \theta_i +0 \cos \theta_i)}- \cos \theta_r \ax\Gamma_{\parallel} E_0 e^{ j \beta_1 (x \sin \theta_r-0\cos \theta_r)}=-\cos \theta_t \ax\tau_{\parallel} E_0 e^{j \beta_2 (x \sin \theta_t+0\cos \theta_t)}
+-\cos \theta_i \ax E_0  e^{j\beta_1 (x\sin \theta_i +0 \cos \theta_i)}- \cos \theta_r \ax &\Gamma_{\parallel} E_0 e^{ j \beta_1 (x \sin \theta_r-0\cos \theta_r)}\\
+&=-\cos \theta_t \ax\tau_{\parallel} E_0 e^{j \beta_2 (x \sin \theta_t+0\cos \theta_t)}
 \end{align*}
 یعنی
 \begin{align}\label{مساوات_ترچھی_متوازی_قطبی_موج_برقی_شرط}
@@ -397,7 +398,8 @@ j \beta_1 x\sin \theta_i=j \beta_1 x \sin \theta_r=j \beta_2 x \sin \theta_t
 
 سرحد پر مقناطیسی شرط لاگو کرتے ہیں۔چونکہ مقناطیسی میدان سرحد کے متوازی ہے لہٰذا اس کا کوئی جزو رد نہیں کیا جائے گا۔اس طرح
 \begin{align*}
--\az \frac{E_0}{Z_1} e^{j\beta_1 (x\sin \theta_i +0 \cos \theta_i)}+\az \Gamma_{\parallel} \frac{ E_0}{Z_1} e^{j \beta_1 (x \sin \theta_r-0\cos \theta_r)}=-\az \tau_{\parallel} \frac{E_0}{Z_2} e^{j \beta_2 (x \sin \theta_t+0\cos \theta_t)} 
+-\az \frac{E_0}{Z_1} e^{j\beta_1 (x\sin \theta_i +0 \cos \theta_i)}+\az \Gamma_{\parallel} \frac{ E_0}{Z_1} &e^{j \beta_1 (x \sin \theta_r-0\cos \theta_r)}\\
+&=-\az \tau_{\parallel} \frac{E_0}{Z_2} e^{j \beta_2 (x \sin \theta_t+0\cos \theta_t)} 
 \end{align*}
 یعنی
 \begin{align*}

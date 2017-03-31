@@ -370,7 +370,8 @@ I_d=S J_d =-\omega \frac{\epsilon  S}{d} V_0\sin \omega t
 \end{align*}
 لکھتے ہوئے تکمل لے کر
 \begin{align*}
-\kvec{B}=\int 4.70587111\times 10^{-3} k \cos (2\times 10^8 t - k x) \az \dif t=2.3529\times 10^{-11} k \sin(2\times 10^8 t - k x) \az
+\kvec{B}&=\int 4.70587111\times 10^{-3} k \cos (2\times 10^8 t - k x) \az \dif t \\
+&=2.3529\times 10^{-11} k \sin(2\times 10^8 t - k x) \az
 \end{align*}
 حاصل ہوتا ہے جس سے
 \begin{align*}
@@ -654,8 +655,12 @@ E_{n1}&=\aN \cdot \kvec{E}_1=\az \cdot [30 \ax+20\ay+10\az] \cos (10^9 t) =10 \c
 \end{align*}
 ہو گا جس سے 
 \begin{align*}
-\kvec{D}_{m2}&=\epsilon_2 \kvec{E}_{m2}=(3\times 10^{-11})[30\ax+20\ay]\cos (10^9 t)=10^{-10}[9\ax+6\ay]\cos (10^9 t)\\
-\kvec{J}_{m2}&=\sigma_2 \kvec{E}_{m2}=(24\times 10^{-3})[30\ax+20\ay]\cos (10^9 t)=\left[\frac{18}{25}\ax+\frac{12}{25}\ay\right]\cos (10^9 t)
+\kvec{D}_{m2}&=\epsilon_2 \kvec{E}_{m2}\\
+&=(3\times 10^{-11})[30\ax+20\ay]\cos (10^9 t)\\
+&=10^{-10}[9\ax+6\ay]\cos (10^9 t)\\
+\kvec{J}_{m2}&=\sigma_2 \kvec{E}_{m2} \\
+&=(24\times 10^{-3})[30\ax+20\ay]\cos (10^9 t)\\
+&=\left[\frac{18}{25}\ax+\frac{12}{25}\ay\right]\cos (10^9 t)
 \end{align*}
 حاصل کئے جا سکتے ہیں۔
 
@@ -700,8 +705,12 @@ E_{n2}=\frac{165}{41}\cos 10^9 t -\frac{50}{41}\sin 10^9 t=4.21 \cos (10^9 t -16
 لکھا جا سکتا ہے۔یوں
 \begin{align*}
 \kvec{E}_{n2}&=4.21 \cos (10^9 t -16.9^{\circ})\az\\
-\kvec{D}_{n2}&=\epsilon_2 \kvec{E}_{n2}=(3\times 10^{-11})4.21 \cos (10^9 t -16.9^{\circ})\az=1.26\times 10^{-10}\cos (10^9t -16.9^{\circ})\az \\
-\kvec{J}_{n2}&=\sigma_2 \kvec{E}_{n2}=(24\times 10^{-3})4.21 \cos (10^9 t -16.9^{\circ})\az=0.1\cos (10^9 t -16.9^{\circ})\az
+\kvec{D}_{n2}&=\epsilon_2 \kvec{E}_{n2}\\
+&=(3\times 10^{-11})4.21 \cos (10^9 t -16.9^{\circ})\az\\
+&=1.26\times 10^{-10}\cos (10^9t -16.9^{\circ})\az \\
+\kvec{J}_{n2}&=\sigma_2 \kvec{E}_{n2}\\
+&=(24\times 10^{-3})4.21 \cos (10^9 t -16.9^{\circ})\az\\
+&=0.1\cos (10^9 t -16.9^{\circ})\az
 \end{align*}
 ہوں گے۔
 \انتہا{مثال}
@@ -894,8 +903,11 @@ t'=t-\frac{R}{v}
 \انتہا{سوال}
 %=================
 \ابتدا{سوال}
-رداس \عددی{\rho=\SI{1}{\milli\meter}} اور \عددی{\rho=\SI{3}{\milli\meter}} کے ہم محوری تار
- میں \عددی{\kvec{H}=\tfrac{0.122}{\rho}\cos 5\times 10^{8} \pi t \cos 0.5 \pi z \aphi \, \si{\ampere\per\meter}} پایا جاتا ہے۔مستطیل \عددی{(0.001,0^{\circ},0)} تا \عددی{(0.003,0^{\circ},0)} تا \عددی{(0.003,0^{\circ},1.5)} تا \عددی{(0.001,0^{\circ},1.5)} تا \عددی{(0.001,0^{\circ},0)}   میں محرک برقی دباو حاصل کریں۔
+رداس \عددی{\rho=\SI{1}{\milli\meter}} اور \عددی{\rho=\SI{3}{\milli\meter}} کے ہم محوری تار میں 
+\begin{align*}
+\kvec{H}=\tfrac{0.122}{\rho}\cos 5\times 10^{8} \pi t \cos 0.5 \pi z \aphi \, \si{\ampere\per\meter}
+\end{align*}
+پایا جاتا ہے۔مستطیل \عددی{(0.001,0^{\circ},0)} تا \عددی{(0.003,0^{\circ},0)} تا \عددی{(0.003,0^{\circ},1.5)} تا \عددی{(0.001,0^{\circ},1.5)} تا \عددی{(0.001,0^{\circ},0)}   میں محرک برقی دباو حاصل کریں۔
 
 جواب:\عددی{119\sin(5\times 10^{8}\pi t) \, \si{\volt}}
 \انتہا{سوال}
@@ -955,7 +967,7 @@ t'=t-\frac{R}{v}
 محدد \عددی{z} پر موجود ہم محوری تار کی لمبائی \عددی{\SI{12}{\centi\meter}} جبکہ اس کے رداس \عددی{\SI{2}{\milli\meter}} اور \عددی{\SI{6}{\milli\meter}} ہیں۔ دونوں تاروں کے درمیان مادے کے مستقل \عددی{\mu=\SI{5e-6}{\henry\per\meter}}، \عددی{\epsilon=\SI{2e-11}{\farad\per\meter}} اور \عددی{\sigma=\SI{4e-5}{\siemens\per\meter}} ہیں۔تار میں \عددی{\kvec{E}=\tfrac{10^4}{\rho}\cos (10^6t) \arho \, \si{\volt\per\meter}} کی صورت میں \عددی{\kvec{J}}، \عددی{I_c}، \عددی{\kvec{J}_d}، \عددی{I_d} اور \عددی{\tfrac{\abs{I_d}}{\abs{I_c}}} حاصل کریں۔
 
 جوابات:\عددی{\tfrac{0.5}{\rho}\cos(10^6 t)\arho \, \si{\ampere\per\meter\squared}}، \عددی{0.12\pi\cos 10^6 t \, \si{\ampere}}، 
-\عددی{-\tfrac{0.1}{\rho}\sin 10^6 t \, \si{\ampere\per\meter \squared}}، \عددی{-0.024\pi\sin 10^6 t \, \si{\ampere}}، \عددی{0.2}
+\عددی{-\tfrac{0.1}{\rho}\sin 10^6 t \, \si{\ampere\per\meter \squared}}، \\ \عددی{-0.024\pi\sin 10^6 t \, \si{\ampere}}، \عددی{0.2}
 \انتہا{سوال}
 %==================
 \ابتدا{سوال}
@@ -986,7 +998,7 @@ t'=t-\frac{R}{v}
 \انتہا{سوال}
 %======================
 \ابتدا{سوال}
-موصل سطح محدد کے مرکز سے گزرتی ہے جہاں میدان \عددی{\kvec{E}=(33\ax+12\ay+25\az)\cos(10^7 t) \, \si{\volt\per\meter}} پایا جاتا ہے۔سطح کے قریب خطے کے مستقل \عددی{\sigma=0}، \عددی{\epsilon_R=12} اور \عددی{\mu_R=1.6} ہیں۔نقطہ \عددی{(0,0,0)} پر موصل سطح پہ کثافت بار حاصل کریں۔اس نقطے پر سطح کے متوازی میدان حاصل کریں۔
+محدد کے مرکز سے گزرتی موصل سطح پر \عددی{\kvec{E}=(33\ax+12\ay+25\az)\cos(10^7 t) \, \si{\volt\per\meter}} پایا جاتا ہے۔سطح کے قریب خطے کے مستقل \عددی{\sigma=0}، \عددی{\epsilon_R=12} اور \عددی{\mu_R=1.6} ہیں۔نقطہ \عددی{(0,0,0)} پر موصل سطح پہ کثافت بار حاصل کریں۔اس نقطے پر سطح کے متوازی میدان حاصل کریں۔
 
 جوابات:\عددی{4.58\cos(10^7 t) \, \si{\nano\coulomb\per\meter\squared}}، \عددی{0}
 \انتہا{سوال}

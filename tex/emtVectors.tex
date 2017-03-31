@@ -25,19 +25,20 @@ $\overset{\rightharpoonup}{\rule{0pt}{.9ex}\smash{F}}$
  پر بھی پورا اترتا ہے۔
 %  
 \begin{figure}
-\begin{subfigure}{0.4\textwidth}
+\centering
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorHeadToTailRule}
 \caption{سر کے ساتھ دُم جوڑ کر مجموعہ حاصل کیا جاتا ہے۔}
 %\label{شکل_سمتیہ_سر_دم_جوڑنا}
-\end{subfigure}
+\end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorParallelogramAdditionLaw}
 \caption{متوازی الاضلاع سے بھی مجموعہ حاصل کیا جاتا ہے۔}
 %\label{شکل_سمتیہ_متوازی_الاضلاع}
-\end{subfigure}
+\end{subfigure}%
 \caption{سمتیوں کے مجموعے کا حصول}
 \label{شکل_سمتیہ_سمتیوں_کا_مجموعہ}
 \end{figure}
@@ -59,19 +60,20 @@ $\overset{\rightharpoonup}{\rule{0pt}{.9ex}\smash{F}}$
 \end{align}
 
 \begin{figure}
+\centering
 \begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{unitVectorsInTwoDimensionalCartesianSpace}
 \caption{اکائی سمتیہ}
 %\label{شکل_سمتیہ_سر_دم_جوڑنا}
-\end{subfigure}
+\end{subfigure}%
 %
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{vectorsRepresentationCartesianSpace}
+\includegraphics[scale=0.95]{vectorsRepresentationCartesianSpace}
 \caption{اکائی سمتیات سے عمومی سمتیہ کا اظہار۔}
 %\label{شکل_سمتیہ_متوازی_الاضلاع}
-\end{subfigure}
+\end{subfigure}%
 \caption{اکائی سمتیات اور ان کا استعمال}
 \label{شکل_سمتیہ_اکائی_سے_سمتیہ_کا_اظہار}
 \end{figure}
@@ -85,14 +87,15 @@ z=0, \quad  x\le \abs{\mp \infty}, \quad y \le \abs{\mp \infty}
 لکھا جا سکتا ہے۔  شکل \حوالہ{شکل_سمتیہ_کارتیسی_نقطہ_اور_عمودی_سطحیں}-الف میں اس سطح کی نشاندہی کی گئی ہے۔ہم بالکل اسی طرح \عددیء{y=0} سطح اور \عددیء{x=0} سطح بھی بیان کر سکتے ہیں۔
 
 \begin{figure}
-\begin{subfigure}{0.4\textwidth}
+\centering
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorPlaneSurfacesCartesian}
 \caption{کارتیسی محدد میں عمودی سیدھی سطحیں۔}
 \label{شکل_سمتیہ_کارتیسی_عمودی-تین_سطحیں}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorPerpendicularsFromPointToCartesianAxis3D}
 \caption{نقطے سے محدد پر عمود۔}
@@ -156,7 +159,7 @@ x=x_0, \quad  y=y_0, \quad z \le \abs{\mp \infty}
 %
 \begin{figure}
 \centering
-\includegraphics{figVector3DcartesianVectors}
+\includegraphics[width=\textwidth]{figVector3DcartesianVectors}
 \caption{کارتیسی نظام میں چند سمتیات۔}
 \label{شکل_سمتیہ_کارتیسی_چند_سمتیات}
 \end{figure}
@@ -206,7 +209,18 @@ x=x_0, \quad  y=y_0, \quad z \le \abs{\mp \infty}
 \ابتدا{مثال}
 نقطہ \عددیء{(-5,2,-1)}  کا مقام ظاہر کرنے والا سمتیہ اور اس سمتیہ کا طول حاصل کریں۔اسی سمتیہ کی سمت میں اکائی سمتیہ حاصل کریں۔
 
-حل:مرکز سے اس نقطے تک کا سمتیہ \عددیء{\kvec{r}=-5\ax+2\ay-1\az} ہے جبکہ اس سمتیہ  کا طول \عددیء{\abs{\kvec{r}}=\sqrt{5^2+2^2+1^1}=\sqrt{30}} ہے۔یوں اکائی سمتیہ \عددیء{\kvec{a}_r=\tfrac{-5\ax+2\ay-1\az}{\sqrt{30}}} ہو گا۔
+حل:مرکز سے اس نقطے تک کا سمتیہ
+\begin{align*}
+\kvec{r}=-5\ax+2\ay-1\az
+\end{align*}
+ہے جبکہ اس سمتیہ  کا طول
+\begin{align*}
+\abs{\kvec{r}}=\sqrt{5^2+2^2+1^1}=\sqrt{30}
+\end{align*}
+ ہے۔یوں اکائی سمتیہ درج ذیل ہو گا۔
+\begin{align*}
+\kvec{a}_r=\tfrac{-5\ax+2\ay-1\az}{\sqrt{30}}
+\end{align*}
 \انتہا{مثال}
 %=====================
 
@@ -372,7 +386,9 @@ r_{\parallel}=\kvec{r}_{PM} \cdot \kvec{a}_{NM}&=(-4\ay-2\az) \cdot \left(\frac{
 
 \عددیء{\kvec{r}_{\parallel}} اور \عددیء{\kvec{r}_\perp} آپس میں عمودی ہیں لہٰذا ان  کا نقطہ ضرب
 \begin{align*}
-\kvec{r}_\parallel \cdot \kvec{r}_\perp&=\frac{18}{38} (3\ax-2\ay-5\az) \cdot \left(\frac{-27\ax-58\ay+7\az}{19}\right)=\frac{18}{722}(-81+116-35)=0
+\kvec{r}_\parallel \cdot \kvec{r}_\perp&=\frac{18}{38} (3\ax-2\ay-5\az) \cdot \left(\frac{-27\ax-58\ay+7\az}{19}\right)\\
+&=\frac{18}{722}(-81+116-35)\\
+&=0
 \end{align*}
 صفر کے برابر ہے۔
 \انتہا{مثال}
@@ -521,12 +537,12 @@ B_x & B_y & B_z
 کارتیسی نظام میں کسی بھی نقطے کا مقام مرکز سے \عددیء{x}، \عددیء{y} اور \عددیء{z} سمتوں میں فاصلوں سے طے کیا جاتا ہے۔آئیں اب ایسا نظام دیکھیں جس میں ایک عدد زاویہ اور دو عدد فاصلے استعمال کرتے ہوئے کسی بھی نقطے کا مقام طے ہو۔
  \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVector2and3Dcylindrical}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalToCartesian}
 \end{subfigure}%
@@ -561,12 +577,12 @@ z&=z
 درج بالا دونوں تعلقات کو کتاب کے آخر میں صفحہ \حوالہصفحہ{ضمیمہ_محددی_تعلق} پر ضمیمے میں دوبارہ پیش کیا گیا ہے۔
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalRadiusAngle}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalUnitVectors}
 \end{subfigure}%
@@ -638,7 +654,11 @@ z&=z
 \begin{align}
 \arho \cdot \ay=(1)(1)[\cos (90^\circ-\phi)]=\sin \phi
 \end{align}
-کے برابر ہے۔اس مساوات میں \عددیء{\cos(\alpha-\beta)=\cos \alpha \cos \beta+\sin \alpha \sin \beta} کو استعمال کرتے ہوئے \عددیء{\cos(90^\circ-\phi)=\sin \phi} لکھا گیا ہے۔شکل \حوالہ{شکل_سمتیہ_نلکی_کارتیسی_اکائی_غیر_سمتی_ضرب}-ب میں نقطہ \عددیء{N} پر اکائی سمتیات \عددیء{\aphi}، \عددیء{\ax} اور \عددیء{\ay} دکھائے گئے ہیں۔\عددیء{\aphi} اور  \عددیء{\ax} کے مابین زاویہ \عددیء{(90^\circ+\phi)} ہے  لہٰذا
+کے برابر ہے۔اس مساوات میں
+\begin{align*}
+\cos(\alpha-\beta)=\cos \alpha \cos \beta+\sin \alpha \sin \beta
+\end{align*}
+کو استعمال کرتے ہوئے \عددیء{\cos(90^\circ-\phi)=\sin \phi} لکھا گیا ہے۔شکل \حوالہ{شکل_سمتیہ_نلکی_کارتیسی_اکائی_غیر_سمتی_ضرب}-ب میں نقطہ \عددیء{N} پر اکائی سمتیات \عددیء{\aphi}، \عددیء{\ax} اور \عددیء{\ay} دکھائے گئے ہیں۔\عددیء{\aphi} اور  \عددیء{\ax} کے مابین زاویہ \عددیء{(90^\circ+\phi)} ہے  لہٰذا
 \begin{align}
 \aphi \cdot \ax=(1)(1)[\cos (90^\circ+\phi)]=-\sin \phi
 \end{align}
@@ -649,12 +669,12 @@ z&=z
 کے برابر ہے۔\عددیء{\az} کا \عددیء{\ax} اور \عددیء{\ay} کے ساتھ غیر سمتی ضرب صفر کے برابر ہے۔اس کی وجہ ان کے مابین نوے درجے کا زاویہ ہے۔ان تمام غیر سمتی ضرب کو جدول \حوالہ{جدول_سمتیہ_نلکی_کارتیسی_اکائی_غیر-سمتی_ضرب} میں یکجا کیا گیا ہے۔
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalXandRhoDotProduct}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalXandPhiDotProduct}
 \end{subfigure}%
@@ -678,12 +698,12 @@ $\az$ & $0$ &$ 0$ &$1$
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalRhoToCartesianConversion}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCylindricalPhiToCartesianConversion}
 \end{subfigure}%
@@ -710,12 +730,12 @@ $\az$ & $0$ &$ 0$ &$1$
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCartesianXtoCylindricalConversion}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorCartesianYtoCylindricalConversion}
 \end{subfigure}%
@@ -803,12 +823,12 @@ A_z&=\az \cdot \aphi=0
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorVectorInCartesianAndCylindricalA}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorVectorInCartesianAndCylindricalB}
 \end{subfigure}%
@@ -912,7 +932,7 @@ A_\theta =\left(\frac{d}{2} \az+r\ar \right) \cdot \atheta=-\frac{d}{2}\sin \the
 %
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figVectorCylindricalFixedRadiusSurface}
+\includegraphics[scale=0.95]{figVectorCylindricalFixedRadiusSurface}
 \end{subfigure}%
 \caption{$\phi=\phi_0$ اور $\rho=\rho_0$ سطحیں۔}
 \label{شکل_سمتیہ_نلکی_قطعی_زاویہ_سطح}
@@ -933,7 +953,7 @@ A_\theta =\left(\frac{d}{2} \az+r\ar \right) \cdot \atheta=-\frac{d}{2}\sin \the
 \centering
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figVectorCylindricalDifferentialVolume}
+\includegraphics[scale=0.9]{figVectorCylindricalDifferentialVolume}
 \end{subfigure}%
 %
 \begin{subfigure}{0.5\textwidth}
@@ -971,12 +991,12 @@ A_\theta =\left(\frac{d}{2} \az+r\ar \right) \cdot \atheta=-\frac{d}{2}\sin \the
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalRadiusThetaPhi}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalThetaSurface}
 \end{subfigure}%
@@ -990,7 +1010,7 @@ A_\theta =\left(\frac{d}{2} \az+r\ar \right) \cdot \atheta=-\frac{d}{2}\sin \the
 \centering
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics{figVectorSphericalIntersectingSurface}
+\includegraphics[scale=0.95]{figVectorSphericalIntersectingSurface}
 \end{subfigure}%
 %
 \begin{subfigure}{0.5\textwidth}
@@ -1069,12 +1089,12 @@ r^2=x^2+y^2+z^2
 حاصل ہوتا ہے۔مساوات \حوالہ{مساوات_سمتیہ_کروی_رداس}، مساوات \حوالہ{مساوات_سمتیہ_کروی_تھیٹا} اور مساوات \حوالہ{مساوات_سمتیہ_کروی_فائے} کارتیسی سے کروی متغیرات دیتے ہیں۔
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalUnitRadial}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalUnitTheta}
 \end{subfigure}%
@@ -1193,12 +1213,12 @@ $\aphi$ & $-\sin \phi$ &$ \cos \phi$ &$0$
 %
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalDifferentialVolume}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalDifferentialSurfaces}
 \end{subfigure}%
@@ -1239,12 +1259,12 @@ $\aphi$ & $-\sin \phi$ &$ \cos \phi$ &$0$
 %============
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalUnitRadialDotWithCartesian}
 \end{subfigure}%
 %
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.5\textwidth}
 \centering
 \includegraphics{figVectorSphericalUnitThetaDotWithCartesian}
 \end{subfigure}%
@@ -1365,13 +1385,15 @@ $\aphi$ & $-\sin \phi$ &$ \cos \phi$ &$0$
 \ابتدا{سوال}
 تین سمتیات \عددی{\kvec{r}_1=2\ax-1\ay+3\az}، \عددی{\kvec{r}_2=-3\ax+4\ay-5\az} اور \عددی{\kvec{r}_3=5\ax-2\ay+3\az} دیے گئے ہیں۔\عددیء{\kvec{r}_1\times \kvec{r}_2} کی سمت میں اکائی سمتیہ حاصل کریں۔ایسی اکائی سمتیہ حاصل کریں جو \عددیء{\kvec{r}_1} اور \عددیء{\kvec{r}_2} دونوں کو عمودی ہو۔سمتیہ \عددیء{\kvec{r}_2-\kvec{r}_1} اور \عددیء{\kvec{r}_2-\kvec{r}_3} دونوں کو عمودی اکائی سمتیہ حاصل کریں۔اس تکون کا رقبہ حاصل کریں جس کے اطراف \عددیء{\kvec{r}_1} اور \عددیء{\kvec{r}_2} ہوں۔اس تکون کا رقبہ حاصل کریں جس کے کونے یہ تین سمتیات دیتے ہیں۔ 
 
-جوابات:\عددی{-0.81\ax+0.16\ay+0.58\az}، \عددی{\mp(-0.81\ax+0.16\ay+0.58\az)}، \عددی{\mp(0.29\ax+0.88\ay+0.37\az)}، \عددی{4.3}، \عددی{13.6}
+جوابات:\عددی{-0.81\ax+0.16\ay+0.58\az}، \عددی{\mp(-0.81\ax+0.16\ay+0.58\az)}، \\
+\عددی{\mp(0.29\ax+0.88\ay+0.37\az)}، \عددی{4.3}، \عددی{13.6}
 \انتہا{سوال}
 %===============
 \ابتدا{سوال}
 نقطہ \عددی{N(5,10,4)} پر سمتیات \عددیء{\kvec{R}_{AN}=-3\ax+6\ay+12\az} اور \عددیء{\kvec{R}_{BN}=12\ax+20\ay-5\az} مل کر تکون بناتی ہیں۔تکون کی عمودی اکائی سمتیہ حاصل کریں۔سمتیہ \عددی{\kvec{R}_{BN}} کے عمودی اور تکون کی سطح کے متوازی اکائی سمتیہ حاصل کریں۔تکون کی سطح پر اس اکائی سمتیہ کو حاصل کریں جو نقطہ \عددیء{N} پر تکون کے کونے کو نصف زاویہ میں کاٹے۔
 
-جوابات:\عددی{\mp(-0.83\ax+0.39\ay-0.40\az)}، \عددی{\mp(0.26\ax-0.38\ay-0.89\az)}، \عددی{0.19\ax+0.87\ay+0.45\az}
+جوابات:\عددی{\mp(-0.83\ax+0.39\ay-0.40\az)}، \عددی{\mp(0.26\ax-0.38\ay-0.89\az)}، \\
+\عددی{0.19\ax+0.87\ay+0.45\az}
 \انتہا{سوال}
 %=============
 \ابتدا{سوال}
@@ -1389,7 +1411,7 @@ $\aphi$ & $-\sin \phi$ &$ \cos \phi$ &$0$
 \ابتدا{سوال}
 نقطہ \عددیء{N(\rho=5,\phi=30^{\circ},z=6)} سے نقطہ \عددی{P(\rho=10,\phi=75^{\circ},z=12)} تک سمتیہ کارتیسی محدد میں لکھیں۔اسی سمت میں اکائی سمتیہ بھی لکھیں۔کارتیسی محدد میں دوسرے نقطے سے مرکز تک اکائی سمتیہ لکھیں۔
 
-جوابات:\عددی{-1.74\ax+7.16\ay+6\az}، \عددیء{-0.183\ax-0.618\ay+0.631\az}، \عددی{0.166\ax-0.618\ay-0.768\az}
+جوابات:\عددی{-1.74\ax+7.16\ay+6\az}، \عددیء{-0.183\ax-0.618\ay+0.631\az}، \\ \عددی{0.166\ax-0.618\ay-0.768\az}
 \انتہا{سوال}
 %================
 \ابتدا{سوال}

@@ -393,7 +393,7 @@ Z_0=\sqrt{\frac{L_{\text{بیرونی}}}{C}}=\sqrt{\frac{\mu}{\epsilon}} \frac{d
 
 \begin{figure}
 \centering
-\includegraphics{figTransmissionThreeHundredOhmExample}
+\includegraphics[width=\textwidth]{figTransmissionThreeHundredOhmExample}
 \caption{ترسیلی تار اینٹینا کو ٹی وی سے جوڑ رہی ہے۔}
 \label{شکل_ترسیلی_اینٹینا_تا_ٹی_وی}
 \end{figure}
@@ -465,11 +465,13 @@ Z_{\text{داخلی}} &=Z_0 \frac{Z_L +j Z_0 \tan \beta l}{Z_0+j Z_L \tan \beta 
 \end{align*}
 ہو گی جو برق گیر (کپیسٹر)  کی خاصیت رکھتی ہے۔برق گیر (کپیسٹر)  کی خاصیت کا مطلب یہ ہے کہ ترسیلی تار کے برقی میدان میں مقناطیسی میدان سے زیادہ توانائی ذخیرہ ہے۔داخلی رو
 \begin{align*}
-I_{s,\text{داخلی}} = \frac{0.005}{300+466.39-j 205.6} =6.3013\phase{15.017^\circ} \quad \si{\micro \ampere}
+I_{s,\text{داخلی}} &= \frac{0.005}{300+466.39-j 205.6} \\
+&=6.3013\phase{15.017^\circ} \quad \si{\micro \ampere}
 \end{align*} 
 ہے اور یوں ترسیلی تار کو داخلی جانب
 \begin{align*}
-P_{\text{داخلی}}= \frac{1}{2} \left(6.3013 \times 10^{-6} \right)^2 \times 466.39 = \SI{9.2593}{\nano \watt}
+P_{\text{داخلی}}  &= \frac{1}{2} \left(6.3013 \times 10^{-6} \right)^2 \times 466.39 \\
+&= \SI{9.2593}{\nano \watt}
 \end{align*}
 طاقت فراہم کی جا رہی ہے۔بے ضیاع تار تمام کی تمام طاقت خارجی جانب منتقل کرے گا لہٰذا \عددیء{\SI{150}{\ohm}} کے برقی بوجھ کو \عددیء{\SI{9.2593}{\nano \watt}} حاصل ہو گا جو گزشتہ جواب یعنی \عددیء{\SI{10.41}{\nano\watt} } سے قدر کم ہے۔یہ کمی انعکاس کی وجہ سے پیدا ہوئی۔ کہانی یہاں ختم نہیں ہوتی۔یہ طاقت دونوں ٹی وی میں برابر تقسیم ہو گا لہٰذا ہر ٹی وی کو صرف \عددیء{\SI{4.6297}{\nano\watt} }  طاقت مہیا ہو گا۔چونکہ ایک ٹی وی \عددیء{\SI{300}{\ohm}} مزاحمت رکھتا ہے لہٰذا ٹی وی پر پیدا برقی دباو
 \begin{align*}
@@ -504,7 +506,9 @@ z_{\text{کمتر}} = \SI{0}{\meter} \quad \text{اور} \quad \SI{-1.25}{\meter
 
 چونکہ سرحد پر موج کا نشیب ہے اور ہم جانتے ہیں کہ ٹی وی پر \عددیء{\SI{1.66}{\milli \volt}} ہے لہٰذا دباو کی کمتر قیمت یہی ہے اور \عددیء{s=2} سے دباو کی چوٹی اس کے دگنا یعنی \عددیء{\SI{3.32}{\milli\volt}} حاصل ہوتی ہے۔ترسیلی تار کے داخلی سرے پر برقی دباو
 \begin{align*}
-V_{s,\text{داخلی}} = I_{s,\text{داخلی}} Z_{\text{داخلی}} =\left(6.3013 \times 10^{-6}\phase{15.017^\circ} \right)\left(509.7 \phase{-23.79^\circ} \right) =0.00321175\phase{-8.77^\circ}
+V_{s,\text{داخلی}} &= I_{s,\text{داخلی}} Z_{\text{داخلی}} \\
+&=\left(6.3013 \times 10^{-6}\phase{15.017^\circ} \right)\left(509.7 \phase{-23.79^\circ} \right) \\
+&=0.00321175\phase{-8.77^\circ}
 \end{align*}
 ہو گی جو تقریباً موج کے چوٹی کے برابر ہے۔ایسا اس لئے ہے کہ سرحد سے \عددیء{\tfrac{\lambda}{4}}  فاصلے پر چوٹی پائی جاتی ہے جس سے ہر \عددیء{0.5\lambda} فاصلے پر چوٹی ہو گی لہٰذا سرحد سے \عددیء{\tfrac{3\lambda}{4}} فاصلے پر بھی چوٹی متوقع ہے جو تار کے داخلی سرے کے بہت قریب نقطہ ہے۔آپ ترسیلی تار کی داخلی برقی دباو یوں
 \begin{align*}
@@ -553,7 +557,7 @@ Z_{\text{داخلی}}=300 \frac{-j300+j300 \tan 288^\circ}{300+j(-j300)\tan 288^
 \عددی{Z_0=\SI{50}{\ohm}} اور اس میں موج کی رفتار \عددی{\SI{2e8}{\meter\per\second}} ہے۔ مندرجہ ذیل صورتوں میں برقی بوجھ پر برقی دباو \عددی{V_{L}} حاصل کریں۔ الف) منبع کی تعدد \عددی{\SI{500}{\kilo\hertz}} ہے۔ ب) منبع کی تعدد \عددی{\SI{50}{\hertz}} ہے ۔
 \begin{figure}
 \centering
-\includegraphics{figTransmissionLineExample}
+\includegraphics[width=\textwidth]{figTransmissionLineExample}
 \caption{ترسیلی تار اور برقی بوجھ۔}
 \label{شکل_ترسیلی_تار_بار_بردار}
 \end{figure}
@@ -1432,14 +1436,14 @@ V_s^{+}(z,t)=100 \cos(\omega t -\pi z) \quad \quad  \si{\volt}
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
 \centering
 \includegraphics{figTransmissionLineTransientLoadVoltageQuestionA}
 \caption{ برقی بوجھ کی برقی دباو بالمقابل وقت۔}
 \label{شکل_ترسیلی_جواب_سوال_الف}
 \end{subfigure}%
 
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
 \centering
 \includegraphics{figTransmissionLineTransientSourceCurrentQuestionA}
 \caption{منبع کی برقی رو بالمقابل وقت۔}
@@ -1458,14 +1462,14 @@ V_s^{+}(z,t)=100 \cos(\omega t -\pi z) \quad \quad  \si{\volt}
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
 \centering
 \includegraphics{figTransmissionLineTransientLoadVoltageQuestionB}
 \caption{ برقی بوجھ کی برقی دباو بالمقابل وقت۔}
 \label{شکل_ترسیلی_جواب_سوال_ب}
 \end{subfigure}%
 
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
 \centering
 \includegraphics{figTransmissionLineTransientSourceCurrentQuestionB}
 \caption{منبع کی برقی رو بالمقابل وقت۔}
@@ -1485,14 +1489,14 @@ V_s^{+}(z,t)=100 \cos(\omega t -\pi z) \quad \quad  \si{\volt}
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
 \centering
 \includegraphics{figTransmissionLineTransientLoadVoltageQuestionC}
 \caption{ دئے نقطے کی برقی دباو بالمقابل وقت۔}
 \label{شکل_ترسیلی_جواب_سوال_پ}
 \end{subfigure}%
 
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
 \centering
 \includegraphics{figTransmissionLineTransientSourceCurrentQuestionB}
 \caption{دئے نقطے کی برقی رو بالمقابل وقت۔}
