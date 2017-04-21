@@ -1,4 +1,12 @@
 \documentclass[leqno,b5paper]{book}
+%===================
+%testing tikz inside book
+\usepackage{verbatim}   %\begin{comment}   \end{comment}
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings,decorations.pathreplacing}
+%=====================
 
 
 
@@ -26,9 +34,11 @@
 {./fig/figConductorDielectricCapacitor/}{./fig/figStreamlines/}{./fig/figPoissonLaplace/}{./fig/figSteadyMagneticField/}{./fig/figMagneticForcesMaterialsAndInductance/}{./fig/figMaxwellEquations/}{./fig/figPlaneWave/}{./fig/figTransmissionLines/}{./fig/figPolarization/}{./fig/figObliqueIncidence/}{./fig/figWaveGuidesAndResonators/}{./fig/figAntennasAndRadiation/}}		%paths to figures
 
 
-%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtAntennasAndRadiation}
+%\includeonly{,./tex/emtCoulombLaw}
 %
-\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtMagneticForcesMaterialsAndInductance,./tex/emtMaxwellEquations,./tex/emtPlaneWave,./tex/emtTransmissionLines,./tex/emtObliqueIncidence,./tex/emtWaveguidesAndResonators,./tex/emtAntennasAndRadiation,./tex/emtDataTables,./tex/emtEndOfBookTableDivergenceCurlGradientLaplacian,./tex/emtLinearAlgebra,./tex/emtCoordinatesRelations}
+%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtMagneticForcesMaterialsAndInductance,./tex/emtMaxwellEquations,./tex/emtPlaneWave,./tex/emtTransmissionLines,./tex/emtObliqueIncidence,./tex/emtWaveguidesAndResonators,./tex/emtAntennasAndRadiation,./tex/emtDataTables,./tex/emtEndOfBookTableDivergenceCurlGradientLaplacian,./tex/emtLinearAlgebra,./tex/emtCoordinatesRelations}
+
+\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors}
 
 
 \author{خالد خان یوسفزئی}

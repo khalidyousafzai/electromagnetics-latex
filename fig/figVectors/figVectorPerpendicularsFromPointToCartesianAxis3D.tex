@@ -15,18 +15,21 @@
 \pgfmathsetmacro{\z}{1.5}
 \pgfmathsetmacro{\del}{0.5}
 
+\input{../../tex/myEMTvectors.tex}
+
+
 \begin{document}
 \begin{urdufont}
 \begin{tikzpicture}[x={(-0.5cm,-0.5cm)},y={(1cm,0cm)},z={(0cm,1cm)}]
 
 %\draw[help lines, thick] (0,0) grid (5,4);
 %axis
-\draw[gray](0,0,0)--++(\x+\del,0,0)node[left]{$x$};
+\draw[gray](0,0,0)--++(1.5*\x+\del,0,0)node[left]{$x$};
 \draw[gray](0,0,0)--++(0,2*\y,0)node[above]{$y$};
 \draw[gray](0,0,0)--++(0,0,\z+\del)node[left]{$z$};
 %
 \fill[white,opacity=0.7](\x,0,0)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--(0,\y,0)--(\x,\y,0)--cycle;
-
+\draw(\x,0,0)node[left]{$(x_0,0,0)$};
 %
 \draw[gray] (\x,\y,\z)--(\x,0,\z)--(0,0,\z)--(0,\y,\z)--cycle;
 \draw[gray](\x,0,0)--(\x,\y,0);
@@ -40,6 +43,8 @@
 %
 \draw[] (\x,\y,\z)--(0,0,\z) node [left]{$(0,0,z_0)$};
 \draw[] (\x,\y,\z)--(0,\y,0)node [below right]{$(0,y_0,0)$};
+\RightAngle{(\x,\y,\z)}{(0,0,\z)}{(0,0,1.2*\z)};
+\RightAngle{(\x,\y,\z)}{(0,\y,0)}{(0,1.2*\y,0)};
 \end{tikzpicture}%%
 \end{urdufont}
 \end{document}
