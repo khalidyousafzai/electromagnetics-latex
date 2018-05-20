@@ -100,15 +100,15 @@ V_{1s}-V_{2s}=0
 لکھ سکتے ہیں جس کا تکمل پورے حجم کے لئے
 \begin{equation}\label{مساوات_لاپلاس_یکتائی_ثبوت_الف}
 \resizebox{.9\hsize}{!}{$
-\int\limits_{\textrm{حجم}} \nabla \cdot  [(V_1-V_2) \nabla(V_1-V_2)] \dif h=\int\limits_{\textrm{حجم}}(V_1-V_2) [\nabla^2(V_1-V_2)] \dif h+\int\limits_{\textrm{حجم}}[\nabla(V_1-V_2)]^2 \dif h $}
+\int\limits_{\text{حجم}} \nabla \cdot  [(V_1-V_2) \nabla(V_1-V_2)] \dif h=\int\limits_{\text{حجم}}(V_1-V_2) [\nabla^2(V_1-V_2)] \dif h+\int\limits_{\text{حجم}}[\nabla(V_1-V_2)]^2 \dif h $}
 \end{equation}
 ہو گا۔صفحہ \حوالہصفحہ{مساوات_گاوس_مسئلہ_پھیلاو_تکمل_شکل} پر مساوات \حوالہ{مساوات_گاوس_مسئلہ_پھیلاو_تکمل_شکل} مسئلہ پھیلاو بیان کرتا ہے جس کے مطابق کسی بھی حجمی تکمل کو  بند سطحی تکمل میں تبدیل کیا جا سکتا ہے جہاں حجم کی سطح پر سطحی تکمل حاصل کیا جاتا ہے۔یوں مندرجہ بالا مساوات کے بائیں ہاتھ کو سطحی تکمل میں تبدیل کرتے ہوئے
 \begin{align*}
-\int\limits_{\textrm{حجم}} \nabla \cdot  [(V_1-V_2) \nabla(V_1-V_2)] \dif h=\oint\limits_{\textrm{سطح}} [(V_{1s}-V_{2s}) \nabla(V_{1s}-V_{2s})] \cdot \dif \kvec{S}=0
+\int\limits_{\text{حجم}} \nabla \cdot  [(V_1-V_2) \nabla(V_1-V_2)] \dif h=\oint\limits_{\text{سطح}} [(V_{1s}-V_{2s}) \nabla(V_{1s}-V_{2s})] \cdot \dif \kvec{S}=0
 \end{align*}
 حاصل ہوتا ہے جہاں سرحدی سطح پر \عددیء{V_{1s}=V_{2s}} ہونے کی بنا پر \عددیء{V_{1s}-V_{2s}=0} ہے اور صفر کا تکمل صفر ہی ہوتا ہے۔مساوات \حوالہ{مساوات_لاپلاس_یکتائی_ثبوت_الف} میں دائیں ہاتھ پہلے جزو میں مساوات \حوالہ{مساوات_لاپلاس_دو_جوابات_الف} کے تحت \عددیء{\nabla^2(V_1-V_2)=0} ہے اور صفر کا تکمل صفر ہی ہوتا ہے۔اس طرح مساوات \حوالہ{مساوات_لاپلاس_یکتائی_ثبوت_الف} سے
 \begin{align*}
-\int\limits_{\textrm{حجم}}[\nabla(V_1-V_2)]^2 \dif h=0
+\int\limits_{\text{حجم}}[\nabla(V_1-V_2)]^2 \dif h=0
 \end{align*}
 حاصل ہوتی ہے۔
 
@@ -124,7 +124,7 @@ V_{1s}-V_{2s}=0
 
 اب \عددیء{\nabla (V_1-V_2)=0} کا مطلب ہے کہ \عددیء{V_1-V_2} کی ڈھلوان ہر صورت صفر کے برابر ہے۔یہ تب ہی ممکن ہے جب \عددیء{V_1-V_2} کی قیمت کسی بھی محدد کے ساتھ تبدیل نہ ہو یعنی اگر تکمل کے پورے خطے میں
 \begin{align*}
-V_1-V_2=\textrm{اٹل قیمت}
+V_1-V_2=\text{اٹل قیمت}
 \end{align*}
 ہو۔حجم کی سرحد پر بھی یہ درست ہو گا۔مگر سرحد پر
 \begin{align*}
@@ -175,17 +175,17 @@ V_1=V_2
 \begin{align}
 \nabla^2 V=\frac{1}{\rho}\frac{\partial }{\partial \rho}\left(\rho \frac{\partial V}{\partial \rho}\right)
 +\frac{1}{\rho^2}\left(\frac{\partial^2 V}{\partial \phi^2}  \right) 
-+  \frac{\partial^2 V}{\partial z^2}\quad {\textrm{نلکی}}
++  \frac{\partial^2 V}{\partial z^2}\quad {\text{نلکی}}
 \end{align}
  لکھا جا سکتا ہے جو نلکی محدد میں لاپلاسی مساوات ہے۔
 
 کروی محدد میں بالکل اسی طرح
 \begin{align}\label{مساوات_لاپلاس_کروی_لاپلاسی}
-\nabla^2 V=\frac{1}{r^2} \frac{\partial}{\partial r} \left(r^2\frac{\partial V}{\partial r} \right)+\frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} \left(\sin \theta \frac{\partial V}{\partial \theta}  \right)+\frac{1}{r^2 \sin \theta}\frac{\partial^2 V}{\partial \phi^2} \quad {\textrm{کروی}}
+\nabla^2 V=\frac{1}{r^2} \frac{\partial}{\partial r} \left(r^2\frac{\partial V}{\partial r} \right)+\frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} \left(\sin \theta \frac{\partial V}{\partial \theta}  \right)+\frac{1}{r^2 \sin \theta}\frac{\partial^2 V}{\partial \phi^2} \quad {\text{کروی}}
 \end{align}
 جبکہ عمومی محدد میں
 \begin{align}\label{مساوات_لاپلاس_عمومی_لاپلاسی}
-\nabla^2 V=\frac{1}{k_1 k_2 k_3}\left[\frac{\partial}{\partial u}\left(\frac{k_2 k_3}{k_1}\frac{\partial V}{\partial u} \right)+\frac{\partial}{\partial v}\left(\frac{k_1 k_3}{k_2}\frac{\partial V}{\partial v} \right) +\frac{\partial}{\partial w}\left(\frac{k_1 k_2}{k_3}\frac{\partial V}{\partial w} \right)\right] \quad{\textrm{عمومی}}
+\nabla^2 V=\frac{1}{k_1 k_2 k_3}\left[\frac{\partial}{\partial u}\left(\frac{k_2 k_3}{k_1}\frac{\partial V}{\partial u} \right)+\frac{\partial}{\partial v}\left(\frac{k_1 k_3}{k_2}\frac{\partial V}{\partial v} \right) +\frac{\partial}{\partial w}\left(\frac{k_1 k_2}{k_3}\frac{\partial V}{\partial w} \right)\right] \quad{\text{عمومی}}
 \end{align}
 حاصل کی جا سکتی ہے۔
 %==================
@@ -620,7 +620,7 @@ a_6&=\frac{m^6}{6!}a_0
 \end{align*}
  لکھا جا سکتا ہے جسے عمومی طور پر
 \begin{align*}
-a_n=\frac{m^{n}}{n!}a_0 \quad \quad (\textrm{جفت}\, n)
+a_n=\frac{m^{n}}{n!}a_0 \quad \quad (\text{جفت}\, n)
 \end{align*}
 لکھا جا سکتا ہے۔طاق ضربیہ کو \عددیء{a_1} کی صورت میں
 \begin{align*}
@@ -629,23 +629,23 @@ a_5&=\frac{m^5}{5!}\frac{a_1}{m}
 \end{align*}
 لکھا جا سکتا ہے جس سے ان کی عمومی مساوات
 \begin{align*}
-a_n=\frac{m^n}{n!}\frac{a_1}{m} \quad \quad (\textrm{طاق} \, n)
+a_n=\frac{m^n}{n!}\frac{a_1}{m} \quad \quad (\text{طاق} \, n)
 \end{align*}
 لکھی جا سکتی ہے۔انہیں واپس طاقتی سلسلے میں پر کرتے ہوئے
 \begin{align*}
-X=a_0 \sum_{0,\textrm{جفت}}^{\infty} \frac{m^n}{n!}x^n+\frac{a_1}{m}\sum_{1,\textrm{طاق}}^{\infty} \frac{m^n}{n!}x^n
+X=a_0 \sum_{0,\text{جفت}}^{\infty} \frac{m^n}{n!}x^n+\frac{a_1}{m}\sum_{1,\text{طاق}}^{\infty} \frac{m^n}{n!}x^n
 \end{align*}
 یا
 \begin{align*}
-X=a_0 \sum_{0,\textrm{جفت}}^{\infty} \frac{(mx)^n}{n!}+\frac{a_1}{m}\sum_{1,\textrm{طاق}}^{\infty} \frac{(mx)^n}{n!}
+X=a_0 \sum_{0,\text{جفت}}^{\infty} \frac{(mx)^n}{n!}+\frac{a_1}{m}\sum_{1,\text{طاق}}^{\infty} \frac{(mx)^n}{n!}
 \end{align*}
 حاصل ہوتا ہے۔غور کرنے سے معلوم ہوتا ہے کہ مندرجہ بالا مساوات میں پہلا طاقتی سلسلہ دراصل \عددیء{\cosh mx} کے برابر
 \begin{align*}
-\cosh mx=\sum_{0,\textrm{جفت}}^{\infty} \frac{(mx)^n}{n!}=1+\frac{(mx)^2}{2!}+\frac{(mx)^4}{4!}+\cdots
+\cosh mx=\sum_{0,\text{جفت}}^{\infty} \frac{(mx)^n}{n!}=1+\frac{(mx)^2}{2!}+\frac{(mx)^4}{4!}+\cdots
 \end{align*}
  اور دوسرا طاقتی سلسلہ \عددیء{\sinh mx}
 \begin{align*}
-\sinh mx=\sum_{1,\textrm{طاق}}^{\infty} \frac{m^n}{n!}x^n=mx+\frac{(mx)^3}{3!}+\frac{(mx)^5}{5!}+\cdots
+\sinh mx=\sum_{1,\text{طاق}}^{\infty} \frac{m^n}{n!}x^n=mx+\frac{(mx)^3}{3!}+\frac{(mx)^5}{5!}+\cdots
 \end{align*}
 کے برابر ہے۔یوں
 \begin{align*}
@@ -809,7 +809,7 @@ V_n=\frac{4V_0}{n \pi \sinh (\tfrac{n \pi d}{b})}  \quad \quad (n=1,3,5,\cdots)
 \end{align*}
 ہو گا اور یوں مساوات \حوالہ{مساوات_لاپلاس_فوریئر_تسلسل_کا_حل} کو
 \begin{align}\label{مساوات_لاپلاس_طاقتی_تسلسل_مساوات}
-V=\frac{4V_0}{\pi} \sum_{n=1,\textrm{طاق}}^{\infty} \frac{1}{n} \frac{\sinh \frac{n\pi x}{b}}{\sinh \tfrac{n\pi d}{b}} \sin \frac{n\pi y}{b}
+V=\frac{4V_0}{\pi} \sum_{n=1,\text{طاق}}^{\infty} \frac{1}{n} \frac{\sinh \frac{n\pi x}{b}}{\sinh \tfrac{n\pi d}{b}} \sin \frac{n\pi y}{b}
 \end{align}
 لکھا جا سکتا ہے۔اس مساوات سے مختلف نقطوں پر برقی دباو \عددیء{V(x,y)} حاصل کرتے ہوئے  ان میں برابر برقی دباو رکھنے والے نقطوں سے گزرتی سطح ہم قوہ سطح ہو گی۔
 
