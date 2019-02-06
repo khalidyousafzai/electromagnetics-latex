@@ -57,6 +57,15 @@
 \title{برقناطیسیت}
 \date{}                           %if absent gives date in arabic which is a rubbish
 
+%included the following to correct the RTL issues with equation numbering after upgradation to ubuntu 18.04
+%might break bidi package as said on the internet
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\RTL{{\beginR #1\endR}}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces{\beginR#1\endR}\unskip)}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\linenumbers
 
 %\makeindex
