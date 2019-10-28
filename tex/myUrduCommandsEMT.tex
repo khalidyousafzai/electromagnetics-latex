@@ -73,12 +73,12 @@
 
 
 %numbering scheme
-\renewcommand*{\thefigure}{\arabic{figure}.\thechapter}
-\renewcommand*{\thetable}{\arabic{table}.\thechapter}
-\renewcommand*{\theequation}{\arabic{equation}.\thechapter}
-\renewcommand*{\thesection}{\arabic{section}.\thechapter}
-\renewcommand*{\thesubsection}{\arabic{subsection}.\arabic{section}.\thechapter}
-\renewcommand*{\thesubsubsection}{\arabic{subsubsection}.\arabic{subsection}.\arabic{section}.\thechapter}
+\renewcommand*{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand*{\thetable}{\thechapter.\arabic{table}}
+\renewcommand*{\theequation}{\thechapter.\arabic{equation}}
+\renewcommand*{\thesection}{\thechapter.\arabic{section}}
+\renewcommand*{\thesubsection}{\thechapter.\arabic{section}.\arabic{subsection}}
+\renewcommand*{\thesubsubsection}{\thechapter.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 %================
 %my environments
@@ -86,7 +86,7 @@
 
 %environment for examples مثال
 \newcounter{examplecounter}[chapter]
-\renewcommand{\theexamplecounter}{\arabic{examplecounter}.\thechapter}
+\renewcommand{\theexamplecounter}{\thechapter.\arabic{examplecounter}}
 
 \newenvironment*{مثال}
 {\par\noindent\ignorespaces \vspace{\baselineskip} \hrule \vspace{\baselineskip}  مثال \refstepcounter{examplecounter} \theexamplecounter :\quad}%
@@ -96,7 +96,7 @@
 %practice problems environment مشق
 
 \newcounter{practicecounter}[chapter]                              %practice here means مشق
-\renewcommand{\thepracticecounter}{\arabic{practicecounter}.\thechapter}
+\renewcommand{\thepracticecounter}{\thechapter.\arabic{practicecounter}}
 
 \newenvironment*{مشق}
 {\par\noindent\ignorespaces \vspace{\baselineskip} \hrule \vspace{\baselineskip} مشق \refstepcounter{practicecounter} \thepracticecounter :\quad}%
@@ -106,7 +106,7 @@
 %end of chapter questions environment سوال
 
 \newcounter{questioncounter}[chapter]
-\renewcommand{\thequestioncounter}{\arabic{questioncounter}.\thechapter}
+\renewcommand{\thequestioncounter}{\thechapter.\arabic{questioncounter}}
 
 \newenvironment*{سوال}				
 {\noindent\ignorespaces  سوال \refstepcounter{questioncounter} \thequestioncounter :\quad}%
@@ -116,7 +116,7 @@
 %defining a LAW   قانون
 
 \newcounter{lawcounter}[chapter]
-\renewcommand{\thelawcounter}{\arabic{lawcounter}.\thechapter}
+\renewcommand{\thelawcounter}{\thechapter.\arabic{lawcounter}}
 
 \newenvironment*{قانون}				
 {\par\medskip \refstepcounter{lawcounter} \quad}%
