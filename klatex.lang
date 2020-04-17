@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-This file is placed in    khalid\.local\share\gtksourceview-2.0\languagespecs\klatex.lang
+This file is placed in    khalid\.local\share\gtksourceview-3.0\language-specs\klatex.lang
 
  Author: Marco Barisione <barisione@gmail.com>
  Copyright (C) 2005-2007 Marco Barisione <barisione@gmail.com>
@@ -43,6 +43,9 @@ This file is placed in    khalid\.local\share\gtksourceview-2.0\languagespecs\kl
     <style id="common-commands"    _name="Command"    map-to="def:keyword"/>
     <style id="command"            _name="Command"    map-to="def:keyword"/>
     <style id="verbatim"           _name="Verbatim"   map-to="def:comment"/>
+
+    <style id="kMasculine"      _name="urdu masculine"    map-to="def:constant"/>
+    <style id="kFeminine"      _name="urdu feminine"    map-to="def:special-char"/>
   </styles>
 
   <definitions>
@@ -249,7 +252,13 @@ This file is placed in    khalid\.local\share\gtksourceview-2.0\languagespecs\kl
 
         </context>
 
+    <context id="kMas" style-ref="kMasculine">
+            <keyword>رنگ</keyword>
+        </context>
 
+    <context id="kFem" style-ref="kFeminine">
+            <keyword>دم</keyword>
+        </context>
 
 
         <context id="specials-symbol" style-ref="command" class="no-spell-check">
@@ -382,6 +391,8 @@ This file is placed in    khalid\.local\share\gtksourceview-2.0\languagespecs\kl
                     <keyword>usepackage</keyword>
                 </context>
 
+                <context ref="kMas"/>
+                <context ref="kFem"/>
                 <context ref="common-commands"/>
                 <context ref="specials-symbol"/>
                 <context ref="command"/>

@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<!--
+This file is placed in    khalid\.local\share\gtksourceview-3.0\language-specs\klatex.lang
+
+ Author: Marco Barisione <barisione@gmail.com>
+ Copyright (C) 2005-2007 Marco Barisione <barisione@gmail.com>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+-->
+<language id="latex" _name="kLaTeX" version="2.0" _section="Markup">
+  <metadata>
+    <property name="mimetypes">text/x-tex</property>
+    <property name="globs">*.tex;*.ltx;*.sty;*.cls;*.dtx;*.ins;*.bbl</property>
+    <property name="line-comment-start">%</property>
+  </metadata>
+
+  <styles>
+    <style id="comment"            _name="Comment"    map-to="def:comment"/>
+    <style id="documentclass"      _name="Comment"    map-to="def:keyword"/>
+    <style id="usepackage"         _name="Comment"    map-to="def:keyword"/>
+    <style id="newcommand"         _name="Comment"    map-to="def:keyword"/>
+    <style id="display-math"       _name="Math Mode"/>
+    <style id="inline-math"        _name="Inline Math Mode" map-to="latex:display-math"/>
+    <style id="structure"          _name="Inline Math Mode"/>
+    <style id="section"            _name="Inline Math Mode"/>
+    <style id="math"               _name="Math Mode" map-to="latex:display-math"/>
+    <style id="math-bound"         _name="math-bound" map-to="latex:display-math"/>
+    <style id="include"            _name="Include"    map-to="def:keyword"/>
+    <style id="common-commands"    _name="Command"    map-to="def:keyword"/>
+    <style id="command"            _name="Command"    map-to="def:keyword"/>
+    <style id="verbatim"           _name="Verbatim"   map-to="def:comment"/>
+
+    <style id="kMasculine"      _name="urdu masculine"    map-to="latex:masculine"/>
+    <style id="kFeminine"      _name="urdu feminine"    map-to="latex:feminine"/>
+    <style id="kTechnical"      _name="urdu technical"    map-to="latex:technical"/>
+  </styles>
+
+  <definitions>
+        <context id="common-commands" style-ref="common-commands" class="no-spell-check">
+            <prefix>\\</prefix>
+            <!-- We need to special case "_" since it is not considered a
+              boundary but it is allowed in latex -->
+            <suffix>(\b|(?=_))</suffix>
+            <keyword>Alpha</keyword>
+            <keyword>Beta</keyword>
+            <keyword>Chi</keyword>
+            <keyword>Delta</keyword>
+            <keyword>Epsilon</keyword>
+            <keyword>Eta</keyword>
+            <keyword>Gamma</keyword>
+            <keyword>Iota</keyword>
+            <keyword>Kappa</keyword>
+            <keyword>Lambda</keyword>
+            <keyword>Leftarrow</keyword>
+            <keyword>Leftrightarrow</keyword>
+            <keyword>Mu</keyword>
+            <keyword>Nu</keyword>
+            <keyword>Omega</keyword>
+            <keyword>Phi</keyword>
+            <keyword>Pi</keyword>
+            <keyword>Psi</keyword>
+            <keyword>Rho</keyword>
+            <keyword>Rightarrow</keyword>
+            <keyword>Sigma</keyword>
+            <keyword>Tau</keyword>
+            <keyword>Zeta</keyword>
+            <keyword>alpha</keyword>
+            <keyword>appendix</keyword>
+            <keyword>begin</keyword>
+            <keyword>beta</keyword>
+            <keyword>bigcap</keyword>
+            <keyword>bigcup</keyword>
+            <keyword>cap</keyword>
+            <keyword>cdot</keyword>
+            <keyword>chapter</keyword>
+            <keyword>chi</keyword>
+            <keyword>cup</keyword>
+            <keyword>delta</keyword>
+            <keyword>documentclass</keyword>
+            <keyword>end</keyword>
+            <keyword>enumi</keyword>
+            <keyword>enumii</keyword>
+            <keyword>enumiii</keyword>
+            <keyword>enumiv</keyword>
+            <keyword>epsilon</keyword>
+            <keyword>equation</keyword>
+            <keyword>eta</keyword>
+            <keyword>exists</keyword>
+            <keyword>figure</keyword>
+            <keyword>footnote</keyword>
+            <keyword>footnotemark</keyword>
+            <keyword>footnotetext</keyword>
+            <keyword>forall</keyword>
+            <keyword>gamma</keyword>
+            <keyword>geq</keyword>
+            <keyword>in</keyword>
+            <keyword>int</keyword>
+            <keyword>iota</keyword>
+            <keyword>kappa</keyword>
+            <keyword>label</keyword>
+            <keyword>lambda</keyword>
+            <keyword>ldots</keyword>
+            <keyword>leftarrow</keyword>
+            <keyword>leq</keyword>
+            <keyword>mpfootnote</keyword>
+            <keyword>mu</keyword>
+            <keyword>neq</keyword>
+            <keyword>newcommand</keyword>
+            <keyword>newenvironment</keyword>
+            <keyword>newfont</keyword>
+            <keyword>newtheorem</keyword>
+            <keyword>not</keyword>
+            <keyword>notin</keyword>
+            <keyword>nu</keyword>
+            <keyword>omega</keyword>
+            <keyword>onecolumn</keyword>
+            <keyword>page</keyword>
+            <keyword>pageref</keyword>
+            <keyword>paragraph</keyword>
+            <keyword>part</keyword>
+            <keyword>phi</keyword>
+            <keyword>pi</keyword>
+            <keyword>prod</keyword>
+            <keyword>psi</keyword>
+            <keyword>qquad</keyword>
+            <keyword>quad</keyword>
+            <keyword>ref</keyword>
+            <keyword>rho</keyword>
+            <keyword>rightarrow</keyword>
+            <keyword>section</keyword>
+            <keyword>setminus</keyword>
+            <keyword>sigma</keyword>
+            <keyword>subparagraph</keyword>
+            <keyword>subsection</keyword>
+            <keyword>subset</keyword>
+            <keyword>subseteq</keyword>
+            <keyword>subsetneq</keyword>
+            <keyword>subsubsection</keyword>
+            <keyword>subsubsubsection</keyword>
+            <keyword>sum</keyword>
+            <keyword>supset</keyword>
+            <keyword>supseteq</keyword>
+            <keyword>supsetneq</keyword>
+            <keyword>table</keyword>
+            <keyword>tau</keyword>
+            <keyword>times</keyword>
+            <keyword>twocolumn</keyword>
+            <keyword>varepsilon</keyword>
+            <keyword>varphi</keyword>
+            <keyword>zeta</keyword>
+
+            <keyword>ایلفا</keyword>
+            <keyword>بیٹا</keyword>
+            <keyword>گیما</keyword>
+            <keyword>ڈیلٹا</keyword>
+            <keyword>ایپسلان</keyword>
+            <keyword>متغیرایپسلان</keyword>
+            <keyword>زیٹا</keyword>
+            <keyword>ایٹا</keyword>
+            <keyword>تھیٹا</keyword>
+            <keyword>متغیرتھیٹا</keyword>
+            <keyword>ایوٹا</keyword>
+            <keyword>کاپا</keyword>
+            <keyword>لیمڈا</keyword>
+            <keyword>میو</keyword>
+            <keyword>نیو</keyword>
+            <keyword>ژاے</keyword>
+            <keyword>پاے</keyword>
+            <keyword>متغیرپاے</keyword>
+            <keyword>رھو</keyword>
+            <keyword>متغیررھو</keyword>
+            <keyword>سگما</keyword>
+            <keyword>متغیرسگما</keyword>
+            <keyword>ٹو</keyword>
+            <keyword>اپسلان</keyword>
+            <keyword>فاے</keyword>
+            <keyword>متغیرفاے</keyword>
+            <keyword>چاے</keyword>
+            <keyword>ساے</keyword>
+            <keyword>اومیگا</keyword>
+
+            <keyword>بڑاگیما</keyword>
+            <keyword>بڑاڈیلٹا</keyword>
+            <keyword>بڑاتھیٹا</keyword>
+            <keyword>بڑالیمڈا</keyword>
+            <keyword>بڑاژاے</keyword>
+            <keyword>بڑاپاے</keyword>
+            <keyword>بڑاسگما</keyword>
+            <keyword>بڑاساے</keyword>
+            <keyword>بڑااومیگا</keyword>
+       
+            <keyword>باب</keyword>
+            <keyword>پہلادرجہ</keyword>
+            <keyword>دوسرادرجہ</keyword>
+            <keyword>تیسرادرجہ</keyword>
+            <keyword>چوتھادرجہ</keyword>
+  	    <keyword>حصہ</keyword>
+  	    <keyword>جزوحصہ</keyword>
+  	    <keyword>جزوجزوحصہ</keyword>
+  	    <keyword>حصہء</keyword>
+  	    <keyword>جزوحصہء</keyword>
+  	    <keyword>جزوجزوحصہء</keyword>
+  	    <keyword>ابتدا</keyword>
+  	    <keyword>انتہا</keyword>
+  	    <keyword>اصطلاح</keyword>
+  	    <keyword>بشمول</keyword>
+  	    <keyword>شامل</keyword>
+  	    <keyword>استعمال</keyword>
+  	    <keyword>داخل</keyword>
+  	    <keyword>حاشیہب</keyword>
+  	    <keyword>حاشیہد</keyword>
+  	    <keyword>حاشیہط</keyword>
+  	    <keyword>حاشیہ۔بائیں</keyword>
+  	    <keyword>حاشیہ۔دائیں</keyword>
+  	    <keyword>حاشیہ</keyword>
+  	    <keyword>حاشیہ۔اوپر</keyword>
+  	    <keyword>شناخت</keyword>
+  	    <keyword>حوالہ</keyword>
+  	    <keyword>حوالہصفحہ</keyword>
+  	    <keyword>اشیاہ</keyword>
+  	    <keyword>شہ</keyword>
+		<keyword>جزو</keyword>
+  	    <keyword>سیدہ</keyword>
+  	    <keyword>فاصلہ</keyword>
+  	    <keyword>حکم</keyword>
+  	    <keyword>فرہنگ</keyword>
+  	    <keyword>عددی</keyword>
+  	    <keyword>عددیء</keyword>
+  	    <keyword>تحریر</keyword>
+  	    <keyword>گن</keyword>
+  	    <keyword>مثال</keyword>
+  	    <keyword>زیرنوشت</keyword>
+  	    <keyword>سیدھازیرنوشت</keyword>
+  	    <keyword>موٹا</keyword>
+  	    <keyword>ترچھا</keyword>
+  	    <keyword>مشق</keyword>
+  	    <keyword>سمتیہ</keyword>
+  	    <keyword>سمتیہز</keyword>
+
+        </context>
+
+    <context id="kMas" style-ref="kMasculine">
+<keyword>آخر</keyword>
+<keyword>ادارہ</keyword>
+<keyword>ارتکاز</keyword>
+<keyword>استعمال</keyword>
+<keyword>استمرار</keyword>
+<keyword>اسکول</keyword>
+<keyword>اصول</keyword>
+<keyword>اطلاق</keyword>
+<keyword>الجبرا</keyword>
+<keyword>الخوارزم</keyword>
+<keyword>امتیاز</keyword>
+<keyword>اندرون</keyword>
+<keyword>ایٹم</keyword>
+<keyword>بار</keyword>
+<keyword>بیرون</keyword>
+<keyword>پانی</keyword>
+<keyword>تسلسل</keyword>
+<keyword>تعین</keyword>
+<keyword>تفاعل</keyword>
+<keyword>تفرق</keyword>
+<keyword>تیل</keyword>
+<keyword>جراثیم</keyword>
+<keyword>جسم</keyword>
+<keyword>جواب</keyword>
+<keyword>چاند</keyword>
+<keyword>حجم</keyword>
+<keyword>حساب</keyword>
+<keyword>حقیقت</keyword>
+<keyword>حوض</keyword>
+<keyword>ربا</keyword>
+<keyword>رجحان</keyword>
+<keyword>رقبہ</keyword>
+<keyword>رنگ</keyword>
+<keyword>روپ</keyword>
+<keyword>روپ</keyword>
+<keyword>زویہ</keyword>
+<keyword>سال</keyword>
+<keyword>سال</keyword>
+<keyword>سلسلہ</keyword>
+<keyword>سمتیہ</keyword>
+<keyword>سود</keyword>
+<keyword>سیارہ</keyword>
+<keyword>شکر</keyword>
+<keyword>فاصلہ</keyword>
+<keyword>قدم</keyword>
+<keyword>قطر</keyword>
+<keyword>قطع</keyword>
+<keyword>کام</keyword>
+<keyword>کرہ</keyword>
+<keyword>کھیل</keyword>
+<keyword>مائع</keyword>
+<keyword>مائع</keyword>
+<keyword>مثلث</keyword>
+<keyword>مجموعہ</keyword>
+<keyword>محدد</keyword>
+<keyword>مخروط</keyword>
+<keyword>مدار</keyword>
+<keyword>مستوی</keyword>
+<keyword>معنی</keyword>
+<keyword>منافع</keyword>
+<keyword>نقشہ</keyword>
+<keyword>نقطہ</keyword>
+<keyword>نمونہ</keyword>
+<keyword>وزن</keyword>
+
+        </context>
+
+    <context id="kFem" style-ref="kFeminine">
+
+<keyword>اساس</keyword>
+<keyword>افواہ</keyword>
+<keyword>اکائی</keyword>
+<keyword>برق</keyword>
+<keyword>پرکھ</keyword>
+<keyword>پرواز</keyword>
+<keyword>تخمین</keyword>
+<keyword>تراش</keyword>
+<keyword>ترتیب</keyword>
+<keyword>ترسیم</keyword>
+<keyword>تصدیق</keyword>
+<keyword>تظلیل</keyword>
+<keyword>تعداد</keyword>
+<keyword>توانائی</keyword>
+<keyword>توسیع</keyword>
+<keyword>جسامت</keyword>
+<keyword>جگہ</keyword>
+<keyword>چھلانگ</keyword>
+<keyword>چھلانگ</keyword>
+<keyword>حد</keyword>
+<keyword>حرکت</keyword>
+<keyword>دم</keyword>
+<keyword>ڈھلان</keyword>
+<keyword>ڈھلوان</keyword>
+<keyword>راس</keyword>
+<keyword>راسیں</keyword>
+<keyword>راہ</keyword>
+<keyword>سرحد</keyword>
+<keyword>سعت</keyword>
+<keyword>سنک</keyword>
+<keyword>شرح</keyword>
+<keyword>شعاع</keyword>
+<keyword>شعاع</keyword>
+<keyword>شناخت</keyword>
+<keyword>طاقت</keyword>
+<keyword>طے</keyword>
+<keyword>علامت</keyword>
+<keyword>عمر</keyword>
+<keyword>قباحت</keyword>
+<keyword>قوت</keyword>
+<keyword>کثافت</keyword>
+<keyword>کشش</keyword>
+<keyword>گیند</keyword>
+<keyword>لاگت</keyword>
+<keyword>لکیر</keyword>
+<keyword>محراب</keyword>
+<keyword>محراب</keyword>
+<keyword>محور</keyword>
+<keyword>مقدار</keyword>
+<keyword>نسبت</keyword>
+<keyword>ہدایت</keyword>
+<keyword>ورزش</keyword>
+
+        </context>
+
+    <context id="kTech" style-ref="kTechnical">
+            <keyword>سمتیہ</keyword>
+
+        </context>
+
+
+        <context id="specials-symbol" style-ref="command" class="no-spell-check">
+            <prefix>\\</prefix>
+            <suffix></suffix>
+
+            <keyword>\$</keyword>
+            <keyword>&amp;</keyword>
+            <keyword>%</keyword>
+            <keyword>#</keyword>
+            <keyword>_</keyword>
+            <keyword>\{</keyword>
+            <keyword>\}</keyword>
+            <keyword>~</keyword>
+            <keyword>\^</keyword>
+            <keyword>\\</keyword>
+        </context>
+
+        <context id="command" style-ref="command" class="no-spell-check">
+            <match>\\[a-zA-Z]+</match>
+        </context>
+
+        <context id="in-math" class="no-spell-check">
+            <include>
+                <context ref="common-commands"/>
+                <context ref="specials-symbol"/>
+                <context ref="command"/>
+            </include>
+        </context>
+
+        <context id="in-inline-math" class="no-spell-check">
+            <include>
+                <context ref="common-commands"/>
+                <context ref="specials-symbol"/>
+                <context ref="command"/>
+            </include>
+        </context>
+
+        <context id="latex">
+            <include>
+
+                <context id="comment" style-ref="comment">
+                    <start>%</start>
+                    <end>$</end>
+                    <include>
+                        <context ref="def:in-comment"/>
+                    </include>
+                </context>
+
+                <context id="verbatim-comment" style-ref="comment" class="no-spell-check">
+                    <start>\\begin\{comment\}</start>
+                    <end>\\end\{comment\}</end>
+                    <include>
+                        <context ref="def:in-comment"/>
+                    </include>
+                </context>
+
+                <context id="math-1" style-ref="math" class="no-spell-check">
+                    <start>\$\$</start>
+                    <end>\$\$</end>
+                    <include>
+                        <context sub-pattern="0" where="start" style-ref="math-bound"/>
+                        <context sub-pattern="0" where="end" style-ref="math-bound"/>
+                        <context ref="in-math"/>
+                    </include>
+                </context>
+
+                <context id="math-2" style-ref="math" class="no-spell-check">
+                    <start>\\\[</start>
+                    <end>\\\]</end>
+                    <include>
+                        <context sub-pattern="0" where="start" style-ref="math-bound"/>
+                        <context sub-pattern="0" where="end" style-ref="math-bound"/>
+                        <context ref="in-math"/>
+                    </include>
+                </context>
+
+                <context id="inline-math-1" style-ref="inline-math" class="no-spell-check">
+                    <start>\$</start>
+                    <end>\$</end>
+                    <include>
+                        <context sub-pattern="0" where="start" style-ref="math-bound"/>
+                        <context sub-pattern="0" where="end" style-ref="math-bound"/>
+                        <context ref="in-inline-math"/>
+                    </include>
+                </context>
+
+                <context id="inline-math-2" style-ref="inline-math" class="no-spell-check">
+                    <start>\\\(</start>
+                    <end>\\\)</end>
+                    <include>
+                        <context sub-pattern="0" where="start" style-ref="math-bound"/>
+                        <context sub-pattern="0" where="end" style-ref="math-bound"/>
+                        <context ref="in-inline-math"/>
+                    </include>
+                </context>
+
+                <context id="verbatim-env" style-ref="verbatim" class-disabled="no-spell-check">
+                    <start extended="true">
+                        \\begin\{
+                            (
+                                verbatim\*?|
+                                lstlisting|
+                                alltt
+                            )
+                        \}
+                    </start>
+                    <end>\\end\{\%{1@start}\}</end>
+                    <include>
+                      <context sub-pattern="0" where="start" class="no-spell-check"/>
+                      <context sub-pattern="0" where="end" class="no-spell-check"/>
+                    </include>
+                </context>
+
+                <context id="verbatim-inline" style-ref="verbatim" class-disabled="no-spell-check">
+                    <start>\\(verb\*?|lstinline)(\S)</start>
+                    <end>\%{2@start}</end>
+                    <include>
+                      <context sub-pattern="0" where="start" class="no-spell-check"/>
+                      <context sub-pattern="0" where="end" class="no-spell-check"/>
+                    </include>
+                </context>
+
+                <context id="include" style-ref="include" class="no-spell-check">
+                    <prefix>\\</prefix>
+
+                    <keyword>input</keyword>
+                    <keyword>include</keyword>
+                    <keyword>includeonly</keyword>
+                    <keyword>usepackage</keyword>
+                </context>
+
+                <context ref="kMas"/>
+                <context ref="kFem"/>
+                <context ref="kTech"/>
+
+                <context ref="common-commands"/>
+                <context ref="specials-symbol"/>
+                <context ref="command"/>
+            </include>
+        </context>
+  </definitions>
+</language>
