@@ -2,7 +2,7 @@
 %===================
 %testing tikz inside book
 \usepackage{verbatim}   %\begin{comment}   \end{comment}
-\usepackage[oldvoltagedirection]{circuitikz}
+\usepackage[RPvoltages]{circuitikz}
 \usepackage{pgfplots}
 \usepackage{tikz-3dplot}
 \usetikzlibrary{3d,shadings,fadings,intersections,calc,decorations.markings,decorations.pathreplacing}
@@ -35,9 +35,9 @@
 
 
 %
-\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtMagneticForcesMaterialsAndInductance,./tex/emtMaxwellEquations,./tex/emtPlaneWave,./tex/emtTransmissionLines,./tex/emtObliqueIncidence,./tex/emtWaveguidesAndResonators,./tex/emtAntennasAndRadiation,./tex/emtDataTables,./tex/emtEndOfBookTableDivergenceCurlGradientLaplacian,./tex/emtLinearAlgebra,./tex/emtCoordinatesRelations}
+%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors,./tex/emtCoulombLaw,./tex/emtGaussLaw,./tex/emtEnergyAndPotential,./tex/emtConductorDielectricCapacitor,./tex/emtPoissonLaplace,./tex/emtSteadyMagneticField,./tex/emtMagneticForcesMaterialsAndInductance,./tex/emtMaxwellEquations,./tex/emtPlaneWave,./tex/emtTransmissionLines,./tex/emtObliqueIncidence,./tex/emtWaveguidesAndResonators,./tex/emtAntennasAndRadiation,./tex/emtDataTables,./tex/emtEndOfBookTableDivergenceCurlGradientLaplacian,./tex/emtLinearAlgebra,./tex/emtCoordinatesRelations}
 
-%\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors}
+\includeonly{./tex/emtSymbols,./tex/emtPreface,./tex/prefaceFirstBook,./tex/emtVectors}
 
 
 \author{
@@ -69,10 +69,10 @@
 
 %==========
 \begin{document}
-\begin{urdufont}
+\sloppy
 
 
-\renewcommand*{\contentsname}{عنوان}    %this command has to be placed right here
+%\renewcommand*{\contentsname}{عنوان}    %this command has to be placed right here
 
 \frontmatter                          %just added instead of \pagenumbering{roman}
 %%\pagenumbering{roman}    
@@ -90,7 +90,7 @@
 
 
 \mainmatter                      %added this
-\renewcommand*{\chaptername}{باب}
+%\renewcommand*{\chaptername}{باب}
 %%\pagenumbering{arabic}   %instead of this
 
 \pagestyle{headings}
@@ -123,12 +123,11 @@
 \include{./tex/emtLinearAlgebra}
 \include{./tex/emtCoordinatesRelations}
 
-\renewcommand*{\indexname}{فرہنگ}      %this command has to be placed right here just before printindex command
+%\renewcommand*{\indexname}{فرہنگ}      %this command has to be placed right here just before printindex command
 \cleardoublepage
-\addcontentsline{toc}{chapter}{فرہنگ}
+\addcontentsline{toc}{chapter}{اشاریہ}
 
 \printindex
 
 
-\end{urdufont}
 \end{document}

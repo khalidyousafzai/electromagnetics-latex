@@ -1,0 +1,313 @@
+%this file describes urdu commands for the commonly used english latex commands
+
+%chapter, section etc
+%  \newcommand*{newcommand}[arguments]{actual command}
+\newcommand*{\باب}[1]{\chapter{#1}}                                      %defining commonly used commands
+\newcommand*{\حصہ}[1]{\section{#1}}
+\newcommand*{\جزوحصہ}[1]{\subsection{#1}}
+\newcommand*{\جزوجزوحصہ}[1]{\subsubsection{#1}}
+
+\newcommand*{\بابء}[1]{\chapter*{#1}}                                      %defining commonly used commands
+\newcommand*{\حصہء}[1]{\section*{#1}}
+\newcommand*{\جزوحصہء}[1]{\subsection*{#1}}
+\newcommand*{\جزوجزوحصہء}[1]{\subsubsection*{#1}}
+
+
+%english text in urdu mode
+\newcommand*{\تحریر}[1]{\textenglish{#1}}	% english text in urduMode
+%\newcommand*{\موٹا}[1]{\textbf{#1}}
+%\newcommand*{\ترچھا}[1]{{\textit{#1}}}
+\newcommand*{\موٹا}[1]{{\urduTechTermsfont{#1}}}
+\newcommand*{\ترچھا}[1]{{\small{#1}}}
+
+%%\newcommand*{\اصطلاح}[1]{{\color{red}{#1}}}   %colours spills to next word when there is index or footnote entry with the word
+%%\newcommand{\اصطلاح}[1]{{\urdufontBig{#1}}}
+
+\newcommand{\اصطلاح}[1]{{\urduTechTermsfont{#1}}}  %%%moved to main file
+\newcommand{\اصطلاحء}[1]{{\small{#1}}} %highlighted where  chance of mixup with  regular urdu meaning
+
+
+%end commands cannot be redefined and as such these two are not usable
+\providecommand*{\ابتدا}[1]{\begin{#1}}
+\providecommand*{\انتہا}[1]{\end{#1}}
+
+%include and input directives for adding external files into the main document 
+\newcommand*{\بشمول}[1]{\includeonly{#1}}
+\newcommand*{\شامل}[1]{\include{#1}}
+\newcommand*{\داخل}[1]{\input{#1}}
+
+%to use extra latex packages
+\newcommand*{\استعمال}[1]{\usepackage{#1}}
+
+%footnotes and indexes
+\newcommand*{\حاشیہب}[1]{{\raggedright{\footnote{\textenglish{#1}}}} }          %  moved to main file. footnote to the left hand side
+\newcommand*{\حاشیہد}[1]{{\raggedleft{\footnote{#1}}}}
+\newcommand*{\حاشیہط}[1]{\marginpar{#1}}
+
+\newcommand*{\فرہنگ}[1]{\index{#1}}
+
+%references and labels
+\newcommand*{\شناخت}[1]{\label{#1}}
+\newcommand*{\حوالہ}[1]{\ref{#1}}
+\newcommand*{\حوالہء}[1]{#1}			%dummy to enter the figure number directly while the figure is not ready
+\newcommand*{\حوالہصفحہ}[1]{\pageref{#1}}
+
+%counters
+\newcommand*{\فاصلہ}{\vspace*{10mm}}
+\newcommand*{\فاصلہء}{\quad}
+
+%itemize, bullets and numbered items   
+\newcommand*{\اشیاء}{itemize}                               %used in   \begin{itemize}
+\newcommand*{\شے}[1]{\item {#1}}			%used in    \item, \description
+%description
+\newcommand*{\جزو}[1]{\item[#1]}                      %used in \begin{description}
+%maths commands
+\newcommand*{\عددی}[1]{\: \ensuremath{#1} \:} % in-line math & inside math mode
+\newcommand*{\عددیء}[1]{\ensuremath{#1}}
+\newcommand*{\سمتیہ}[1]{\ensuremath{{\bf{#1}}}}
+\newcommand*{\سمتیازیرنوشت}[2]{\ensuremath{{\boldsymbol{#1}}_{\textup{#2}}}}
+
+\newcommand*{\ضرب}{\time}					%multiplication symbol
+\newcommand*{\نکطہد}{\cdot}
+\newcommand*{\نقطے}{\ensuremath{\cdots}}
+
+\newcommand*{\زیرنوشت}[3]{\: \ensuremath{{#1_{#2 \textrm {#3}}}} \:}   %english+urdu subscript \زیرنوشت{V}{CE}{غیرافزائندہ}
+\newcommand*{\سیدھازیرنوشت}[2]{\: \ensuremath{{#1_{\textup{#2}}}} \:} %RC
+
+\newcommand*{\قریب}[1]{\mbox{#1}}  %dissallows splitting along two lines 
+\newcommand{\سن}[1]{؁\,\ensuremath{#1}}
+\newcommand{\زور}[1]{\aemph{#1}} %overline urdu text to emphasize
+
+
+\renewcommand{\indexname}{فرہنگ}        %does nothing here. must be placed within begin{urdufont} environment to be the last to take effect 
+%===============================
+
+
+%=======================================
+
+
+%================
+%my environments
+%================
+
+%environment for examples مثال
+%\newcounter{examplecounter}[section]
+%\renewcommand{\theexamplecounter}{\arabic{examplecounter}}
+\newcounter{examplecounter}[chapter]
+\renewcommand{\theexamplecounter}{\thechapter.\arabic{examplecounter}}
+
+\newenvironment*{مثال}
+{\par\noindent\ignorespaces    مثال \refstepcounter{examplecounter} \theexamplecounter :\quad}%
+{\hfill\qedsymbol  \vspace{\baselineskip}\par}
+%{\noindent\ignorespaces \vspace{\baselineskip} \hrule \vspace{\baselineskip}  مثال \refstepcounter{examplecounter} \theexamplecounter :}%
+%{\par\noindent \hrule  \vspace{\baselineskip}}
+
+%------
+%practice problems environment مشق
+
+%\newcounter{practicecounter}[section]                              %practice here means مشق
+%\renewcommand{\thepracticecounter}{\arabic{practicecounter}}
+\newcounter{practicecounter}[chapter]                              %practice here means مشق
+\renewcommand{\thepracticecounter}{\thechapter.\arabic{practicecounter}}
+
+\newenvironment*{مشق}
+{\par\noindent\ignorespaces \vspace{\baselineskip} \hrule \vspace{\baselineskip} مشق \refstepcounter{practicecounter} \thepracticecounter :\quad}%
+{\par\noindent \hrule  \vspace{\baselineskip}}
+%---------
+
+%end of chapter questions environment سوال
+
+\newcounter{questioncounter}[chapter]                           %for reseting at every section. to be used only during writing stage
+%\renewcommand{\thequestioncounter}{\arabic{questioncounter}}
+%\newcounter{questioncounter}[chapter]						%when book is finished, use this instead of the above
+\renewcommand{\thequestioncounter}{\thechapter.\arabic{questioncounter}}
+
+\newenvironment*{سوال}				
+{\noindent\ignorespaces  سوال \refstepcounter{questioncounter} \thequestioncounter :\quad}%
+{\par\noindent\ignorespaces }
+%--------------------
+
+%defining a LAW   قانون
+
+%\newcounter{lawcounter}[section]
+%\renewcommand{\thelawcounter}{\arabic{lawcounter}}
+\newcounter{lawcounter}[chapter]
+\renewcommand{\thelawcounter}{\thechapter.\arabic{lawcounter}}
+
+\newenvironment*{قانون}				
+{\par\medskip \refstepcounter{lawcounter} \quad\nopagebreak}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\medskip }
+%--------------------
+%--------------------
+
+%defining a THEOREM   مسئلہ
+
+%\newcounter{kthcounter}[section]
+%\renewcommand{\thekthcounter}{\arabic{kthcounter}}
+\newcounter{kthcounter}[chapter]
+\renewcommand{\thekthcounter}{\thechapter.\arabic{kthcounter}}
+
+\newenvironment*{مسئلہ}				
+{\par\noindent\ignorespaces  مسئلہ \refstepcounter{kthcounter} \thekthcounter :\quad}%
+{\par\noindent }
+%--------------------
+%--------------------
+
+%defining a Proof   ثبوت
+
+%\newcounter{kprcounter}[chapter]
+%\renewcommand{\thekprcounter}{\thechapter.\arabic{kprcounter}}
+
+\newenvironment*{ثبوت}				
+{\noindent\ignorespaces  ثبوت :\quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent\qedsymbol  \vspace{\baselineskip} }
+%--------------------
+%--------------------
+%++++++++++++++++++++++++++++++
+
+%--------------------
+
+%defining a COROLLARY   ضمنی نتیجہ
+
+
+\newcounter{kcocounter}[chapter]
+\renewcommand{\thekcocounter}{\thechapter.\arabic{kcocounter}}
+
+\newenvironment*{ضمنی نتیجہ}				
+{\par\noindent\ignorespaces  ضمنی نتیجہ \refstepcounter{kcocounter} \thekcocounter :\quad}%
+{\par\noindent }
+%--------------------
+%--------------------
+
+%defining a Proof   ثبوت ضمنی نتیجہ
+
+%\newcounter{kprcocounter}[chapter]
+%\renewcommand{\thekprcocounter}{\thechapter.\arabic{kprcocounter}}
+
+\newenvironment*{ثبوت ضمنی نتیجہ}				
+{\noindent\ignorespaces  ثبوت ضمنی نتیجہ :\quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent\qedsymbol  \vspace{\baselineskip} }
+%--------------------
+%--------------------
+%++++++++++++++++++++++++++++++++++++++++++++
+
+%defining a Definition تعریف
+
+%\newcounter{kdfcounter}[chapter]
+%\renewcommand{\thedfrcounter}{\thechapter.\arabic{kdfcounter}}
+
+\newenvironment*{تعریف}				
+{\par\noindent\ignorespaces  تعریف :\quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent }
+%--------------------
+%----------------------------
+%defining a Definition تعریفات
+
+%\newcounter{kdfcounter}[chapter]
+%\renewcommand{\thedfrcounter}{\thechapter.\arabic{kdfcounter}}
+
+\newenvironment*{تعریفات}				
+{\par\noindent\ignorespaces  تعریفات :\quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent }
+%--------------------
+%--------------------
+
+%defining a Definition مفروضہ
+
+%\newcounter{kAscounter}[chapter]
+%\renewcommand{\theAsrcounter}{\thechapter.\arabic{kAscounter}}
+
+\newenvironment*{مفروضہ}				
+{\par\noindent\ignorespaces  مفروضہ \quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent }
+%--------------------
+%--------------------
+
+%defining a RULE   قاعدہ
+
+%\newcounter{krucounter}[section]
+%\renewcommand{\thekrucounter}{\arabic{krucounter}}
+\newcounter{krucounter}[chapter]
+\renewcommand{\thekrucounter}{\thechapter.\arabic{krucounter}}
+
+\newenvironment*{قاعدہ}				
+{\par\noindent\ignorespaces  قاعدہ \refstepcounter{krucounter} \thekrucounter :\quad}%
+{\par\noindent }
+%--------------------
+%--------------------
+
+%defining a Proof   ثبوت قاعدہ
+
+%\newcounter{kprRcounter}[chapter]
+%\renewcommand{\thekprRcounter}{\thechapter.\arabic{kprRcounter}}
+
+\newenvironment*{ثبوت قاعدہ}				
+{\noindent\ignorespaces  ثبوت قاعدہ :\quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent\qedsymbol  \vspace{\baselineskip} }
+%--------------------
+%--------------------
+
+%defining a TEST   پرکھ
+
+%\newcounter{kttcounter}[section]
+%\renewcommand{\thekttcounter}{\arabic{kttcounter}}
+\newcounter{kttcounter}[chapter]
+\renewcommand{\thekttcounter}{\thechapter.\arabic{kttcounter}}
+
+\newenvironment*{پرکھ}				
+{\par\noindent\ignorespaces  \refstepcounter{kttcounter} \quad \nopagebreak}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%--------------------
+
+\newenvironment*{ثبوت پرکھ}				
+{\noindent\ignorespaces  ثبوت پرکھ :\quad}%
+{\par\hfill\qedsymbol  \vspace{\baselineskip}\par }
+%{\par\noindent\qedsymbol  \vspace{\baselineskip} }
+
+%---------
+
+%questions environment جواب
+
+%\newcounter{answercounter}[section]                                           %for reseting at every section. NOT NEEDED
+%\renewcommand{\theanswercounter}{\arabic{answercounter}}
+%\newcounter{answercounter}[chapter]						%when book is finished, use this instead of the above
+%\renewcommand{\theanswercounter}{\thechapter.\arabic{answercounter}}
+
+%\newenvironment*{جواب}				
+%{\noindent\ignorespaces\wf{\thequestioncounter)\noexpand\quad}}%
+%{\par\noindent\ignorespacesafterend}
+%==================
+
+\newenvironment*{سوالات}				
+{\noindent\ignorespaces\wf{
+\موٹا{حصہ} 
+\thesection
+\quad
+\موٹا{صفحہ}
+\thepage}
+\wf{\unexpanded{\begin{description}\setlength{\parskip}{0pt} \setlength{\itemsep}{0pt plus 1pt}}}
+}%
+{\wf{\unexpanded{\end{description}}}\par\noindent\ignorespacesafterend}
+%==================
+\newenvironment*{جواب}  %the next is a better environment. it take less input		
+{\noindent\ignorespaces\wf{\unexpanded{\item[}}\wf{\thequestioncounter)}\wf{\unexpanded{]}}}%
+{\noindent\ignorespacesafterend}
+%%==================
+%%==================
+%%this takes one input hence there is no need to write \wf{\unexpanded{...}} in every answer
+%\newenvironment*{جواب}[1]			%put actual answer in {} examples {\(\sqrt{2}\)} 	
+%{\noindent\ignorespaces\wf{\unexpanded{\item[}}\wf{\thequestioncounter)}\wf{\unexpanded{]}}\wf{\unexpanded{#1}}}%
+%{\noindent\ignorespacesafterend}
+%==================
+%\newenvironment*{جوابء}				%i think is wrong and not used	
+%{\noindent\ignorespaces\wf{\unexpanded{[}}\wf{\thequestioncounter)}\wf{\unexpanded{]}}}%
+%{\par\noindent\ignorespacesafterend}
+%==================
+

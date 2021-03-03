@@ -1,30 +1,35 @@
-\ProvidesPackage{khalidUrduBooksEMT}
+\ProvidesPackage{khalidUrduBooks}
 \usepackage{fontspec}
-\usepackage{makeidx}
+\usepackage{makeidx}								%generates index
 \usepackage{amsmath}                                                                         %\tfrac for fractions in text
+\usepackage{amssymb}      						%ams symbols
+\usepackage{amsthm}      						%theorem environment. started using in the maths book
 \usepackage{mathtools}
 \usepackage{commath}									%differentiation symbols
 \usepackage{bm}											%bold greek letters too
 \usepackage{lineno}										%line numbers in pdf
 \usepackage{graphics}
 \usepackage[]{graphicx} 
-\usepackage{cancel}
+\usepackage{cancel}										%not used
 \usepackage{mathpazo}              %kkk   causes trouble with siunitx units such as ohm which needs correction using sisetup
 \usepackage{booktabs}                                  %for tables toprule, midrule and bottomrule
-\usepackage{parskip}
+\usepackage{parskip} 
 \usepackage[stable,bottom]{footmisc}						%for footnotes in the headings
 
 \usepackage{siunitx} 			%SI units that meets iso-31 regulations such as \micro, \degree \SI{3}{\celsius}
-\sisetup{per=frac,fraction=nice}    %setup for siunitx
+%\sisetup{per=frac,fraction=nice}    %setup for siunitx
+\sisetup{per=reciprocal,fraction=nice}    %setup for siunitx
 
 \protected\def\numpi{\text{\ensuremath{\pi}}}  %25 june 2015, these two lines were added to be able to use numpi as pi in SI commands.
 \sisetup{input-symbols = \numpi}					%without it, in the presence of mathpazo package, SI would show beta instead of pi
+\DeclareSIUnit\litre{\liter}
+\DeclareSIUnit{\pH}{pH}
 
 \usepackage{steinmetz}		%\phase to show angle of phasors
 \usepackage[version=3]{mhchem}     %chemical symbols such as \ce{H2O}
 
-
-\usepackage{geometry} 
+\usepackage[]{geometry} %use this command and put b5paper in documentclass statement to set b5papersize
+%\usepackage[paperwidth=8in,paperheight=10.25in,]{geometry}  %to use b5paper size, use the command above for using geometry package
 %\usepackage[margin=1cm]{geometry}                        %the geometry package gives correct page size in pdf meta data i.e. pdf file properties
 %\pdfpagewidth=\paperwidth              %instead of the geometry package, could have used these two lines      
 %\pdfpageheight=\paperheight
@@ -38,7 +43,7 @@
 \usepackage{subcaption}
 
 %\usepackage{hyperref}                   %loaded second last just before polyglossia. still giving problems
-\usepackage{polyglossia}                %is loaded the last
+\usepackage{polyglossia}                %is loaded the last. this is the package that handles urdu
 
 
 %\renewcommand\thelinenumber{\textenglish{\arabic{linenumber}}}
@@ -53,10 +58,11 @@
 \let\urdufontt\ttfamily                                                                                  %had to add this and the above line to get going after ubuntu upgrade
 \newfontfamily\urduTechTermsfont[Scale=1.0,Script=Arabic]{AA Sameer Sagar Nastaleeq Bold}
 
-%\setlength{\parskip}{5mm plus 4mm minus 3mm}
 
 
 %%\newfontfamily\AcaciasHand{AcaciasHand}
 
 \setcounter{secnumdepth}{3} 
+%=====================================
+
 
