@@ -54,8 +54,10 @@
 %description
 \newcommand*{\جزو}[1]{\item[#1]}
 %maths commands
-\newcommand*{\عددی}[1]{\: \ensuremath{#1} \:} % in-line math & inside math mode
-\newcommand*{\عددیء}[1]{\ensuremath{#1}}
+%\newcommand*{\عددی}[1]{\: \ensuremath{#1} \:} % in-line math & inside math mode
+%\newcommand*{\عددیء}[1]{\ensuremath{#1}}
+\newcommand*{\عددی}[1]{\:\(#1\)\:} % in-line math & inside math mode
+\newcommand*{\عددیء}[1]{\(#1\)}
 \newcommand*{\سمتیہ}[1]{\ensuremath{{\bf{#1}}}}
 \newcommand*{\سمتیازیرنوشت}[2]{\ensuremath{{\boldsymbol{#1}}_{\textup{#2}}}}
 
@@ -69,6 +71,11 @@
 \newcommand*{\قریب}[1]{\mbox{#1}}  %dissallows splitting along two lines 
 \newcommand{\سن}[1]{؁\,\ensuremath{#1}}
 \newcommand{\زور}[1]{\aemph{#1}} %overline urdu text to emphasize
+
+\newcommand{\kQuote}[1]{“#1”}
+\newcommand{\kquote}[1]{‘#1’}
+\newcommand{\قولء}[1]{’#1‘}
+\newcommand{\قول}[1]{”#1“}
 
 \renewcommand{\indexname}{فرہنگ}        %apparently did nothing
 %===============================
