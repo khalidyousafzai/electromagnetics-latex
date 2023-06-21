@@ -1,0 +1,12 @@
+if xelatex complains about not enough memory, do the following.
+1) make a file (such as ktex.cnf or texmf.cnf) with the extension "cnf" and place it in the folder    "/etc/texmf/texmf.d/"
+			>>sudo gedit /etc/texmf/texmf.d/ktex.cnf
+ add the neccessary lines  (such as the following) to this text file and save it.
+ 			main_memory=7000000  %
+ 			pool_size=10000000   %
+2) run the following, which copies the above two lines from the file   "/etc/texmf/web2c/texmf.cnf"     you can read this file before and after the command to see the changes
+			>>sudo update-texmf
+3) the following command which runs over numerous files compleates the job.
+			>>sudo fmtutil-sys --all
+
+if you compile a book again, the end of the log file will show the new memory values.
