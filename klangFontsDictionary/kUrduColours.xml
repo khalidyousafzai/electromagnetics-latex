@@ -3,6 +3,8 @@
 
 Place this file as follows
 khalid/.local/share/gtksourceview-3.0/styles/kUrduColours.xml
+in gedit/Prefrences/Font&Colors select /* UrduColours */
+if this doesnot work, then first add ~/.local/share/gtksourceview-4/styles/kUrduColours.xml   with the + button at the bottom of gedit/Preferences/Font&Colors menu
 
  This file is part of GtkSourceView
 
@@ -40,6 +42,7 @@ khalid/.local/share/gtksourceview-3.0/styles/kUrduColours.xml
   <color name="cyan"       value="#008A8C"/>
   <color name="gray"       value="#BEBEBE"/>
   <color name="green"      value="#2E8B57"/>
+  <color name="dark_green"      value="#1AFF1A"/>
   <color name="bordeaux"   value="#A52A2A"/>
   <color name="red"        value="#FF0000"/>
   <color name="yellow"     value="#FFFF00"/>
@@ -47,6 +50,7 @@ khalid/.local/share/gtksourceview-3.0/styles/kUrduColours.xml
   <color name="light_blue"                  value="#c2f2ee"/>
   <color name="light_red"                  value="#e38a99"/>
   <color name="light_gray"                  value="#f0ebec"/>
+  <color name="pink"      value="#ce20d4"/>
 
   <!-- Global Settings -->
   <style name="current-line"                background="#eeeeec"/>
@@ -118,10 +122,11 @@ khalid/.local/share/gtksourceview-3.0/styles/kUrduColours.xml
   <style name="latex:display-math"          foreground="#6A5ACD"/>
   <style name="latex:command"               foreground="#2E8B57" bold="true"/>
   <style name="latex:include"               use-style="def:preprocessor"/>
-  <style name="latex:masculine"           foreground="blue"/>
-  <style name="latex:technicalMasculine"           foreground="blue" background="light_gray"/>
+  <style name="latex:masculine"           foreground="pink"/>
+  <style name="latex:technicalMasculine"           foreground="pink" background="light_gray"/>
   <style name="latex:feminine"           foreground="red"/>
   <style name="latex:technicalFeminine"           foreground="red" background="light_gray"/>
+   <style name="latex:genderFree"           foreground="green"/>
 
   <style name="sh:variable"                 foreground="#6A5ACD"/>
 
