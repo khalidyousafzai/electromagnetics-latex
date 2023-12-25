@@ -69,25 +69,28 @@
 \newcommand*{\سیدھازیرنوشت}[2]{\: \ensuremath{{#1_{\textup{#2}}}} \:} %RC
 
 \newcommand*{\قریب}[1]{\mbox{#1}}  %dissallows splitting along two lines 
-\newcommand{\سن}[1]{؁\,\ensuremath{#1}}
+%\newcommand{\سن}[1]{؁\,\ensuremath{#1}}
+\newcommand{\سن}[1]{
+#1 ؁
+}
 \newcommand{\زور}[1]{\aemph{#1}} %overline urdu text to emphasize
 
-\newcommand{\kQuote}[1]{“#1”}
-\newcommand{\kquote}[1]{‘#1’}
-\newcommand{\قولء}[1]{’#1‘}
-\newcommand{\قول}[1]{”#1“}
+\newcommand{\kQuote}[1]{“\ignorespaces#1\ignorespaces”}
+\newcommand{\kquote}[1]{‘\ignorespaces#1\ignorespaces’}
+\newcommand{\قولء}[1]{’\ignorespaces#1\ignorespaces‘}
+\newcommand{\قول}[1]{”\ignorespaces#1\ignorespaces“}
 
 \renewcommand{\indexname}{فرہنگ}        %apparently did nothing
 %===============================
 
 
 %%numbering scheme
-%\renewcommand*{\thefigure}{\thechapter.\arabic{figure}}
-%\renewcommand*{\thetable}{\thechapter.\arabic{table}}
-%\renewcommand*{\theequation}{\thechapter.\arabic{equation}}
-%\renewcommand*{\thesection}{\thechapter.\arabic{section}}
-%\renewcommand*{\thesubsection}{\thechapter.\arabic{section}.\arabic{subsection}}
-%\renewcommand*{\thesubsubsection}{\thechapter.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\renewcommand*{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand*{\thetable}{\thechapter.\arabic{table}}
+\renewcommand*{\theequation}{\thechapter.\arabic{equation}}
+\renewcommand*{\thesection}{\thechapter.\arabic{section}}
+\renewcommand*{\thesubsection}{\thechapter.\arabic{section}.\arabic{subsection}}
+\renewcommand*{\thesubsubsection}{\thechapter.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 %================
 %my environments

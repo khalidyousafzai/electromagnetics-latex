@@ -75,9 +75,16 @@
 \newcommand*{\سیدھازیرنوشت}[2]{\: \ensuremath{{#1_{\textup{#2}}}} \:} %RC
 
 \newcommand*{\قریب}[1]{\mbox{#1}}  %dissallows splitting along two lines 
-\newcommand{\سن}[1]{؁\,\ensuremath{#1}}
+%\newcommand{\سن}[1]{؁\,\ensuremath{#1}}
+\newcommand{\سن}[1]{
+#1 ؁
+}
 \newcommand{\زور}[1]{\aemph{#1}} %overline urdu text to emphasize
 
+\newcommand{\kQuote}[1]{“\ignorespaces#1\ignorespaces”}
+\newcommand{\kquote}[1]{‘\ignorespaces#1\ignorespaces’}
+\newcommand{\قولء}[1]{’\ignorespaces#1\ignorespaces‘}
+\newcommand{\قول}[1]{”\ignorespaces#1\ignorespaces“}
 
 \renewcommand{\indexname}{فرہنگ}        %does nothing here. must be placed within begin{urdufont} environment to be the last to take effect 
 %===============================
