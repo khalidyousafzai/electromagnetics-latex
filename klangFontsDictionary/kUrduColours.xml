@@ -26,7 +26,7 @@ if this doesnot work, then first add ~/.local/share/gtksourceview-4/styles/kUrdu
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 -->
-<style-scheme id="uUrduColours" _name="UrduColours" version="1.0">
+<style-scheme id="kUrduColours" _name="UrduColours" version="1.0">
   <author>GtkSourceView team</author>
   <_description>Classic color scheme</_description>
 
@@ -122,11 +122,14 @@ if this doesnot work, then first add ~/.local/share/gtksourceview-4/styles/kUrdu
   <style name="latex:display-math"          foreground="#6A5ACD"/>
   <style name="latex:command"               foreground="#2E8B57" bold="true"/>
   <style name="latex:include"               use-style="def:preprocessor"/>
-  <style name="latex:masculine"           foreground="pink"/>
-  <style name="latex:technicalMasculine"           foreground="pink" background="light_gray"/>
-  <style name="latex:feminine"           foreground="red"/>
-  <style name="latex:technicalFeminine"           foreground="red" background="light_gray"/>
-   <style name="latex:genderFree"           foreground="green"/>
+ 
+ <style name="def:masculine"           foreground="pink"/>
+  <style name="def:technicalMasculine"        foreground="pink" background="light_gray"/>
+  <style name="def:feminine"           foreground="red"/>
+  <style name="def:technicalFeminine"           foreground="red" background="light_gray"/>
+   <style name="def:genderFree"           foreground="green" underline="true"/>
+   <style name="def:spellingWrongMasculine"           foreground="pink" underline="true"/>
+   <style name="def:spellingWrongFeminine"           foreground="red" underline="true"/>
 
   <style name="sh:variable"                 foreground="#6A5ACD"/>
 
