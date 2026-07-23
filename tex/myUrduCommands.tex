@@ -75,10 +75,7 @@
 \newcommand*{\سیدھازیرنوشت}[2]{\: \ensuremath{{#1_{\textup{#2}}}} \:} %RC
 
 \newcommand*{\قریب}[1]{\mbox{#1}}  %dissallows splitting along two lines 
-%\newcommand{\سن}[1]{؁\,\ensuremath{#1}}
-\newcommand{\سن}[1]{
-#1 ؁
-}
+\newcommand{\سن}[1]{\shortstack[l]{\,\,\urdunumber{#1} \\ [-4pt]؁}}
 \newcommand{\زور}[1]{\aemph{#1}} %overline urdu text to emphasize
 
 \newcommand{\kQuote}[1]{“\ignorespaces#1\ignorespaces”}
