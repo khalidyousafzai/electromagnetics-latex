@@ -51,6 +51,8 @@ if this doesnot work, then first add ~/.local/share/gtksourceview-4/styles/kUrdu
   <color name="light_red"                  value="#e38a99"/>
   <color name="light_gray"                  value="#f0ebec"/>
   <color name="pink"      value="#ce20d4"/>
+  <color name="pale_gray_green"      value="#ebf0eb"/>
+  <color name="pastel_green"      value="#e2ece2"/>
 
   <!-- Global Settings -->
   <style name="current-line"                background="#eeeeec"/>
@@ -130,6 +132,8 @@ if this doesnot work, then first add ~/.local/share/gtksourceview-4/styles/kUrdu
    <style name="def:genderFree"           foreground="green" underline="true"/>
    <style name="def:spellingWrongMasculine"           foreground="pink" underline="true"/>
    <style name="def:spellingWrongFeminine"           foreground="red" underline="true"/>
+ <style name="def:technicalMasculineCoined"           foreground="pink" background="pastel_green"/>
+ <style name="def:technicalFeminineCoined"           foreground="red" background="pastel_green"/>
 
   <style name="sh:variable"                 foreground="#6A5ACD"/>
 
