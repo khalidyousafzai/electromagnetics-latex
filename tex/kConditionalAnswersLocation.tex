@@ -1,0 +1,100 @@
+%to write answere to the  "answer.tex" file, enclose all questions in ابتدا{سوالات}  ، انتہا{سوالات}   environment 
+%and enclose each answer within  \wf{\unexpanded{}}. this is placed inside the  ابتدا{جواب} environment. with no answers, it gives error
+
+\newif\ifAnswersAtBack
+% \AnswersAtBacktrue  			%%writes answers to the back of the book
+\AnswersAtBackfalse   			%%in case there is a tex error in an answer, it is best to keep answers near the questions
+
+%-----------------------------------
+\ifAnswersAtBack
+%uses \usepackage{newfile}
+\newwrite\tempfile
+\immediate\openout\tempfile=answer.tex
+\newcommand*\wf[1]{\immediate\write\tempfile{#1}}
+\newcommand*\kwf[1]{#1}
+
+\newenvironment*{سوالات}				
+{\noindent\ignorespaces\wf{
+\موٹا{حصہ} 
+\thesection
+\quad
+\موٹا{صفحہ}
+\thepage}
+\wf{\unexpanded{\begin{description}\setlength{\parskip}{0pt} \setlength{\itemsep}{0pt plus 1pt}}}
+}%
+{\wf{\unexpanded{\end{description}}}\par\noindent\ignorespacesafterend}
+%==================
+\newenvironment*{جواب}  %the next is a better environment. it take less input		
+{\noindent\ignorespaces\wf{\unexpanded{\item[}}\wf{\thequestioncounter)}\wf{\unexpanded{]}}}%
+{\noindent\ignorespacesafterend}
+%%==================
+%the following is the environment for end of chapter questions 
+%it too accepts the answer environment above
+\newenvironment*{سوالات_باب}				
+{\noindent\ignorespaces\wf{
+\موٹا{مشق برائے باب} 
+\thechapter
+\quad
+\موٹا{صفحہ}
+\thepage}
+\wf{\unexpanded{\begin{description}\setlength{\parskip}{0pt} \setlength{\itemsep}{0pt plus 1pt}}}
+}%
+{\wf{\unexpanded{\end{description}}}\par\noindent\ignorespacesafterend}
+%==================
+%the following is the environment for end of Appendix questions 
+%it too accepts the answer environment above
+\newenvironment*{سوالات_ضمیمہ}				
+{\noindent\ignorespaces\wf{
+\موٹا{مشق برائے ضمیمہ} 
+\thechapter
+\quad
+\موٹا{صفحہ}
+\thepage}
+\wf{\unexpanded{\begin{description}\setlength{\parskip}{0pt} \setlength{\itemsep}{0pt plus 1pt}}}
+}%
+{\wf{\unexpanded{\end{description}}}\par\noindent\ignorespacesafterend}
+%===================================================
+\newcommand*\kprintAnswers{
+\chapter*{جوابات}
+\typeout{kkk: am about to put answers at the end of the book}
+\addcontentsline{toc}{chapter}{جوابات}
+\immediate\closeout\tempfile
+\begin{multicols}{2}
+{\small
+\input{answer}
+}
+\end{multicols}
+\typeout{kkk:  finished putting answers at the end of the book}
+}
+%============================================================================================
+%============================================================================================
+\else
+%uses \usepackage{newfile}		
+%not used but included to make things simpler
+\newwrite\tempfile
+\immediate\openout\tempfile=answer.tex	
+\newcommand*\wf[1]{#1}
+\newcommand*\kwf[1]{#1}
+
+\newenvironment*{سوالات}				
+{\par\medskip\noindent}%
+{\par\medskip}
+%==================
+\newenvironment*{جواب}  %the next is a better environment. it take less input		
+{\par\noindent\ignorespaces  جواب :\quad}%
+{\par\medskip}
+%%==================
+%the following is the environment for end of chapter questions 
+%it too accepts the answer environment above
+\newenvironment*{سوالات_باب}				
+{\par\noindent\ignorespaces  جواب :\quad}%
+{\par\medskip}
+%==================
+%the following is the environment for end of Appendix questions 
+%it too accepts the answer environment above
+\newenvironment*{سوالات_ضمیمہ}				
+{\par\medskip\noindent}%
+{\par\medskip}
+%==============================================
+\newcommand*\kprintAnswers{}
+\fi

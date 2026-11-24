@@ -1,0 +1,22 @@
+% 1. Create the flag
+\newif\ifCollectTerms
+% \CollectTermstrue  			%write urdu and english technical terms to a file too
+\CollectTermsfalse   		%donot write technical terms to a file
+
+%-----------------------------------
+\ifCollectTerms
+
+%%the  \اصطلاح and \حاشیہب have been disabled  in "myUrduCommandsCalculus.tex" and instead 
+%%the following is used. this retains their original definitions and writes them to a "technicalTerms.tex" text file too.
+\newwrite\tempfileTerms				 %collecting technical terms. uses newfile package
+\immediate\openout\tempfileTerms=technicalTerms.tex
+\AtEndDocument{\immediate\closeout\tempfileTerms}
+\newcommand*\wTechTerms[1]{\immediate\write\tempfileTerms{#1}}
+\newcommand*{\اصطلاح}[1]{\wTechTerms{\unexpanded{ur, #1 ,}}{\urduTechTermsfont{#1}}}
+\newcommand*{\حاشیہب}[1]{ \wTechTerms{\unexpanded{en, #1,}}{\raggedright{\footnote{\textenglish{#1}}}}}
+%============================================================================================
+%============================================================================================
+\else
+\newcommand{\اصطلاح}[1]{{\urduTechTermsfont{#1}}} 
+\newcommand*{\حاشیہب}[1]{{\raggedright{\footnote{\textenglish{#1}}}}}  
+\fi

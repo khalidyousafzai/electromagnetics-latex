@@ -1,0 +1,1 @@
+sed -i -E '/\\(sub)?item/ s/[0-9]+/\\farsidigits{&}/g' nameOfBook.ind

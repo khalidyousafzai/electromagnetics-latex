@@ -24,7 +24,10 @@
 math-micro=\textup{µ},text-micro=µ,math-ohm  =\upOmega,
 text-degree=°,math-degree=\textup{°}} 		%with mathpazo this is needed else must not be here. now size of micro is smaller
 
+\usepackage{newfile}		%used to write answers and technical terms to files 
+
 \input{./tex/myUrduCommandsEMT.tex}                  %turning latex into urdu
+\input{./tex/kConditionalCollectTerms}			%collecting terms at end of book
 \input{./tex/myUrduGreek.tex}
 \input{./tex/myEMTvectors.tex}
 \input{./tex/myDeclareFunctions.tex}
@@ -73,7 +76,7 @@ text-degree=°,math-degree=\textup{°}} 		%with mathpazo this is needed else mus
 
 %\linenumbers
 
-\makeindex
+%\makeindex
 
 %==========
 \begin{document}
@@ -137,7 +140,7 @@ text-degree=°,math-degree=\textup{°}} 		%with mathpazo this is needed else mus
 \cleardoublepage
 \addcontentsline{toc}{chapter}{اشاریہ}
 
-%\printindex
+\printindex
 
 
 \end{document}
