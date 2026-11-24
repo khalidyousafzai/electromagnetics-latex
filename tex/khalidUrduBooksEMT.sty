@@ -1,6 +1,8 @@
 \ProvidesPackage{khalidUrduBooksEMT}
 \usepackage{fontspec}
-\usepackage{makeidx}
+%\usepackage{makeidx}
+\usepackage[noautomatic]{imakeidx}		%generates index; run upmendex bookName.idx to generate *.ind file
+\makeindex[options={-s myurdu.ist}]
 \usepackage{amsmath}                                                                         %\tfrac for fractions in text
 \usepackage{mathtools}
 \usepackage{commath}									%differentiation symbols

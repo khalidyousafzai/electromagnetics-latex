@@ -1,0 +1,17 @@
+% 1. Enable Urdu Unicode sorting via ICU
+icu_locale "ur"
+
+% 2. Enable letter group headings (e.g., ا، ب، پ)
+headings_flag 1
+heading_prefix "\\textbf{\\large "
+heading_suffix "}\\nopagebreak\n"
+
+% 3. Customize Urdu heading letters if needed (optional)
+% script_head "arabic" "ا;ب;پ;ت;ٹ;ث;ج;چ;ح;خ;د;ڈ;ذ;ر;ڑ;ز;ژ;س;ش;ص;ض;ط;ظ;ع;غ;ف;ق;ک;گ;ل;م;ن;ں;و;ہ;ھ;ء;ی;ے"
+
+% 4. Punctuation between index entry and page numbers
+delim_0 "، "
+delim_1 "، "
+delim_2 "، "
+delim_n "، "
+
